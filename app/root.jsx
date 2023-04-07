@@ -14,7 +14,7 @@ import { withEmotionCache } from "@emotion/react";
 const theme = extendTheme({
 
   colors: {
-    brand: {
+    brand: { 
       polarDarkBlue: "#004c7a",
       polarMediumBlue: "#004990",
       polarBrightBlue: "#007bff",
