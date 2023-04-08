@@ -13,14 +13,44 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  useDisclosure
+  useDisclosure,
+  Heading,
+  Text
 } from "@chakra-ui/react";
+import {
+  Outlet,
+  useLoaderData,
+  useNavigate,
+} from "@remix-run/react";
+import { json } from "@remix-run/node";
 import logoMWBlue from "../assets/images/logoMWBlue.png"
 import React from "react";
 
+export const loader = async ({ request, params }) => {
+  const { url } = request.url;
+  const slug = params.index // whatever $name is
+  console.log("slug", slug)
+
+  const res = await fetch(process.env.CMS_SERVER_ADDRESS, {
+    "headers": {
+      // "Authorization": 'Bearer ${process.env.DOTCMS_API_KEY}'
+    },
+    "method": "GET",
+  });
+  const data = await res.json();
+  const headerContent = data.content.header;
+
+  return json({
+    // page: data,
+    header: headerContent
+  });
+}
+
 
 export default function Index() {
-
+  const { header } = useLoaderData();
+  const navigate = useNavigate();
+  console.log("page ==>", header);
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
@@ -62,35 +92,10 @@ export default function Index() {
             <Button onClick={onOpen}>Contact Us</Button>
           </Wrap>
         </Flex>
-        <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-          <h1>Welcome to Remix</h1>
-          <ul>
-            <li>
-              <a
-                target="_blank"
-                href="https://remix.run/tutorials/blog"
-                rel="noreferrer"
-              >
-                15m Quickstart Blog Tutorial
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://remix.run/tutorials/jokes"
-                rel="noreferrer"
-              >
-                Deep Dive Jokes App Tutorial
-              </a>
-            </li>
-            <li>
-              <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-                Remix Docs
-              </a>
-            </li>
-          </ul>
-        </div>
+
       </Container>
+      
+      <Outlet />
     </React.Fragment>
   );
 }
