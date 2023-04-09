@@ -25,32 +25,34 @@ import {
 import { json } from "@remix-run/node";
 import logoMWBlue from "../assets/images/logoMWBlue.png"
 import React from "react";
+import ContentPlaceholder from "../content/contentPlaceholders";
 
 export const loader = async ({ request, params }) => {
-  const { url } = request.url;
-  const slug = params.index // whatever $name is
-  console.log("slug", slug)
+  let route;
+  if (params.page) {
+    route = params.page
+  } else {
+    route = "/"
+  }
+  console.log("params ==>", params.page);
 
-  const res = await fetch(process.env.CMS_SERVER_ADDRESS, {
-    "headers": {
-      // "Authorization": 'Bearer ${process.env.DOTCMS_API_KEY}'
-    },
-    "method": "GET",
-  });
+  const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route);
   const data = await res.json();
-  const headerContent = data.content.header;
 
   return json({
     // page: data,
-    header: headerContent
+    route,
+    data: data
   });
 }
 
 
 export default function Index() {
-  const { header } = useLoaderData();
+  const { route, data } = useLoaderData();
   const navigate = useNavigate();
-  console.log("page ==>", header);
+  const header = data.content.header
+  const pageContent = data.placeholders.contentArea1
+  // console.log("pageContent ==>", pageContent);
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
@@ -94,7 +96,16 @@ export default function Index() {
         </Flex>
 
       </Container>
-      
+      <Container maxW='5xl'>
+        {/* <Box>
+          <Heading>{header.title}</Heading>
+          <Text>{header.subTitle}</Text>
+          {header.ctaLink && <Button onClick={() => navigate(header.ctaLink)}>{header.ctaTitle}</Button>}
+        </Box> */}
+        <ContentPlaceholder components={pageContent} />
+      </Container>
+
+
       <Outlet />
     </React.Fragment>
   );

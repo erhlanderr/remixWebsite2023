@@ -13,14 +13,15 @@ import {
 import { json } from "@remix-run/node";
 
 export const loader = async ({ request, params, context }) => {
-  const route = params.page // whatever $name is
+  let route;
+  if (params.page) {
+    route = params.page
+  } else {
+    route = "/"
+  }
+  console.log("params ==>", params.page);
 
-  const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route, {
-    "headers": {
-      // "Authorization": 'Bearer ${process.env.DOTCMS_API_KEY}'
-    },
-    "method": "GET",
-  });
+  const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route);
   const data = await res.json();
 
   return json({
@@ -30,7 +31,7 @@ export const loader = async ({ request, params, context }) => {
   });
 }
 
-export default function Index() {
+export default function Page() {
   const { route, data } = useLoaderData();
   const navigate = useNavigate();
   const header = data.content.header
@@ -39,7 +40,7 @@ export default function Index() {
       <Box>
         <Heading>{header.title}</Heading>
         <Text>{header.subTitle}</Text>
-        <Button onClick={() => navigate(header.ctaLink)}>{header.ctaTitle}</Button>
+        {header.ctaLink && <Button onClick={() => navigate(header.ctaLink)}>{header.ctaTitle}</Button>}
       </Box>
     </Container>
   </React.Fragment>)

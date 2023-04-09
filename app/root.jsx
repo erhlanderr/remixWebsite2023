@@ -10,11 +10,18 @@ import { ServerStyleContext, ClientStyleContext } from './context';
 import { useContext, useEffect } from "react";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { withEmotionCache } from "@emotion/react";
+import SectionStyles from "./assets/styles/sectionStyles";
 
 const theme = extendTheme({
-
+  layerStyles: {
+    mediumSection: {
+      paddingTop: 0,
+      paddingY: 4,
+      paddingBottom: 4,
+    },
+  },
   colors: {
-    brand: { 
+    brand: {
       polarDarkBlue: "#004c7a",
       polarMediumBlue: "#004990",
       polarBrightBlue: "#007bff",
