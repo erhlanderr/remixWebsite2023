@@ -1,23 +1,23 @@
 import React from "react";
+import SectionWrappedImageWithContent from "../contentBlocks/SectionWrappedImageWithContent";
+import SectionWrappedIconContentModuleGrid from "../contentBlocks/SectionWrappedIconContentModuleGrid";
+import SectionWrappedContentBlockGrid from "../contentBlocks/SectionWrappedContentBlockGrid";
+import PageIntro from "../contentBlocks/pageIntro";
+import SectionWrappedSectionTitle from "../contentBlocks/SectionWrappedSectionTitle";
+import SectionWrappedOverlayTileGrid from "../contentBlocks/SectionWrappedOverlayTileGrid";
+import SectionWrappedTilesModuleGrid from "../contentBlocks/SectionWrappedTilesModuleGrid";
+import SectionWrappedArticleGrid from "../contentBlocks/SectionWrappedArticleGrid";
+// import SectionWorkDynamicArticles from "../contentBlocks/SectionWorkDynamicArticles"; Needs to use a loader to add in the latest content
+import SectionWrappedSectionCTA from "../contentBlocks/SectionWrappedSectionCTA";
 // import SectionWrapper from "../contentBlocks/partials/SectionWrappers";
 // import SectionWrappedCarousel from "../contentBlocks/SectionWrappedCarousel";
-import SectionWrappedImageWithContent from "../contentBlocks/SectionWrappedImageWithContent";
-// import SectionWrappedOverlayTileGrid from "../contentBlocks/SectionWrappedOverlayTileGrid";
-// import SectionWrappedSectionCTA from "../contentBlocks/SectionWrappedSectionCTA";
-// import SectionWrappedSectionTitle from "../contentBlocks/SectionWrappedSectionTitle";
 // import SectionWrappedArticleCarousel from "../contentBlocks/SectionWrappedArticleCarousel";
 // import SectionWrappedArticleMasonaryGrid from "../contentBlocks/SectionWrappedArticleMasonaryGrid";
-// import SectionWrappedArticleGrid from "../contentBlocks/SectionWrappedArticleGrid";
-// import SectionWrappedIconContentModuleGrid from "../contentBlocks/SectionWrappedIconContentModuleGrid";
 // import SectionWrappedDropDownListModuleGrid from "../contentBlocks/SectionWrappedDropDownListModuleGrid";
 // import SectionWrappedGrid from "../contentBlocks/SectionWrappedGrid";
 // import SectionWrappedImageContentModuleGrid from "../contentBlocks/SectionWrappedImageContentModuleGrid";
-// import SectionWrappedTilesModuleGrid from "../contentBlocks/SectionWrappedTilesModuleGrid";
-// import SectionWrappedContentBlockGrid from "../contentBlocks/SectionWrappedContentBlockGrid";
 // import SectionWrappedSectionTitleGrid from "../contentBlocks/SectionWrappedSectionTitleGrid";
-// import SectionWorkDynamicArticles from "../contentBlocks/SectionWorkDynamicArticles";
 // import TileContentModule from "../contentBlocks/TileContentModule";
-import PageIntro from "../contentBlocks/pageIntro";
 // import StatsPanel from "../contentBlocks/StatsPanel";
 // import ContentBlock from "../contentBlocks/ContentBlock";
 // import ImageContentBlock from "../contentBlocks/ImageContentBlock";
@@ -38,43 +38,43 @@ import PageIntro from "../contentBlocks/pageIntro";
 // import SubMenuLinkList from "../navigation/SubMenuLinkList";
 
 const componentRegistry = {
-//   sectionwrapper: SectionWrapper,
   sectionwrappedimagewithcontent: SectionWrappedImageWithContent,
-//   sectionwrappedcarousel: SectionWrappedCarousel,
-//   sectionwrappedsectiontitle: SectionWrappedSectionTitle,
-//   sectionwrappedoverlaytilegrid: SectionWrappedOverlayTileGrid,
-//   sectionwrappedsectioncta: SectionWrappedSectionCTA,
-//   sectionwrappedarticlecarousel: SectionWrappedArticleCarousel,
-//   sectionwrappedtilesmodulegrid: SectionWrappedTilesModuleGrid,
-//   sectionwrappedarticlemasonarygrid: SectionWrappedArticleMasonaryGrid,
-//   sectionwrappedarticlegrid: SectionWrappedArticleGrid,
-//   sectionwrappediconcontentmodulegrid: SectionWrappedIconContentModuleGrid,
-//   sectionwrappeddropdownlistmodulegrid: SectionWrappedDropDownListModuleGrid,
-//   sectionwrappedgrid: SectionWrappedGrid,
-//   sectionwrappedimagecontentmodulegrid: SectionWrappedImageContentModuleGrid,
-//   tilecontentmodule: TileContentModule,
+  sectionwrappediconcontentmodulegrid: SectionWrappedIconContentModuleGrid,
   pageintro: PageIntro,
-//   statspanel: StatsPanel,
-//   contentblock: ContentBlock,
-//   imagecontentblock: ImageContentBlock,
-//   testimonials: Testimonials,
-//   sectiontitle: SectionTitle,
-//   sectionwrappedcontentblockgrid: SectionWrappedContentBlockGrid,
-//   sectionwrappedsectiontitlegrid: SectionWrappedSectionTitleGrid,
-//   sectionworkdynamicarticles: SectionWorkDynamicArticles,
-//   bloglist: BlogList,
-//   blogpost: BlogPost,
-//   blogarticleauthor: BlogArticleAuthor,
-//   contactform: ContactForm,
-//   googlemap: GoogleMap,
-//   sitemap: SiteMap,
-//   dropdownlistitem: DropDownListItem,
-//   sectionwrappeddropdowncontactform: SectionWrappedDropDownContactForm,
-//   sectionwrappedvideobackground: SectionWrappedVideoBackground,
-//   // menu navigation components
-//   menubloglist: MenuBlogList,
-//   submenucopy: SubMenuCopy,
-//   submenulinklist: SubMenuLinkList,
+  sectionwrappedcontentblockgrid: SectionWrappedContentBlockGrid,
+  sectionwrappedsectiontitle: SectionWrappedSectionTitle,
+  sectionwrappedoverlaytilegrid: SectionWrappedOverlayTileGrid,
+  sectionwrappedtilesmodulegrid: SectionWrappedTilesModuleGrid,
+    sectionwrappedarticlegrid: SectionWrappedArticleGrid,
+    // sectionworkdynamicarticles: SectionWorkDynamicArticles,
+    sectionwrappedsectioncta: SectionWrappedSectionCTA,
+  //   sectionwrapper: SectionWrapper,
+  //   sectionwrappedcarousel: SectionWrappedCarousel,
+  //   sectionwrappedarticlecarousel: SectionWrappedArticleCarousel,
+  //   sectionwrappedarticlemasonarygrid: SectionWrappedArticleMasonaryGrid,
+  //   sectionwrappeddropdownlistmodulegrid: SectionWrappedDropDownListModuleGrid,
+  //   sectionwrappedgrid: SectionWrappedGrid,
+  //   sectionwrappedimagecontentmodulegrid: SectionWrappedImageContentModuleGrid,
+  //   tilecontentmodule: TileContentModule,
+  //   statspanel: StatsPanel,
+  //   contentblock: ContentBlock,
+  //   imagecontentblock: ImageContentBlock,
+  //   testimonials: Testimonials,
+  //   sectiontitle: SectionTitle,
+  //   sectionwrappedsectiontitlegrid: SectionWrappedSectionTitleGrid,
+  //   bloglist: BlogList,
+  //   blogpost: BlogPost,
+  //   blogarticleauthor: BlogArticleAuthor,
+  //   contactform: ContactForm,
+  //   googlemap: GoogleMap,
+  //   sitemap: SiteMap,
+  //   dropdownlistitem: DropDownListItem,
+  //   sectionwrappeddropdowncontactform: SectionWrappedDropDownContactForm,
+  //   sectionwrappedvideobackground: SectionWrappedVideoBackground,
+  //   // menu navigation components
+  //   menubloglist: MenuBlogList,
+  //   submenucopy: SubMenuCopy,
+  //   submenulinklist: SubMenuLinkList,
 };
 
 let renderWrappedItem = (key, item) => {
@@ -90,7 +90,7 @@ const ContentPlaceholder = ({ components }) => {
       const component = components[key];
       const type = component["_type"];
       if (
-        type && 
+        type &&
         type.toLowerCase() === "sectionwrapper" &&
         component["wrappedComponents"]
       ) {
@@ -98,21 +98,21 @@ const ContentPlaceholder = ({ components }) => {
         const Component = componentRegistry[type.toLowerCase()];
         if (Component) {
           return (
-            <Component   
-              key={key} 
+            <Component
+              key={key}
               componentKey={key}
               sectionSize={component["sectionSize"]}
-            >   
+            >
               {/* <Grid 
                 justification={component["justification"]}
                 contentWrapper={component["contentWrapper"]}
                 isOffset={component["offset"]}
               > */}
-                {Object.keys(wrappedComponents).map((key) =>
+              {Object.keys(wrappedComponents).map((key) =>
                 <>
                   {renderWrappedItem(key, wrappedComponents[key])}
                 </>
-                )} 
+              )}
               {/* </Grid> */}
             </Component>
           );

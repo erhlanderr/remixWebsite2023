@@ -1,10 +1,13 @@
 import React from "react";
 import {
-    Flex, Grid, Box, Heading, Text
+    Flex, Grid, Box, Heading, Text, Button
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import ImageLoader from "./imageLoader";
-
+import CTAModule from "./CTAModule";
+import {
+    useNavigate
+} from "@remix-run/react";
 function ImageWithContent({
     children,
     columnImage,
@@ -26,6 +29,8 @@ function ImageWithContent({
     isReversed,
     textAlign,
 }) {
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -74,9 +79,9 @@ function ImageWithContent({
                         )}
                         {ctaLink && (
                             <Box>
-                                <Link to={ctaLink} className="button is-medium">
+                                <Button onClick={() => navigate(ctaLink)} className="button is-medium">
                                     {ctaCopy}
-                                </Link>
+                                </Button>
                             </Box>
                         )}
                     </React.Fragment>
@@ -97,9 +102,7 @@ function ImageWithContent({
                         )}
                         {ctaLink && (
                             <Box>
-                                <Link to={ctaLink} className="button is-medium">
-                                    {ctaCopy}
-                                </Link>
+                                <CTAModule ctaLink={ctaLink} ctaCopy={ctaCopy} />
                             </Box>
                         )}
 

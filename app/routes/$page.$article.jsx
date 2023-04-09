@@ -20,15 +20,19 @@ import ContentPlaceholder from "../content/contentPlaceholders";
 
 export const loader = async ({ request, params, context }) => {
   let route;
+  let article;
   if (params.page) {
     route = params.page
   } else {
     route = "/"
   }
-  console.log("params ==>", params.page);
-
-  const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route);
+  article = params.article
+  console.log("params res ==>", article);
+  
+  const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route + "/" + article);
+  console.log("params res ==>", res);
   const data = await res.json();
+  console.log("params data ==>", data);
 
   return json({
     // page: data,

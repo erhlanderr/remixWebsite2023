@@ -21,6 +21,7 @@ import {
   Outlet,
   useLoaderData,
   useNavigate,
+  Link
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import logoMWBlue from "../assets/images/logoMWBlue.png"
@@ -58,7 +59,7 @@ export default function Index() {
 
   return (
     <React.Fragment>
-      <Drawer
+      {/* <Drawer
         isOpen={isOpen}
         placement='right'
         onClose={onClose}
@@ -80,33 +81,33 @@ export default function Index() {
             <Button colorScheme='blue'>Save</Button>
           </DrawerFooter>
         </DrawerContent>
-      </Drawer>
+      </Drawer> */}
       <Container maxW='5xl'>
         <Flex justifyContent={"space-between"} py={5}>
           <Box>
-            <Image maxW="280px" src={logoMWBlue} />
+            <Link to="/">
+              <Image maxW="280px" src={logoMWBlue} />
+            </Link>
           </Box>
           <Wrap display={"flex"} alignItems={"center"}>
-            <Button onClick={onOpen}>Our Services</Button>
-            <Button onClick={onOpen}>Our Work</Button>
-            <Button onClick={onOpen}>Blog</Button>
-            <Button onClick={onOpen}>About Us</Button>
-            <Button onClick={onOpen}>Contact Us</Button>
+            <Button onClick={() => navigate('../services')}>Our Services</Button>
+            <Button onClick={() => navigate('../work')}>Our Work</Button>
+            <Button onClick={() => navigate('../blog')}>Blog</Button>
+            <Button onClick={() => navigate('../about-us')}>About Us</Button>
+            <Button onClick={() => navigate('../contact-us')}>Contact Us</Button>
           </Wrap>
         </Flex>
-
       </Container>
       <Container maxW='5xl'>
-        {/* <Box>
+        <Box>
           <Heading>{header.title}</Heading>
           <Text>{header.subTitle}</Text>
           {header.ctaLink && <Button onClick={() => navigate(header.ctaLink)}>{header.ctaTitle}</Button>}
-        </Box> */}
+        </Box>
+      </Container>
+      <Container maxW='5xl'>
         <ContentPlaceholder components={pageContent} />
       </Container>
-
-
-      <Outlet />
     </React.Fragment>
   );
 }
