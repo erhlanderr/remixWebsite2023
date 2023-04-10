@@ -1,7 +1,7 @@
 import React from "react";
 import SectionWrappers from "../components/sectionWrappers";
-import Carousel from "./Carousel";
-import CarouselTile from "./partials/CarouselTile";
+import Carousel from "../components/Carousel";
+import CarouselTile from "../components/CarouselTile";
 
 function SectionWrappedArticleCarousel({
   componentKey,

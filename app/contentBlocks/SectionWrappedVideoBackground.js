@@ -1,5 +1,5 @@
 import React from "react";
-import SectionWrappers from "../components/partials/SectionWrappers";
+import SectionWrappers from "../components/sectionWrappers";
 import VideoWithContent from "../components/VideoWithContent";
 import Markdown from "markdown-to-jsx";
 

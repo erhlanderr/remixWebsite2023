@@ -12,7 +12,8 @@ import {
 import {
   useLoaderData,
   useNavigate,
-  Link
+  Link,
+  Outlet
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import logoMWBlue from "../assets/images/logoMWBlue.png"
@@ -67,5 +68,6 @@ export default function Page() {
       </Box>
     </Container>
     <ContentPlaceholder components={pageContent} />
+    <Outlet/>
   </React.Fragment>)
 }

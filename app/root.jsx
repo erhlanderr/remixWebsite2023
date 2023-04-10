@@ -11,6 +11,16 @@ import { useContext, useEffect } from "react";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { withEmotionCache } from "@emotion/react";
 import SectionStyles from "./assets/styles/sectionStyles";
+import slickCarousel from "./assets/styles/css/slick.css";
+
+
+export let links = () => {
+  return [
+    { rel: "stylesheet", href: slickCarousel },
+  ]
+}
+
+
 
 const theme = extendTheme({
   layerStyles: {

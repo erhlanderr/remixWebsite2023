@@ -62,9 +62,8 @@ const SectionWrappedArticleGrid = ({
             ) : null}
             {markdown && (
               <div
-                className={`content ${
-                  textAlignment ? "has-text-" + textAlignment : "has-text-left"
-                }`}
+                className={`content ${textAlignment ? "has-text-" + textAlignment : "has-text-left"
+                  }`}
               >
                 <MarkdownContent markdown={markdown} />
               </div>
@@ -74,25 +73,26 @@ const SectionWrappedArticleGrid = ({
       )}
 
       <div
-        className={`columns is-flex-wrap-wrap is-flex ${
-          customColumnsClasses ? customColumnsClasses : ""
-        }`}
+        className={`columns is-flex-wrap-wrap is-flex ${customColumnsClasses ? customColumnsClasses : ""
+          }`}
       >
         {articles &&
           articles.map((article, i) => (
-            <ArticleGridHeaderImageCard
-              columnsDesktop={columnsDesktop}
-              columnsTablet={columnsTablet}
-              columnsMobile={columnsMobile}
-              imageRatio={imageRatio}
-              footerGrow={footerGrow}
-              footerShrink={footerShrink}
-              headerGrow={headerGrow}
-              headerShrink={headerShrink}
-              boxBackgroundColour={boxBackgroundColour}
-              article={article}
-              key={i}
-            />
+            <React.Fragment key={i}>
+              <ArticleGridHeaderImageCard
+                columnsDesktop={columnsDesktop}
+                columnsTablet={columnsTablet}
+                columnsMobile={columnsMobile}
+                imageRatio={imageRatio}
+                footerGrow={footerGrow}
+                footerShrink={footerShrink}
+                headerGrow={headerGrow}
+                headerShrink={headerShrink}
+                boxBackgroundColour={boxBackgroundColour}
+                article={article}
+                key={i}
+              />
+            </React.Fragment>
           ))}
       </div>
 

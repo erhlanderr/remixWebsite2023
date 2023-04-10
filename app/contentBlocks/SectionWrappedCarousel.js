@@ -1,7 +1,7 @@
 import React from "react";
 import SectionWrappers from "../components/sectionWrappers";
-import Carousel from "./Carousel";
-import CarouselBanner from "./partials/CarouselBanner";
+import Carousel from "../components/Carousel";
+import CarouselBanner from "../components/CarouselBanner";
 
 function SectionWrappedCarousel({
   componentKey,

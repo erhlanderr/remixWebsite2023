@@ -1,6 +1,7 @@
 import React from "react";
 // import ClientSideLazyLoadComponent from "../ClientSideLazyLoadComponent";
 import { Link } from "react-router-dom";
+import CTAModule from "./CTAModule";
 
 function OverLayTile({ 
   tileTitle,
@@ -59,13 +60,14 @@ function OverLayTile({
             )}
             {!linkCta || !linkCopy ? null : (
               <div className={`tile-footer is-block block `}>
-                <Link
+                <CTAModule ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
+                {/* <Link
                   className="button"
                   to={linkCta}
                   title={`${tileTitle || linkCopy}`}
                 >
                   {linkCopy}
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>

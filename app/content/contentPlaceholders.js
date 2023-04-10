@@ -9,9 +9,12 @@ import SectionWrappedTilesModuleGrid from "../contentBlocks/SectionWrappedTilesM
 import SectionWrappedArticleGrid from "../contentBlocks/SectionWrappedArticleGrid";
 // import SectionWorkDynamicArticles from "../contentBlocks/SectionWorkDynamicArticles"; Needs to use a loader to add in the latest content
 import SectionWrappedSectionCTA from "../contentBlocks/SectionWrappedSectionCTA";
+import BlogList from "../contentBlocks/SectionBlogList";
+import SectionWrappedCarousel from "../contentBlocks/SectionWrappedCarousel";
+import SectionWrappedArticleCarousel from "../contentBlocks/SectionWrappedArticleCarousel";
+import SectionWrappedVideoBackground from "../contentBlocks/SectionWrappedVideoBackground";
+import SectionBlogPost from "../contentBlocks/SectionBlogPost";
 // import SectionWrapper from "../contentBlocks/partials/SectionWrappers";
-// import SectionWrappedCarousel from "../contentBlocks/SectionWrappedCarousel";
-// import SectionWrappedArticleCarousel from "../contentBlocks/SectionWrappedArticleCarousel";
 // import SectionWrappedArticleMasonaryGrid from "../contentBlocks/SectionWrappedArticleMasonaryGrid";
 // import SectionWrappedDropDownListModuleGrid from "../contentBlocks/SectionWrappedDropDownListModuleGrid";
 // import SectionWrappedGrid from "../contentBlocks/SectionWrappedGrid";
@@ -24,15 +27,12 @@ import SectionWrappedSectionCTA from "../contentBlocks/SectionWrappedSectionCTA"
 // import Testimonials from "../contentBlocks/Testimonials";
 // import SectionTitle from "../contentBlocks/partials/SectionTitle";
 // import Grid from "../contentBlocks/partials/Grid";
-// import BlogList from "../contentBlocks/BlogList";
-// import BlogPost from "../contentBlocks/BlogPost";
 // import BlogArticleAuthor from "../contentBlocks/partials/BlogArticleAuthor";
 // import ContactForm from "../contentBlocks/ContactForm";
 // import GoogleMap from "../contentBlocks/partials/GoogleMap";
 // import SiteMap from "../contentBlocks/SiteMap";
 // import DropDownListItem from "../contentBlocks/DropDownListItem";
 // import SectionWrappedDropDownContactForm from "../contentBlocks/SectionWrappedDropDownContactForm";
-// import SectionWrappedVideoBackground from "../contentBlocks/SectionWrappedVideoBackground";
 // import MenuBlogList from "../navigation/MenuBlogList";
 // import SubMenuCopy from "../navigation/SubMenuCopy";
 // import SubMenuLinkList from "../navigation/SubMenuLinkList";
@@ -45,12 +45,15 @@ const componentRegistry = {
   sectionwrappedsectiontitle: SectionWrappedSectionTitle,
   sectionwrappedoverlaytilegrid: SectionWrappedOverlayTileGrid,
   sectionwrappedtilesmodulegrid: SectionWrappedTilesModuleGrid,
-    sectionwrappedarticlegrid: SectionWrappedArticleGrid,
-    // sectionworkdynamicarticles: SectionWorkDynamicArticles,
-    sectionwrappedsectioncta: SectionWrappedSectionCTA,
+  sectionwrappedarticlegrid: SectionWrappedArticleGrid,
+  // sectionworkdynamicarticles: SectionWorkDynamicArticles,
+  sectionwrappedsectioncta: SectionWrappedSectionCTA,
+  bloglist: BlogList,
+  sectionwrappedcarousel: SectionWrappedCarousel,
+  sectionwrappedarticlecarousel: SectionWrappedArticleCarousel,
+  sectionwrappedvideobackground: SectionWrappedVideoBackground,
+  blogpost: SectionBlogPost,
   //   sectionwrapper: SectionWrapper,
-  //   sectionwrappedcarousel: SectionWrappedCarousel,
-  //   sectionwrappedarticlecarousel: SectionWrappedArticleCarousel,
   //   sectionwrappedarticlemasonarygrid: SectionWrappedArticleMasonaryGrid,
   //   sectionwrappeddropdownlistmodulegrid: SectionWrappedDropDownListModuleGrid,
   //   sectionwrappedgrid: SectionWrappedGrid,
@@ -62,15 +65,12 @@ const componentRegistry = {
   //   testimonials: Testimonials,
   //   sectiontitle: SectionTitle,
   //   sectionwrappedsectiontitlegrid: SectionWrappedSectionTitleGrid,
-  //   bloglist: BlogList,
-  //   blogpost: BlogPost,
   //   blogarticleauthor: BlogArticleAuthor,
   //   contactform: ContactForm,
   //   googlemap: GoogleMap,
   //   sitemap: SiteMap,
   //   dropdownlistitem: DropDownListItem,
   //   sectionwrappeddropdowncontactform: SectionWrappedDropDownContactForm,
-  //   sectionwrappedvideobackground: SectionWrappedVideoBackground,
   //   // menu navigation components
   //   menubloglist: MenuBlogList,
   //   submenucopy: SubMenuCopy,
