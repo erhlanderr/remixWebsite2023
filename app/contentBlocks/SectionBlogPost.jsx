@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useContentContext } from "../content/ContentContext";
+// import { useContentContext } from "../content/ContentContext";
 import { useLocation } from "react-router-dom";
 import Markdown from "markdown-to-jsx";
 import SectionWrapper from "../components/sectionWrappers";
@@ -11,66 +11,66 @@ import BlogArticleRelatedArticlesPromoted from "../components/BlogArticleRelated
 import BlogArticleRelatedArticles from "../components/BlogArticleRelatedArticles";
 
 function BlogPost() {
-//   const [isBlogContent, setBlogContent] = useState(null);
+  // const [isBlogContent, setBlogContent] = useState(null);
 
-//   const { contentRepository, useContent } = useContentContext();
-//   const location = useLocation();
+  // const { contentRepository, useContent } = useContentContext();
+  // const location = useLocation();
 
-//   var parentPathName = "";
-//   if (location && location.pathname) parentPathName = location.pathname;
+  // var parentPathName = "";
+  // if (location && location.pathname) parentPathName = location.pathname;
 
-//   const page = useContent(
-//     () => contentRepository.getPage(parentPathName),
-//     [parentPathName]
-//   );
+  // const page = useContent(
+  //   () => contentRepository.getPage(parentPathName),
+  //   [parentPathName]
+  // );
 
-//   useEffect(() => {
-//     if (page) {
-//       if (page.data) {
-//         setBlogContent(page?.data.content);
-//       }
-//     }
-//   }, [page]);
+  // useEffect(() => {
+  //   if (page) {
+  //     if (page.data) {
+  //       setBlogContent(page?.data.content);
+  //     }
+  //   }
+  // }, [page]);
 
-//   let data;
-//   if (page?.data) {
-//     data = page.data;
-//   }
+  // let data;
+  // if (page?.data) {
+  //   data = page.data;
+  // }
 
-//   const formatedDate = (date) => {
-//     return new Date(date).toLocaleDateString("en-GB", { 
-//       day: "numeric",
-//       month: "long",
-//       year: "numeric",
-//     })}
+  // const formatedDate = (date) => {
+  //   return new Date(date).toLocaleDateString("en-GB", { 
+  //     day: "numeric",
+  //     month: "long",
+  //     year: "numeric",
+  //   })}
 
-//   const relatedArticlesList = (articlePosts) => {
-//     if (articlePosts !== undefined) {
-//       const categoryList = articlePosts.slice(0, 6).map((record, index) => {
-//         return (
-//           <>
-//             <div
-//               className={`column is-4-tablet-only is-6-mobile ${
-//                 articlePosts === data?.relatedAuthorPosts
-//                   ? "is-4-desktop"
-//                   : "is-12-desktop"
-//               }`}
-//               key={index}
-//             >
-//               <div className="content has-text-left">
-//                 <LinkBlock
-//                   linkTitle={record.articleTitle}
-//                   linkUrl={record.articleLink}
-//                   linkSubtitle={formatedDate(record.articleDate)}                  
-//                 />
-//               </div>
-//             </div>
-//           </>
-//         );
-//       });
-//       return categoryList;
-//     }
-//   };
+  // const relatedArticlesList = (articlePosts) => {
+  //   if (articlePosts !== undefined) {
+  //     const categoryList = articlePosts.slice(0, 6).map((record, index) => {
+  //       return (
+  //         <>
+  //           <div
+  //             className={`column is-4-tablet-only is-6-mobile ${
+  //               articlePosts === data?.relatedAuthorPosts
+  //                 ? "is-4-desktop"
+  //                 : "is-12-desktop"
+  //             }`}
+  //             key={index}
+  //           >
+  //             <div className="content has-text-left">
+  //               <LinkBlock
+  //                 linkTitle={record.articleTitle}
+  //                 linkUrl={record.articleLink}
+  //                 linkSubtitle={formatedDate(record.articleDate)}                  
+  //               />
+  //             </div>
+  //           </div>
+  //         </>
+  //       );
+  //     });
+  //     return categoryList;
+  //   }
+  // };
 
   return (
     <>
@@ -79,6 +79,7 @@ function BlogPost() {
         sectionCustomClasses="blog-sidebar"
         sectionHasBackground="white"
       >
+        {/* {console.log("blog ==> ",data)} */}
         {/* <div className="columns double-gap is-flex-direction-column-touch">
           <div className="column blog-content ">
             <div className="columns is-multiline single-gap is-flex-direction-column">

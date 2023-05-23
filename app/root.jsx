@@ -12,6 +12,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { withEmotionCache } from "@emotion/react";
 import SectionStyles from "./assets/styles/sectionStyles";
 import slickCarousel from "./assets/styles/css/slick.css";
+import SharedHeader from "./components/SharedHeader";
 
 
 export let links = () => {
@@ -119,6 +120,7 @@ export default function App() {
   return (
     <Document>
       <ChakraProvider theme={theme}>
+        <SharedHeader/>
         <Outlet />
       </ChakraProvider>
     </Document>
