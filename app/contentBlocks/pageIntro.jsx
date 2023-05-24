@@ -2,13 +2,14 @@ import React from "react";
 // import Markdown from "markdown-to-jsx";
 
 function PageIntro({
+  type,
   introductionTitle,
   introductionSubTitle,
   introIcons,
   markdown, 
 }) {
   return (
-    <group id="overview" className="group has-text-centered-mobile">
+    <group type={type} id="overview" className="group has-text-centered-mobile">
       <section
         className={`section is-equal-section has-text-centered has-background-secondary-lighter`}
       >

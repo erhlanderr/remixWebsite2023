@@ -15,11 +15,11 @@ const SectionWrappedIconContentModuleGrid = ({
     columnTablet,
     columnMobile,
     iconLarger,
-    $type,
+    type,
 }) => {
     return (
         <SectionWrappers
-            type={$type}
+            type={type}
             sectionSize={sectionSize}
             sectionIsEqual={sectionIsEqual}
             sectionCustomClasses={sectionCustomClasses ? sectionCustomClasses : ""}

@@ -18,11 +18,11 @@ const SectionWrappedSectionTitle = ({
   textAlignment,
   customColumnClasses,
   sectionIsEqual,
-  $type,
+  type,
 }) => {
   return (
     <SectionWrappers
-      type={$type}
+      type={type}
       sectionSize={sectionSize}
       textAlignment={textAlignment}
       sectionCustomClasses={sectionCustomClasses}

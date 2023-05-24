@@ -32,11 +32,11 @@ function SectionWrappedImageWithContent({
   isReversed,
   columnImageWidth,
   textAlign,
-  $type,
+  type,
 }) {
   return (
     <SectionWrappers
-      type={$type}
+      type={type}
       sectionSize={sectionSize}
       sectionIsEqual={sectionIsEqual}
       sectionBackgroundColour={sectionBackgroundColour}

@@ -26,9 +26,7 @@ const ArticleGridHeaderImageCard = ({
   return (
     <div
       key={key}
-      className={`column ${columnsDesktop ? "is-" + columnsDesktop + "-desktop" : "is-6-desktop"
-        } ${columnsTablet ? "is-" + columnsTablet + "-tablet" : "is-6-tablet"} ${columnsMobile ? "is-" + columnsMobile + "-mobile" : "is-12-mobile"
-        }`}
+      
     >
       <div
         className={`is-flex is-flex-direction-column h100 ${boxBackgroundColour && "has-background-" + boxBackgroundColour

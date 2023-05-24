@@ -19,6 +19,7 @@ const SectionWrappedTilesModuleGrid = ({
   tileRadius,
   isHoverable,
   iconLarger,
+  type
 }) => {
   let columnWidths;
   if (tiles.length !== 0) {
@@ -35,6 +36,7 @@ const SectionWrappedTilesModuleGrid = ({
 
   return (
     <SectionWrappers
+      type={type}
       sectionSize={sectionSize}
       sectionIsEqual={sectionIsEqual}
       sectionCustomClasses={
@@ -42,7 +44,7 @@ const SectionWrappedTilesModuleGrid = ({
       }
       textAlignment={textAlignment ? textAlignment : "centered"}
     >
-      <Grid wrapped={true}>
+      <Grid columnDesktop={columnWidths}>
         {tiles &&
           tiles.map((module, index) => (
             <React.Fragment key={index}>

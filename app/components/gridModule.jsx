@@ -27,20 +27,25 @@ function Grid({
                 return 4;
             case "half":
                 return 2;
+            case "is-3":
+                return 4;
+            case "is-4":
+                return 3;
+            case "is-6":
+                return 2;
+            case "is-12":
+                return 1;
             default:
                 return 1;
         }
     }
     return (
-        <>
+        <>{
+            console.log("columnMobile ==> ", columnMobile, "columnTablet ==> ", columnTablet, "columnDesktop ==> ", columnDesktop)
+            }
             <SimpleGrid columns={{ base: 1, sm: columnWidth(columnMobile), md: columnWidth(columnTablet), lg: columnWidth(columnDesktop) }}>
                 {children}
             </SimpleGrid>
-            {/* <div className={`columns ${!wrapped ? '' : 'is-flex-wrap-wrap'} ${multiline ? 'is-multiline' : ''} ${verticallyCentered ? 'is-vcentered' : ''} ${justification && `is-justify-content-${justification}`} ${contentWrapper ? `is-block` : ''} ${gridCustomClasses && `${gridCustomClasses}`}`}>
-                {isOffset ? <div className="column is-8-desktop is-offset-2-desktop">
-                    <div className="columns is-block">{children}</div>
-                </div> : <>{children}</>}
-            </div> */}
         </>
     );
 }

@@ -81,7 +81,7 @@ let renderWrappedItem = (key, item) => {
   const type = item["_type"];
   const Component = componentRegistry[type.toLowerCase()];
 
-  return <Component key={key} componentKey={key} {...item}></Component>;
+  return <Component key={key} type={type} componentKey={key} {...item}></Component>;
 };
 
 const ContentPlaceholder = ({ components }) => {
@@ -99,10 +99,12 @@ const ContentPlaceholder = ({ components }) => {
         if (Component) {
           return (
             <Component
+              type={type}
               key={key}
               componentKey={key}
               sectionSize={component["sectionSize"]}
             >
+              
               {/* <Grid 
                 justification={component["justification"]}
                 contentWrapper={component["contentWrapper"]}
@@ -121,7 +123,7 @@ const ContentPlaceholder = ({ components }) => {
       if (type) {
         const Component = componentRegistry[type.toLowerCase()];
         if (Component) {
-          return <Component key={key} componentKey={key} {...component} />;
+          return <Component key={key} type={type} componentKey={key} {...component} />;
         } else {
           return (
             <div key={key}>

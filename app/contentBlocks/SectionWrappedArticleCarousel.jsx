@@ -13,7 +13,7 @@ function SectionWrappedArticleCarousel({
   carouselIconLarger,
   sectionSize,
   hasReadMore,
-  $type,
+  type,
 }) {
   var settings = {
     dots: true,
@@ -45,7 +45,7 @@ function SectionWrappedArticleCarousel({
   };
   return (
     <SectionWrappers
-      type={$type}
+      type={type}
       sectionSize={sectionSize}
       sectionIsEqual={true}
       sectionIsFluid={true}

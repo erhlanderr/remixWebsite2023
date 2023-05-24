@@ -6,6 +6,7 @@ import Grid from "../components/gridModule";
 import SectionCTA from "../components/SectionCTA";
 
 const SectionWrappedArticleGrid = ({
+  type,
   sectionSize,
   sectionCustomClasses,
   articles,
@@ -29,11 +30,10 @@ const SectionWrappedArticleGrid = ({
   passPaddingTop,
   ctaTitle,
   ctaLink,
-  $type,
 }) => {
   return (
     <SectionWrappers
-      type={$type}
+      type={type}
       passPaddingTop={passPaddingTop}
       sectionIsEqual={sectionIsEqual}
       sectionIsPaddingReversed={sectionIsPaddingReversed}
@@ -41,7 +41,7 @@ const SectionWrappedArticleGrid = ({
       sectionCustomClasses={sectionCustomClasses}
       sectionBackgroundColour={sectionBackgroundColour}
     >
-      {(title || subtitle || markdown) && (
+      {/* {(title || subtitle || markdown) && (
         <Grid contentWrapper={true}>
           <div className={`column is-8 mb-7 is-offset-2`}>
             {title ? (
@@ -70,11 +70,12 @@ const SectionWrappedArticleGrid = ({
             )}
           </div>
         </Grid>
-      )}
+      )} */}
 
-      <div
-        className={`columns is-flex-wrap-wrap is-flex ${customColumnsClasses ? customColumnsClasses : ""
-          }`}
+      <Grid gridCustomClasses={`is-multiline`}
+        columnDesktop={columnsDesktop}
+        columnTablet={columnsTablet}
+        columnMobile={columnsMobile}
       >
         {articles &&
           articles.map((article, i) => (
@@ -94,7 +95,8 @@ const SectionWrappedArticleGrid = ({
               />
             </React.Fragment>
           ))}
-      </div>
+      </Grid>
+      
 
       {ctaTitle && ctaLink && (
         <div className="pt-6">

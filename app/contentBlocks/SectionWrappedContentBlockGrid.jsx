@@ -13,6 +13,7 @@ function SectionWrappedContentBlockGrid({
   columnWidth,
   title,
   subtitle,
+  type,
 }) {
   const columnOffsetWidth = (columnWidth) => {
     switch (columnWidth) {
@@ -31,6 +32,7 @@ function SectionWrappedContentBlockGrid({
 
   return (
     <SectionWrappers
+      type={type}
       sectionSize={sectionSize}
       sectionCustomClasses={sectionCustomClasses}
       sectionIsEqual={sectionIsEqual}
@@ -38,9 +40,8 @@ function SectionWrappedContentBlockGrid({
     >
       <Grid contentWrapper={true}>
         <div
-          className={`column ${
-            columnWidth ? columnOffsetWidth(columnWidth) : "is-full"
-          }`}
+          className={`column ${columnWidth ? columnOffsetWidth(columnWidth) : "is-full"
+            }`}
         >
           {title ? (
             <div
@@ -62,9 +63,8 @@ function SectionWrappedContentBlockGrid({
           ) : null}
           {markdown && (
             <div
-              className={`content ${
-                textAlignment ? "has-text-" + textAlignment : "has-text-left"
-              }`}
+              className={`content ${textAlignment ? "has-text-" + textAlignment : "has-text-left"
+                }`}
             >
               <MarkdownContent markdown={markdown} />
             </div>

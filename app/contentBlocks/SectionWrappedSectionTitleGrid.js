@@ -11,9 +11,10 @@ function SectionWrappedSectionTitleGrid({
   subtitle,
   paragraphs,
   markdown,
+  type
 }) {
   return (
-    <SectionWrappers sectionSize={sectionSize} textAlignment={textAlignment}>
+    <SectionWrappers type={type} sectionSize={sectionSize} textAlignment={textAlignment}>
       <Grid>
         <div className="column is-full">
           <SectionTitle

@@ -12,13 +12,14 @@ const SectionWrappedOverlayTileGrid = ({
   tileColorActive,
   columnDesktop,
   columnTablet,
+  type
 }) => {
 
-  console.log("columnDesktop ==>", columnDesktop);
-    console.log("columnTablet ==>", columnTablet);
+
     // console.log("columnMobile ==>", columnMobile);
   return ( 
     <SectionWrappers 
+      type={type}
       sectionCustomClasses={"are-coloured-overlay-transition has-text-white"}
       textAlignment={textAlignment} 
     >

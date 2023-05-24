@@ -34,9 +34,9 @@ function SectionWrapper({
                 layerStyle={sectionSize + "Section"}
                 // p={sectionSize(sectionSize)}
                 className={`section ${passPaddingTop ? 'pass-footer-margin' : ''} ${padlessBottom === true ? 'is-padless-bottom' : ''} ${(sectionIsFluid === true) ? ' is-fluid' : ''}${(sectionIsEqual === true) ? ' is-equal-section' : ''} ${(sectionIsPaddingReversed === true) ? ' is-reversed' : ''} ${sectionBackgroundColour && `has-background-${sectionBackgroundColour}`} ${sectionTextColourLight ? `has-text-white` : `has-text-dark`} ${sectionCustomClasses && `${sectionCustomClasses}`} ${textAlignment && `has-text-${textAlignment}`} ${noContainer && 'is-padless-sides'}`}>
-                {(noContainer === true) ? <Container maxWidth={"5xl"}>
+                <Container maxWidth={"5xl"}>
                     {children}
-                </Container> : <React.Fragment>{children}</React.Fragment>}
+                </Container>
             </Box>
             {/* </ClientSideLazyLoadComponent> */}
         </React.Fragment>
