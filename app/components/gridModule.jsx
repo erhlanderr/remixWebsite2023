@@ -4,13 +4,6 @@ import {
 } from "@chakra-ui/react";
 function Grid({
     children,
-    multiline,
-    isOffset,
-    verticallyCentered,
-    justification,
-    wrapped,
-    gridCustomClasses,
-    contentWrapper,
     columnDesktop,
     columnTablet,
     columnMobile
@@ -41,7 +34,7 @@ function Grid({
     }
     return (
         <>{
-            console.log("columnMobile ==> ", columnMobile, "columnTablet ==> ", columnTablet, "columnDesktop ==> ", columnDesktop)
+            // console.log("columnMobile ==> ", columnMobile, "columnTablet ==> ", columnTablet, "columnDesktop ==> ", columnDesktop)
             }
             <SimpleGrid columns={{ base: 1, sm: columnWidth(columnMobile), md: columnWidth(columnTablet), lg: columnWidth(columnDesktop) }}>
                 {children}

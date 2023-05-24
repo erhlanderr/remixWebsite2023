@@ -1,4 +1,5 @@
 import React from "react";
+import SectionWrapper from "../components/sectionWrappers"
 import SectionWrappedImageWithContent from "../contentBlocks/SectionWrappedImageWithContent";
 import SectionWrappedIconContentModuleGrid from "../contentBlocks/SectionWrappedIconContentModuleGrid";
 import SectionWrappedContentBlockGrid from "../contentBlocks/SectionWrappedContentBlockGrid";
@@ -81,7 +82,7 @@ let renderWrappedItem = (key, item) => {
   const type = item["_type"];
   const Component = componentRegistry[type.toLowerCase()];
 
-  return <Component key={key} type={type} componentKey={key} {...item}></Component>;
+  return (<Component key={key} type={type} componentKey={key} {...item}></Component>);
 };
 
 const ContentPlaceholder = ({ components }) => {
@@ -104,12 +105,12 @@ const ContentPlaceholder = ({ components }) => {
               componentKey={key}
               sectionSize={component["sectionSize"]}
             >
-              
+
               {/* <Grid 
-                justification={component["justification"]}
-                contentWrapper={component["contentWrapper"]}
-                isOffset={component["offset"]}
-              > */}
+                  justification={component["justification"]}
+                  contentWrapper={component["contentWrapper"]}
+                  isOffset={component["offset"]}
+                > */}
               {Object.keys(wrappedComponents).map((key) =>
                 <>
                   {renderWrappedItem(key, wrappedComponents[key])}
@@ -123,7 +124,25 @@ const ContentPlaceholder = ({ components }) => {
       if (type) {
         const Component = componentRegistry[type.toLowerCase()];
         if (Component) {
-          return <Component key={key} type={type} componentKey={key} {...component} />;
+          return (
+            <React.Fragment
+              key={key}>
+              <SectionWrapper type={type}
+                sectionSize={component.sectionSize}
+                sectionIsFluid={component.sectionIsFluid}
+                sectionBackgroundColour={component.sectionBackgroundColour}
+                sectionTextColourLight={component.sectionTextColourLight}
+                sectionCustomClasses={component.sectionCustomClasses}
+                sectionIsEqual={component.sectionIsEqual}
+                textAlignment={component.textAlignment}
+                noContainer={component.noContainer}
+                sectionIsPaddingReversed={component.sectionIsPaddingReversed}
+                passPaddingTop={component.passPaddingTop}
+                padlessBottom={component.padlessBottom}>
+                <Component key={key} type={type} componentKey={key} {...component} />
+              </SectionWrapper>
+            </React.Fragment>
+          );
         } else {
           return (
             <div key={key}>

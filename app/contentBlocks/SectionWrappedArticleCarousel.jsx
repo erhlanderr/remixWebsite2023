@@ -44,15 +44,7 @@ function SectionWrappedArticleCarousel({
     ],
   };
   return (
-    <SectionWrappers
-      type={type}
-      sectionSize={sectionSize}
-      sectionIsEqual={true}
-      sectionIsFluid={true}
-      sectionCustomClasses="pl-0 pr-0 are-overlay-transition is-relative slider"
-      sectionBackgroundColour={sectionBackgroundColour}
-      noContainer={true}
-    >
+    
       <Carousel
         hasNavButtons={true}
         hasNavBullets={true}
@@ -71,7 +63,6 @@ function SectionWrappedArticleCarousel({
           />
         ))}
       </Carousel>
-    </SectionWrappers>
   );
 }
 

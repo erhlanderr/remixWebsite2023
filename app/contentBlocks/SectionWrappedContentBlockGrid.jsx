@@ -31,13 +31,7 @@ function SectionWrappedContentBlockGrid({
   };
 
   return (
-    <SectionWrappers
-      type={type}
-      sectionSize={sectionSize}
-      sectionCustomClasses={sectionCustomClasses}
-      sectionIsEqual={sectionIsEqual}
-      sectionBackgroundColour={sectionBackgroundColour}
-    >
+    <React.Fragment>
       <Grid contentWrapper={true}>
         <div
           className={`column ${columnWidth ? columnOffsetWidth(columnWidth) : "is-full"
@@ -71,7 +65,7 @@ function SectionWrappedContentBlockGrid({
           )}
         </div>
       </Grid>
-    </SectionWrappers>
+    </React.Fragment>
   );
 }
 

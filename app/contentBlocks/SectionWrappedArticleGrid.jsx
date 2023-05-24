@@ -32,14 +32,8 @@ const SectionWrappedArticleGrid = ({
   ctaLink,
 }) => {
   return (
-    <SectionWrappers
-      type={type}
-      passPaddingTop={passPaddingTop}
-      sectionIsEqual={sectionIsEqual}
-      sectionIsPaddingReversed={sectionIsPaddingReversed}
-      sectionSize={sectionSize}
-      sectionCustomClasses={sectionCustomClasses}
-      sectionBackgroundColour={sectionBackgroundColour}
+    <React.Fragment
+      
     >
       {/* {(title || subtitle || markdown) && (
         <Grid contentWrapper={true}>
@@ -107,7 +101,7 @@ const SectionWrappedArticleGrid = ({
           />
         </div>
       )}
-    </SectionWrappers>
+    </React.Fragment>
   );
 };
 

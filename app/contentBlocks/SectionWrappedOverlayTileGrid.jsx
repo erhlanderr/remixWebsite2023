@@ -16,16 +16,9 @@ const SectionWrappedOverlayTileGrid = ({
 }) => {
 
 
-    // console.log("columnMobile ==>", columnMobile);
-  return ( 
-    <SectionWrappers 
-      type={type}
-      sectionCustomClasses={"are-coloured-overlay-transition has-text-white"}
-      textAlignment={textAlignment} 
-    >
-
-
-
+  // console.log("columnMobile ==>", columnMobile);
+  return (
+    <React.Fragment>
       <Grid multiline={true} columnDesktop={columnDesktop ? columnDesktop : 3} columnTablet={columnTablet ? columnTablet : 2}>
         {tiles.map((tile, i) => (
           <OverLayTileBackgroundImage
@@ -33,11 +26,11 @@ const SectionWrappedOverlayTileGrid = ({
             {...tile}
             tileColor={"black"}
             tileColorActive={tileColorActive}
-            
+
           />
         ))}
       </Grid>
-    </SectionWrappers>
+    </React.Fragment>
   );
 };
 

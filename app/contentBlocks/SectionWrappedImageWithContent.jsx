@@ -35,13 +35,7 @@ function SectionWrappedImageWithContent({
   type,
 }) {
   return (
-    <SectionWrappers
-      type={type}
-      sectionSize={sectionSize}
-      sectionIsEqual={sectionIsEqual}
-      sectionBackgroundColour={sectionBackgroundColour}
-      sectionTextColourLight={sectionTextColourLight}
-    >
+    
       <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>        
         <ImageWithContent
           columnImage={columnImage}
@@ -104,7 +98,6 @@ function SectionWrappedImageWithContent({
           </>
         </ImageWithContent>
       </SimpleGrid>
-    </SectionWrappers>
   );
 }
 

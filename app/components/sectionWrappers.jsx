@@ -21,10 +21,9 @@ function SectionWrapper({
     noContainer,
     sectionIsPaddingReversed,
     passPaddingTop,
-    type,
-    padlessBottom
+    padlessBottom,
+    type
 }) {
-
 
     return (
         <React.Fragment>

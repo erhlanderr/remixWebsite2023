@@ -18,13 +18,7 @@ const SectionWrappedIconContentModuleGrid = ({
     type,
 }) => {
     return (
-        <SectionWrappers
-            type={type}
-            sectionSize={sectionSize}
-            sectionIsEqual={sectionIsEqual}
-            sectionCustomClasses={sectionCustomClasses ? sectionCustomClasses : ""}
-            textAlignment={textAlignment ? textAlignment : "centered"}
-        >
+        <React.Fragment>
             <Grid gridCustomClasses={`is-multiline`} 
             columnDesktop={columnDesktop}
             columnTablet={columnTablet}
@@ -73,7 +67,7 @@ const SectionWrappedIconContentModuleGrid = ({
                     ))}
             </Grid>
             {/* </SimpleGrid> */}
-        </SectionWrappers>
+        </React.Fragment>
     );
 };
 

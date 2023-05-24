@@ -21,13 +21,7 @@ const SectionWrappedSectionTitle = ({
   type,
 }) => {
   return (
-    <SectionWrappers
-      type={type}
-      sectionSize={sectionSize}
-      textAlignment={textAlignment}
-      sectionCustomClasses={sectionCustomClasses}
-      sectionIsEqual={sectionIsEqual}
-    >
+    <React.Fragment>
       <SimpleGrid>
         <SectionTitle
           title={title}
@@ -54,7 +48,7 @@ const SectionWrappedSectionTitle = ({
           </Text>
         )}
       </SimpleGrid>
-    </SectionWrappers>
+    </React.Fragment>
   );
 };
 

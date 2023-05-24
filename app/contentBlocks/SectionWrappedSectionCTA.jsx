@@ -12,14 +12,9 @@ const SectionWrappedSectionCTA = ({
   type,
 }) => {
   return (
-    <SectionWrappers
-      type={type}
-      sectionCustomClasses="has-text-centered"
-      sectionSize={sectionSize}
-      sectionIsEqual={sectionIsEqual}
-    >
+    <React.Fragment>
       <SectionCTA ctaTitle={ctaTitle} ctaLink={ctaLink} ctaStyle={ctaSize} />
-    </SectionWrappers>
+    </React.Fragment>
   );
 };
 

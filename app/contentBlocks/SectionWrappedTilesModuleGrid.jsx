@@ -35,15 +35,7 @@ const SectionWrappedTilesModuleGrid = ({
   }
 
   return (
-    <SectionWrappers
-      type={type}
-      sectionSize={sectionSize}
-      sectionIsEqual={sectionIsEqual}
-      sectionCustomClasses={
-        sectionCustomClasses ? sectionCustomClasses : "has-medium-icons"
-      }
-      textAlignment={textAlignment ? textAlignment : "centered"}
-    >
+    <React.Fragment>
       <Grid columnDesktop={columnWidths}>
         {tiles &&
           tiles.map((module, index) => (
@@ -93,7 +85,7 @@ const SectionWrappedTilesModuleGrid = ({
             </React.Fragment>
           ))}
       </Grid>
-    </SectionWrappers>
+    </React.Fragment>
   );
 };
 
