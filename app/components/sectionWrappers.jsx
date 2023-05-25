@@ -11,19 +11,23 @@ import {
 
 function SectionWrapper({
     children,
-    sectionSize,
-    sectionIsFluid,
-    sectionBackgroundColour,
-    sectionTextColourLight,
-    sectionCustomClasses,
-    sectionIsEqual,
-    textAlignment,
-    noContainer,
-    sectionIsPaddingReversed,
-    passPaddingTop,
-    padlessBottom,
-    type
+    type,
+    ...props
 }) {
+
+    const {
+        sectionSize,
+        sectionIsFluid,
+        sectionBackgroundColour,
+        sectionTextColourLight,
+        sectionCustomClasses,
+        sectionIsEqual,
+        textAlignment,
+        noContainer,
+        sectionIsPaddingReversed,
+        passPaddingTop,
+        padlessBottom
+    } = props;
 
     return (
         <React.Fragment>

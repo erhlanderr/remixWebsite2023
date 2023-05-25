@@ -127,18 +127,10 @@ const ContentPlaceholder = ({ components }) => {
           return (
             <React.Fragment
               key={key}>
-              <SectionWrapper type={type}
-                sectionSize={component.sectionSize}
-                sectionIsFluid={component.sectionIsFluid}
-                sectionBackgroundColour={component.sectionBackgroundColour}
-                sectionTextColourLight={component.sectionTextColourLight}
-                sectionCustomClasses={component.sectionCustomClasses}
-                sectionIsEqual={component.sectionIsEqual}
-                textAlignment={component.textAlignment}
-                noContainer={component.noContainer}
-                sectionIsPaddingReversed={component.sectionIsPaddingReversed}
-                passPaddingTop={component.passPaddingTop}
-                padlessBottom={component.padlessBottom}>
+              <SectionWrapper
+                type={type}
+                {...component}
+              >
                 <Component key={key} type={type} componentKey={key} {...component} />
               </SectionWrapper>
             </React.Fragment>
