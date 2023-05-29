@@ -1,0 +1,52 @@
+// @import "initial-variables"
+// @import "derived-variables"
+// // @import "mixins.sass"
+
+$control-radius: $radius !default
+$control-radius-small: $radius-small !default
+
+$control-border-width: 1px !default
+
+$control-height: 3.125rem !default
+$control-line-height: 1.5 !default
+
+$control-padding-vertical: calc(0.5rem - #{$control-border-width}) !default
+$control-padding-horizontal: calc(0.75rem - #{$control-border-width}) !default
+
+=control
+  height: $control-height
+  -moz-appearance: none
+  -webkit-appearance: none
+  align-items: center
+  display: inline-flex
+  font-size: $size-normal
+  justify-content: flex-start
+  line-height: $control-line-height
+  position: relative
+  vertical-align: top
+  // States
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active
+    outline: none
+  &[disabled],
+  fieldset[disabled] &
+    cursor: not-allowed
+
+%control
+  +control
+
+// The controls sizes use mixins so they can be used at different breakpoints
+=control-inherit
+  font-size: inherit
+=control-small
+  border-radius: $control-radius-small
+  font-size: $size-small
+=control-medium
+  font-size: $size-medium
+=control-large
+  font-size: $size-large
+
+%control-inherit
+  +control-inherit

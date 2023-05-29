@@ -1,0 +1,35 @@
+// @import "../utilities/initial-variables"
+// @import "../utilities/derived-variables"
+    
+.timeline-tl
+    position: relative
+
+    .horizontal-tl
+        height: 1px
+        background-color: rgba($primary, 0.3)
+        width: 100%
+        display: block
+        position: absolute
+        top: calc(50% - 1px)
+        left: 0
+        right: 0
+
+    .tl-date
+        display: block
+        width: 1rem
+        border-radius: 50%
+        background-color: $primary-dark
+        transform: translate(0, 0)
+        margin: 0 auto
+        &::after
+            content: ''
+            display: block
+            padding-top: 1rem
+
+    .tl-text
+        padding: 1rem
+        background-color: $primary
+        &::after
+            content: ''
+            display: block
+            padding-top: 1rem

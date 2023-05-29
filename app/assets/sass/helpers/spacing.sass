@@ -1,0 +1,370 @@
+// @import "../utilities/mixins.sass"
+
+.is-marginless
+  margin: 0 !important
+
+.is-paddingless
+  padding: 0 !important
+
+.is-margin-auto
+  margin: auto
+
+$spacing-shortcuts: ("margin": "m", "padding": "p") !default
+$spacing-directions: ("top": "t", "right": "r", "bottom": "b", "left": "l") !default
+$spacing-horizontal: "x" !default
+$spacing-vertical: "y" !default
+$spacing-values: ("0": 0, "1": 0.25rem, "2": 0.5rem, "3": 0.75rem, "4": 1rem, "5": 1.5rem, "6": 3rem, "7": 4rem, "8": 6rem, "a": auto) !default 
+
+@each $property, $shortcut in $spacing-shortcuts
+  @each $name, $value in $spacing-values
+    // All directions
+    .#{$shortcut}-#{$name}
+      #{$property}: $value !important
+      &-mobile
+        +mobile
+          #{$property}: $value !important 
+      &-tablet
+        +tablet
+          #{$property}: $value !important
+      &-tablet-only
+        +tablet-only
+          #{$property}: $value !important
+      &-touch
+        +touch
+          #{$property}: $value !important
+      &-desktop
+        +desktop
+          #{$property}: $value !important
+      &-desktop-only
+        +desktop-only
+          #{$property}: $value !important
+      &-until-widescreen
+        +until-widescreen
+          #{$property}: $value !important
+      &-widescreen
+        +widescreen
+          #{$property}: $value !important
+      &-widescreen-only
+        +widescreen-only
+          #{$property}: $value !important
+      &-until-fullhd
+        +until-fullhd
+          #{$property}: $value !important
+      &-fullhd
+        +fullhd
+          #{$property}: $value !important
+    // Cardinal directions
+    @each $direction, $suffix in $spacing-directions
+      .#{$shortcut}#{$suffix}-#{$name}
+        #{$property}-#{$direction}: $value !important
+        &-mobile
+          +mobile
+            #{$property}-#{$direction}: $value !important
+        &-tablet
+          +tablet
+            #{$property}-#{$direction}: $value !important
+        &-tablet-only
+          +tablet-only
+            #{$property}-#{$direction}: $value !important
+        &-touch
+          +touch
+            #{$property}-#{$direction}: $value !important
+        &-desktop
+          +desktop
+            #{$property}-#{$direction}: $value !important
+        &-desktop-only
+          +desktop-only
+            #{$property}-#{$direction}: $value !important
+        &-until-widescreen
+          +until-widescreen
+            #{$property}-#{$direction}: $value !important
+        &-widescreen
+          +widescreen
+            #{$property}-#{$direction}: $value !important
+        &-widescreen-only
+          +widescreen-only
+            #{$property}-#{$direction}: $value !important
+        &-until-fullhd
+          +until-fullhd
+            #{$property}-#{$direction}: $value !important
+        &-fullhd
+          +fullhd
+            #{$property}-#{$direction}: $value !important
+    // Horizontal axis
+    @if $spacing-horizontal != null
+      .#{$shortcut}#{$spacing-horizontal}-#{$name}
+        #{$property}-left: $value !important
+        #{$property}-right: $value !important
+        &-mobile
+          +mobile
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-tablet
+          +tablet
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-tablet-only
+          +tablet-only
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-touch
+          +touch
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-desktop
+          +desktop
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-desktop-only
+          +desktop-only
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-until-widescreen
+          +until-widescreen
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-widescreen
+          +widescreen
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-widescreen-only
+          +widescreen-only
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-until-fullhd
+          +until-fullhd
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        &-fullhd
+          +fullhd
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+    // Vertical axis
+    @if $spacing-vertical != null
+      .#{$shortcut}#{$spacing-vertical}-#{$name}
+        #{$property}-top: $value !important
+        #{$property}-bottom: $value !important
+        &-mobile
+          +mobile
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-tablet
+          +tablet
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-tablet-only
+          +tablet-only
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-touch
+          +touch
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-desktop
+          +desktop
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-desktop-only
+          +desktop-only
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-until-widescreen
+          +until-widescreen
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-widescreen
+          +widescreen
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-widescreen-only
+          +widescreen-only
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-until-fullhd
+          +until-fullhd
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        &-fullhd
+          +fullhd
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+
+//padding boxes            
+
+@each $property, $shortcut in $spacing-shortcuts
+  @each $name, $value in $spacing-values
+    // All directions
+    .box
+      .are-#{$shortcut}-#{$name} &
+        #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-mobile &
+        +mobile
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-tablet &
+        +tablet
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-tablet-only &
+        +tablet-only
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-touch &
+        +touch
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-desktop &
+        +desktop
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-desktop-only &
+        +desktop-only
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-until-widescreen &
+        +until-widescreen
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-widescreen &
+        +widescreen
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-widescreen-only &
+        +widescreen-only
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-until-fullhd &
+        +until-fullhd
+          #{$property}: $value !important
+      .are-#{$shortcut}-#{$name}-fullhd &
+        +fullhd
+          #{$property}: $value !important
+    // Cardinal directions
+    @each $direction, $suffix in $spacing-directions
+      .box
+        .are-#{$shortcut}#{$suffix}-#{$name} &
+          #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-mobile &
+            +mobile
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-tablet &
+            +tablet
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-tablet-only &
+            +tablet-only
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-touch &
+            +touch
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-desktop &
+            +desktop
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-desktop-only &
+            +desktop-only
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-until-widescreen &
+            +until-widescreen
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-widescreen &
+            +widescreen
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-widescreen-only &
+            +widescreen-only
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-until-fullhd &
+            +until-fullhd
+              #{$property}-#{$direction}: $value !important
+          .are-#{$shortcut}#{$suffix}-#{$name}-fullhd &
+            +fullhd
+              #{$property}-#{$direction}: $value !important
+    // Horizontal axis
+    @if $spacing-horizontal != null
+      .box 
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name} &
+          #{$property}-left: $value !important
+          #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-mobile &
+          +mobile
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-tablet &
+          +tablet
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-tablet-only &
+          +tablet-only
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-touch &
+          +touch
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-desktop &
+          +desktop
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-desktop-only &
+          +desktop-only
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-until-widescreen &
+          +until-widescreen
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-widescreen &
+          +widescreen
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-widescreen-only &
+          +widescreen-only
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-until-fullhd &
+          +until-fullhd
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+        .are-#{$shortcut}#{$spacing-horizontal}-#{$name}-fullhd &
+          +fullhd
+            #{$property}-left: $value !important
+            #{$property}-right: $value !important
+    // Vertical axis
+    @if $spacing-vertical != null
+      .box
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name} &
+          #{$property}-top: $value !important
+          #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-mobile &
+          +mobile
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-tablet &
+          +tablet
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-tablet-only &
+          +tablet-only
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-touch &
+          +touch
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-desktop &
+          +desktop
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-desktop-only &
+          +desktop-only
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-until-widescreen &
+          +until-widescreen
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-widescreen &
+          +widescreen
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-widescreen-only &
+          +widescreen-only
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-until-fullhd &
+          +until-fullhd
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important
+        .are-#{$shortcut}#{$spacing-vertical}-#{$name}-fullhd &
+          +fullhd
+            #{$property}-top: $value !important
+            #{$property}-bottom: $value !important

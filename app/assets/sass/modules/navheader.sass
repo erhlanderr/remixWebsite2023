@@ -1,0 +1,737 @@
+// @import "../utilities/mixins.sass"
+// @import "../utilities/initial-variables.sass"
+// @import "../utilities/derived-variables.sass"
+@import "../layout/section.sass"
+@import "../decoration/brand.sass"
+
+$site-gutters: 1.5rem
+
+$brandWidth: 17.765625rem
+// $brandWidth: 8.956888888888889rem
+$brandHeight: 3.25rem 
+$dividerGutters: 1.5
+$brandDivider: 1.625 
+// Nav padding  
+$navpadding: 0.5rem 0.75rem
+$padding-small: 2rem
+$padding-standard: 4rem
+$padding-medium: 8rem
+$padding-large: 16rem
+
+$dividerPadding: 1.333333333333333
+
+$navigation-background-color: $nav-menu-background
+$menu-background-color: $white
+$submenu-background-color: $white
+
+// Navbar dimensions using size of Branding
+// $navbarDimensionsMobile: $brandHeight /$brandDivider
+$navbarDimensionsMobile: $brandHeight
+$navbarMenuMobile: calc($tablet /3)
+
+// Navbar Header Padding  
+$navHeaderTopBottom: 1.5rem
+$navHeaderPadding: $navHeaderTopBottom $site-gutters
+
+// Navbar Header Padding  
+$stretchMenuFontSize: 1rem
+$stretchMenuLineHeight: 1.5
+$stretchMenuPaddingY: 0.5rem
+
+// Stretch Menu font size 
+$navHeaderZ: 100
+$stretchMenuDivider: 0.0125rem solid $white
+
+$navbar-mobile-min-width: 20rem
+
+%burger
+  margin: auto 0
+  width: $brandHeight
+  height: $brandHeight
+  +touch
+    width: calc($brandHeight /$brandDivider)
+    height: calc($brandHeight /$brandDivider)
+
+
+%navbarMenuFullHeight
+  display: flex
+  flex-direction: row
+  +touch
+    position: fixed
+    flex-direction: column
+    top: 0
+    left: 200%
+    right: 0
+    bottom: 0
+    transition: left 0.5s ease-in
+    &.is-active
+      transition: left 0.5s ease-out
+      left: 0
+
+%navbarMenu
+  display: flex
+  flex-direction: row
+  +touch
+    position: fixed
+    top: (($navHeaderTopBottom * 2) + $navbarDimensionsMobile) 
+    flex-direction: column
+    left: 200%
+    right: 0
+    transition: left 0.5s ease-in
+    &.is-active
+      transition: left 0.5s ease-out
+      right: 0
+      left: 50%
+
+%navbarPadding
+  padding:  $navHeaderPadding
+
+%header
+  display: grid
+  display: -ms-grid
+
+nav
+  a
+    text-decoration: none
+
+.App
+  margin-top: calc($website-header-logo-height + calc($navHeaderTopBottom * 2))
+  +touch
+    margin-top: calc( calc($website-header-logo-height / $brandDivider) + calc($navHeaderTopBottom *2))
+
+.navigation
+  z-index: $navHeaderZ
+  background-color: $header-bar-background
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.06)
+
+    
+  .navbar
+    padding: 0 $site-gutters
+
+.navbar-brand
+  z-index: 10
+  height: 100%
+  min-height: $website-header-logo-height
+  padding:
+    top: $navHeaderTopBottom
+    bottom: $navHeaderTopBottom
+
+.navbar-nav
+  display: flex
+  flex-shrink: 1 
+  flex-grow: 1
+  flex-direction: column
+  display: flex 
+  height: 100%
+  min-height: $website-header-logo-height
+  padding:
+    top: $navHeaderTopBottom
+    bottom: $navHeaderTopBottom
+  +touch
+    transition: right 0.5s ease-in-out
+    min-width: $navbar-mobile-min-width
+    position: fixed
+    right: -100%
+    bottom: 0
+    padding: 0
+    &.is-active
+      transition: right 0.5s ease-in-out
+      right: 0
+
+.navigation   
+  .container:not(.is-fluid)
+    .navbar-nav
+      padding-left: 1.5rem
+      +touch
+        padding-left: 0
+
+// .navbar-menu
+//   &.stretch
+//     display: flex !important
+
+.navbar-menu
+  justify-content: center !important
+  flex-direction: column
+  width: 100%
+  display: block !important
+  z-index: 10
+  +touch
+    z-index: 1
+    // position: fixed
+    justify-content: flex-start !important 
+    top: 0
+    left: 100%
+    right: 0
+    bottom: 0
+    transition: left 0.5s
+    background-color: $white
+    &.is-active
+      left: 4.5rem
+  .nav-container
+    min-height: $website-header-logo-height
+    +desktop
+      justify-content: center
+    +touch
+      justify-content: flex-start
+    &.is-active
+      transition: left 0.5s
+      left: 0
+    .nav-container
+      min-height: $website-header-logo-height
+
+// .navbar-submenu
+//   background-color: $navigation-background-color
+
+.nav-container
+  height: 100%
+  width: 100%
+  display: flex
+  flex-direction: column
+  +touch
+    display: block
+    height: auto
+
+.navbar-menu-items
+  display: flex
+  flex-wrap: unset !important
+  +touch
+    flex-wrap: wrap
+    margin-top: calc($website-header-logo-height / $brandDivider) + calc($navHeaderTopBottom *2)
+    padding: 1.25rem calc($site-gutters /$dividerGutters) calc($padding-standard / $dividerPadding)
+    flex-direction: column
+  .navbar-menu-items-inner
+    display: flex
+    // margin-right: 3.125em
+    +touch
+      flex-direction: column
+
+
+.navbar-menu-search
+  +desktop
+    position: absolute !important
+    width: 2.325rem
+    top: 0
+    right: 0
+    bottom: 0
+    transition: width 0.3s
+    &.control
+      input
+        &.input
+          height: 2.325rem
+          padding-right: 0.25rem
+          padding-left: 0.25rem
+          &::placeholder
+            opacity: 0
+          &:hover, 
+          &:focus,
+          &:active
+            padding-right: 3.125em
+            padding-left: calc(3.125em / 4)
+            &::placeholder
+              opacity: 1
+    &:hover,
+    &:focus,
+    &:active
+      transition: width 0.3s
+      width: 100%
+      position: absolute
+      z-index: 3
+
+.navbar-breadcrumb
+  justify-content: flex-start
+  display: block
+  +touch
+    .breadcrumb
+      li + li
+        &::before
+          +arrow($borderWidth: 2px, $angle: -135deg, $marginTop: -0.3125em, $size: 0.425em, $position: static)
+  +desktop
+    display: none !important
+
+.navbar-overview
+  justify-content: flex-start
+  display: block
+  +desktop
+    display: none !important
+
+.navbar-bg
+  background-color: rgba($black-ter, 0.3)
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  opacity: 0
+  transition: all 0.3s
+  &.is-active
+    transition: all 0.3s
+    backdrop-filter: blur(1px)
+    opacity: 1
+
+.navbar-menu-cards
+  &.is-active
+    display: flex
+
+.navbar-submenu-container
+  background-color: $white-bis
+  display: flex 
+  position: fixed 
+  top: calc($website-header-logo-height + calc($navHeaderTopBottom *2))
+  bottom: 0px  
+  transition: all 0.3s 
+  z-index: 1
+  +desktop
+    right: -100%
+    &.is-active
+      transition: all 0.3s 
+      right: 0px !important
+  +touch
+    position: absolute
+    right: -100% !important
+    min-width: $navbar-mobile-min-width 
+    width: 100% 
+    top: calc(calc($website-header-logo-height / $brandDivider) + ($navHeaderTopBottom *2))
+    &.is-active
+      transition: all 0.3s 
+      right: 0px !important
+
+.navbar-submenu-inner
+  padding:
+    top: 2.25rem
+    left: $site-gutters
+    right: $site-gutters 
+  display: flex
+  overflow: auto
+  width: 100%
+  flex-direction: column
+  +touch
+    width: 100% !important
+    padding:
+      top: 2.25rem
+      left: calc($site-gutters / $dividerGutters)
+      right: calc($site-gutters / $dividerGutters)
+    margin:
+      top: 0px !important
+      left: 0px !important
+      right: 0px !important
+  &::-webkit-scrollbar
+    width: 0.3125rem
+
+  &::-webkit-scrollbar-track
+    background: $scheme-main-ter
+    margin-bottom: calc($padding-standard / $dividerPadding)
+
+  &::-webkit-scrollbar-thumb
+    background-color: $grey-light
+    border-radius: 0.15625rem
+    border: 0.15625rem solid $grey-light
+  
+.navbar-search 
+  display: block
+  padding-bottom: 0.75rem
+
+.navbar-submenu    
+  padding: 0 0.75rem
+  &.is-active
+    background-color: inherit !important
+    display: flex
+    opacity: 1
+    transition: left 0.5s
+    +touch
+      z-index: 2
+      left: 0px !important
+      overflow: auto
+      // margin-bottom: 4.5rem
+      &::-webkit-scrollbar
+        width: 0.3125rem
+
+      &::-webkit-scrollbar-track
+        background: $scheme-main-ter
+        margin-bottom: calc($padding-standard /$dividerPadding)
+
+      &::-webkit-scrollbar-thumb
+        background-color: $grey-light
+        border-radius: 0.15625rem
+        border: 0.15625rem solid $grey-light
+  z-index: 2
+  opacity: 0
+  display: none
+  width: 100%
+  transition: left 0.5s
+  justify-content: flex-start
+  flex-direction: column
+  left: 125%
+  .submenu-header
+    margin: 0 0 1.5rem 0
+
+  .submenu-body
+    margin: 1.5rem 0 5.5rem
+    .submenu-card
+      margin-bottom: 1.25rem
+      &:last-of-type
+        margin-bottom: 5.5rem
+      .submenu-card-button
+        &.has-arrow
+          display: inline-block 
+          &::after
+            =arrow($position: static, $transform: center center)
+              margin: -0.25rem 0 -0.25rem 0.25rem 
+              position: static
+              transition: transform 0.1s
+          &.is-active
+            &::after
+              top: 0.3125em
+              transform-origin: center center
+              transform: rotate(-45deg)
+              transition: transform 0.1s
+      .submenu-card-header
+        overflow: hidden
+        margin-bottom: 0.75rem
+      .submenu-card-body
+        overflow: hidden
+        display: none
+        &.is-active
+          display: flex
+          flex-direction: column
+
+  // background-color: $white-bis
+  &.slideout-menu
+    padding: $column-gap
+    background-color: $white
+    z-index: 1
+    &.is-active      
+      display: flex
+    .nav-container
+      +touch
+        margin-top: 0
+      z-index: 1
+      background-color: $white
+      width: 100% 
+  +desktop
+    .nav-container
+      z-index: 2
+      // padding: (($navHeaderTopBottom * 2) + $navbarDimensionsMobile) ($site-gutters /$dividerGutters) ($padding-standard /$dividerPadding)
+      background-color: $white-bis
+      width: 100% 
+    &.is-active
+      transition: left 0.5s
+  +touch
+    justify-content: flex-start
+    transition: left 0.5s
+    &.is-active
+      background-color: $submenu-background-color
+      transition: left 0.5s
+      left: 0
+
+.navbar-brand
+  +desktop
+    z-index: 1
+  +touch
+    z-index: 4
+
+.navbar-burger
+  z-index: 15
+
+.navbar-button
+  position: relative
+  padding-right: 1.5rem
+  &.has-arrow
+    &::after
+      +arrow($transform: 0.3125em)
+      top: calc(50% - 0.3125em)
+      right: 0.75rem
+
+.back-button
+  &.has-arrow
+    padding-right: 0px
+    display: flex
+    flex-direction: row
+    .title
+      padding-left: 1.25em
+      margin-bottom: 0
+    &::after
+      display: none 
+    &::before
+      left: 0em
+      right: unset
+      border: 3px solid currentColor
+      border-radius: 2px
+      border-right: 0
+      border-top: 0
+      content: " "
+      display: block
+      height: 0.625em
+      pointer-events: none
+      // position: absolute
+      top: 100%
+      transform: rotate( 45deg ) translate(50%, 50%)
+      width: 0.625em
+
+  .container
+      height: 100%
+      .navbar
+        height: 100%
+        background: transparent
+        +desktop
+          padding: $navHeaderTopBottom $site-gutters
+        +touch
+          padding: $navHeaderTopBottom calc($site-gutters /$dividerGutters)
+        &-brand
+          margin:
+            top: auto
+            bottom: auto
+        &-cta
+          margin:
+            top: auto
+            bottom: auto
+        &-nav
+          .navbar-burger
+            @extend %burger
+          .navbar-menu
+            @extend %navbarMenuFullHeight
+            
+
+.navbar
+  align-items: center
+  display: flex
+  justify-content: space-between
+
+.navbar-cta
+  display: flex
+  flex-grow: 0
+  flex-shrink: 1
+  .icon
+    height: 100%
+
+.navbar-brand
+  align-items: stretch
+  display: flex
+  flex-shrink: 1
+  flex-grow: 1
+  min-height: 0
+  margin-left: 0
+
+
+  .navbar-menu
+    justify-content: flex-end
+    display: flex
+    flex-shrink: 1
+    flex-grow: 1
+
+
+=navBarAlignment($direction)
+  @if $direction == left
+    .navbar
+      &-cta
+        order: 2
+        justify-content: flex-end
+        padding-left: 0.75rem
+        margin-right: -0.75rem
+        +touch
+          margin-right: 0
+      &-brand       
+        flex-grow: 0
+        // margin-left: -0.75rem
+        +touch
+          margin-left: 0
+      &-nav       
+        flex-grow: 0
+        .navbar-menu
+          margin-right: 0
+
+
+  // @else if $direction == center
+  //   .navbar
+  //     &-cta
+  //       order: 1
+  //       flex-grow: 1
+  //       margin-left: -0.75rem
+  //       +touch
+  //         margin-left: 0
+  //     &-brand       
+  //       order: 2
+  //     &-nav        
+  //       flex-grow: 0
+  //       order: 3
+  //       margin-right: -0.75rem
+  //       +touch
+  //         margin-right: 0
+  //       .navbar-burger
+  //         display: block
+  //         @extend %burger
+  //       .navbar-menu
+  //         display: flex
+  //         flex-direction: row
+  //         position: fixed
+  //         top: (($navHeaderTopBottom * 2) + $brandHeight)
+  //         flex-direction: column
+  //         left: 200%
+  //         right: 0
+  //         transition: left 0.5s ease-in
+  //         &.is-active
+  //           transition: left 0.5s ease-out
+  //           right: 0
+  //           left: 66%
+  //         +touch            
+  //           top: (($navHeaderTopBottom * 2) + $navbarDimensionsMobile) 
+  //           flex-direction: column
+  //           left: 200%
+  //           &.is-active
+  //             left: 50%
+
+
+  // @else if $direction == right
+  //   .navbar
+  //     &-cta
+  //       order: 1
+  //       padding-right: 0.75rem
+  //       margin-left: -0.75rem
+  //       +touch
+  //         margin-left: 0
+  //     &-brand       
+  //       order: 3
+  //       flex-grow: 0
+  //       margin-right: -0.75rem
+  //       +touch
+  //         margin-right: 0
+  //     &-nav        
+  //       order: 2
+  //       .navbar-menu          
+  //         justify-content: flex-start
+
+// =navBarStretch($direction)
+//   padding: $navHeaderTopBottom 0 0
+//   flex-wrap: wrap
+//   flex-direction: row
+//   .navbar-brand
+//     @if $direction == left
+//       +desktop
+//         padding-#{$direction}: $site-gutters
+//       +touch
+//         padding-#{$direction}: ($site-gutters /$dividerGutters)
+//       order: 1 !important
+//       flex-basis: 0
+//     @else if $direction == right
+//       +desktop
+//         padding-#{$direction}: $site-gutters
+//       +touch
+//         padding-#{$direction}: ($site-gutters /$dividerGutters)
+//       order: 2 !important
+//       flex-basis: 0
+//       justify-content: flex-end
+//     @else if $direction == center
+//       width: calc(50% +((#{$brandWidth} /2) - #{$navHeaderTopBottom}))
+//       +desktop
+//         padding-right: $site-gutters
+//       +touch
+//         padding-right: ($site-gutters /$dividerGutters)
+//       padding-left: 0 !important
+//       margin-left: 0
+//       flex-basis: auto
+//   .navbar-cta
+//     @if $direction == left
+//       +desktop
+//         padding-right: $site-gutters
+//       +touch
+//         padding-right: ($site-gutters /$dividerGutters)
+//       padding-right: $navHeaderTopBottom
+//     @else if $direction == right
+//       +desktop
+//         padding-left: $site-gutters
+//       +touch
+//         padding-left: ($site-gutters /$dividerGutters)
+//       padding-left: $navHeaderTopBottom
+//     @else if $direction == center
+//       width: calc(50% -((#{$brandWidth} /2) - #{$navHeaderTopBottom}))
+//       +desktop
+//         padding-left: $site-gutters
+//       +touch
+//         padding-left: ($site-gutters /$dividerGutters)
+//       padding-right: 0 !important
+//       flex-basis: auto
+
+$header-direction: (left, center, right) !default
+
+@each $name in $header-direction
+  nav
+    &.navigation
+      &.logo-#{$name}
+        .navbar
+          +navBarAlignment($name)
+      // &.logo-#{$name}.menu-stretch
+      //   .navbar
+      //     +navBarStretch($name)
+      //     &-nav
+      //       &::-webkit-scrollbar
+      //         display: none
+      //     &-nav
+      //       +overflow-touch
+      //       -ms-overflow-style: none
+      //       scrollbar-width: none
+      //       padding-top: $navHeaderTopBottom
+      //       order: 3
+      //       flex-basis: 100%
+      //       +touch
+      //         overflow-x: auto
+
+// Full / Half Height menu adjustment, of VH
+
+$stretchHeaderHeight: (($navHeaderTopBottom *2) + (($stretchMenuFontSize *$stretchMenuLineHeight) + ($stretchMenuPaddingY *2)) + $brandHeight)
+$stretchHeaderHeightMobile: (($navHeaderTopBottom *2) + (($stretchMenuFontSize *$stretchMenuLineHeight) + ($stretchMenuPaddingY *2)) + $navbarDimensionsMobile)
+
+.navigation.menu-stretch + .hero.is-halfheight,
+.navigation.menu-stretch + .hero.is-fullheight
+  padding:
+    top: $stretchHeaderHeight
+  +touch
+    padding:
+      top: $stretchHeaderHeightMobile
+
+// Full / Half Height menu adjustment, of VH      
+
+$alignedHeaderHeight: (($navHeaderTopBottom *2) + $brandHeight)
+$alignedHeaderHeightMobile: (($navHeaderTopBottom *2) + $navbarDimensionsMobile)
+
+.navigation + .hero.is-halfheight,
+.navigation + .hero.is-fullheight
+  margin:
+    top: $alignedHeaderHeight
+  +touch
+    margin:
+      top: $alignedHeaderHeightMobile
+
+
+.navigation + .hero
+  .wrapper.navigation-margin &
+    margin-top: calc(#{$website-header-logo-height} + (calc(#{$navHeaderTopBottom} * 2)))
+    +mobile
+      margin-top: calc(#{$website-header-logo-height} + (calc(#{$navHeaderTopBottom} * 2)))
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+  
+  .ie-relative
+    position: relative
+
+  .ie-sticky
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+
+.submenu-card-button
+  &.has-arrow
+    display: inline-block 
+    &::after
+      position: static !important      
+      margin: -0.25rem 0 -0.25rem 0.25rem 
+      transition: transform 0.1s
+      display: inline-block
+    &.is-active
+      &::after
+        top: 0.3125em
+        transform-origin: center center
+        transform: rotate(-45deg)
+        transition: transform 0.1s

@@ -1,0 +1,134 @@
+// @import "../utilities/mixins.sass"
+// @import "../decoration/box-transitions.sass"
+
+$overlay-padding: 1.5rem
+$banner-padding: 0.75rem
+$banner-background-color: $dark
+$banner-text-color: $white
+$banner-text-alignment: center !default
+$transition: 0.3s
+
+// =boxAlignment($i)
+//   .column
+//     @if $i % 2 != 0
+//       @if $i == 5
+//         +until-widescreen
+//           flex: none
+//           width: 50%
+//         +mobile
+//           flex: none
+//           width: 100%
+
+//     @if $i % 2 == 0
+//       @if $i == 4
+//         +until-widescreen
+//           flex: none
+//           width: 50%
+//         +mobile
+//           flex: none
+//           width: 100%
+//       @if $i == 6
+//         +until-widescreen
+//           flex: none
+//           width: 50%
+//         +mobile
+//           flex: none
+//           width: 100%
+
+ 
+// @for $i from 1 through 6
+//   .has-#{$i}-boxes
+//     .columns                          
+//       @if $i > 3
+//         flex-wrap: wrap
+//       +boxAlignment($i)
+
+.box
+  padding: 0
+  background-color: transparent
+  border-radius: 0
+  box-shadow: none
+  .content
+    // &:not(:last-child)
+    //   margin:
+    //     bottom: 0
+    figure
+      margin: 0
+  .content
+    // &:not(:last-child), &:not(:first-child)
+    &-icon
+      figure
+        margin: 1.5rem 0
+
+.tile
+  .content
+    padding: $overlay-padding
+    display: flex
+    flex-direction: column
+    width: 100%
+    flex-grow: 1
+    flex-shrink: 1
+
+
+.box, 
+.tile            
+  .overlay
+    position: absolute
+    top: 0
+    z-index: 1
+    left: 0
+    right: 0
+    bottom: 0
+    display: flex
+    flex-direction: column
+    .overlay-banner
+      display: block
+      flex-grow: 0
+      flex-shrink: 1
+      flex-basis: auto
+      padding: $banner-padding
+      color: $banner-text-color
+      background-color: $banner-background-color
+      text-align: $banner-text-alignment
+
+    .overlay-content
+      padding: $overlay-padding
+      display: flex
+      flex-direction: column
+      width: 100%
+      flex-grow: 1
+      flex-shrink: 1
+
+  .overlay-header,
+  .tile-header
+    transition: all $transition
+    flex-grow: 0
+    flex-shrink: 1
+    flex-basis: auto
+    display: inline-flex
+    justify-content: space-between
+    flex-direction: row-reverse
+
+  .overlay-body,
+  .tile-body
+    transition: all $transition
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: auto
+    display: inline-flex
+    justify-content: center
+    & > *
+        align-self: center
+    &.is-align-top
+      & > *
+        align-self: flex-start
+
+  .overlay-footer,
+  .tile-footer
+    transition: all $transition
+    flex-grow: 0
+    flex-shrink: 1
+    flex-basis: auto                
+    display: inline-flex
+    justify-content: space-between
+    flex-direction: column-reverse

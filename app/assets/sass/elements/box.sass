@@ -1,0 +1,90 @@
+// // @import "../utilities/derived-variables.sass"
+// // @import "../utilities/mixins.sass"
+  
+// $box-color: $text !default
+$box-background-color: $scheme-main !default
+$box-radius: $radius-large !default
+$box-shadow: 0 0.25em 1.5em -0.125em rgba($scheme-invert, 0.1) !default
+$box-padding: 1.25rem !default
+
+$box-link-hover-shadow: 0 0.25em 1.5em -0.125em rgba($scheme-invert, 0.2) !default
+$box-link-active-shadow: 0 0.25em 1.5em -0.125em rgba($scheme-invert, 0.2) !default
+
+.box
+  &.is-centered
+    align-content: center
+    justify-content: center
+    .tile
+      align-content: center
+      justify-content: center
+  display: flex
+  flex-direction: column
+  background-color: $box-background-color
+  border-radius: $box-radius
+  box-shadow: $box-shadow
+  // color: $box-color
+  padding: $box-padding
+  height: 100%
+  overflow: hidden
+
+  .are-unequal &
+      height: auto
+
+a.box
+  position: relative
+  overflow: hidden
+  &::before
+    content: ''
+    display: block
+    width: 0
+    height: 0
+    position: absolute
+    bottom: -50%
+    right: -50%
+    border-radius: 9999999px
+    transition: all 0.9s ease-in-out
+  & > *
+    position: relative
+  &:hover
+    &::before            
+      background-color: inherit
+      width: 200%
+      height: 200%
+      transition: all 0.9s ease-in-out
+  &:active
+    &::before            
+      background-color: inherit
+      width: 200%
+      height: 200%
+    transition: all 0.9s ease-in-out
+
+.box
+  &.is-hoverable
+    position: relative
+    overflow: hidden
+    &::before
+      content: ''
+      display: block
+      width: 0
+      height: 0
+      position: absolute
+      bottom: -50%
+      right: -50%
+      border-radius: 9999999px
+      transition: all 0.5s ease-in-out
+    & > *
+      position: relative
+    &:hover
+      &::before            
+        background-color: inherit
+        width: 200%
+        height: 200%
+        transition: all 0.5s ease-in-out
+    &:active
+      &::before            
+        background-color: inherit
+        width: 200%
+        height: 200%
+      transition: all 0.5s ease-in-out
+
+

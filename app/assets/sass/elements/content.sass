@@ -1,0 +1,431 @@
+// @import "../utilities/derived-variables.sass"
+// @import "../utilities/mixins.sass"
+
+$content-heading-color: $text-strong !default
+$content-heading-weight: $weight-semibold !default 
+$content-heading-line-height: 1.125 !default
+
+// $content-blockquote-background-color: $background !default
+// $content-blockquote-border-left: 5px solid $border !default
+$content-blockquote-background-color: inherit !default
+$content-blockquote-margin: 1.5rem !default
+$content-blockquote-padding: 1.25em !default
+
+$content-pre-padding: 1.25em 1.5em !default
+
+$content-list-divider-border: 1px solid $border !default
+
+$content-table-cell-border: 1px solid $border !default
+$content-table-cell-border-width: 0 0 1px !default
+$content-table-cell-padding: 0.5em 0.75em !default
+$content-table-cell-heading-color: $text-strong !default
+$content-table-head-cell-border-width: 0 0 2px !default
+$content-table-head-cell-color: $text-strong !default
+$content-table-foot-cell-border-width: 2px 0 0 !default
+$content-table-foot-cell-color: $text-strong !default
+
+=iconList($margin, $lineMargin, $iconContainer, $iconDimensions, $iconNegativeMargin, $iconMarginTop)
+  +ltr-property("margin", $margin, false)
+  li + li
+    margin-top: $lineMargin
+  li
+    .icon
+      width: $iconContainer
+      height: $iconContainer
+      &:first-child
+        position: absolute
+        margin-left: $iconNegativeMargin
+        margin-top: $iconMarginTop
+  .icon
+    .svg-inline--fa
+      width: $iconDimensions
+      height: $iconDimensions
+
+p:not(.is-spaced)
+  + .subtext
+    font-size: 0.75rem
+    margin-top: -0.75rem
+
+=testimonialIcons($value)
+  blockquote
+    font-style: italic
+    font-size: 1.25rem
+    .icon
+      &.quote
+        width: $value
+        height: $value
+        +mobile
+          width: calc($value / 1.5)
+          height: calc($value / 1.5)
+
+        &:first-of-type          
+            margin-right: $value
+            +mobile
+              margin-right: auto
+              margin-bottom: calc($value / 1.5)
+        &:last-of-type
+          &:not(:first-of-type)
+            margin-top: auto
+            margin-left: $value
+            +mobile
+              margin-left: auto
+              margin-top: calc($value / 1.5)
+        svg
+          width: $value 
+          height: $value
+          +mobile
+            width: calc($value / 1.5)
+            height: calc($value / 1.5)
+
+.testimonial
+  +testimonialIcons(1.5rem)
+
+  &.is-small
+    +testimonialIcons(1rem)
+    .attribute
+      margin-right: 2rem
+      +mobile
+        margin-right: 0
+
+  &.is-medium
+    +testimonialIcons(2rem)
+    .attribute
+      margin-right: 4rem
+      +mobile
+        margin-right: 0
+
+  &.is-large
+    +testimonialIcons(3rem)
+    .attribute
+      margin-right: 6rem
+      +mobile
+        margin-right: 0
+
+  .attribute
+    margin-right: 3rem
+    text-align: right
+    +mobile
+      margin-right: 0
+
+  blockquote
+    position: relative
+    display: flex
+    flex-direction: row
+    +mobile
+      flex-direction: column
+    
+
+  // &.quote-left
+  //   blockquote
+  //     padding-top: $content-blockquote-margin
+  //     position: relative
+  //     +ltr-property("margin", (($content-blockquote-margin) *2), false)
+  //     .icon:first-of-type
+  //       position: absolute
+  //       left: 0
+  //       top: 0
+  //       +ltr-property("margin", -( ($content-blockquote-margin) *2), false)
+  //       +ltr-property("margin", 0, true)
+  //   .attribute
+  //     +ltr-property("margin", (($content-blockquote-margin) *2), false)
+  //     +ltr-property("padding", ($content-blockquote-padding), false)
+  // &.quote-right
+  //   blockquote
+  //     position: relative
+  //     +ltr-property("margin", (($content-blockquote-margin) *2), true)
+  //     .icon:last-of-type
+  //       position: absolute
+  //       right: 0
+  //       bottom: 0
+  //       margin-bottom: - #{$content-blockquote-margin}
+  //       +ltr-property("margin", -( ($content-blockquote-margin) *2), true)
+  //       +ltr-property("margin", 0, false)
+    .attribute
+      +ltr-property("margin", (($content-blockquote-margin) *2), true)
+      +ltr-property("padding", ($content-blockquote-padding), true)
+
+
+
+    &.testimonial     
+      
+.blog-page-markdown
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    // font-family: $title-family-font
+  .blog-testimonial
+    position: relative
+    display: flex
+    flex-direction: row
+    +testimonialIcons(1.5rem)
+    border-top: 1px solid rgba(54,54,54,.1)
+    padding: 1.5rem 0
+    border-bottom: 1px solid rgba(54,54,54,.1)
+    &.is-small
+      .p
+        &:before
+          +testimonialIcons(1rem)
+        margin-right: 2rem
+
+    &.is-medium      
+      .p
+        &:before
+          content: "“"
+          display: block
+          font-size: 2rem
+          width: 2rem
+          height: 2rem
+          margin-right: 4rem
+
+    &.is-large
+      .p
+        &:before
+          +testimonialIcons(3rem)
+        margin-right: 6rem
+
+ul
+  .custom-list
+    li
+      &::before
+        border-top: 8px solid transparent !important
+        border-bottom: 8px solid transparent !important
+
+.content
+  @extend %block
+  // Inline
+  li + li
+    margin-top: 0.25em
+  // Block
+  p,
+  dl,
+  ol,
+  ul,
+  blockquote,
+  pre,
+  table
+    &:not(:last-child)
+      margin-bottom: 1em
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    // color: $content-heading-color
+    font-weight: $content-heading-weight
+    line-height: $content-heading-line-height
+  h1
+    font-size: 2em
+    margin-bottom: 0.5em
+    &:not(:first-child)
+      margin-top: 1em
+  h2
+    font-size: 1.75em
+    margin-bottom: 0.5714em
+    &:not(:first-child)
+      margin-top: 1.1428em
+  h3
+    font-size: 1.5em
+    margin-bottom: 0.6666em
+    &:not(:first-child)
+      margin-top: 1.3333em
+  h4
+    font-size: 1.25em
+    margin-bottom: 0.8em
+  h5
+    font-size: 1.125em
+    margin-bottom: 0.8888em
+  h6
+    font-size: 1em
+    margin-bottom: 1em
+
+  ol
+    list-style-position: outside
+    +ltr-property("margin", 2em, false)
+    margin-top: 1em
+    &:not([type])
+      list-style-type: decimal
+      &.is-lower-alpha
+        list-style-type: lower-alpha
+      &.is-lower-roman
+        list-style-type: lower-roman
+      &.is-upper-alpha
+        list-style-type: upper-alpha
+      &.is-upper-roman
+        list-style-type: upper-roman
+  p ~ ul 
+    margin-top: 2em
+  ul
+    list-style: disc outside
+    +ltr-property("margin", 2em, false)
+    &.has-dividers
+      li
+        &:not(:last-of-type)
+          padding-bottom: 1em
+          border-bottom: $content-list-divider-border
+
+    &.icon-list
+      list-style: none
+      position: relative
+      +iconList(2.5em, 0.75em, 2em, 1em, -2.5em, -0.25em)
+      &.has-dividers
+        li
+          padding-bottom: 0.75em
+
+      &.is-medium
+        +iconList(3em, 1em, 2.5em, 1.25em, -3em, -.5em)
+        &.has-dividers
+          li
+            &:not(:last-of-type)
+              padding-bottom: 1em
+
+      &.is-large
+        +iconList(5em, 2em, 3em, 1.5em, -4em, -.75em)
+        &.has-dividers
+          li
+            &:not(:last-of-type)
+              padding-bottom: 1.5em
+    &.custom-list
+      list-style: none
+      +iconList(2.5em, 0.75em, 2em, 1em, -2.5em, -0.25em)
+      li
+        position: relative
+        padding-bottom: 0.75em
+        &::before
+          content: ''
+          display: block
+          margin-left: -2rem
+          margin-top: -1.75rem
+          position: absolute
+          top: 2rem
+          width: 0
+          height: 0
+          border-top: 0.5rem solid transparent !important
+          border-bottom: 0.5rem solid transparent !important
+          border-left: 1rem solid $primary-dark
+          opacity: 0.9
+
+      &.is-medium
+        +iconList(3em, 1em, 2.5em, 1.25em, -3em, -.5em)
+        li
+          position: relative
+          padding-bottom: 0.75em
+          &::before
+            content: ''
+            display: block
+            margin-left: -2rem
+            margin-top: -1.75rem
+            position: absolute
+            top: 2rem
+            width: 0
+            height: 0
+            border-top: 0.5rem solid transparent !important
+            border-bottom: 0.5rem solid transparent !important
+            border-left: 1rem solid $primary-dark
+            opacity: 0.9
+          &.has-dividers
+            li
+              &:not(:last-of-type)
+                padding-bottom: 1em
+
+      &.is-large
+        +iconList(5em, 2em, 3em, 1.5em, -4em, -.75em)
+        li
+          position: relative
+          padding-bottom: 0.75em
+          &::before
+            content: ''
+            display: block
+            margin-left: -2rem
+            margin-top: -1.75rem
+            position: absolute
+            top: 2rem
+            width: 0
+            height: 0
+            border-top: 0.5rem solid transparent
+            border-bottom: 0.5rem solid transparent
+            border-left: 1rem solid $primary-dark
+            opacity: 0.9
+          &.has-dividers
+            li
+              &:not(:last-of-type)
+                padding-bottom: 1.5em
+
+    ul
+      list-style-type: circle
+      margin-top: 0.5em
+      ul
+        list-style-type: square
+  dd
+    +ltr-property("margin", 2em, false)
+  figure
+    margin-left: 2em
+    margin-right: 2em
+    text-align: center
+    &:not(:first-child)
+      margin-top: 2em
+    &:not(:last-child)
+      margin-bottom: 2em
+    img
+      display: inline-block
+    figcaption
+      font-style: italic
+  pre
+    +overflow-touch
+    overflow-x: auto
+    padding: $content-pre-padding
+    white-space: pre
+    word-wrap: normal
+  sup,
+  sub
+    font-size: 75%
+  table
+    width: 100%
+    td,
+    th
+      border: $content-table-cell-border
+      border-width: $content-table-cell-border-width
+      padding: $content-table-cell-padding
+      vertical-align: top
+    th
+      color: $content-table-cell-heading-color
+      &:not([align])
+        text-align: inherit
+    thead
+      td,
+      th
+        border-width: $content-table-head-cell-border-width
+        color: $content-table-head-cell-color
+    tfoot
+      td,
+      th
+        border-width: $content-table-foot-cell-border-width
+        color: $content-table-foot-cell-color
+    tbody
+      tr
+        &:last-child
+          td,
+          th
+            border-bottom-width: 0
+  .tabs
+    li + li 
+      margin-top: 0
+  // Sizes 
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
+
+.is-line-height-small
+  line-height: 1.125 !important
+.is-line-height-medium
+  line-height: 1.45 !important
+.is-line-height-large
+  line-height: 1.75 !important
+
+  

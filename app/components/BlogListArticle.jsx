@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BlogArticleInfo from "./BlogArticleInfo";
 import Markdown from "markdown-to-jsx";
+import { Heading } from "@chakra-ui/react";
 
 function BlogListArticle({
   blogListPostTitle,
@@ -26,9 +27,8 @@ function BlogListArticle({
                 {blogListPostLink ? (
                   <Link onClick={onClick} to={blogListPostLink}>
                     <article
-                      className={`tile ${
-                        !blogListPostImage && "has-background-primary"
-                      }`}
+                      className={`tile ${!blogListPostImage && "has-background-primary"
+                        }`}
                     >
                       <figure className="image is-3by2">
                         <div className="overlay">
@@ -53,9 +53,8 @@ function BlogListArticle({
                   </Link>
                 ) : (
                   <article
-                    className={`tile ${
-                      !blogListPostImage && "has-background-primary"
-                    }`}
+                    className={`tile ${!blogListPostImage && "has-background-primary"
+                      }`}
                   >
                     <div className="image is-3by2"></div>
                   </article>
@@ -66,9 +65,11 @@ function BlogListArticle({
               <div className="content are-half-block">
                 {!blogListPostTitle ? null : (
                   <div className="normal-block">
-                    <h4 className="title is-5 border-white-ter-bottom">
+                    <Heading as="h5"
+                      className="border-white-ter-bottom"
+                    >
                       {blogListPostTitle}
-                    </h4>
+                    </Heading>
                   </div>
                 )}
                 <div className="block">

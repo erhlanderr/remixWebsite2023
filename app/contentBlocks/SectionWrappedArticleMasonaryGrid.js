@@ -1,6 +1,6 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import SectionWrappers from "../components/sectionWrappers";
+
 
 const SectionWrappedArticleMasonaryGrid = ({
   sectionSize,
@@ -12,11 +12,7 @@ const SectionWrappedArticleMasonaryGrid = ({
   imageRatio,
 }) => {
   return (
-    <SectionWrappers
-      sectionIsEqual={true}
-      sectionSize={sectionSize}
-      sectionCustomClasses={sectionCustomClasses}
-    >
+    
       <div className="columns is-multiline">
         {articles &&
           articles.map((article, i) => (
@@ -49,7 +45,6 @@ const SectionWrappedArticleMasonaryGrid = ({
             </div>
           ))}
       </div>
-    </SectionWrappers>
   );
 };
 

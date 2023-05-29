@@ -7,8 +7,12 @@ import {
   useNavigate
 } from "@remix-run/react";
 import {
-  Button
+  Button,
+  Heading,
+  Card, CardHeader, CardBody, CardFooter
 } from "@chakra-ui/react";
+import { Header4 } from "./helpers/Header";
+
 
 
 const ArticleGridHeaderImageCard = ({
@@ -26,9 +30,9 @@ const ArticleGridHeaderImageCard = ({
   return (
     <div
       key={key}
-      
+
     >
-      <div
+      <Card
         className={`is-flex is-flex-direction-column h100 ${boxBackgroundColour && "has-background-" + boxBackgroundColour
           }`}
       >
@@ -47,7 +51,9 @@ const ArticleGridHeaderImageCard = ({
             <div className="tile has-text-left card-content content">
               {article?.title && (
                 <div className={`tile-header mb-0 is-block block`}>
-                  <h4 className="title is-5">{article.title}</h4>
+                  <Header4>
+                    {article.title}
+                  </Header4>
                   <hr />
                 </div>
               )}
@@ -65,7 +71,7 @@ const ArticleGridHeaderImageCard = ({
               )}
             </div>
           )}
-      </div>
+      </Card>
     </div>
   );
 };

@@ -1,0 +1,35 @@
+// @import "../utilities/mixins.sass"
+
+.is-overlay
+  @extend %overlay
+
+.is-relative
+  position: relative !important
+
+.is-absolute
+  position: absolute !important
+
+.is-absolutely-fixed
+  position: absolute !important
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+
+.is-top-0
+  top: 0 
+  
+.is-right-0
+  right: 0 
+  
+.is-bottom-0
+  bottom: 0 
+  
+.is-left-0
+  left: 0 
+  
+
+
+@for $i from 1 through 20
+  .zi-#{$i}
+    z-index: $i

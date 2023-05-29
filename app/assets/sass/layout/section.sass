@@ -1,0 +1,216 @@
+// @import "../utilities/mixins"
+// @import "../grid/columns"
+
+$site-gutters: 1.5rem
+
+$dividerGutters: 1.5
+$dividerPadding: 1.333333333333333
+
+$padding-small: 2rem
+$padding-standard: 4rem
+$padding-medium: 8rem
+$padding-large: 16rem
+
+%sectionPadding
+  +touch
+    padding: calc($padding-standard /$dividerPadding) calc($site-gutters /$dividerGutters) #{$column-gap}
+    &.is-small
+      padding: calc($padding-small /$dividerPadding) calc($site-gutters /$dividerGutters) #{$column-gap}
+      &.slider
+        padding: calc($padding-small /$dividerPadding) calc($site-gutters /$dividerGutters) 4.5rem
+    &.is-medium
+      padding: calc($padding-medium /$dividerPadding) calc($site-gutters /$dividerGutters) #{$column-gap}
+      &.slider
+        +mobile
+          padding:
+            top: calc( calc($padding-medium /$dividerPadding) /2) !important 
+            bottom: calc($padding-medium /$dividerPadding) !important
+
+    &.is-large
+      padding: calc($padding-large /$dividerPadding) calc($site-gutters /$dividerGutters) #{$column-gap}
+  +desktop
+    padding: $padding-standard $site-gutters #{$column-gap}
+    &.is-small
+      padding: $padding-small $site-gutters #{$column-gap} 
+      &.slider
+        padding: calc($padding-small /$dividerPadding) calc($site-gutters /$dividerGutters) $padding-standard
+    &.is-medium   
+      padding: $padding-medium $site-gutters #{$column-gap}      
+    &.is-large 
+      padding: $padding-large $site-gutters #{$column-gap}       
+
+%sectionPaddingEqual
+  +touch 
+    padding: calc($padding-standard /$dividerPadding) calc($site-gutters /$dividerGutters)
+    &.is-small
+      padding: calc($padding-small /$dividerPadding) calc($site-gutters /$dividerGutters)
+      &.slider
+        padding: calc($padding-small /$dividerPadding) calc($site-gutters /$dividerGutters) 4.5rem
+    &.is-medium
+      padding: calc($padding-medium /$dividerPadding) calc($site-gutters /$dividerGutters)
+    &.is-large
+      padding: calc($padding-large /$dividerPadding) calc($site-gutters /$dividerGutters)
+  +desktop
+    padding: $padding-standard $site-gutters
+    &.is-small
+      padding: $padding-small $site-gutters
+      &.slider
+        padding: calc($padding-small /$dividerPadding) calc($site-gutters /$dividerGutters) $padding-standard  
+    &.is-medium 
+      padding: $padding-medium $site-gutters
+    &.is-large
+      padding: $padding-large $site-gutters
+
+%sectionPaddingReversed
+  +touch
+    padding: #{$column-gap} calc($site-gutters /$dividerGutters) calc($padding-standard /$dividerPadding)
+    &.is-small
+      padding:  #{$column-gap} calc($site-gutters /$dividerGutters)  calc($padding-small /$dividerPadding)
+      &.slider
+        padding:  4.5rem calc($site-gutters /$dividerGutters)  calc($padding-small /$dividerPadding)
+    &.is-medium
+      padding:  #{$column-gap} calc($site-gutters /$dividerGutters)  calc($padding-medium /$dividerPadding)
+      &.slider
+        +mobile
+          padding:
+            top: calc( calc($padding-medium /$dividerPadding) /2) !important 
+            bottom: calc($padding-medium /$dividerPadding) !important
+
+    &.is-large
+      padding: #{$column-gap}  calc($site-gutters /$dividerGutters) calc($padding-large /$dividerPadding)
+  +desktop
+    padding: #{$column-gap}  $site-gutters $padding-standard
+    &.is-small
+      padding: #{$column-gap}   $site-gutters $padding-small
+      &.slider
+        padding: $padding-standard  calc($site-gutters /$dividerGutters) calc($padding-small /$dividerPadding)
+    &.is-medium   
+      padding: #{$column-gap}       $site-gutters $padding-medium 
+    &.is-large 
+      padding: #{$column-gap}    $site-gutters $padding-large
+
+// .subnavigation
+//   background-color: $persistent-nav-background-color
+//   .section
+//     +desktop
+//       padding: $padding-small $site-gutters $padding-small $site-gutters    
+//     +touch
+//       padding: ($padding-small /$dividerPadding) ($site-gutters /$dividerGutters)
+//   &.has-sublevel-navigation
+//     .section
+//       +desktop
+//         padding: $padding-small $site-gutters 4.125rem $site-gutters      
+//       +touch
+//         padding: ($padding-small /$dividerPadding) ($site-gutters /$dividerGutters)
+
+// .group
+//   &.are-sections
+//     +touch 
+//       .section
+//         padding: ($padding-standard /$dividerPadding) ($site-gutters /$dividerGutters) #{$column-gap}
+//     &.is-small
+//       .section
+//         padding: ($padding-small /$dividerPadding) ($site-gutters /$dividerGutters) #{$column-gap}
+//     &.is-medium
+//       .section
+//         padding: ($padding-medium /$dividerPadding) ($site-gutters /$dividerGutters) #{$column-gap}
+//     &.is-large
+//       .section
+//         padding: ($padding-large /$dividerPadding) ($site-gutters /$dividerGutters) #{$column-gap}
+//     +desktop
+//       .section
+//         padding: $padding-standard $site-gutters #{$column-gap}
+//     &.is-small
+//       .section
+//         padding: $padding-small $site-gutters #{$column-gap}  
+//     &.is-medium 
+//       .section
+//         padding: $padding-medium $site-gutters #{$column-gap}
+//     &.is-large
+//       .section
+//         padding: $padding-large $site-gutters #{$column-gap}
+
+
+  
+// .group
+//   &.are-grouped
+//     display: block
+//     margin-bottom: $padding-standard
+//     &.is-small
+//       margin-bottom: $padding-small
+//     &.is-medium
+//       margin-bottom: $padding-medium
+//     &.is-large
+//       margin-bottom: $padding-large
+
+//   &.are-equal-sections
+
+//     +touch 
+//       .section
+//         padding: ($padding-standard /$dividerPadding) ($site-gutters /$dividerGutters)
+//     &.is-small
+//       .section
+//         padding: ($padding-small /$dividerPadding) ($site-gutters /$dividerGutters)
+//     &.is-medium
+//       .section
+//         padding: ($padding-medium /$dividerPadding) ($site-gutters /$dividerGutters)
+//     &.is-large
+//       .section
+//         padding: ($padding-large /$dividerPadding) ($site-gutters /$dividerGutters)
+//     +desktop
+//       .section
+//         padding: $padding-standard $site-gutters
+//     &.is-small
+//       .section
+//         padding: $padding-small $site-gutters  
+//     &.is-medium 
+//       .section
+//         padding: $padding-medium $site-gutters
+//     &.is-large
+//       .section
+//         padding: $padding-large $site-gutters
+
+.section
+  &.is-halfheight
+    min-height: 50vh
+    &:first-child
+      height: 100%
+      
+  &.is-fullheight
+    min-height: 100vh
+    &:first-child
+      height: 100%
+  @extend %sectionPadding
+  &.is-reversed
+    @extend %sectionPaddingReversed
+
+
+  .modal & 
+    padding: 0
+
+  &.is-padless-sides
+    padding:
+      left: 0 !important
+      right: 0 !important
+  &.is-padless-bottom
+    padding:
+      bottom: 0 !important
+  &.is-padded-parent
+    padding: 0 !important
+    .section-child
+      @extend %sectionPadding
+    &.is-equal-section
+      .section-child
+        @extend %sectionPaddingEqual
+
+  &.is-padless-section
+    @extend %sectionPadding
+    padding-top: 0
+  &.is-equal-section
+    @extend %sectionPaddingEqual
+    &[class*="blog-header-background-"]
+      padding: 0
+
+  &.has-background-image
+    @extend %sectionPaddingEqual
+    position: relative

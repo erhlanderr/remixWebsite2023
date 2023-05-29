@@ -1,0 +1,41 @@
+// @import "../utilities/mixins.sass"
+
+.masonry-grid
+  .grid-sizer
+    width: 33.3333333333%
+
+  .column
+    &:after 
+      content: ""
+      display: block  
+      clear: both
+
+  .grid-sizer, 
+  .column
+    +widescreen
+      width: 33.3333333333%
+    +desktop
+      width: 33.3333333333%
+    +tablet-only
+      width: 50%
+    +mobile
+      width: 100%
+
+  .column
+    float: left
+    &:hover
+      cursor: pointer
+    img
+      display: block
+      max-width: 100%
+
+  +mobile
+    .column 
+      img
+        border: 5px solid white
+
+
+  .column
+    &.grid-item__expanded
+      width: 66.66%
+      z-index: 2

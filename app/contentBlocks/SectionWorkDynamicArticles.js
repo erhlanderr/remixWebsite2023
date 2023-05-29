@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import SectionWrappers from "../components/sectionWrappers";
+
 import ArticleGridHeaderImageCard from "../components/ArticleGridHeaderImageCard";
 import ImageWithContentToEdge from "../components/ImageWithContentToEdge";
 import SectionWrappedSectionTitle from "./SectionWrappedSectionTitle";
-import { useContentContext } from "../content/ContentContext";
+// import { useContentContext } from "../content/ContentContext";
 import Markdown from "markdown-to-jsx";
 
 const SectionWrappedArticleGrid = ({
-  sectionSize,
-  sectionCustomClasses,
-  sectionHasBackground,
-  sectionIsEqual,
   columnsDesktop,
   columnsTablet,
   columnsMobile,
@@ -22,55 +18,54 @@ const SectionWrappedArticleGrid = ({
   headerShrink,
   boxBackgroundColour,
   customColumnsClasses,
-  sectionIsPaddingReversed,
   $type,
 }) => {
   const location = useLocation();
   const [isArticles, setArticles] = useState(null);
-  const { contentRepository, useContent } = useContentContext();
-  const articleItems = useContent(
-    () => contentRepository.getChildPageContent(location.pathname),
-    [location.pathname],
-    []
-  );
+  // const { contentRepository, useContent } = useContentContext();
+  // const articleItems = useContent(
+  //   () => contentRepository.getChildPageContent(location.pathname),
+  //   [location.pathname],
+  //   []
+  // );
 
-  useEffect(() => {
-    var filteredArticles = articleItems.filter(
-      (item) => item.route !== location.pathname
-    );
+  // useEffect(() => {
+  //   var filteredArticles = articleItems.filter(
+  //     (item) => item.route !== location.pathname
+  //   );
 
-    filteredArticles.sort(function (a, b) {
-      if (
-        !a.data ||
-        !a.data.content.navigation.navigationListOrder ||
-        !b.data ||
-        !b.data.content.navigation.navigationListOrder
-      )
-        return 0;
+  //   filteredArticles.sort(function (a, b) {
+  //     if (
+  //       !a.data ||
+  //       !a.data.content.navigation.navigationListOrder ||
+  //       !b.data ||
+  //       !b.data.content.navigation.navigationListOrder
+  //     )
+  //       return 0;
 
-      var articleSortableA = a.data.content.navigation.navigationListOrder;
-      var articleSortableB = b.data.content.navigation.navigationListOrder;
+  //     var articleSortableA = a.data.content.navigation.navigationListOrder;
+  //     var articleSortableB = b.data.content.navigation.navigationListOrder;
 
-      if (articleSortableA < articleSortableB) {
-        return -1;
-      }
-      if (articleSortableA > articleSortableB) {
-        return 1;
-      }
+  //     if (articleSortableA < articleSortableB) {
+  //       return -1;
+  //     }
+  //     if (articleSortableA > articleSortableB) {
+  //       return 1;
+  //     }
 
-      return 0;
-    });
-    setArticles(filteredArticles);
-  }, [articleItems, location.pathname]);
+  //     return 0;
+  //   });
+  //   setArticles(filteredArticles);
+  // }, [articleItems, location.pathname]);
 
   return (
     <>
       <SectionWrappedSectionTitle title="Spotlight" />
-      <SectionWrappers
+      {/* <SectionWrappers
         sectionSize="small"
         sectionCustomClasses="has-image-one-third has-offset-image"
         sectionHasBackground={sectionHasBackground}
-      >
+      > */}
         {!!isArticles &&
           isArticles.slice(0, 1).map((spotlight, index) => (
             <React.Fragment key={index}>
@@ -103,15 +98,15 @@ const SectionWrappedArticleGrid = ({
               </ImageWithContentToEdge>
             </React.Fragment>
           ))}
-      </SectionWrappers>
+      {/* </SectionWrappers> */}
       <SectionWrappedSectionTitle title="Case Studies" />
-      <SectionWrappers
+      {/* <SectionWrappers
         type={$type}
         sectionIsEqual={sectionIsEqual}
         sectionIsPaddingReversed={sectionIsPaddingReversed}
         sectionSize={sectionSize}
         sectionCustomClasses={sectionCustomClasses}
-      >
+      > */}
         <div
           className={`columns is-flex-wrap-wrap is-flex ${customColumnsClasses ? customColumnsClasses : ""
             }`}
@@ -141,7 +136,7 @@ const SectionWrappedArticleGrid = ({
               </>
             ))}
         </div>
-      </SectionWrappers>
+      {/* </SectionWrappers> */}
     </>
   );
 };

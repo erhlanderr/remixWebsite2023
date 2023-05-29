@@ -1,33 +1,22 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
-import Grid from "./partials/Grid";
-import ImageContentModule from "./ImageContentModule";
+
+import GridLayout from "../components/layout/GridLayout";
+import ImageContent from "../components/ImageContent";
 import Markdown from "markdown-to-jsx";
 
 const SectionWrappedImageContentModuleGrid = ({
   modules,
-  sectionCustomClasses,
   gridCustomClasses,
-  textAlignment,
-  sectionSize,
   ratioDesktop,
   ratioMobile,
   scaleDown,
-  sectionIsEqual,
 }) => {
   return (
-    <SectionWrappers
-      sectionSize={sectionSize}
-      sectionIsEqual={sectionIsEqual} 
-      sectionCustomClasses={
-        sectionCustomClasses ? sectionCustomClasses : "has-medium-icons"
-      }
-      textAlignment={textAlignment ? textAlignment : "centered"}
-    >
-      <Grid gridCustomClasses={gridCustomClasses ? gridCustomClasses : ""}>
+    
+      <GridLayout gridCustomClasses={gridCustomClasses ? gridCustomClasses : ""}>
         {modules &&
           modules.map((module) => (
-            <ImageContentModule
+            <ImageContent
               title={module.title}
               image={module.image}
               imageLink={module.imageLink}
@@ -51,10 +40,9 @@ const SectionWrappedImageContentModuleGrid = ({
                   {module.paragraphs}
                 </Markdown>
               )}
-            </ImageContentModule>
+            </ImageContent>
           ))}
-      </Grid>
-    </SectionWrappers>
+      </GridLayout>
   );
 };
 

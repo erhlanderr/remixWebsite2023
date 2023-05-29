@@ -1,15 +1,10 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
+
 import Carousel from "../components/Carousel";
 import CarouselBanner from "../components/CarouselBanner";
 
 function SectionWrappedCarousel({
   componentKey,
-  sectionSize,
-  sectionIsEqual,
-  sectionIsFluid,
-  sectionHasBackground,
-  noContainer,
   carousels,
 }) {
   const renderCarouselBanner = (item) => {
@@ -27,14 +22,7 @@ function SectionWrappedCarousel({
     );
   };
   return (
-    <SectionWrappers
-      sectionSize={sectionSize}
-      sectionIsFluid={sectionIsFluid}
-      sectionIsEqual={sectionIsEqual || true}
-      sectionCustomClasses="is-padded-parent"
-      noContainer={noContainer || true}
-      sectionHasBackground={sectionHasBackground}
-    >
+    
       <Carousel
         element={componentKey}
         options={{
@@ -48,7 +36,6 @@ function SectionWrappedCarousel({
       >
         {carousels.map((item) => renderCarouselBanner(item))}
       </Carousel>
-    </SectionWrappers>
   );
 }
 

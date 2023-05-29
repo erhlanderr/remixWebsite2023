@@ -1,0 +1,113 @@
+// @import "../utilities/_all.sass"
+// @import "../layout/section.sass"
+
+// .full-height
+
+%edge-image
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0               
+    z-index: 0
+    +mobile
+        position: static
+        padding: 0 0 0.75rem 0 !important
+        margin: 0 -1.5rem !important
+        left: 0
+        right: 0
+    img
+        display: block
+        object-fit: cover
+        height: 100%
+        width: 100%
+        +mobile
+            height: 12rem
+            padding: 0 0 0.75rem 0 !important
+
+
+$image-alignment: ("left": left, "center": center, "right": right) !default
+@each $name, $value in $image-alignment
+    .section
+        &.has-image-#{$name}-edge
+            display: flex
+            .container
+                &.edge-image
+                    max-width: none !important
+                .columns
+                    @if $name == left
+                        flex-direction: row
+                    @else if $name == right
+                        flex-direction: row-reverse
+                    position: relative
+                    .column
+                        &.edge-image
+                            position: relative
+                            figure
+                                position: absolute
+                                left: 0
+                                right: 0
+                                top: 0
+                                bottom: 0
+
+
+=edgeImage($padding, $property, $equalPadding)
+    max-width: none
+    position: absolute
+    top: 0.75rem
+    bottom: -0.75rem
+    right: calc(50% + 0.75rem)
+    left: -1.5rem
+    +mobile
+        max-width: none
+        position: relative
+        // margin-left: -($site-gutters /1.5)
+        // margin-right: -($site-gutters /1.5)
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+    .columns
+        display: flex
+        height: 100%
+
+$edge-flow: ("left": left, "right": right) !default
+$section-padding: ("medium": medium, "large": large) !default
+
+@each $property, $shortcut in $edge-flow
+    @each $value, $name in $section-padding
+        .section
+            &.has-edge-banner-#{$shortcut}
+                +mobile
+                    padding-left: 0
+                    padding-right: 0
+                // position: relative
+                &.is-equal-section
+                    &.is-medium
+                        .is-edge-image
+                            +edgeImage($padding-medium, $property, true)
+                    &.is-large
+                        .is-edge-image
+                            +edgeImage($padding-large, $property, true)
+                    .is-edge-image
+                        +edgeImage($padding-standard, $property, true)
+                &.is-medium
+                    .is-edge-image
+                        +edgeImage($padding-medium, $property, false)
+                &.is-large
+                    .is-edge-image
+                        +edgeImage($padding-large, $property, false)
+                .is-edge-image
+                    +edgeImage($padding-standard, $property, false)
+
+                .is-edge-content
+                    .box
+                        +mobile
+                            padding-left: calc($site-gutters /$dividerGutters)
+                            padding-right: calc($site-gutters /$dividerGutters)
+                    .columns
+                        @if $shortcut == left
+                            justify-content: flex-start
+                        @else
+                            justify-content: flex-end
+
+       

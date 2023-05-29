@@ -1,0 +1,175 @@
+// @import "../utilities/mixins.sass"
+
+$large: 16rem
+$medium: 12rem
+$small: 8rem
+
+$iconSize: ("large": $large, "medium": $medium, "small": $small) !default    
+
+=iconicResponsive($iconValue)
+    width: $iconValue
+    height: $iconValue
+    img
+        object-fit: cover
+    @if $iconValue == $large
+        +touch
+            width: 12rem
+            height: 12rem
+            img
+                object-fit: cover
+    @else if $iconValue == $medium
+        +touch
+            width: 8rem
+            height: 8rem
+            img
+                object-fit: cover
+    @else if $iconValue == $small
+        +touch
+            width: 6rem
+            height: 6rem
+            img
+                object-fit: cover
+
+=columnAlignment($i, $iconValue)
+    @if $iconValue == $large or $iconValue == $medium
+        @if $i == 2
+            .column
+                .columns
+                    +until-widescreen
+                        flex-direction: column !important
+
+        @else if $i == 3
+            .column
+                .columns
+                    flex-direction: column !important
+
+        @else if $iconValue == $large
+            @if $i >= 4
+                .column
+                    +widescreen
+                        width: 25%
+                        flex: none
+                    +desktop-only                    
+                        width: 50%
+                        flex: none
+                    +tablet-only
+                        width: 50%
+                        flex: none
+                    .columns
+                        flex-direction: column !important
+                        .column
+                            width: 100%
+
+        @else if $iconValue == $medium
+            @if $i >= 4
+                .column
+                    // flex-basis: auto
+                    +desktop
+                        width: 25%
+                        flex: none
+                    +tablet-only
+                        width: 50%
+                        flex: none
+                    +mobile
+                        width: 100%
+                        flex: none
+                    .columns
+                        flex-direction: column !important
+                        .column
+                            width: 100%
+
+    @else if $iconValue == $small
+        @if $i == 2
+            .column
+                .columns
+                    flex-direction: column !important
+                    // flex-direction: row !important
+                    // +mobile
+        @else if $i == 3
+            .column
+                .columns
+                    flex-direction: column !important
+                    // +widescreen
+                    //     flex-direction: row !important
+        @else if $i == 4
+            .column
+                +desktop
+                    width: 25%
+                    flex: none
+                +tablet-only
+                    width: 50%
+                    flex: none
+                .columns
+                    flex-direction: column !important
+                    .column
+                        width: 100%
+        @else if $i > 4
+            @if $i == 5
+                .column
+                    width: 20%
+                    flex: none
+            @else if $i == 6                
+                .column
+                    width: 16.66667%
+                    flex: none
+            .column
+                +until-fullhd
+                    width: 33.33333%
+                    flex: none
+                +mobile
+                    width: 100%
+                    flex: none
+                .columns
+                    flex-direction: column !important
+                    .column
+                        width: 100%
+
+
+
+@each $iconName, $iconValue in $iconSize
+    @for $i from 1 through 6
+        .has-#{$iconName}-icons
+            .columns                          
+                &.is-#{$i}                
+                    flex-wrap: wrap
+                    // justify-content: center
+                    // +columnAlignment($i, $iconValue)
+                    // .column
+                    //     flex-basis: calc(100% / $i)  
+                    //     .columns
+                    //         flex-direction: column
+                    //         .column
+                                // flex-basis: auto
+                    @if $i == 1
+                        flex-direction: row
+                        +mobile
+                            flex-direction: column
+                    @if $i <= 3
+                        justify-content: center
+                        +columnAlignment($i, $iconValue)
+                        .column
+                            width: calc(100% / $i)  
+                            .columns
+                                .column
+                                    flex-basis: auto
+                    @else if $i > 3
+
+            .column
+                &.is-iconic
+                    flex: none
+                    text-align: center
+                    a
+                        &:hover,
+                        &:active,
+                        &:focus,
+                            .is-icon
+                                svg
+                                    color: inherit
+                        .is-icon
+                            svg
+                                color: inherit
+
+                    figure
+                        &.image
+                            +iconicResponsive($iconValue)
+                        

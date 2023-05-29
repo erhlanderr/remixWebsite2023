@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
+import { Heading } from "@chakra-ui/react";
+import { Header5 } from "./helpers/Header";
 
 function TileContentModule({
   title,
@@ -135,7 +137,9 @@ function TileContentModule({
             >
               {title && (
                 <div className="block">
-                  <h4 className="title is-5">{title}</h4>
+                  <Header5>
+                    {title}
+                  </Header5>
                 </div>
               )}
               {children && <div className="block">{children}</div>}

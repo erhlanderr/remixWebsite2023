@@ -1,0 +1,114 @@
+// @import "../utilities/mixins.sass"
+// @import "../utilities/transitions.sass"
+
+$transition-y: -0.25rem !default
+$shadow-x: 0.5rem !default
+$shadow-y: 0.5rem !default
+$shadow-blur: 1rem !default
+$shadow-width: -0.25rem !default    
+
+$button-transition: 0.3s
+
+=boxShadow($x, $y, $b, $w)    
+    box-shadow: ($shadow-x * $x) ($shadow-y * $y) ($shadow-blur * $b) ($shadow-width * $w) rgba($scheme-invert, 0.1) !important
+
+=overlayBlur($x, $y, $b, $dropShadowColor: $scheme-main, $opacity: 0.3)    
+    box-shadow: ($shadow-x * $x) ($shadow-y * $y) ($shadow-blur * $b) ($shadow-blur * $b) rgba($dropShadowColor, $opacity) !important
+    position: relative
+    z-index: 1
+    > *
+        background-color: rgba($dropShadowColor, $opacity) 
+
+=textShadow($x, $y, $b)
+    text-shadow: ($shadow-x * $x) ($shadow-y * $y) ($shadow-blur * $b) rgba($scheme-invert, 0.3) !important
+
+=floatUp($x, $y, $b, $w, $ty)
+    transition: all $button-transition *1
+    &:hover,
+    &:active,
+    &:focus
+        +boxShadow($x, $y, $b, $w)  
+        transform: translateY($ty)
+        transition: all $button-transition *1
+
+.overlay-box-blur    
+    +overlayBlur(0,0,8, $scheme-main, 1)
+
+.no-boxShadow
+    box-shadow: none 
+
+.has-boxShadow
+    +boxShadow(0, 1.5, 1.5, 0.125)  
+
+.has-boxShadow-large
+    +boxShadow(0, 2, 2, 0)   
+
+.has-boxShadow-medium
+    +boxShadow(0, 1, 1, 0.25)  
+
+.has-boxShadow-small
+    +boxShadow(0, 0.5, 0.5, 0.5)   
+
+.has-textShadow
+    +textShadow(0, 0.125, 0.5)
+
+// section decoration
+.box
+    .are-boxShadow &
+        +boxShadow(0, 1.5, 1.5, 0.125)
+
+    .are-boxShadow-large &
+        +boxShadow(0, 2, 2, 0)   
+
+    .are-boxShadow-medium &
+        +boxShadow(0, 1, 1, 0.25)  
+
+    .are-boxShadow-small &
+        +boxShadow(0, 0.5, 0.5, 0.5)  
+
+.are-textShadow
+    .title,
+    .subtitle,
+    .content
+        +textShadow(0, 0.125, 0.5)
+
+.are-textShadow-large
+    .title,
+    .subtitle,
+    .content
+        +textShadow(0, 0.125, 0.5)   
+
+.are-textShadow-medium
+    .title,
+    .subtitle,
+    .content
+        +textShadow(0, 0.125, 0.5)  
+
+.are-textShadow-small
+    .title,
+    .subtitle,
+    .content
+        +textShadow(0, 0.125, 0.25)   
+
+
+.are-float-transition
+    &.is-small-float
+        .box
+            +floatUp(0, 0.75, 0.5, 0.5, $transition-y)
+    &.is-medium-float
+        .box
+            +floatUp(0, 1.25, 1, 0.25, $transition-y)
+    &.is-large-float
+        .box
+            +floatUp(0, 2.25, 2, 0, $transition-y)
+
+    &.are-boxShadow-small
+        .box
+            +floatUp(0, 0.75, 0.5, 0.5, $transition-y)
+    &.are-boxShadow-medium
+        .box
+            +floatUp(0, 1.25, 1, 0.25, $transition-y)
+    &.are-boxShadow-large
+        .box
+            +floatUp(0, 2.25, 2, 0, $transition-y)
+

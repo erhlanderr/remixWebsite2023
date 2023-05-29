@@ -1,0 +1,621 @@
+// @import "../utilities/derived-variables.sass"
+// @import "../utilities/mixins.sass"
+  
+$dimensions: 16 24 32 48 64 96 128 256 !default
+$heights: ("2":  2rem, "3":  3rem, "4":  4rem, "6": 6rem, "8":  8rem, "12": 12rem, "16": 16rem, "20": 20rem, "24": 24rem) !default
+
+
+=imageRatioWrapUp($paddingPercentage)
+  padding-top: $paddingPercentage
+  &-mobile
+    +mobile
+      padding-top: $paddingPercentage
+  &-tablet
+    +tablet
+      padding-top: $paddingPercentage
+  // &-tablet-only
+  //   +tablet-only
+  //     padding-top: $paddingPercentage
+  // &-touch
+  //   +touch
+  //     padding-top: $paddingPercentage
+  &-desktop
+    +desktop
+      padding-top: $paddingPercentage
+  // &-desktop-only
+  //   +desktop-only
+  //     padding-top: $paddingPercentage
+  // &-until-widescreen
+  //   +until-widescreen
+  //     padding-top: $paddingPercentage
+  // &-widescreen
+  //   +widescreen
+  //     padding-top: $paddingPercentage
+  // &-widescreen-only
+  //   +widescreen-only
+  //     padding-top: $paddingPercentage
+  // &-until-fullhd
+  //   +until-fullhd
+  //     padding-top: $paddingPercentage
+  // &-fullhd
+  //   +fullhd
+  //     padding-top: $paddingPercentage
+
+
+=imageRatio($ratio, $paddingPercentage)
+  &.is-#{$ratio}
+    margin-left: 0
+    margin-right: 0
+    padding-top: $paddingPercentage
+    &-mobile
+      +mobile
+        padding-top: $paddingPercentage
+    &-tablet
+      +tablet
+        padding-top: $paddingPercentage
+    // &-tablet-only
+    //   +tablet-only
+    //     padding-top: $paddingPercentage
+    // &-touch
+    //   +touch
+    //     padding-top: $paddingPercentage
+    &-desktop
+      +desktop
+        padding-top: $paddingPercentage
+    // &-desktop-only
+    //   +desktop-only
+    //     padding-top: $paddingPercentage
+    // &-until-widescreen
+    //   +until-widescreen
+    //     padding-top: $paddingPercentage
+    // &-widescreen
+    //   +widescreen
+    //     padding-top: $paddingPercentage
+    // &-widescreen-only
+    //   +widescreen-only
+    //     padding-top: $paddingPercentage
+    // &-until-fullhd
+    //   +until-fullhd
+    //     padding-top: $paddingPercentage
+    // &-fullhd
+    //   +fullhd
+    //     padding-top: $paddingPercentage
+
+=imageRatio($ratio, $paddingPercentage)
+  &.is-#{$ratio}
+    margin-left: 0
+    margin-right: 0
+    padding-top: $paddingPercentage
+    &-mobile
+      +mobile
+        padding-top: $paddingPercentage
+    &-tablet
+      +tablet
+        padding-top: $paddingPercentage
+    // &-tablet-only
+    //   +tablet-only
+    //     padding-top: $paddingPercentage
+    // &-touch
+    //   +touch
+    //     padding-top: $paddingPercentage
+    &-desktop
+      +desktop
+        padding-top: $paddingPercentage
+    // &-desktop-only
+    //   +desktop-only
+    //     padding-top: $paddingPercentage
+    // &-until-widescreen
+    //   +until-widescreen
+    //     padding-top: $paddingPercentage
+    // &-widescreen
+    //   +widescreen
+    //     padding-top: $paddingPercentage
+    // &-widescreen-only
+    //   +widescreen-only
+    //     padding-top: $paddingPercentage
+    // &-until-fullhd
+    //   +until-fullhd
+    //     padding-top: $paddingPercentage
+    // &-fullhd
+    //   +fullhd
+    //     padding-top: $paddingPercentage
+
+=backgroundImage($pattern: false, $imageSize: cover)
+  @if ($pattern == false)
+    background-repeat: no-repeat
+  @else
+    background-repeat: repeat
+  background-size: $imageSize
+  background-position: center center
+  position: absolute
+  top: 0
+  right: 0 
+  bottom: 0
+  left: 0
+
+.background-image
+  +backgroundImage
+
+  &.cover
+    +backgroundImage($imageSize: cover)
+    // &-touch
+    //   +touch
+    //     +backgroundImage($imageSize: cover)
+    // &-desktop
+    //   +desktop
+    //     +backgroundImage($imageSize: cover)
+
+  &.contain
+    +backgroundImage($imageSize: contain)
+    // &-touch
+    //   +touch
+    //     +backgroundImage($imageSize: contain)
+    // &-desktop
+    //   +desktop
+    //     +backgroundImage($imageSize: contain)
+
+  // &.quarter-size
+  //   +backgroundImage($imageSize: 25%)
+  //   // &-touch
+  //   //   +touch
+  //   //     +backgroundImage($imageSize: 25%)
+  //   // &-desktop
+  //   //   +desktop
+  //   //     +backgroundImage($imageSize: 25%)
+
+  // &.half-size
+  //   +backgroundImage($imageSize: 50%)
+  //   // &-touch
+  //   //   +touch
+  //   //     +backgroundImage($imageSize: 50%)
+  //   // &-desktop
+  //   //   +desktop
+  //   //     +backgroundImage($imageSize: 50%)
+
+  // &.three-quarter-size
+  //   +backgroundImage($imageSize: 75%)
+  //   // &-touch
+  //   //   +touch
+  //   //     +backgroundImage($imageSize: 75%)
+  //   // &-desktop
+  //   //   +desktop
+  //   //     +backgroundImage($imageSize: 75%)
+
+  // &.full-size
+  //   +backgroundImage($imageSize: 100%)
+  //   // &-touch
+  //   //   +touch
+  //   //     +backgroundImage($imageSize: 100%)
+  //   // &-desktop
+  //   //   +desktop
+  //   //     +backgroundImage($imageSize: 100%)
+
+
+  // &.repeating
+  //   +backgroundImage($pattern: true)
+  //   // &-touch
+  //   //   +touch
+  //   //     +backgroundImage($pattern: true)
+  //   // &-desktop
+  //   //   +desktop
+  //   //     +backgroundImage($pattern: true)
+
+  // &.bg-position-left
+  //   background-position-x: left !important
+  //   &-mobile
+  //     +mobile
+  //       background-position-x: left !important
+  //   &-tablet
+  //     +tablet
+  //       background-position-x: left !important
+  //   // &-tablet-only
+  //   //   +tablet-only
+  //   //     background-position-x: left !important
+  //   // &-touch
+  //   //   +touch
+  //   //     background-position-x: left !important
+  //   &-desktop
+  //     +desktop
+  //       background-position-x: left !important
+  //   // &-desktop-only
+  //   //   +desktop-only
+  //   //     background-position-x: left !important
+  //   // &-until-widescreen
+  //   //   +until-widescreen
+  //   //     background-position-x: left !important
+  //   // &-widescreen
+  //   //   +widescreen
+  //   //     background-position-x: left !important
+  //   // &-widescreen-only
+  //   //   +widescreen-only
+  //   //     background-position-x: left !important
+  //   // &-until-fullhd
+  //   //   +until-fullhd
+  //   //     background-position-x: left !important
+  //   // &-fullhd
+  //   //   +fullhd
+  //   //     background-position-x: left !important
+
+  // &.bg-position-right
+  //   background-position-x: right !important
+  //   &-mobile
+  //     +mobile
+  //       background-position-x: right !important
+  //   &-tablet
+  //     +tablet
+  //       background-position-x: right !important
+  //   // &-tablet-only
+  //   //   +tablet-only
+  //   //     background-position-x: right !important
+  //   // &-touch
+  //   //   +touch
+  //   //     background-position-x: right !important
+  //   &-desktop
+  //     +desktop
+  //       background-position-x: right !important
+  //   // &-desktop-only
+  //   //   +desktop-only
+  //   //     background-position-x: right !important
+  //   // &-until-widescreen
+  //   //   +until-widescreen
+  //   //     background-position-x: right !important
+  //   // &-widescreen
+  //   //   +widescreen
+  //   //     background-position-x: right !important
+  //   // &-widescreen-only
+  //   //   +widescreen-only
+  //   //     background-position-x: right !important
+  //   // &-until-fullhd
+  //   //   +until-fullhd
+  //   //     background-position-x: right !important
+  //   // &-fullhd
+  //   //   +fullhd
+  //   //     background-position-x: right !important
+
+  // &.bg-position-top
+  //   background-position-y: top !important
+  //   &-mobile
+  //     +mobile
+  //       background-position-y: top !important
+  //   &-tablet
+  //     +tablet
+  //       background-position-y: top !important
+  //   // &-tablet-only
+  //   //   +tablet-only
+  //   //     background-position-y: top !important
+  //   // &-touch
+  //   //   +touch
+  //   //     background-position-y: top !important
+  //   &-desktop
+  //     +desktop
+  //       background-position-y: top !important
+  //   // &-desktop-only
+  //   //   +desktop-only
+  //   //     background-position-y: top !important
+  //   // &-until-widescreen
+  //   //   +until-widescreen
+  //   //     background-position-y: top !important
+  //   // &-widescreen
+  //   //   +widescreen
+  //   //     background-position-y: top !important
+  //   // &-widescreen-only
+  //   //   +widescreen-only
+  //   //     background-position-y: top !important
+  //   // &-until-fullhd
+  //   //   +until-fullhd
+  //   //     background-position-y: top !important
+  //   // &-fullhd
+  //   //   +fullhd
+  //   //     background-position-y: top !important
+
+  // &.bg-position-bottom
+  //   background-position-y: bottom !important
+  //   &-mobile
+  //     +mobile
+  //       background-position-y: bottom !important
+  //   &-tablet
+  //     +tablet
+  //       background-position-y: bottom !important
+  //   // &-tablet-only
+  //   //   +tablet-only
+  //   //     background-position-y: bottom !important
+  //   // &-touch
+  //   //   +touch
+  //   //     background-position-y: bottom !important
+  //   &-desktop
+  //     +desktop
+  //       background-position-y: bottom !important
+  //   // &-desktop-only
+  //   //   +desktop-only
+  //   //     background-position-y: bottom !important
+  //   // &-until-widescreen
+  //   //   +until-widescreen
+  //   //     background-position-y: bottom !important
+  //   // &-widescreen
+  //   //   +widescreen
+  //   //     background-position-y: bottom !important
+  //   // &-widescreen-only
+  //   //   +widescreen-only
+  //   //     background-position-y: bottom !important
+  //   // &-until-fullhd
+  //   //   +until-fullhd
+  //   //     background-position-y: bottom !important
+  //   // &-fullhd
+  //   //   +fullhd
+  //   //     background-position-y: bottom !important
+
+
+.background-image
+  &-mobile
+    +mobile
+      +backgroundImage
+  &-tablet
+    +tablet
+      +backgroundImage          
+  // &-tablet-only
+  //   +tablet-only
+  //     +backgroundImage          
+  // &-touch
+  //   +touch
+  //     +backgroundImage          
+  &-desktop
+    +desktop
+      +backgroundImage          
+  // &-desktop-only
+  //   +desktop-only
+  //     +backgroundImage          
+  // &-until-widescreen
+  //   +until-widescreen
+  //     +backgroundImage          
+  // &-widescreen
+  //   +widescreen
+  //     +backgroundImage          
+  // &-widescreen-only
+  //   +widescreen-only
+  //     +backgroundImage          
+  // &-until-fullhd
+  //   +until-fullhd
+  //     +backgroundImage          
+  // &-fullhd
+  //   +fullhd
+  //     +backgroundImage
+
+$ratios: ("square": 100%, "1by1": 100%, "5by4": 80%, "4by3": 75%, "3by2": 66.6666%, "5by3": 60%, "16by9": 56.25%, "2by1": 50%, "3by1": 33.3333%, "4by5": 125%, "3by4": 133.3333%, "2by3": 150%, "3by5": 166.6666%, "9by1": 177.7777%6, "1by2": 200%, "1by3": 300%) !default
+
+.image 
+  display: block 
+  position: relative 
+  width: 100%
+  +ie
+    overflow: hidden
+  @each $ratiosName, $ratiosValue in $ratios
+    &.is-#{$ratiosName}
+      margin: 0
+      height: 0
+      +imageRatioWrapUp($ratiosValue)
+      img,
+      .has-ratio
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        width: 100%
+        object-fit: cover
+        margin: 0
+        height: 100%
+        +ie
+          height: auto !important
+          width: auto !important
+
+.image 
+  display: block 
+  position: relative 
+  width: 100%  
+  &.is-rounded  
+    overflow: hidden 
+    img,
+    .background-image
+      border-radius: $radius-rounded
+  @each $ratiosName, $ratiosValue in $ratios
+    &.is-#{$ratiosName}
+      // img,
+      // .has-ratio
+      +imageRatioWrapUp($ratiosValue)
+      width: 100%
+        // object-fit: cover
+        // @extend %overlay
+        // height: 100%
+    
+  img
+    object-fit: contain
+    display: block
+    height: auto
+    width: 100%
+    +ie
+      // object-position: center center
+      // min-height: 100%
+      // display: block
+      // position: absolute
+      // top: -9999px
+      // bottom: -9999px
+      // left: -9999px
+      // right: -9999px
+      // margin: auto
+      // width: auto
+      // min-width: 100%
+      // max-width: none
+      // -o-object-fit: cover 
+      // object-fit: cover 
+      // height: 100%
+    &.background-image
+      object-fit: cover
+    &.is-cover
+      object-fit: cover
+    &.is-contain
+      object-fit: contain
+  
+  &.is-fullwidth
+    width: 100%
+  // Ratio
+  &.is-square,
+  &.is-1by1,
+  &.is-5by4,
+  &.is-4by3,
+  &.is-3by2,
+  &.is-5by3,
+  &.is-16by9,
+  &.is-2by1,
+  &.is-3by1,
+  &.is-4by5,
+  &.is-3by4,
+  &.is-2by3,
+  &.is-3by5,
+  &.is-9by16,
+  &.is-1by2,
+  &.is-1by3
+    &.is-cover
+      img
+        object-fit: cover
+    &.is-contain
+      img
+        object-fit: contain
+  @each $ratiosName, $ratiosValue in $ratios
+    img,
+    .has-ratio
+      // object-fit: cover
+      // @extend %overlay
+      // height: 100%
+      +imageRatio($ratiosName, $ratiosValue)
+      width: 100%
+
+// Fixed Sizes
+// @each $name, $height in $heights
+//   .is-fixedh-#{$name}
+//     padding-top: $height
+//     img,
+//     .has-ratio
+//       @extend %overlay
+//       height: 100%
+//       width: 100%
+
+// @each $ratiosName, $ratiosValue in $ratios
+//   .is-background-ratio-#{$ratiosName}
+//     height: $ratiosValue
+//     &-mobile
+//       +mobile
+//         height: $ratiosValue
+//     &-tablet
+//       +tablet
+//         height: $ratiosValue          
+//     // &-tablet-only
+//     //   +tablet-only
+//     //     height: $ratiosValue          
+//     // &-touch
+//     //   +touch
+//     //     height: $ratiosValue          
+//     &-desktop
+//       +desktop
+//         height: $ratiosValue          
+    // &-desktop-only
+    //   +desktop-only
+    //     height: $ratiosValue          
+    // &-until-widescreen
+    //   +until-widescreen
+    //     height: $ratiosValue          
+    // &-widescreen
+    //   +widescreen
+    //     height: $ratiosValue          
+    // &-widescreen-only
+    //   +widescreen-only
+    //     height: $ratiosValue          
+    // &-until-fullhd
+    //   +until-fullhd
+    //     height: $ratiosValue          
+    // &-fullhd
+    //   +fullhd
+    //     height: $ratiosValue
+
+// Sizes
+// @each $dimension in $dimensions
+//   .is-#{$dimension}x#{$dimension}
+//     height: $dimension * 1px
+//     width: $dimension * 1px
+//     img,
+//     .has-ratio
+//       @extend %overlay
+//       height: 100%
+//       width: 100%
+
+// Sizes
+// @each $dimension in $dimensions
+//   .is-max-#{$dimension}x#{$dimension}
+//     max-width: $dimension * 1px
+//     margin: auto !important
+//     padding-top: $dimension * 1px !important
+//     &-mobile
+//       +mobile
+//         max-width: $dimension * 1px
+//         margin: auto !important
+//         padding-top: $dimension * 1px !important
+//     &-tablet
+//       +tablet
+//         max-width: $dimension * 1px
+//         margin: auto !important
+//         padding-top: $dimension * 1px !important          
+//     // &-tablet-only
+//     //   +tablet-only
+//     //     max-width: $dimension * 1px
+//     //     margin: auto !important
+//     //     padding-top: $dimension * 1px !important          
+//     // &-touch
+//     //   +touch
+//     //     max-width: $dimension * 1px
+//     //     margin: auto !important
+//     //     padding-top: $dimension * 1px !important          
+//     &-desktop
+//       +desktop
+//         max-width: $dimension * 1px
+//         margin: auto !important
+//         padding-top: $dimension * 1px !important          
+    // &-desktop-only
+    //   +desktop-only
+    //     max-width: $dimension * 1px
+    //     margin: auto !important
+    //     padding-top: $dimension * 1px !important          
+    // &-until-widescreen
+    //   +until-widescreen
+    //     max-width: $dimension * 1px
+    //     margin: auto !important
+    //     padding-top: $dimension * 1px !important          
+    // &-widescreen
+    //   +widescreen
+    //     max-width: $dimension * 1px
+    //     margin: auto !important
+    //     padding-top: $dimension * 1px !important          
+    // &-widescreen-only
+    //   +widescreen-only
+    //     max-width: $dimension * 1px
+    //     margin: auto !important
+    //     padding-top: $dimension * 1px !important          
+    // &-until-fullhd
+    //   +until-fullhd
+    //     max-width: $dimension * 1px
+    //     margin: auto !important
+    //     padding-top: $dimension * 1px !important          
+    // &-fullhd
+    //   +fullhd
+    //     max-width: $dimension * 1px
+    //     margin: auto !important
+    //     padding-top: $dimension * 1px !important
+
+// .ratio-before    
+//   // Ratio
+//   @each $ratiosName, $ratiosValue in $ratios
+//     &.is-#{$ratiosName}
+//       &::before
+//         content: ''
+//         display: block
+//         width: 100%
+//         padding: 
+//           top: $ratiosValue

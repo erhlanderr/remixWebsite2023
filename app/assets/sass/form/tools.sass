@@ -1,0 +1,309 @@
+// @import "shared.sass" 
+
+$form-colors: $colors !default
+
+$label-color: $text-strong !default 
+$label-weight: $weight-bold !default
+
+$help-size: $size-small !default
+
+$label-colors: $form-colors !default
+
+$input-height: $control-height !default
+
+.label
+  color: $label-color
+  display: block
+  font-size: $size-normal
+  font-weight: $label-weight
+  &:not(:last-child)
+    margin-bottom: 0.5em
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
+
+.field-label
+  margin-bottom: 0
+  .field:not(.is-horizontal) &
+    &.has-addons
+      flex-flow: column
+    display: flex
+    flex-flow: column
+    padding-top: 0 
+    margin-right: 0
+    &.is-small,
+    &.is-normal,
+    &.is-medium,
+    &.is-large
+      padding-top: 0 
+      margin-right: 0
+    .label
+      margin-bottom: 0.5em
+      
+
+.help
+  display: block
+  font-size: $help-size
+  margin-top: 0.25rem
+  // @each $name, $pair in $label-colors
+  //   $color: nth($pair, 1)
+  //   &.is-#{$name}
+  //     color: $color
+
+// Containers
+
+.field
+  &:not(:last-child)
+    margin-bottom: 0.75rem
+
+  // Modifiers
+  &.has-addons
+    display: block
+    &:not(.is-horizontal)
+      flex-flow: column
+    // display: flex
+    justify-content: flex-start
+    .control
+      &:not(:last-child)
+        +ltr-property("margin", -1px)
+      &:not(:first-child):not(:last-child)
+        .button,
+        .input,
+        .select select
+          border-radius: 0
+      &:first-child:not(:only-child)
+        .button,
+        .input,
+        .select select
+          +ltr
+            border-bottom-right-radius: 0
+            border-top-right-radius: 0
+          +rtl
+            border-bottom-left-radius: 0
+            border-top-left-radius: 0
+      &:last-child:not(:only-child)
+        .button,
+        .input,
+        .select select
+          +ltr
+            border-bottom-left-radius: 0
+            border-top-left-radius: 0
+          +rtl
+            border-bottom-right-radius: 0
+            border-top-right-radius: 0
+      .button,
+      .input,
+      .select select
+        &:not([disabled])
+          &:hover,
+          &.is-hovered
+            z-index: 2
+          &:focus,
+          &.is-focused,
+          &:active,
+          &.is-active
+            z-index: 3
+            &:hover
+              z-index: 4
+      &.is-expanded
+        flex-grow: 1
+        flex-shrink: 1
+    &.has-addons-centered
+      justify-content: center
+    &.has-addons-right
+      justify-content: flex-end
+    &.has-addons-fullwidth
+      .control
+        flex-grow: 1
+        flex-shrink: 0
+  &.is-grouped
+    display: flex
+    justify-content: flex-start
+    & > .control
+      flex-shrink: 0
+      &:not(:last-child)
+        margin-bottom: 0
+        +ltr-property("margin", 0.75rem)
+      &.is-expanded
+        flex-grow: 1
+        flex-shrink: 1
+    &.is-grouped-centered
+      justify-content: center
+    &.is-grouped-right
+      justify-content: flex-end
+    &.is-grouped-multiline
+      flex-wrap: wrap
+      & > .control
+        &:last-child,
+        &:not(:last-child)
+          margin-bottom: 0.75rem
+      &:last-child
+        margin-bottom: -0.75rem
+      &:not(:last-child)
+        margin-bottom: 0
+  &.is-horizontal
+    +tablet
+      display: flex
+    +touch
+      flex-direction: column
+    .field-body
+      +touch
+        display: flex
+
+.field-label
+  flex-basis: auto
+  .label
+    font-size: inherit
+  +mobile
+    margin-bottom: 0.5rem
+  +tablet
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 0
+    +ltr-property("margin", 1.5rem)
+    text-align: inherit
+    &.is-small
+      font-size: $size-small
+      padding-top: 0.375em
+    &.is-normal
+      padding-top: 0.375em
+    &.is-medium
+      font-size: $size-medium
+      padding-top: 0.375em
+    &.is-large
+      font-size: $size-large
+      padding-top: 0.375em
+
+// .column
+//   &:not(.is-half),
+//   &:not(.is-6), 
+//     .field-body
+//       // .field .field
+//       +tablet
+//         flex-grow: 1
+
+// .column
+//   &.is-full,
+//   &.is-two-third,
+//   &.is-half,
+//   &.is-6
+//     .field-body
+//       // .field .field
+//       +tablet 
+//         flex-grow: 2
+
+.field-label
+  .checkbox &, 
+  .radio &
+    flex-grow: 0
+
+.field-body
+  flex-basis: auto
+  .field .field
+    margin-bottom: 0
+  +tablet
+    display: flex
+    flex-basis: 0
+    flex-grow: 5
+    flex-shrink: 1
+    .field
+      margin-bottom: 0
+    & > .field
+      flex-shrink: 1
+      &:not(.is-narrow)
+        flex-grow: 1
+      &:not(:last-child)
+        +ltr-property("margin", 0.75rem)
+
+.control
+  box-sizing: border-box
+  clear: both
+  font-size: $size-normal
+  position: relative
+  text-align: inherit
+  // Modifiers
+  &.has-icons-left,
+  &.has-icons-right
+    .input,
+    .select
+      +ltr-property("padding", calc(#{$control-height} /4), false)
+      &:focus
+        & ~ .icon
+          color: $input-icon-active-color
+      &.is-small ~ .icon
+        font-size: $size-small
+      &.is-medium ~ .icon
+        font-size: $size-medium
+      &.is-large ~ .icon
+        font-size: $size-large
+    .icon
+      color: $input-icon-color
+      height: $input-height
+      pointer-events: none
+      position: absolute
+      top: 0
+      width: $input-height
+      z-index: 4
+  &.has-icons-left
+    .input,
+    .select select
+      padding-left: $input-height
+    .icon.is-left
+      left: 0
+  &.has-icons-right
+    .input,
+    .select select
+      padding-right: $input-height
+    .icon.is-right
+      right: 0
+  &.is-loading
+    &::after
+      @extend %loader
+      position: absolute !important
+      +ltr-position(0.625em)
+      top: 0.625em
+      z-index: 4
+    &.is-small:after
+      font-size: $size-small
+    &.is-medium:after
+      font-size: $size-medium
+    &.is-large:after
+      font-size: $size-large
+
+
+$form-colors: $colors !default    
+$label-colors: $form-colors !default
+
+.has-warning
+    font-size: 0.75rem
+    display: block
+    margin-top: 0.25rem
+    max-height: 0px
+    overflow: hidden
+    transition: 1s max-height
+    width: 100%
+
+.has-help
+    .has-warning
+      &.is-active
+        max-height: 9999px
+        transition: 1s max-height
+
+.has-help
+    @each $name, $pair in $label-colors
+        $color: nth($pair, 1)
+        &.is-#{$name}
+            input, 
+            .button,   
+            select
+              border-color: $color 
+              option,
+              &::placeholder
+                color: $color
+            .has-warning
+                & > *
+                    color: $color

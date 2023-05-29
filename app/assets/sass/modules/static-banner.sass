@@ -1,0 +1,70 @@
+// tab styling
+// @import "../layout/section"
+// @import "../utilities/mixins"
+// @import "../elements/icon"
+$dividerGutters: 1.5
+$icon-dimensions: 1.5rem !default
+$icon-dimensions-small: 1rem !default
+$icon-dimensions-medium: 2rem !default
+$icon-dimensions-large: 3rem !default
+$icon-dimensions-larger: 5rem !default
+
+.static-background
+    +touch
+        margin-left: - calc($site-gutters /$dividerGutters)
+        margin-right: - calc($site-gutters /$dividerGutters)
+    +desktop
+        margin-left: - $site-gutters
+        margin-right: - $site-gutters
+
+.section
+    .static-background
+        @extend %sectionPaddingEqual
+
+.are-small-icons
+    .icon-content
+        .icon
+            &:not(first-of-type)
+                +ltr-property("margin", 0.75rem)
+            > *                                
+                height: auto
+                width: $icon-dimensions-small
+                
+.are-medium-icons
+    .icon-content
+        .icon
+            &:not(first-of-type)
+                +ltr-property("margin", 1rem)
+            > *
+                height: auto
+                width: $icon-dimensions-medium
+                
+.are-large-icons
+    .icon-content
+        .icon
+            &:not(first-of-type)
+                +ltr-property("margin", 1.5rem)                              
+            > *
+                height: auto
+                width: $icon-dimensions-medium
+
+    .icon-content
+        display: flex
+        // justify-content: center
+
+    .field
+        display: flex
+        flex-grow: 1
+        .field-label
+            flex-basis: 0
+            flex-grow: 3
+            flex-shrink: 0
+            margin-right: 1.5rem
+            text-align: right
+            &.is-normal
+                padding-top: .375em
+        .field-body
+            display: flex
+            flex-basis: 0
+            flex-grow: 5
+            flex-shrink: 1

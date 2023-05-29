@@ -1,0 +1,111 @@
+// @import "../utilities/derived-variables.sass"
+// @import "../utilities/mixins.sass"
+
+$border-color: rgba($dark, 0.1)
+$border-style: solid
+$border-width: 1px
+$border-spacing: $block-spacing
+
+
+$direction-values: ("top": top, "right": right, "bottom": bottom, "left": left) !default
+
+@each $direction, $value in $direction-values
+    .is-border-#{$direction}
+        border-#{$value}: $border-style $border-color $border-width
+        padding-bottom: $border-spacing
+        &-mobile
+            +mobile
+                border-#{$value}: $border-style $border-color $border-width
+        &-tablet    
+            +tablet
+                border-#{$value}: $border-style $border-color $border-width
+        // &-tablet-only    
+        //     +tablet-only
+        //         border-#{$value}: $border-style $border-color $border-width
+        // &-touch    
+        //     +touch
+        //         border-#{$value}: $border-style $border-color $border-width
+        &-desktop    
+            +desktop
+                border-#{$value}: $border-style $border-color $border-width
+        // &-desktop-only    
+        //     +desktop-only
+        //         border-#{$value}: $border-style $border-color $border-width
+        // &-until-widescreen    
+        //     +until-widescreen
+        //         border-#{$value}: $border-style $border-color $border-width
+        // &-widescreen    
+        //     +widescreen
+        //         border-#{$value}: $border-style $border-color $border-width
+        // &-widescreen-only    
+        //     +widescreen-only
+        //         border-#{$value}: $border-style $border-color $border-width
+        // &-until-fullhd    
+        //     +until-fullhd
+        //         border-#{$value}: $border-style $border-color $border-width
+        // &-fullhd    
+        //     +fullhd
+        //         border-#{$value}: $border-style $border-color $border-width
+
+@each $direction, $value in $direction-values
+    .has-borders-#{$direction}
+        > *:not(:last-of-type)            
+            border-#{$value}: $border-style $border-color $border-width
+            padding-#{$value}: $border-spacing
+        &-mobile
+            +mobile
+                > *:not(:last-of-type)            
+                    border-#{$value}: $border-style $border-color $border-width
+                    padding-#{$value}: $border-spacing
+        &-tablet    
+            +tablet
+                > *:not(:last-of-type)            
+                    border-#{$value}: $border-style $border-color $border-width
+                    padding-#{$value}: $border-spacing
+        // &-tablet-only    
+        //     +tablet-only
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        // &-touch    
+        //     +touch
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        &-desktop    
+            +desktop
+                > *:not(:last-of-type)            
+                    border-#{$value}: $border-style $border-color $border-width
+                    padding-#{$value}: $border-spacing
+        // &-desktop-only    
+        //     +desktop-only
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        // &-until-widescreen    
+        //     +until-widescreen
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        // &-widescreen    
+        //     +widescreen
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        // &-widescreen-only    
+        //     +widescreen-only
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        // &-until-fullhd    
+        //     +until-fullhd
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+        // &-fullhd    
+        //     +fullhd
+        //         > *:not(:last-of-type)            
+        //             border-#{$value}: $border-style $border-color $border-width
+        //             padding-#{$value}: $border-spacing
+
+

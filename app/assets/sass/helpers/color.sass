@@ -1,0 +1,102 @@
+// @import "../utilities/derived-variables.sass"
+// // @import "../utilities/functions.sass"
+// @import "../utilities/mixins.sass"
+
+$opacity-values: ("0": 0.0, "3": 0.3, "6": 0.6, "9": 0.9, "none": 1) !default
+$transition: 0.5s
+
+
+@each $opacity-name, $opacity in $opacity-values
+    .has-text-opacity-#{$opacity-name}
+        opacity: $opacity
+    @each $name, $pair in $colors
+        $color: nth($pair, 1)
+        .has-text-#{$name}
+            color: $color !important
+            // &:hover,
+            // &:focus
+            //     color: bulmaDarken($color, 10%) !important
+
+        .has-background-#{$name}
+            background-color: $color !important
+            .has-inset-border
+                box-shadow: inset 0 0 0 0.25rem $color
+            > *
+                color: findColorInvert($color)
+                .button
+                    color: findColorInvert($color)
+
+        // .has-background-offset-quarter-#{$name}
+        //     background-image: linear-gradient(180deg, $color 25%, transparent 75%)
+
+        // .has-background-offset-half-#{$name}
+        //     background-image: linear-gradient(180deg, $color 50%, transparent 50%)
+
+        // .has-background-offset-three-quarters-#{$name}
+        //     background-image: linear-gradient(180deg, $color 75%, transparent 25%)
+
+        .has-background-#{$name}-opacity-#{$opacity-name}
+            background-color: rgba($color, $opacity) !important            
+            > *
+                color: findColorInvert($color)
+
+        .are-coloured-overlay-transition
+            .box, 
+            .tile
+                &:hover,
+                &:focus
+                    .overlay
+                        &.has-background-#{$name}-active
+                            transition: all $transition
+                            background-color: bulmaDarken($color, 20%) !important
+                .overlay
+                    &.has-background-#{$name}
+                        transition: all $transition
+                        background-color: $color          
+
+        .box
+            .are-background-#{$name} &
+                .card-content
+                    background-color: $color !important
+
+        @if length($pair) >= 4
+            $color-light: nth($pair, 3)
+            $color-dark: nth($pair, 4)
+
+            .has-background-#{$name}-light
+                background-color: $color-light !important                
+                > *
+                    color: findColorInvert($color-light) !important
+
+            .has-background-#{$name}-light-opacity-#{$opacity-name} 
+                background-color: rgba($color-light, $opacity) !important                
+                > *
+                    color: findColorInvert($color-light)
+
+
+            .has-background-#{$name}-dark
+                background-color: $color-dark !important                
+                > * 
+                    color: findColorInvert($color-dark) !important
+
+            .has-background-#{$name}-dark-opacity-#{$opacity-name} 
+                background-color: rgba($color-dark, $opacity) !important                
+                > *
+                    color: findColorInvert($color-dark)
+                                
+
+    @each $name, $shade in $shades
+        
+        .has-text-#{$name}
+            color: $shade !important 
+
+        .has-background-#{$name}
+            background-color: $shade !important            
+
+            > *
+                color: findColorInvert($shade) !important
+
+        .has-background-#{$name}-opacity-#{$opacity-name}
+            background-color: rgba($shade, $opacity) !important            
+            > *
+                color: findColorInvert($shade)

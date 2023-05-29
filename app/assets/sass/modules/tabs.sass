@@ -1,0 +1,48 @@
+// tab styling
+// // @import "../helpers/color"
+// // @import "../utilities/derived-variables"
+// @import "../utilities/mixins"
+
+.tab-link
+    width: 100%
+    &.is-active
+        border-color: $link
+        background-color: $info-light
+
+.tab-list-horizontal
+    display: flex
+    flex-grow: 1
+    flex-shrink: 1
+    align-content: stretch
+    > *
+        flex-grow: 1
+        flex-shrink: 1
+        flex-basis: 0
+        margin-bottom: 0 !important
+        &:not(:last-child)
+            margin-right: $gap
+            +until(calc($tablet /2))
+                margin-right: calc($gap /4)
+        .button
+            +until(calc($tablet /2))
+                font-size: $size-small
+
+.tab-list-horizontal-touch
+    +mobile                
+        display: flex
+        flex-grow: 1
+        flex-shrink: 1
+        align-content: stretch
+        > *
+            flex-grow: 1
+            flex-shrink: 1
+            flex-basis: 0
+            margin-bottom: 0 !important
+            &:not(:last-child)
+                margin-right: $gap
+                +until(calc($tablet /2))
+                    margin-right: calc($gap /4)
+            .button
+               +until(calc($tablet /2))
+                    font-size: $size-small
+    

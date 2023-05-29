@@ -1,0 +1,209 @@
+// @import "../utilities/_all"
+
+$modal-z: 40 !default
+
+$modal-background-background-color: $black !default
+
+$modal-content-width: 640px !default
+$modal-content-margin-mobile: 20px !default
+$modal-content-spacing-mobile: 160px !default
+$modal-content-spacing-tablet: 40px !default
+
+$modal-close-dimensions: 40px !default
+$modal-close-right: 20px !default
+$modal-close-top: 20px !default
+
+$modal-card-spacing: 40px !default
+
+$modal-card-head-background-color: $background !default
+$modal-card-head-border-bottom: 1px solid $border !default
+$modal-card-head-padding: 20px !default
+$modal-card-head-radius: $radius-large !default
+
+$modal-card-title-color: $text-strong !default
+$modal-card-title-line-height: 1 !default
+$modal-card-title-size: $size-4 !default
+
+$modal-card-foot-radius: $radius-large !default
+$modal-card-foot-border-top: 1px solid $border !default
+
+$modal-card-body-background-color: $scheme-main !default
+$modal-card-body-padding: 20px !default
+
+$modal-breakpoint: $tablet !default
+
+$modal-close-button-bg: $primary-color
+
+.modal
+  @extend %overlay
+  align-items: center
+  display: none
+  flex-direction: column
+  justify-content: center
+  overflow: hidden
+  position: fixed !important
+  z-index: $modal-z
+  // Modifiers
+  &.is-active
+    display: flex
+
+  &.has-edge-image
+    .container
+      overflow: hidden
+      +mobile
+        overflow: auto
+
+.modal-background
+  &.is-active
+    @extend %overlay
+    background-color: bulmaRgba($modal-background-background-color, 0.86)
+
+.modal-content,
+.modal-card
+  margin: 0 $modal-content-margin-mobile
+  max-height: calc(100vh - #{$modal-content-spacing-mobile})
+  overflow: auto
+  position: relative
+  width: auto
+  // Responsiveness
+  +from($modal-breakpoint)
+    margin: 0 auto
+    max-height: calc(100vh - #{$modal-content-spacing-tablet})
+    width: $modal-content-width
+  &.notification
+    width: auto
+    position: absolute
+
+.modal-close
+  &:hover,
+  &:active,
+  &:focus
+    background-color: bulmaRgba($primary-color, 0.95) !important 
+  @extend %delete
+  background-color: bulmaRgba($primary-color, 0.75) !important 
+  background: none
+  height: $modal-close-dimensions
+  position: fixed
+  +ltr-position($modal-close-right)
+  top: $modal-close-top
+  width: $modal-close-dimensions
+  &.is-on-card
+    position: absolute
+    z-index: calc($modal-z + 1)
+
+.modal-card
+  display: flex
+  flex-direction: column
+  max-height: calc(100vh - #{$modal-card-spacing})
+  overflow: hidden
+  -ms-overflow-y: visible
+
+.modal-card-head,
+.modal-card-foot
+  align-items: center
+  background-color: $modal-card-head-background-color
+  display: flex
+  flex-shrink: 0
+  justify-content: flex-start
+  padding: $modal-card-head-padding
+  position: relative
+
+.modal-card-head
+  border-bottom: $modal-card-head-border-bottom
+  border-top-left-radius: $modal-card-head-radius
+  border-top-right-radius: $modal-card-head-radius
+
+.modal-card-title
+  color: $modal-card-title-color
+  flex-grow: 1
+  flex-shrink: 0
+  font-size: $modal-card-title-size
+  line-height: $modal-card-title-line-height
+
+.modal-card-foot
+  border-bottom-left-radius: $modal-card-foot-radius
+  border-bottom-right-radius: $modal-card-foot-radius
+  border-top: $modal-card-foot-border-top
+  .button
+    &:not(:last-child)
+      +ltr-property("margin", 0.5em)
+
+.modal-card-body
+  +overflow-touch
+  background-color: $modal-card-body-background-color
+  flex-grow: 1
+  flex-shrink: 1
+  overflow: auto
+  padding: $modal-card-body-padding
+
+$modal-alignment: ("top": top, "left": left, "bottom": bottom, "right": right) !default
+$modal-transition-time: ("slowest": 1.5s, "slow": 1s, "normal": 0.5s, "fast": 0.25s, "fastest": 0.125s) !default
+
+@each $alignmentvalue, $alignmentname in $modal-alignment
+  .transition-slide-to-#{$alignmentname}
+    .modal-card
+      #{$alignmentvalue}: -100%
+      transition: #{$alignmentvalue} opacity
+      transition-duration: 0.5s
+      transition-timing-function: ease-in
+      @if ($alignmentvalue == bottom)
+        left: 0
+        right: 0
+      @else if ($alignmentvalue == top)
+        left: 0
+        right: 0
+      @else if ($alignmentvalue == left)
+        top: 0
+        bottom: 0
+      @else if ($alignmentvalue == right)
+        top: 0
+        bottom: 0
+      &.is-active
+        #{$alignmentvalue}: 0
+        transition: #{$alignmentvalue} opacity
+        transition-duration: 0.5s
+        transition-timing-function: ease-out
+
+  .transition-slide-from-#{$alignmentname}
+    .modal-card
+      #{$alignmentvalue}: -100%
+      @if ($alignmentvalue == bottom)
+        transform: translate(0px,50%)
+      @else if ($alignmentvalue == top)
+        transform: translate(0px,-50%)
+      @else if ($alignmentvalue == left)
+        transform: translate(-50%,0px)
+      @else if ($alignmentvalue == right)
+        transform: translate(50%,0px)
+      transition: #{$alignmentvalue} opacity
+      transition-duration: 0.5s
+      transition-timing-function: ease-in
+      &.is-active
+        #{$alignmentvalue}: 50%
+        transition: #{$alignmentvalue} opacity
+        transition-duration: 0.5s
+        transition-timing-function: ease-out
+
+@each $transitionName, $transitionTime in $modal-transition-time
+  .transition-duration-#{$transitionName}
+    .modal-card
+        transition-duration: #{$transitionTime} !important
+        &.is-active
+          transition-duration: #{$transitionTime} !important
+    .modal-background
+      &.is-active
+        background-color: bulmaRgba($modal-background-background-color, 0.86)
+        transition-duration: #{$transitionTime}
+        transistion: background-color
+    .modal-background:not(.is-active)
+      background-color: bulmaRgba($modal-background-background-color, 0.0)
+      transition-duration: #{$transitionTime}
+      transistion: background-color
+
+    &.transition-fade
+      .modal-card
+        opacity: 0
+        transition-duration: #{$transitionTime}
+        &.is-active
+          opacity: 1
+          transition-duration: #{$transitionTime}

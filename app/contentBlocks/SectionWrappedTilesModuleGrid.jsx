@@ -1,15 +1,11 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
-import Grid from "../components/gridModule";
+
+import Grid from "../components/layout/GridLayout";
 import TileContentModule from "../components/TileContentModule";
 import Markdown from "markdown-to-jsx";
 
 const SectionWrappedTilesModuleGrid = ({
   tiles,
-  sectionCustomClasses,
-  textAlignment,
-  sectionSize,
-  sectionIsEqual,
   levelItems,
   numericalIcons,
   alignTop,
@@ -19,7 +15,6 @@ const SectionWrappedTilesModuleGrid = ({
   tileRadius,
   isHoverable,
   iconLarger,
-  type
 }) => {
   let columnWidths;
   if (tiles.length !== 0) {

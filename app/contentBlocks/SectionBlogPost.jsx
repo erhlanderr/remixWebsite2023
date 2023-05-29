@@ -10,7 +10,7 @@ import LinkBlock from "../components/LinkBlock";
 import BlogArticleRelatedArticlesPromoted from "../components/BlogArticleRelatedArticlesPromoted";
 import BlogArticleRelatedArticles from "../components/BlogArticleRelatedArticles";
 
-function BlogPost() {
+function BlogPost({content}) {
   // const [isBlogContent, setBlogContent] = useState(null);
 
   // const { contentRepository, useContent } = useContentContext();
@@ -74,12 +74,8 @@ function BlogPost() {
 
   return (
     <>
-      <SectionWrapper
-        sectionIsEqual={true}
-        sectionCustomClasses="blog-sidebar"
-        sectionHasBackground="white"
-      >
-        {/* {console.log("blog ==> ",data)} */}
+      
+        {console.log("blog ==> ",content)}
         {/* <div className="columns double-gap is-flex-direction-column-touch">
           <div className="column blog-content ">
             <div className="columns is-multiline single-gap is-flex-direction-column">
@@ -171,7 +167,6 @@ function BlogPost() {
             </div>
           </div>
         </div> */}
-      </SectionWrapper>
     </>
   );
 }

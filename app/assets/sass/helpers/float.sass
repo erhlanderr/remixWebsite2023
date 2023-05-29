@@ -1,0 +1,62 @@
+// @import "../utilities/mixins.sass"
+
+.is-clearfix
+  +clearfix
+
+%float
+  display: block
+  // float
+
+.is-pulled-left
+  float: left !important
+
+.is-pulled-right
+  float: right !important
+
+.is-pulled-left-desktop
+  +desktop
+    float: left !important
+
+.is-pulled-right-desktop
+  +desktop
+    float: right !important
+
+.is-pulled-left-touch
+  +touch
+    float: left !important
+
+.is-pulled-right-touch
+  +touch
+    float: right !important
+
+.is-pulled-left-tablet
+  +tablet
+    float: left !important
+
+.is-pulled-right-tablet
+  +tablet
+    float: right !important
+
+.is-pulled-left-mobile
+  +mobile
+    float: left !important
+
+.is-pulled-right-mobile
+  +mobile
+    float: right !important
+
+.is-clearfix-desktop
+  +desktop
+    +clearfix
+
+.is-clearfix-touch
+  +touch
+    +clearfix
+
+.is-clearfix-tablet
+  +tablet
+    +clearfix
+
+.is-clearfix-mobile
+  +mobile
+    +clearfix

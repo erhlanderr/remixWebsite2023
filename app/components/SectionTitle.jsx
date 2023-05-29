@@ -7,6 +7,7 @@ import {
   Box
 } from "@chakra-ui/react";
 import CTAModule from "./CTAModule";
+import { Header2, Subtitle4 } from "./helpers/Header";
 
 function SectionTitle({
   title,
@@ -22,7 +23,7 @@ function SectionTitle({
     <>
       {title ? (
         <Box textAlign={textAlign}>
-          <Heading as={"h2"}>{title}</Heading>
+          <Header2>{title}</Header2>
         </Box>
       ) : null}
       {(subtitle || ctaLink) && (
@@ -32,12 +33,11 @@ function SectionTitle({
         >
           {subtitle ? (
             <div className="block">
-              <h4
-                className={`subtitle is-4 is-line-height-medium has-text-centered ${subtitleBold ? "" : "has-text-weight-normal"
-                  }`}
+              <Subtitle4
+                className={`has-text-centered ${subtitleBold ? "" : "has-text-weight-normal"}`}
               >
                 {subtitle}
-              </h4>
+              </Subtitle4>
             </div>
           ) : null}
           {ctaTitle && ctaLink ? (

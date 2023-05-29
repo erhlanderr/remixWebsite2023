@@ -1,0 +1,454 @@
+// @import "../utilities/mixins.sass"
+// @import "../utilities/initial-variables"
+
+.has-background-image, .hero
+  position: relative
+  height: 100%
+  &.collapse 
+    height: auto
+
+$defaultBanner: 12rem
+$smallBanner: 16rem
+$mediumBanner: 20rem
+$largeBanner: 24rem
+
+$banner-sizes: ("small": $smallBanner, "medium": $mediumBanner, "large": $largeBanner) !default
+
+=bannerContainer($value)
+  position: relative
+  margin:
+    left: 0
+    right: 0
+  padding:
+    top: $value
+  +desktop-only
+    @if $value == $smallBanner
+      padding:
+        top: calc($value /1.333333333333333)
+    @else if $value == $mediumBanner
+      padding:
+        top: calc($value /1.111111111111111)
+    @else if $value == $largeBanner
+      padding:
+        top: calc($value /1.2)
+  +touch
+    @if $value == $smallBanner
+      padding:
+        top: calc($value /1.333333333333333)
+    @else if $value == $mediumBanner
+      padding:
+        top: calc($value /1.25)
+    @else if $value == $largeBanner
+      padding:
+        top: calc($value /1.5)
+
+.has-full-width-image
+  overflow: hidden
+  position: relative
+
+.has-full-width-image-to-edge
+  padding: 0 !important
+  overflow: hidden
+  position: relative
+
+.to-edge
+  padding: 0 !important
+  overflow: visible
+
+.container
+  &.no-max
+    max-width: none !important
+    padding: 0
+
+$ratios: ("square": 100%, "1by1": 100%, "5by4": 80%, "4by3": 75%, "3by2": 66.6666%, "5by3": 60%, "16by9": 56.25%, "2by1": 50%, "3by1": 33.3333%, "4by5": 125%, "3by4": 133.3333%, "2by3": 150%, "3by5": 166.6666%, "9by1": 177.7777%6, "1by2": 200%, "1by3": 300%) !default
+@each $ratiosName, $ratiosValue in $ratios
+  figure
+    &.banner
+      &-#{$ratiosName}
+        padding-top: $ratiosValue
+        &-mobile
+          +mobile
+            padding-top: $ratiosValue
+        &-tablet
+          +tablet
+            padding-top: $ratiosValue
+        // &-tablet-only
+        //   +tablet-only
+        //     padding-top: $ratiosValue
+        // &-touch
+        //   +touch
+        //     padding-top: $ratiosValue
+        &-desktop
+          +desktop
+            padding-top: $ratiosValue
+        // &-desktop-only
+        //   +desktop-only
+        //     padding-top: $ratiosValue
+        // &-until-widescreen
+        //   +until-widescreen
+        //     padding-top: $ratiosValue
+        // &-widescreen
+        //   +widescreen
+        //     padding-top: $ratiosValue
+        // &-widescreen-only
+        //   +widescreen-only
+        //     padding-top: $ratiosValue
+        // &-until-fullhd
+        //   +until-fullhd
+        //     padding-top: $ratiosValue
+        // &-fullhd
+        //   +fullhd
+        //     padding-top: $ratiosValue
+
+@each $name, $value in $banner-sizes
+  figure
+    &.banner
+      &-#{$name}
+        +bannerContainer($value)
+        &-mobile
+          +mobile
+            +bannerContainer($value)
+        &-tablet
+          +tablet
+            +bannerContainer($value)
+        // &-tablet-only
+        //   +tablet-only
+        //     +bannerContainer($value)
+        // &-touch
+        //   +touch
+        //     +bannerContainer($value)
+        &-desktop
+          +desktop
+            +bannerContainer($value)
+        // &-desktop-only
+        //   +desktop-only
+        //     +bannerContainer($value)
+        // &-until-widescreen
+        //   +until-widescreen
+        //     +bannerContainer($value)
+        // &-widescreen
+        //   +widescreen
+        //     +bannerContainer($value)
+        // &-widescreen-only
+        //   +widescreen-only
+        //     +bannerContainer($value)
+        // &-until-fullhd
+        //   +until-fullhd
+        //     +bannerContainer($value)
+        // &-fullhd
+        //   +fullhd
+        //     +bannerContainer($value)
+  figure
+    &.banner
+      +bannerContainer($defaultBanner)
+      &-mobile
+        +mobile
+          +bannerContainer($defaultBanner)
+      &-tablet
+        +tablet
+          +bannerContainer($defaultBanner)
+      // &-tablet-only
+      //   +tablet-only
+      //     +bannerContainer($defaultBanner)
+      // &-touch
+      //   +touch
+      //     +bannerContainer($defaultBanner)
+      &-desktop
+        +desktop
+          +bannerContainer($defaultBanner)
+      // &-desktop-only
+      //   +desktop-only
+      //     +bannerContainer($defaultBanner)
+      // &-until-widescreen
+      //   +until-widescreen
+      //     +bannerContainer($defaultBanner)
+      // &-widescreen
+      //   +widescreen
+      //     +bannerContainer($defaultBanner)
+      // &-widescreen-only
+      //   +widescreen-only
+      //     +bannerContainer($defaultBanner)
+      // &-until-fullhd
+      //   +until-fullhd
+      //     +bannerContainer($defaultBanner)
+      // &-fullhd
+      //   +fullhd
+      //     +bannerContainer($defaultBanner)
+
+// Blog header
+
+@each $name, $value in $banner-sizes
+  .blog-header-background-#{$name}, .blog-header-navigation-#{$name}
+    figure
+      &.banner
+        +bannerContainer($value)
+        &-mobile
+          +mobile
+            +bannerContainer($value)
+        &-tablet
+          +tablet
+            +bannerContainer($value)
+        // &-tablet-only
+        //   +tablet-only
+        //     +bannerContainer($value)
+        // &-touch
+        //   +touch
+        //     +bannerContainer($value)
+        &-desktop
+          +desktop
+            +bannerContainer($value)
+        // &-desktop-only
+        //   +desktop-only
+        //     +bannerContainer($value)
+        // &-until-widescreen
+        //   +until-widescreen
+        //     +bannerContainer($value)
+        // &-widescreen
+        //   +widescreen
+        //     +bannerContainer($value)
+        // &-widescreen-only
+        //   +widescreen-only
+        //     +bannerContainer($value)
+        // &-until-fullhd
+        //   +until-fullhd
+        //     +bannerContainer($value)
+        // &-fullhd
+        //   +fullhd
+        //     +bannerContainer($value)
+
+/* ---- to edge image ---- */
+
+$to-edge-image-container: ("one-quarter":  25%, "one-third":  33.33333%, "half":  50%, "two-third": 66.66666%, "full": 100%)
+$to-edge-image-offset-amount: ("none": 0%, "one-quarter":  25%, "one-third":  33.33333%, "half":  50%, "two-third": 66.66666%)
+$to-edge-image-offset-direction: ("top":  top, "bottom":  bottom, "left":  left, "right": right)
+
+@each $width, $amount in $to-edge-image-offset-amount
+  @each $direction, $value in $to-edge-image-offset-direction
+    .is-offset-image
+      &.is-offset-#{$width}-#{$direction}
+        #{$value}: #{$amount} !important
+        &-mobile
+          +mobile
+            #{$value}: #{$amount} !important
+        &-tablet
+          +tablet
+            #{$value}: #{$amount} !important
+        // &-tablet-only
+        //   +tablet-only
+        //     #{$value}: #{$amount} !important
+        // &-touch
+        //   +touch
+        //     #{$value}: #{$amount} !important
+        &-desktop
+          +desktop
+            #{$value}: #{$amount} !important
+        // &-desktop-only
+        //   +desktop-only
+        //     #{$value}: #{$amount} !important
+        // &-until-widescreen
+        //   +until-widescreen
+        //     #{$value}: #{$amount} !important
+        // &-widescreen
+        //   +widescreen
+        //     #{$value}: #{$amount} !important
+        // &-widescreen-only
+        //   +widescreen-only
+        //     #{$value}: #{$amount} !important
+        // &-until-fullhd
+        //   +until-fullhd
+        //     #{$value}: #{$amount} !important
+        // &-fullhd
+        //   +fullhd
+        //     #{$value}: #{$amount} !important
+
+@each $width, $property in $to-edge-image-container
+  .has-image-#{$width}
+    .columns
+      flex-wrap: wrap
+      &-mobile
+        .column
+          &.image-column
+            +mobile
+              width: #{$property} !important
+              position: relative
+            flex: none
+    .columns
+      flex-wrap: wrap
+      &-tablet
+        .column
+          &.image-column
+            +tablet
+              width: #{$property} !important
+              position: relative
+            flex: none
+    // &-tablet-only
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +tablet-only
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    // &-touch
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +touch
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    &-desktop
+      .columns
+        flex-wrap: wrap
+        .column
+          &.image-column
+            +desktop
+              width: #{$property} !important
+              position: relative
+              flex: none
+    // &-desktop-only
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +desktop-only
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    // &-until-widescreen
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +until-widescreen
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    // &-widescreen
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +widescreen
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    // &-widescreen-only
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +widescreen-only
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    // &-until-fullhd
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +until-fullhd
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+    // &-fullhd
+    //   .columns
+    //     flex-wrap: wrap
+    //     .column
+    //       &.image-column
+    //         +fullhd
+    //           width: #{$property} !important
+    //           position: relative
+    //           flex: none
+
+    
+    .column
+      &.image-column
+        width: #{$property}
+        position: relative
+        flex: none
+        +mobile
+          width: 100%
+
+        .is-offset-image 
+          position: absolute
+          top: 0
+          bottom: 0
+          margin: 0.75rem -0.75rem 0.75rem -0.75rem
+          +mobile
+            position: relative
+            margin: 0          
+          
+
+          .image
+            background-position: center center 
+            background-size: cover
+            background-repeat: no-repeat
+          
+
+    &.offset-reverse
+      .columns
+        flex-direction: row-reverse
+    
+        
+  .has-offset-background-image
+    position: relative
+    &.has-image-#{$width}
+      &-reverse
+        .has-background-image
+          position: absolute
+          top: 0
+          bottom: 0
+          right: calc(#{$property} + #{$column-gap})
+          left: 0
+          width: #{$property}
+          .background-image
+            .double-gap &
+              right: calc(#{$column-gap} *2)
+            right: #{$column-gap}
+          +touch
+            width: 100%
+            position: relative
+            right: 0
+        .columns
+          justify-content: flex-start
+          .column
+            width: #{$property}
+            flex: none
+            +touch
+              width: 100%
+
+      .has-background-image
+        position: absolute
+        top: 0
+        bottom: 0
+        left: calc(#{$property} + #{$column-gap})
+        right: 0
+        width: #{$property}
+        .background-image
+          .double-gap &
+            left: calc(#{$column-gap} *2)
+          left: #{$column-gap}
+        +touch
+          width: 100%
+          position: relative
+          left: 0
+      .columns
+        .column
+          width: #{$property}
+          flex: none
+          +touch
+            width: 100%
+
+  // .has-offset-image
+  //   &.has-image-#{$width}
+  //     .background-image
+  //         +mobile
+  //           // right: -($site-gutters /$dividerGutters)
+
+  //     &-reverse
+  //       .background-image
+  //         +mobile
+  //           // left: -($site-gutters /$dividerGutters)

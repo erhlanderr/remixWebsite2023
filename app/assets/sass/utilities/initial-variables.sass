@@ -1,0 +1,176 @@
+// Colors
+
+// @import "../utilities/functions"
+
+$website-primary: hsl(187, 62%, 49%) !default
+$website-secondary: hsl(4, 100%, 76%) !default
+$website-tertiary: hsl(41, 100%, 62%) !default
+
+$transparent:  transparent !default
+
+$black:        hsl(0, 0%, 4%) !default
+$black-bis:    hsl(0, 0%, 7%) !default
+$black-ter:    hsl(0, 0%, 14%) !default
+
+$grey-darker:  hsl(0, 0%, 21%) !default
+$grey-dark:    hsl(0, 0%, 29%) !default
+$grey:         hsl(0, 0%, 48%) !default
+$grey-light:   hsl(0, 0%, 71%) !default
+$grey-lighter: hsl(0, 0%, 86%) !default
+$grey-lightest: hsl(0, 0%, 93%) !default
+
+$white-ter:    hsl(0, 0%, 96%) !default
+$white-bis:    hsl(0, 0%, 98%) !default
+$white:        hsl(0, 0%, 100%) !default
+
+$orange:       hsl(14,  100%, 53%) !default
+$yellow:       hsl(48,  100%, 67%) !default
+$green:        hsl(141, 53%,  53%) !default
+$turquoise:    hsl(171, 100%, 41%) !default
+$cyan:         hsl(204, 71%,  53%) !default
+$blue:         hsl(217, 71%,  53%) !default
+$purple:       hsl(271, 100%, 71%) !default
+$red:          hsl(348, 86%, 61%) !default 
+
+$orange-darker:       hsl(14,  100%, (53% - 14%)) !default
+$orange-dark:       hsl(14,  100%, (53% - 8%)) !default
+$orange:       hsl(14,  100%, 53%) !default
+$orange-light:       hsl(14,  100%, (53% + 8%)) !default 
+$orange-lightest:       hsl(14,  100%, (53% + 14%)) !default
+
+$yellow-darker:       hsl(48,  100%, (67% - 14%)) !default
+$yellow-dark:       hsl(48,  100%, (67% - 8%)) !default
+$yellow:       hsl(48,  100%, 67%) !default
+$yellow-light:       hsl(48,  100%, (67% + 8%)) !default
+$yellow-lightest:       hsl(48,  100%, (67% + 14%)) !default
+
+$green-darker:        hsl(141, 53%,  (53% - 14%)) !default
+$green-dark:        hsl(141, 53%,  (53% - 8%)) !default
+$green:        hsl(141, 53%,  53%) !default
+$green-light:        hsl(141, 53%,  (53% + 8%)) !default
+$green-lightest:        hsl(141, 53%,  (53% + 14%)) !default
+
+$turquoise-darker:    hsl(171, 100%, (41% - 14%)) !default
+$turquoise-dark:    hsl(171, 100%, (41% - 8%)) !default
+$turquoise:    hsl(171, 100%, 41%) !default
+$turquoise-light:    hsl(171, 100%, (41% + 8%)) !default
+$turquoise-lightest:    hsl(171, 100%, (41% + 14%)) !default
+
+$cyan-darker:         hsl(204, 71%,  (53% - 14%)) !default
+$cyan-dark:         hsl(204, 71%,  (53% - 8%)) !default
+$cyan:         hsl(204, 71%,  53%) !default
+$cyan-light:         hsl(204, 71%,  (53% + 8%)) !default
+$cyan-lightest:         hsl(204, 71%,  (53% + 14%)) !default
+
+$blue-darker:         hsl(217, 71%,  (53% - 14%)) !default
+$blue-dark:         hsl(217, 71%,  (53% - 8%)) !default
+$blue:         hsl(217, 71%,  53%) !default
+$blue-light:         hsl(217, 71%,  (53% + 8%)) !default
+$blue-lightest:         hsl(217, 71%,  (53% + 14%)) !default
+
+$purple-darker:       hsl(271, 100%, (71% - 14%)) !default
+$purple-dark:       hsl(271, 100%, (71% - 8%)) !default
+$purple:       hsl(271, 100%, 71%) !default
+$purple-light:       hsl(271, 100%, (71% + 8%)) !default
+$purple-lightest:       hsl(271, 100%, (71% + 14%)) !default
+
+$red-darker:          hsl(348, 86%, (61% - 14%)) !default    
+$red-dark:          hsl(348, 86%, (61% - 8%)) !default    
+$red:          hsl(348, 86%, 61%) !default    
+$red-light:          hsl(348, 86%, (61% + 8%)) !default    
+$red-lightest:          hsl(348, 86%, (61% + 14%)) !default    
+
+
+$primary-color: bulmaRgba($website-primary,1)
+$primary-color-lighter: bulmaLighten($primary-color, 20%)
+$primary-color-darker: bulmaDarken($primary-color, 20%)
+
+.has-background-primary-color
+    background-color: $primary-color !important
+
+.has-background-primary-color-lighter
+    background-color: $primary-color-lighter !important
+
+.has-background-primary-color-darker
+    background-color: $primary-color-darker !important
+
+
+//Company Logo
+$website-header-logo-width: 17.765625rem
+$website-header-logo-height: 3.25rem    
+
+// Typography
+
+// @font-face
+    // font-family: quote('Open Sans')
+    // src: local("Open Sans"), url("./../fonts/openSans/OpenSans-VariableFont_wdth,wght.ttf") format("truetype")
+    // font-variant-ligatures: none
+    // font-display: swap
+    // font-weight: normal
+    // font-style: normal
+// 
+// @font-face
+    // font-family: quote('Quicksand')
+    // src: local("Quicksand"), url("./../fonts/quicksand/Quicksand-VariableFont_wght.ttf") format("truetype")
+    // font-variant-ligatures: none
+    // font-display: swap
+    // font-weight: normal
+    // font-style: normal
+
+$google-font-primary: quote( "Open Sans" )
+$google-font-secondary: quote( "Quicksand" )
+$google-font-code: 'Quicksand'
+
+$family-sans-serif: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif !default    
+$family-serif: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif !default    
+$family-monospace: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !default
+$render-mode: optimizeLegibility !default
+
+$size-1: 3rem !default
+$size-2: 2.5rem !default
+$size-3: 2rem !default
+$size-4: 1.5rem !default
+$size-5: 1.25rem !default
+$size-6: 1rem !default
+$size-7: 0.75rem !default
+
+$weight-light: 300 !default
+$weight-normal: 400 !default
+$weight-medium: 500 !default
+$weight-semibold: 600 !default
+$weight-bold: 700 !default
+
+// Spacing
+
+$block-spacing: 1.5rem !default
+$column-gap: 0.75rem !default
+// Responsiveness
+
+// The container horizontal gap, which acts as the offset for breakpoints
+$gap: 32px !default
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$smallmobile: 568px !default
+
+$tablet: 769px !default
+// 960px container + 4rem
+$desktop: 960px + (2 * $gap) !default
+// 1152px container + 4rem
+$widescreen: 1152px + (2 * $gap) !default
+$widescreen-enabled: true !default
+// 1344px container + 4rem
+$fullhd: 1344px + (2 * $gap) !default
+$fullhd-enabled: true !default
+
+// Miscellaneous
+
+$easing: ease-out !default
+$radius-small: 2px !default
+$radius: 4px !default
+$radius-large: 6px !default
+$radius-rounded: 290486px !default
+$speed: 86ms !default
+
+// Flags
+
+$variable-columns: true !default
+$rtl: false !default

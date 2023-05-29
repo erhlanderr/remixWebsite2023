@@ -1,0 +1,371 @@
+// @import "../utilities/derived-variables"
+
+$button-transition: 0.3s
+// $link-hover-background: $button-hover-color !default
+// $link-hover: $button-hover-background-color !default
+
+.button
+  background: transparent 
+  &::after
+    content: ''  
+    position: absolute 
+    z-index: -1
+    transition: all $button-transition *1
+
+  // =floatUp($color)
+  //   &.tranistion-floatUp
+  //     transition: all $button-transition *1
+  //   &:hover,
+  //   &:active,
+  //   &:focus
+  //     color: $color !important
+  //     box-shadow: 0 0.5em 0.5em -0.4em $color !important
+  //     transform: translateY(-0.25em)
+  //     transition: all $button-transition *1
+
+// =transitionHover
+//   .button
+//     transition: all $button-transition
+//     &:hover,
+//     &:active,
+//     &:focus
+//       &::after
+//         background: $link-hover-background !important 
+//         opacity: 1
+//     &::after
+//       opacity: 0
+//       left: 0
+//       bottom: 0
+//       top: 0
+//       right: 0
+
+// =transitionFrom($value)
+//   .button
+//     transition: all $button-transition *1
+//     &:hover,
+//     &:active,
+//     &:focus
+//       &::after
+//         opacity: 1
+//         @if ($value == bottom or top)
+//           height: 100%
+//         @if ($value == left or right)
+//           width: 100%
+//     &::after
+//       @if ($value == bottom or top)
+//         left: 0
+//         width: 100%
+//         height: 0
+//         @if ($value == top)
+//           top: 0
+//         @if ($value == bottom)
+//           bottom: 0
+//       @if ($value == left or right)
+//         top: 0
+//         height: 100%
+//         width: 0
+//         @if ($value == left)
+//           left: 0
+//         @if ($value == right)
+//           right: 0
+//           left: unset
+//       opacity: 0
+//       background: $link-hover-background !important 
+
+// =transitionFromCenter($value)
+//   .button
+//     transition: all $button-transition *1
+//     overflow: hidden
+//     &:hover,
+//     &:active,
+//     &:focus
+//       &::after
+//         opacity: 1
+//         @if ($value == vertical)
+//           height: 100%
+//         @if ($value == horizontal)
+//           width: 100%
+//     &::after
+//       @if ($value == vertical)
+//         width: 101%
+//         height: 0
+//       @if ($value == horizontal)
+//         width: 0
+//         height: 103%
+//       top: 50%
+//       left: 50% 
+//       background: $link-hover-background !important 
+//       opacity: 0
+//       transform: translateX(-50%) translateY(-50%)
+
+// =transitionCircleFromCenter
+//   .button
+//     transition: all $button-transition *2
+//     overflow: hidden
+//     &:hover,
+//     &:active,
+//     &:focus
+//       &::after
+//         padding-top: 250%
+//         width: 250%
+//         opacity: 1
+//     &::after      
+//       border-radius: 50%
+//       width: 0%
+//       top: 50%
+//       left: 50%
+//       opacity: 0
+//       background: $link-hover-background !important 
+//       transform: translateX(-50%) translateY(-50%)
+
+=transitionCircleFromCorner($value)
+  .button
+    transition: all $button-transition *2
+    overflow: hidden
+    &:hover,
+    &:active,
+    &:focus
+      &::after
+        padding-top: 250%
+        width: 250%
+        opacity: 1
+    &::after
+      border-radius: 50%
+      width: 0%
+      @if $value == top-left
+        top: 0%
+        left: 0%
+        transform: translateX(-50%) translateY(-50%)
+      @else if $value == top-right
+        top: 0%
+        right: 0%
+        transform: translateX(50%) translateY(-50%)
+      @else if $value == bottom-left
+        bottom: 0%
+        left: 0%
+        transform: translateX(-50%) translateY(50%)
+      @else if $value == bottom-right
+        bottom: 0%
+        right: 0%
+        transform: translateX(50%) translateY(50%)
+      opacity: 0
+      // background: $link-hover-background
+
+// =transitionFromEdgeInner
+//   .button
+//     transition: all calc(#{$button-transition} *1.5)
+//     overflow: hidden
+//     &:hover,
+//     &:active,
+//     &:focus
+//       &::after
+//         box-shadow: inset 0 0 0 2em $link-hover-background !important 
+//     &::after
+//       width: 100%
+//       height: 100%
+//       top: 50%
+//       left: 50%
+//       background: none
+//       transform: translateX(-50%) translateY(-50%)
+
+@keyframes pulse 
+  0% 
+    box-shadow: 0 0 0 0 $link-hover-background !important 
+    opacity: 1
+  100% 
+    opacity: 0
+    box-shadow: 0 0 0 1em $link-hover-background !important 
+
+// =transitionFromEdgePulse
+//   .button
+//     &:hover,
+//     &:active,
+//     &:focus
+//       &::after
+//         animation: pulse calc(#{$button-transition} *1.5)
+//     &::after
+//       width: 100%
+//       height: 100%
+//       top: 50%
+//       left: 50%
+//       background: none
+//       transform: translateX(-50%) translateY(-50%)
+
+
+.wrapper
+  // &.are-cta-hover
+  //   +transitionHover
+
+  // &.are-cta-fill-from-bottom
+  //   +transitionFrom(bottom)    
+
+  // &.are-cta-fill-from-top
+  //   +transitionFrom(top)    
+
+  // &.are-cta-fill-from-left
+  //   +transitionFrom(left)
+    
+  // &.are-cta-fill-from-right
+  //   +transitionFrom(right)
+
+  // &.are-cta-fill-from-center-vertical
+  //   +transitionFromCenter(vertical)
+
+  // &.are-cta-fill-from-center-horizontal
+  //   +transitionFromCenter(horizontal)
+
+  // &.are-cta-circle-from-corner-top-left
+  //   +transitionCircleFromCorner(top-left)
+
+  // &.are-cta-circle-from-corner-bottom-left
+  //   +transitionCircleFromCorner(bottom-left)
+
+  // &.are-cta-circle-from-corner-top-right
+  //   +transitionCircleFromCorner(top-right)
+
+  &.are-cta-circle-from-corner-bottom-right
+    +transitionCircleFromCorner(bottom-right)
+
+  // &.are-cta-circle-from-center
+  //   +transitionCircleFromCenter
+
+  // &.are-cta-from-edge-inner
+  //   +transitionFromEdgeInner
+
+  // &.are-cta-from-edge-pulse
+  //   +transitionFromEdgePulse
+
+
+// .button
+
+//   &.btn-1e
+//     transition: all $button-transition
+//     overflow: hidden
+//     &:hover
+//       color: #fff
+//       &::after
+//         height: 260%
+//         opacity: 1
+//     &::after
+//       transition: all $button-transition *1
+//       width: 100%
+//       height: 0%
+//       top: 50%
+//       left: 50%
+//       opacity: 0
+//       background: #0e83cd
+//       transform: translateX(-50%) translateY(-50%) rotate(45deg)
+
+
+//   &.btn-1k
+//     transition: all $button-transition *1
+//     &:hover
+//       color: #0e83cd !important
+//       box-shadow: 0 0.5em 0.5em -0.4em #0e83cd !important
+//       transform: translateY(-0.25em)
+//       transition: all $button-transition *1
+
+//   @keyframes scaleUp 
+//     0%
+//       transform: scale(1)
+//       opacity: 1
+//     90%
+//       transform: scale(2)
+//       opacity: 0
+//     100% 
+//       opacity: 0
+//       transform: scale(0)
+
+//   @keyframes scaleReplace 
+//     0%
+//       opacity: 0
+//     90%
+//       opacity: 0
+//       transform: scale(0)
+//     100% 
+//       opacity: 1
+//       transform: scale(1)
+
+//   &.btn-1l
+//     &:hover
+//       .icon
+//         svg
+//           &:first-child            
+//             animation: scaleUp $button-transition *2
+//             animation-iteration-count: 1
+//             animation-fill-mode: forwards
+//           &:last-child            
+//             animation: scaleReplace $button-transition *2
+//             animation-iteration-count: 1
+//             animation-fill-mode: forwards
+//     .icon
+//       position: relative
+//       svg
+//         &:first-child            
+//           transform: scale(1)
+//           position: absolute
+//         &:last-child
+//           transform: scale(0)
+//           position: absolute
+
+//   @keyframes shake 
+//     0%, 100%
+//       transform: translateX(0)
+//     10%, 30%, 50%, 70%, 90% 
+//       transform: translateX(-0.25rem)
+//     20%, 40%, 60%, 80% 
+//       transform: translateX(0.25rem)
+
+//   &.btn-1m
+//     &:hover
+//       animation: shake calc(#{$button-transition} *1.5)
+
+//   &.btn-1n
+//     overflow: hidden
+//     flex-direction: column
+//     &:hover
+//       .icon
+//         transition: all calc(#{$button-transition} *1.5)
+//         transform: translateY(50%)  
+//       span:not(.icon)
+//         transition: all calc(#{$button-transition} *1.5)
+//         transform: translateY(200%)  
+//     .icon,
+//     span:not(.icon)
+//       display: inline-block
+//       width: 100%
+//       height: 100%
+//       top: 0
+//       left: 0
+//       transition: all calc(#{$button-transition} *1.5)
+//     .icon
+//       margin: 0 !important
+//       transform: translateY(-100%)  
+//     span:not(.icon)
+//       transform: translateY(-50%)  
+
+//   &.is-slide-over
+//     overflow: hidden
+//     flex-direction: column
+//     .slide-wrapper
+//     &:hover
+//       .slide-out
+//         transition: all calc(#{$button-transition} *1.5)
+//         transform: translateX(200%) translateY(50%)
+//       .slide-in
+//         transition: all calc(#{$button-transition} *1.5)
+//         transform: translateX(0%) translateY(-50%) 
+//     .slide-out,
+//     .slide-in
+//       margin:
+//         left: 100%
+//         right: 100%
+//       display: flex
+//       transition: all calc(#{$button-transition} *1.5)
+//     .slide-out
+//       margin: 0 !important
+//       transform: translateX(0%) translateY(50%)
+//     .slide-in
+//       transform: translateX(-200%) translateY(-50%)
+    
+    

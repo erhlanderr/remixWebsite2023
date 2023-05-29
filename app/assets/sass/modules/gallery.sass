@@ -1,0 +1,326 @@
+// @import "../utilities/mixins.sass"
+// @import "../grid/columns.sass"
+
+=heroBackground
+  background-color: #4a4a4a
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center center
+  position: absolute
+  top: 0
+  right: 0 
+  bottom: 0 
+  left: 0
+
+section, .section
+  &.gallery
+    padding: 0.75rem 
+    .container
+      padding-left: 0
+      padding-right: 0
+      .tile
+        &.is-ancestor
+          padding: 0
+          flex-wrap: wrap
+          +touch
+            display: flex
+        .tile
+          &.is-parent
+            padding: 0
+            +touch
+              display: flex
+              flex-basis: 100%
+              flex-wrap: wrap
+            &.has-gallery
+              @for $i from 1 through 24
+                &-#{$i}
+                  @if $i % 2 == 0
+                    .tile
+                      &.is-child
+                        +touch
+                          display: block
+                          flex-basis: 33.333%
+                        +mobile
+                          display: block
+                          flex-basis: 50%
+                  @else 
+                    .tile
+                      &.is-child
+                        +touch
+                          display: block
+                          flex-basis: 33.333%
+                          &:nth-last-child(1), &:nth-last-child(2)
+                            figure
+                              padding:
+                                top: 66.666666%
+                        +mobile
+                          display: block
+                          flex-basis: 50%
+                          &:nth-last-child(2)
+                            figure
+                              padding:
+                                top: 100%
+                          &:nth-last-child(1)
+                            figure
+                              padding:
+                                top: 66.666666%
+                        
+                
+          .tile
+            &.is-child
+              padding: 0                  
+              .content
+                figure
+                  margin: 0 
+                  img
+                    padding: 0.25rem
+                    object-fit: cover
+
+.grid-tiles
+  display: flex
+  flex-flow: row wrap
+  .columns
+    flex-flow: row wrap
+  .tile
+    display: block
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 0
+    .tile-container
+      position: relative
+      .image
+        width: 100%
+        height: 100%
+
+.grid-with-tiles
+  display: flex
+  flex-flow: row wrap
+  .columns
+    flex-flow: row wrap
+
+  .tile
+    display: block
+    flex-grow: 1
+    flex-shrink: 0
+    flex-basis: auto
+    // width: calc( (100% / 3))
+    // +mobile
+    //   width: 50%
+
+    .tile-container
+      position: relative
+      .overlay
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+      .image
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        width: 100%
+        height: 100%
+
+
+// .gallery-tiles
+//   @extend %columns
+//   display: flex
+//   flex-flow: row wrap
+//   .tile
+//     display: block
+//     flex-grow: 1
+//     flex-shrink: 1
+//     flex-basis: 0
+//     .tile-container
+//       position: relative
+//       .image
+//         width: 100%
+//         height: 100%
+
+.carousel
+  &.gallery-with-selection
+    .carousel-cell
+      flex-direction: column
+      .tile
+        figure
+          &.image
+            width: 100%
+
+.gallery-with-selection
+  flex-wrap: wrap
+  display: flex
+  height: 100%
+  flex-direction: column
+  .gallery-thumbnails
+    display: flex
+    flex-grow: 0
+    flex-shrink: 1
+    flex-wrap: wrap
+    width: 100%
+    flex-direction: row
+  .gallery-main
+    flex-grow: 1
+    flex-shrink: 1
+    .gallery-tile
+      flex-basis: auto
+      max-width: 100%
+      height: 100%
+      .tile
+        position: relative
+        width: 100%
+        height: 100%
+        figure
+          position: absolute
+          top: 0
+          right: 0
+          bottom: 0
+          left: 0
+
+  @for $i from 1 through 12
+    &.is-col-#{$i}
+      .gallery-tile
+        flex-basis: calc(100% /#{$i})
+        max-width: calc(100% /#{$i})
+        +mobile
+          flex-basis: calc(100% /2)
+          max-width: calc(100% /2)
+  // .gallery-tile
+  //   @extend %column
+  //   .tile
+  //     .image
+  //       padding-top: 100%
+
+// .gallery-with-columns
+//   @extend %columns
+//   display: flex
+//   flex-wrap: wrap
+//   @for $i from 1 through 12
+//     &.is-col-#{$i}
+//       .tile
+//         flex-basis: calc(100% /#{$i})
+//         max-width: calc(100% /#{$i})
+//         +mobile
+//           flex-basis: calc(100% /2)
+//           max-width: calc(100% /2)
+  // .tile
+  //   @extend %column
+  //   .tile
+  //     .image
+  //       padding-top: 100%
+
+
+
+.masonry-with-columns
+  flex-wrap: wrap
+  margin: -0.75rem
+  @for $i from 1 through 12
+    &.is-col-#{$i}
+      columns: $i
+      +touch
+        columns: 2
+      +mobile
+        columns: 1
+
+      .column
+        display: block
+        flex-grow: 0
+        flex-basis: (100% / #{$i})
+        &:nth-of-type(even)
+          height: 24rem
+        &:nth-of-type(odd)          
+          height: 36rem
+
+
+.tile
+  .image 
+    .overlay
+      z-index: 2 !important
+      position: absolute
+    .tile
+      &-content
+        position: absolute
+        top: 0
+        z-index: 1
+        left: 0
+        right: 0
+        bottom: 0
+        display: flex
+        flex-direction: column
+
+      &-header
+        flex-grow: 0
+        flex-shrink: 1
+        flex-basis: auto
+        display: inline-flex
+        justify-content: center
+        & > *
+            align-self: center
+
+      &-body
+        flex-grow: 1
+        flex-shrink: 1
+        flex-basis: auto
+        display: inline-flex
+        justify-content: center
+        & > *
+            align-self: center
+
+      &-footer
+        flex-grow: 0
+        flex-shrink: 1
+        flex-basis: auto                
+        display: inline-flex
+        justify-content: center
+        & > *
+            align-self: center
+
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+  
+  .tile
+    &.is-child
+      figure
+        position: relative
+        img
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+
+
+    .hero-background
+      +heroBackground
+      &-mobile
+        +mobile
+          +heroBackground          
+      // &-tablet
+      //   +tablet
+      //     +heroBackground          
+      // &-tablet-only
+      //   +tablet-only
+      //     +heroBackground          
+      &-touch
+        +touch
+          +heroBackground          
+      &-desktop
+        +desktop
+          +heroBackground          
+      // &-desktop-only
+      //   +desktop-only
+      //     +heroBackground          
+      // &-until-widescreen
+      //   +until-widescreen
+      //     +heroBackground          
+      // &-widescreen
+      //   +widescreen
+      //     +heroBackground          
+      // &-widescreen-only
+      //   +widescreen-only
+      //     +heroBackground          
+      // &-until-fullhd
+      //   +until-fullhd
+      //     +heroBackground          
+      // &-fullhd
+      //   +fullhd
+      //     +heroBackground          

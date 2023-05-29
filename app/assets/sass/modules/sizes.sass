@@ -1,0 +1,91 @@
+// @import "../utilities/mixins.sass"
+
+$sizes-shortcuts: ("width": "w", "height": "h") !default
+$sizes-values: ("2":  2rem, "3":  3rem, "4":  4rem, "6": 6rem, "8":  8rem, "12": 12rem, "16": 16rem, "20": 20rem, "24": 24rem) !default
+
+@each $property, $shortcut in $sizes-shortcuts
+    @each $name, $value in $sizes-values 
+        // All directions
+        .#{$shortcut}-#{$name}
+            #{$property}: $value
+            &-mobile
+                +mobile
+                    #{$property}: $value !important
+            &-tablet
+                +tablet
+                    #{$property}: $value !important
+            // &-tablet-only
+            //     +tablet-only
+            //         #{$property}: $value !important
+            // &-touch
+            //     +touch
+            //         #{$property}: $value !important
+            &-desktop
+                +desktop
+                    #{$property}: $value !important
+            // &-desktop-only
+            //     +desktop-only
+            //         #{$property}: $value !important
+            // &-until-widescreen
+            //     +until-widescreen
+            //         #{$property}: $value !important
+            // &-widescreen
+            //     +widescreen
+            //         #{$property}: $value !important
+            // &-widescreen-only
+            //     +widescreen-only
+            //         #{$property}: $value !important
+            // &-until-fullhd
+            //     +until-fullhd
+            //         #{$property}: $value !important
+            // &-fullhd
+            //     +fullhd
+            //         #{$property}: $value !important
+
+        .size-#{$name}
+            width: $value !important
+            height: $value !important
+            &-mobile
+                +mobile
+                    width: $value !important
+                    height: $value !important
+            &-tablet
+                +tablet
+                    width: $value !important
+                    height: $value !important
+            // &-tablet-only
+            //     +tablet-only
+            //         width: $value !important
+            //         height: $value !important
+            // &-touch
+            //     +touch
+            //         width: $value !important
+            //         height: $value !important
+            &-desktop
+                +desktop
+                    width: $value !important
+                    height: $value !important
+            // &-desktop-only
+            //     +desktop-only
+            //         width: $value !important
+            //         height: $value !important
+            // &-until-widescreen
+            //     +until-widescreen
+            //         width: $value !important
+            //         height: $value !important
+            // &-widescreen
+            //     +widescreen
+            //         width: $value !important
+            //         height: $value !important
+            // &-widescreen-only
+            //     +widescreen-only
+            //         width: $value !important
+            //         height: $value !important
+            // &-until-fullhd
+            //     +until-fullhd
+            //         width: $value !important
+            //         height: $value !important
+            // &-fullhd
+            //     +fullhd
+            //         width: $value !important
+            //         height: $value !important

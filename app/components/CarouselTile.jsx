@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ExpandingTextBox from "./ExpandingTextBox";
+import { Heading } from "@chakra-ui/react";
+import { Header5 } from "./helpers/Header";
 
 function CarouselTile({
   carouselTitle,
@@ -28,9 +30,8 @@ function CarouselTile({
       <div className="card-image">
         <article className="tile">
           <figure
-            className={`image ${
-              carouselImageSize ? "is-" + carouselImageSize : "is-3by2"
-            }`}
+            className={`image ${carouselImageSize ? "is-" + carouselImageSize : "is-3by2"
+              }`}
           >
             <div className="overlay">
               <div className="overlay-content">
@@ -64,11 +65,9 @@ function CarouselTile({
     return (
       <div className="card-header has-background-transparent is-relative is-flex-direction-row is-justify-content-center">
         <div
-          className={`icon is-rounded is-relative zi-2 ${
-            carouselIconColor === carouselThisTileColour && "has-inset-border"
-          } ${carouselIconLarger === true ? "is-larger-x2" : "is-large-x2"} ${
-            carouselIconColor && `has-background-${carouselIconColor}`
-          } ${carouselCustomIconClasses && `${carouselCustomIconClasses}`}`}
+          className={`icon is-rounded is-relative zi-2 ${carouselIconColor === carouselThisTileColour && "has-inset-border"
+            } ${carouselIconLarger === true ? "is-larger-x2" : "is-large-x2"} ${carouselIconColor && `has-background-${carouselIconColor}`
+            } ${carouselCustomIconClasses && `${carouselCustomIconClasses}`}`}
         >
           {carouselNumericalIcons ? (
             <span className="is-size-2 has-text-weight-bold">
@@ -81,13 +80,12 @@ function CarouselTile({
           )}
         </div>
         <div
-          className={`is-half-filled zi-1 ${
-            carouselThisTileColour
+          className={`is-half-filled zi-1 ${carouselThisTileColour
               ? "has-background-" + carouselThisTileColour
               : carouselTileColour
-              ? "has-background-" + carouselTileColour
-              : "has-background-white"
-          }`}
+                ? "has-background-" + carouselTileColour
+                : "has-background-white"
+            }`}
         ></div>
       </div>
     );
@@ -95,9 +93,8 @@ function CarouselTile({
 
   return (
     <div
-      className={`box ${
-        textAlignment ? "has-text-" + textAlignment : "has-text-left"
-      }`}
+      className={`box ${textAlignment ? "has-text-" + textAlignment : "has-text-left"
+        }`}
     >
       {carouselImage &&
         (carouselCtaLink ? (
@@ -143,21 +140,21 @@ function CarouselTile({
 
       {(carouselTitle || carouselCtaLink) && (
         <div
-          className={`card-content is-justify-content-space-between ${
-            carouselIcon ? (carouselIconLarger === true ? "pb-7" : "pb-6") : ""
-          } ${
-            carouselThisTileColour
+          className={`card-content is-justify-content-space-between ${carouselIcon ? (carouselIconLarger === true ? "pb-7" : "pb-6") : ""
+            } ${carouselThisTileColour
               ? "has-background-" + carouselThisTileColour
               : carouselTileColour
-              ? "has-background-" + carouselTileColour
-              : "has-background-white"
-          }`}
+                ? "has-background-" + carouselTileColour
+                : "has-background-white"
+            }`}
         >
           {(carouselTitle || carouselCopy) && (
             <div className="content">
               <div className="block">
                 {!carouselTitle ? null : (
-                  <h4 className="title is-5">{carouselTitle}</h4>
+                  <Header5>
+                    {carouselTitle}
+                  </Header5>
                 )}
                 {carouselCopy && (
                   <ExpandingTextBox textBoxCopy={carouselCopy} />

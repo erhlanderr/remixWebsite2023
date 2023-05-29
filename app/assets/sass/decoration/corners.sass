@@ -1,0 +1,11 @@
+.no-radius
+    border-radius: 0px !important
+
+$radius-percentage: ("0": 0rem, "1": .125rem, "2": .25rem, "3": .5rem, "4": .75rem, "5": 1rem, "6": 1.25rem, "7": 1.5rem, "8": 2rem, "9": 2.5rem, "f": 100%) !default    
+
+@each $name, $value in $radius-percentage 
+    .is-rounded-#{$name}
+        border-radius: $value !important
+    .box
+        .is-rounded-#{$name}
+            border-radius: $value !important 

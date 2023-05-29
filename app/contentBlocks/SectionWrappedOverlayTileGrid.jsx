@@ -1,18 +1,14 @@
 import React from "react";
 
-import SectionWrappers from "../components/sectionWrappers";
-import Grid from "../components/gridModule";
+
+import Grid from "../components/layout/GridLayout";
 import OverLayTileBackgroundImage from "../components/OverLayTileBackgroundImage";
 
 const SectionWrappedOverlayTileGrid = ({
   tiles,
-  textAlignment,
-  sectionCustomClasses,
-  tileColor,
   tileColorActive,
   columnDesktop,
   columnTablet,
-  type
 }) => {
 
 

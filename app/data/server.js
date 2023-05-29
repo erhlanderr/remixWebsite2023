@@ -24,12 +24,13 @@ import { FSWatcher } from "chokidar";
 const PORT = 8000;
 const app = express();
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 1;
 
 //
 //  redirects!!
 app.get("/home/", (req, res) => res.redirect(302, "/"));
-app.get("/contact-us", (req, res) => res.redirect(302, "/contact-us"));
+app.get("/about/", (req, res) => res.redirect(302, "/about-us"));
+app.get("/contact", (req, res) => res.redirect(302, "/contact-us"));
 app.get("/the-dynamics-365-sales-accelerator", (req, res) =>
   res.redirect(302, "/services/the-dynamics-365-sales-accelerator")
 );

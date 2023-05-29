@@ -1,19 +1,16 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
-import Grid from "../components/gridModule"
+
+import Grid from "../components/layout/GridLayout"
 import MarkdownContent from "../components/markdownContent";
+import { Heading } from "@chakra-ui/react";
+import { Header2, Subtitle4 } from "../components/helpers/Header";
 
 function SectionWrappedContentBlockGrid({
-  sectionSize,
   textAlignment,
-  sectionCustomClasses,
-  sectionBackgroundColour,
-  sectionIsEqual,
   markdown,
   columnWidth,
   title,
   subtitle,
-  type,
 }) {
   const columnOffsetWidth = (columnWidth) => {
     switch (columnWidth) {
@@ -43,16 +40,19 @@ function SectionWrappedContentBlockGrid({
             >
               <div className="section-title has-title-dividers">
                 <div className="title-decoration">
-                  <h2 className="title is-2 has-text-centered">{title}</h2>
+                  <Header2>
+                    {title}
+                  </Header2>
                 </div>
               </div>
             </div>
           ) : null}
           {subtitle ? (
             <div className={`block ${markdown ? "mb-6" : null}`}>
-              <h4 className="subtitle is-4 is-line-height-medium has-text-centered has-text-weight-normal">
+              <Subtitle4
+              >
                 {subtitle}
-              </h4>
+              </Subtitle4>
             </div>
           ) : null}
           {markdown && (

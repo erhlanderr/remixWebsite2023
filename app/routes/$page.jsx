@@ -12,7 +12,7 @@ export const loader = async ({ request, params, context }) => {
   } else {
     route = "/"
   }
-  console.log("params ==>", params.page);
+  // console.log("params ==>", params.page);
 
   const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route);
   const data = await res.json();

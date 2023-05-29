@@ -1,39 +1,37 @@
+import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Header5 } from "./helpers/Header";
 
 function IconContentModule({
   title,
-  children, 
+  children,
   icon,
-  image, 
+  image,
   iconAlt,
   iconLink,
   iconLarger,
   iconColor,
-  customIconClasses, 
+  customIconClasses,
   columnDesktop,
   columnTablet,
   columnMobile,
 }) {
   return (
     <div
-      className={`column is-flex is-flex-direction-column ${
-        columnDesktop ? "is-" + columnDesktop + "-desktop" : null
-      } ${columnTablet ? "is-" + columnTablet + "-tablet" : null} ${
-        columnMobile ? "is-" + columnMobile + "-mobile" : "is-12-mobile"
-      }`}
+      className={`column is-flex is-flex-direction-column ${columnDesktop ? "is-" + columnDesktop + "-desktop" : null
+        } ${columnTablet ? "is-" + columnTablet + "-tablet" : null} ${columnMobile ? "is-" + columnMobile + "-mobile" : "is-12-mobile"
+        }`}
     >
-      <div className="block">
-        <div className="is-inline-block">
+      <Box>
+        <Box display="flex">
           <>
             {iconLink ? (
               <Link to={iconLink}>
                 <div
-                  className={`icon is-rounded ${
-                    iconLarger === true ? "is-larger-x2" : "is-large-x2"
-                  } ${iconColor && `has-background-${iconColor}`} ${
-                    customIconClasses && `${customIconClasses}`
-                  }`}
+                  className={`icon is-rounded ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
+                    } ${iconColor && `has-background-${iconColor}`} ${customIconClasses && `${customIconClasses}`
+                    }`}
                 >
                   {icon && <i className={`fas fa-${icon} fa-2x`}></i>}
                   {image && (
@@ -42,15 +40,13 @@ function IconContentModule({
                       alt={iconAlt ? iconAlt : "MethodWorx"}
                     />
                   )}
-                </div>   
-              </Link>  
+                </div>
+              </Link>
             ) : (
               <div
-                className={`icon is-rounded ${
-                  iconLarger === true ? "is-larger-x2" : "is-large-x2"
-                } ${iconColor && `has-background-${iconColor}`} ${
-                  customIconClasses && `${customIconClasses}`
-                }`}
+                className={`icon is-rounded ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
+                  } ${iconColor && `has-background-${iconColor}`} ${customIconClasses && `${customIconClasses}`
+                  }`}
               >
                 {icon && <i className={`fas fa-${icon} fa-2x`}></i>}
                 {image && (
@@ -62,15 +58,17 @@ function IconContentModule({
               </div>
             )}
           </>
-        </div>
-      </div>
+        </Box>
+      </Box>
 
       {title || children ? (
         <div className="block">
           <div className="content">
             {title && (
               <div className="block">
-                <h4 className="title is-5">{title}</h4>
+                <Header5>
+                  {title}
+                </Header5>
               </div>
             )}
             {children && <div className="block">{children}</div>}

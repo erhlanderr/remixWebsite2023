@@ -1,5 +1,7 @@
 import React from "react";
 import Markdown from "markdown-to-jsx";
+import { Heading } from "@chakra-ui/react";
+import { Header6 } from "./helpers/Header";
 
 function CarouselBanner({
   carouselTestimonial,
@@ -91,9 +93,10 @@ function CarouselBanner({
                       !carouselTestimonialAuthorAttribute ? null : (
                         <div className="attribute">
                           {carouselTestimonialAuthor && (
-                            <h3 className="title is-6">
+                            <Header6>
                               {carouselTestimonialAuthor}
-                            </h3>
+                            </Header6>
+                            
                           )}
                           {carouselTestimonialAuthorAttribute && (
                             <p className="subtitle is-7">

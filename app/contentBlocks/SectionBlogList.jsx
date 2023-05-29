@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BlogListArticle from "../components/BlogListArticle";
-import SectionWrappers from "../components/sectionWrappers";
+
 import BlogListHeader from "../components/BlogListHeader.jsx";
 import { useContentContext } from "../content/ContentContext";
 import { useLocation } from "react-router-dom";
@@ -33,9 +33,9 @@ export const loader = async ({ request, params, context }) => {
     console.log("params res ==>", article);
 
     const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route + "/" + article);
-    console.log("params res ==>", res);
+    // console.log("params res ==>", res);
     const data = await res.json();
-    console.log("params data ==>", data);
+    // console.log("params data ==>", data);
 
     return json({
         // page: data,
@@ -44,10 +44,12 @@ export const loader = async ({ request, params, context }) => {
     });
 }
 
-function BlogList({ sectionSize, sectionIsEqual, sectionHasBackground }) {
+function BlogList({ sectionSize, sectionIsEqual, sectionHasBackground, children }) {
     const { route, data } = useLoaderData();
 
-    console.log("data ==>", data);
+    console.log("data ==>", data, sectionSize,
+    sectionIsEqual,
+    sectionHasBackground);
     //   const BlogListClassesLayout =
     //     "is-one-third-desktop is-half-tablet is-full-mobile";
     //   const BlogPreviewMax = "128";

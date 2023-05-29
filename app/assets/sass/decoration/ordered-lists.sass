@@ -1,0 +1,58 @@
+// @import "../utilities/_all.sass"
+// @import "../grid/columns.sass"
+// @import "../layout/section.sass"
+
+
+.ordered-list
+    flex-wrap: wrap   
+    display: flex !important
+    @for $i from 1 through 6
+        .list-order-#{$i}
+            order: $i
+            flex-basis: auto
+            &-mobile
+                flex-basis: auto
+                +mobile
+                    order: $i
+            &-tablet
+                flex-basis: auto 
+                +tablet
+                    order: $i
+            // &-tablet-only
+            //     flex-basis: auto
+            //     +tablet-only
+            //         order: $i
+            // &-touch
+            //     flex-basis: auto
+            //     +touch
+            //         order: $i
+            &-desktop
+                flex-basis: auto
+                +desktop
+                    order: $i
+            // &-desktop-only
+            //     flex-basis: auto
+            //     +desktop-only
+            //         order: $i
+            // &-until-widescreen
+            //     flex-basis: auto
+            //     +until-widescreen
+            //         order: $i
+            // &-widescreen
+            //     flex-basis: auto
+            //     +widescreen
+            //         order: $i
+            // &-widescreen-only
+            //     flex-basis: auto
+            //     +widescreen-only
+            //         order: $i
+            // &-until-fullhd
+            //     flex-basis: auto
+            //     +until-fullhd
+            //         order: $i
+            // &-fullhd
+            //     flex-basis: auto
+            //     +fullhd
+            //         order: $i
+
+

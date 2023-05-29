@@ -1,5 +1,5 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
+
 import Grid from "./partials/Grid";
 import IconContentModule from "./IconContentModule";
 import Markdown from "markdown-to-jsx";

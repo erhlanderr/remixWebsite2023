@@ -1,0 +1,249 @@
+// // @import "../utilities/_all"
+
+$pagination-color: $text-strong !default
+$pagination-border-color: $border !default
+$pagination-margin: -0.25rem !default
+$pagination-min-width: $control-height !default
+
+$pagination-item-font-size: 1em !default
+$pagination-item-margin: 0.25rem !default
+$pagination-border-radius: $radius-rounded !default
+$pagination-item-padding-left: 0.5em !default
+$pagination-item-padding-right: 0.5em !default
+
+$pagination-hover-color: $link-hover !default
+$pagination-hover-border-color: $link-hover-border !default
+
+$pagination-focus-color: $link-focus !default
+$pagination-focus-border-color: $link-focus-border !default
+
+$pagination-active-color: $link-active !default
+$pagination-active-border-color: $link-active-border !default
+
+$pagination-disabled-color: $text-light !default
+$pagination-disabled-background-color: $border !default
+$pagination-disabled-border-color: $border !default
+
+$pagination-current-color: $link-invert !default
+$pagination-current-background-color: $link !default
+$pagination-current-border-color: $link !default
+
+$pagination-ellipsis-color: $grey-light !default
+
+$pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2)
+
+$pagination-spacing: ("no": 0rem, "small": 0.125rem, "medium": 0.25rem, "large": 0.5rem) !default
+@each $name, $value in $pagination-spacing
+  .pagination
+    &.has-#{$name}-spacing
+      margin: -($value)
+      .pagination-previous,
+      .pagination-next,
+      .pagination-link,
+      .pagination-ellipsis
+        margin: $value
+
+$pagination-radius: ("no": 0px, "small": $radius-small, "medium": $radius, "large": $radius-large) !default
+@each $name, $value in $pagination-radius
+  .pagination
+    &.has-#{$name}-radius
+      .pagination-previous,
+      .pagination-next,
+      .pagination-link,
+      .pagination-ellipsis
+        border-radius: $value
+    &.has-no-radius
+      .pagination-previous
+        margin-right: -1px
+      .pagination-next
+        margin-left: -1px
+
+
+.pagination
+  @extend %block
+  font-size: $size-normal
+  margin: $pagination-margin
+  // Sizes
+  &.is-small
+    font-size: $size-small
+  &.is-medium
+    font-size: $size-medium
+  &.is-large
+    font-size: $size-large
+  &.is-rounded
+    .pagination-previous,
+    .pagination-next
+      padding-left: 1em
+      padding-right: 1em
+      border-radius: $pagination-border-radius
+    .pagination-link
+      border-radius: $pagination-border-radius
+
+.pagination,
+.pagination-list
+  align-items: center
+  display: flex
+  justify-content: center
+  text-align: center
+
+.pagination-previous,
+.pagination-next,
+.pagination-link,
+.pagination-ellipsis
+  @extend %control-inherit
+  @extend %unselectable
+  // font-size: $pagination-item-font-size
+  justify-content: center !important
+  margin: $pagination-item-margin
+  padding-left: $pagination-item-padding-left
+  padding-right: $pagination-item-padding-right
+  text-align: center
+
+.pagination-previous,
+.pagination-next,
+.pagination-link
+  border-color: $pagination-border-color
+  color: $pagination-color
+  min-width: $pagination-min-width
+  &:hover
+    border-color: $pagination-hover-border-color
+    color: $pagination-hover-color
+  &:focus
+    border-color: $pagination-focus-border-color
+  &:active
+    box-shadow: $pagination-shadow-inset
+  &[disabled]
+    background-color: $pagination-disabled-background-color
+    border-color: $pagination-disabled-border-color
+    box-shadow: none
+    color: $pagination-disabled-color
+    opacity: 0.5
+
+.pagination-previous,
+.pagination-next
+  padding-left: 0.75em
+  padding-right: 0.75em
+  white-space: nowrap
+
+.pagination-link
+  &.is-current
+    background-color: $pagination-current-background-color
+    border-color: $pagination-current-border-color
+    color: $pagination-current-color
+
+.pagination-ellipsis
+  color: $pagination-ellipsis-color
+  pointer-events: none
+  border: 0px !important
+
+.pagination-list
+  flex-wrap: wrap
+
++mobile
+  .pagination
+    flex-wrap: wrap
+    &.is-condensed
+      .pagination-previous
+        order: 1
+        flex-grow: 0
+      .pagination-list
+        flex-grow: 0
+        order: 2
+      .pagination-next
+        flex-grow: 0
+        order: 3
+    &.is-rounded
+      .pagination-previous,
+      .pagination-next
+        flex-grow: 0
+
+  .pagination-previous,
+  .pagination-next
+    flex-grow: 1
+    flex-shrink: 1
+  .pagination-list
+    li
+      flex-grow: 1
+      flex-shrink: 1
+
++tablet-only
+  .pagination
+    flex-wrap: wrap
+    &.is-condensed
+      .pagination-previous
+        order: 1
+        flex-grow: 0
+      .pagination-list
+        flex-grow: 0
+        order: 2
+      .pagination-next
+        flex-grow: 0
+        order: 3
+    &.is-rounded
+      .pagination-previous,
+      .pagination-next
+        flex-grow: 0
+
+  .pagination-previous,
+  .pagination-next
+    flex-grow: 1
+    flex-shrink: 1
+  .pagination-list
+    li
+      flex-grow: 1
+      flex-shrink: 1
+
+
++desktop
+  .pagination-list
+    flex-grow: 1
+    flex-shrink: 1
+    justify-content: flex-start
+    order: 1
+  .pagination-previous
+    order: 2
+  .pagination-next
+    order: 3
+  .pagination
+    justify-content: space-between
+    &.is-condensed
+      justify-content: center
+      .pagination-previous
+        order: 1
+      .pagination-list
+        flex-grow: 0
+        order: 2
+      .pagination-next
+        order: 3
+      &.is-left
+        justify-content: flex-start
+        .pagination-previous
+          order: 1
+        .pagination-list
+          order: 2
+        .pagination-next
+          order: 3
+      &.is-right
+        justify-content: flex-end
+        .pagination-previous
+          order: 1
+        .pagination-list
+          order: 2
+        .pagination-next
+          order: 3
+    &.is-centered
+      .pagination-previous
+        order: 1
+      .pagination-list
+        justify-content: center
+        order: 2
+      .pagination-next
+        order: 3
+    &.is-right
+      .pagination-previous
+        order: 1
+      .pagination-next
+        order: 2
+      .pagination-list
+        justify-content: flex-end
+        order: 3

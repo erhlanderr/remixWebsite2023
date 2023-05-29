@@ -1,0 +1,475 @@
+// @import '../utilities/initial-variables'
+// @import '../utilities/derived-variables'
+    
+.section-title
+    display: block
+
+$headerbackground: $primary-light
+
+$header-decoration-color:  $primary
+$header-decoration-outline-color: $primary-dark
+
+$titleDividerLine: 3rem
+
+$titleDividerGap: 0.75rem
+
+$marginDivider: 0.125rem
+
+$header-decoration-border-small: 1px
+$header-decoration-border-medium: 2px
+$header-decoration-border-large: 4px
+
+// %headerIcon
+//     width: 100% !important
+//     height: 100% !important
+//     z-index: 2
+//     position: relative
+
+// =headerIcon($headerIcon: 1.33rem)
+//     .svg-inline--fa
+//         width: $headerIcon
+//         height: $headerIcon
+
+=round($iconHeight: 4rem)
+    width: $iconHeight 
+    height: $iconHeight 
+    display: inline-block
+    position: relative
+    z-index: 1
+    background-color: $headerbackground
+    border-radius: $radius-rounded
+    .icon
+        @extend %headerIcon
+
+=roundBorder($iconHeight: 4rem, $iconborderwidth: 0.25rem)
+    width: $iconHeight 
+    height: $iconHeight 
+    display: inline-block
+    position: relative
+    z-index: 1
+    background-color: $headerbackground
+    border-radius: $radius-rounded
+    border: solid $iconborderwidth $header-decoration-outline-color
+    .icon
+        @extend %headerIcon
+
+// =hexagon($iconHeight: 4rem)
+//     position: relative
+//     width: $iconHeight
+//     height: calc(#{$iconHeight} /1.732001616534842)
+//     background-color: $headerbackground
+//     margin-top: calc(#{$iconHeight} /3.464203233256351)
+//     margin-bottom: calc(#{$iconHeight} /3.464203233256351)
+//     display: inline-block
+//     z-index: 1
+//     &:before,
+//     &:after
+//         content: ""
+//         position: absolute
+//         width: 0
+//         border-left: calc(#{$iconHeight} /2) solid transparent
+//         border-right: calc(#{$iconHeight} /2) solid transparent
+//         left: 0
+//         right: 0
+
+//     &:before
+//         bottom: 100%
+//         border-bottom: calc(#{$iconHeight} /3.464203233256351) solid $headerbackground
+
+//     &:after
+//         top: 100%
+//         width: 0
+//         border-top: calc(#{$iconHeight} /3.464203233256351) solid $headerbackground
+//     .icon
+//         @extend %headerIcon
+
+// =hexagonBorder($iconHeight: 4rem, $iconborderwidth: 0.25rem)
+//     position: relative
+//     width: $iconHeight 
+//     height: calc(#{$iconHeight} /1.732001616534842)
+//     background-color: $headerbackground
+//     margin-top: calc(#{$iconHeight} /3.464203233256351)
+//     margin-bottom: calc(#{$iconHeight} /3.464203233256351)
+//     display: inline-block
+//     border-left: solid $iconborderwidth $header-decoration-outline-color
+//     border-right: solid $iconborderwidth $header-decoration-outline-color
+//     z-index: 1
+//     &:before,
+//     &:after
+//         content: ""
+//         position: absolute
+//         z-index: 1
+//         width: calc(#{$iconHeight} / 1.414227124876255)
+//         height: calc(#{$iconHeight} / 1.414227124876255)
+//         -webkit-transform: scaleY(0.5774) rotate(-45deg)
+//         -ms-transform: scaleY(0.5774) rotate(-45deg)
+//         transform: scaleY(0.5774) rotate(-45deg)
+//         background-color: inherit
+//         left: calc(calc(#{$iconHeight} /6.987469138677971) - #{$iconborderwidth})
+//     &:before
+//         bottom: (calc(#{$iconHeight} /4.473205499060627))
+//         border-top: calc(#{$iconborderwidth} *1.4142) solid $header-decoration-outline-color
+//         border-right: calc(#{$iconborderwidth} *1.4142) solid $header-decoration-outline-color
+
+//     &:after
+//         top: (calc(#{$iconHeight} /4.473205499060627))
+//         border-bottom: calc(#{$iconborderwidth} *1.4142) solid $header-decoration-outline-color
+//         border-left: calc(#{$iconborderwidth} *1.4142) solid $header-decoration-outline-color
+//     .icon
+//         @extend %headerIcon
+
+=title($borderHeight: 1px, $borderMargin: 0.25rem)
+    display: inline-block
+    &::after
+        content: ''
+        display: block
+        height: $borderHeight
+        width: 100%
+        background: $header-decoration-color
+        margin-top: $borderMargin
+
+=pretitle($borderHeight: 1px, $borderMargin: 0.25rem, $top: true)
+    display: inline-block
+    @if $top == true
+        margin-bottom: calc(#{$borderMargin} *2)
+        &::before
+            content: none
+        &::after
+            content: ''
+            display: block
+            height: $borderHeight
+            width: 100%
+            background: $header-decoration-color
+            margin-top: $borderMargin
+    @else
+        margin-top: calc(#{$borderMargin} *2)
+        margin-bottom: 0rem
+        &::after
+            content: none
+        &::before
+            content: ''
+            display: block
+            height: $borderHeight
+            width: 100%
+            background: $header-decoration-color
+            margin-bottom: $borderMargin
+
+=titleBox($boxPadding: $titleDividerGap, $borderWidth: 1px, $hasBox: true, $hasDivider: true) 
+    display: inline-block
+    position: relative
+    @if $hasBox == true
+        padding: $boxPadding
+        border: $borderWidth solid $header-decoration-color
+    @if $hasDivider == true
+        padding: 
+            left: calc($titleDividerLine + $boxPadding)
+            right: calc($titleDividerLine + $boxPadding)
+        +smallmobile
+            padding: 
+                left: calc(calc($titleDividerLine /2) + $boxPadding)
+                right: calc(calc($titleDividerLine /2) + $boxPadding)
+
+        &::after,
+        &::before
+            position: absolute
+            content: ''
+            display: block
+            height: $borderWidth
+            width: $titleDividerLine
+            background: $header-decoration-color 
+            top: 50%
+            transform: translateY(-50%)
+            +smallmobile
+                width: calc($titleDividerLine /2)
+        &::before
+            right: 0
+        &::after
+            left: 0
+    @else if $hasDivider == false
+        &::after,
+        &::before
+            content: none
+
+// .title-icon
+//     display: flex
+//     align-self: center
+//     .icon
+//         width: 1.33rem
+//         height: 1.33rem
+//         +headerIcon(1.33rem)
+
+//     &.is-small
+//         .icon
+//             width: 1rem
+//             height: 1rem
+//             +headerIcon(1rem)
+
+//     &.is-medium
+//         .icon
+//             width: 2rem
+//             height: 2rem
+//             +headerIcon(2rem)
+
+//     &.is-large
+//         .icon
+//             width: 3rem
+//             height: 3rem
+//             +headerIcon(3rem)
+
+//     &.round
+//         +round
+//         &.is-small
+//             +round(3rem)
+
+//         &.is-medium
+//             +round(6rem)
+
+//         &.is-large
+//             +round(8rem)
+
+
+//     &.round-border
+//         +roundBorder
+//         &.is-small
+//             +roundBorder(3rem, 0.125rem)
+
+//         &.is-medium
+//             +roundBorder(6rem, 0.325rem)
+
+//         &.is-large
+//             +roundBorder(8rem, 0.5rem)
+
+
+//     &.hexagon
+//         +hexagon
+//         &.is-small
+//             +hexagon(3rem)
+
+//         &.is-medium
+//             +hexagon(6rem)
+
+//         &.is-large
+//             +hexagon(8rem)
+
+
+//     &.hexagon-border
+//         +hexagonBorder
+//         &.is-small
+//             +hexagonBorder(3rem, 0.125rem)
+
+
+//         &.is-medium
+//             +hexagonBorder(6rem, 0.325rem)
+
+
+//         &.is-large
+//             +hexagonBorder(8rem, 0.5rem)
+
+.is-title-left,
+.is-title-right,
+.is-title-center
+    flex-direction: row
+    justify-content: center
+    display: flex
+
+.is-title-left
+    justify-content: flex-start
+
+.is-title-right
+    justify-content: flex-end
+
+.is-title-center
+    justify-content: center  
+
+.title-decoration
+    display: flex   
+
+.title-text
+    flex-direction: column
+    display: flex
+    text-align: center
+
+.section-title
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .title-text
+        flex-direction: column
+        display: flex
+
+    &.pretitle-bottom
+        .title-text
+            flex-direction: column-reverse
+            display: flex
+
+    &.pretitle-top
+        .title-text
+            flex-direction: column
+            display: flex
+
+    // &.icon-right
+    //     .title-decoration
+    //         flex-direction: row
+    //         .title-text
+    //             margin-bottom: 0
+    //             margin-right: 1.5rem
+    //             justify-content: center
+    //             flex-direction: column
+    //             display: flex
+
+    // &.icon-left
+    //     .title-decoration
+    //         flex-direction: row-reverse
+    //         .title-text
+    //             margin-bottom: 0
+    //             margin-left: 1.5rem
+    //             justify-content: center
+    //             flex-direction: column
+    //             display: flex
+
+    // &.icon-bottom
+    //     .title-decoration
+    //         flex-direction: column
+    //         .title-text
+    //             margin-bottom: 1.5rem
+
+    // &.icon-top
+    //     .title-decoration
+    //         flex-direction: column-reverse
+    //         .title-text
+    //             margin-bottom: 0
+    //             margin-top: 1.5rem
+
+.section-title
+    // &.has-pretitle-underline        
+    //     &.pretitle-bottom
+    //         &.is-small
+    //             .pretitle
+    //                 +pretitle($header-decoration-border-small, ($marginDivider *2), false)
+    //         &.is-medium
+    //             .pretitle
+    //                 +pretitle($header-decoration-border-medium, ($marginDivider *3), false)
+    //         &.is-large
+    //             .pretitle
+    //                 +pretitle($header-decoration-border-large, ($marginDivider *4), false)
+    //         .pretitle
+    //             +pretitle($header-decoration-border-small, ($marginDivider *2), false)
+    //     &.is-small
+    //         .pretitle
+    //             +pretitle($header-decoration-border-small, ($marginDivider *2), true)
+    //     &.is-medium
+    //         .pretitle
+    //             +pretitle($header-decoration-border-medium, ($marginDivider *3), true)
+    //     &.is-large
+    //         .pretitle
+    //             +pretitle($header-decoration-border-large, ($marginDivider *4), true)
+    //     .pretitle
+    //         +pretitle($header-decoration-border-small, ($marginDivider *2), true)
+
+    // &.has-title-underline
+    //     &.is-small
+    //         .title
+    //             +title($header-decoration-border-small, ($marginDivider *2))
+    //     &.is-medium
+    //         .title
+    //             +title($header-decoration-border-medium, ($marginDivider *3))
+    //     &.is-large
+    //         .title
+    //             +title($header-decoration-border-large, ($marginDivider *4))
+    //     .title
+    //         +title($header-decoration-border-small, ($marginDivider *2))
+
+    // &.has-title-box
+    //     &.is-small
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-small, true, false)
+    //     &.is-medium
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-medium, true, false)
+    //     &.is-large
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-large, true, false)
+    //     .title
+    //         +titleBox($titleDividerGap, $header-decoration-border-small, true, false)
+
+    // &.has-title-box-dividers
+    //     &.is-small
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-small, true, true)
+    //     &.is-medium
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-medium, true, true)
+    //     &.is-large
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-large, true, true)
+    //     .title
+    //         +titleBox($titleDividerGap, $header-decoration-border-small, true, true)
+
+    //     &.icon-left,
+    //     &.icon-right
+    //         &.is-medium
+    //             .title
+    //                 +titleBox($titleDividerGap, $header-decoration-border-small, true, false)
+    //         &.is-medium
+    //             .title
+    //                 +titleBox($titleDividerGap, $header-decoration-border-medium, true, false)
+    //         &.is-large
+    //             .title
+    //                 +titleBox($titleDividerGap, $header-decoration-border-large, true, false)
+    //         .title
+    //             +titleBox($titleDividerGap, $header-decoration-border-small, true, false)
+
+    &.has-title-dividers
+        &.icon-left,
+        &.icon-right
+            .title
+                +titleBox($titleDividerGap, $header-decoration-border-small, false, false)
+                font-size: $size-2 !important
+                +smallmobile
+                    font-size: calc($size-2 /0.2) !important
+                    
+            &.is-medium
+                .title
+                    +titleBox($titleDividerGap, $header-decoration-border-medium, false, false)
+                    +smallmobile
+                        font-size: initial /0.2
+            &.is-large
+                .title
+                    +titleBox($titleDividerGap, $header-decoration-border-large, false, false)
+                    +smallmobile
+                        font-size: initial /0.2
+        &.is-medium
+            .title
+                +titleBox($titleDividerGap, $header-decoration-border-medium, false, true)
+                +smallmobile
+                    font-size: initial /0.2
+        &.is-large
+            .title
+                +titleBox($titleDividerGap, $header-decoration-border-large, false, true)
+                +smallmobile
+                    font-size: initial /0.2
+        .title
+            +titleBox($titleDividerGap, $header-decoration-border-small, false, true)
+            +smallmobile
+                font-size: initial /0.2
+
+    // &.has-title-icon-dividers
+    //     &.icon-left,
+    //     &.icon-right
+    //         .title-icon
+    //             +titleBox($titleDividerGap, $header-decoration-border-small, false, false)
+    //         &.is-medium
+    //             .title-icon
+    //                 +titleBox($titleDividerGap, $header-decoration-border-medium, false, false)
+    //         &.is-large
+    //             .title-icon
+    //                 +titleBox($titleDividerGap, $header-decoration-border-large, false, false)
+    //     &.is-medium
+    //         .title-icon
+    //             +titleBox($titleDividerGap, $header-decoration-border-medium, false, true)
+    //     &.is-large
+    //         .title-icon
+    //             +titleBox($titleDividerGap, $header-decoration-border-large, false, true)
+    //     .title-icon
+    //         +titleBox($titleDividerGap, $header-decoration-border-small, false, true)

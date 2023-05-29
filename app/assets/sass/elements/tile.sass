@@ -1,0 +1,33 @@
+// @import "image.sass"
+
+$ratios: ("square": 100%, "1by1": 100%, "5by4": 80%, "4by3": 75%, "3by2": 66.6666%, "5by3": 60%, "16by9": 56.25%, "2by1": 50%, "3by1": 33.3333%, "4by5": 125%, "3by4": 133.3333%, "2by3": 150%, "3by5": 166.6666%, "9by1": 177.7777%6, "1by2": 200%, "1by3": 300%) !default
+
+
+.tile,
+.gallery-with-columns
+  display: block
+  position: relative
+  &.is-fullwidth
+    width: 100% 
+
+  // Ratio
+@each $ratiosName, $ratiosValue in $ratios
+  .is-#{$ratiosName}
+    .ratio
+      &::before        
+        content: ''
+        display: block
+        padding-top: $ratiosValue
+
+      position: relative
+      overflow: visible !important
+      height: 100%
+      display: flex
+      .content
+        z-index: 1
+      .background
+        @extend %overlay
+        z-index: 0
+        // @extend %overlay
+        // @extend %overlay
+

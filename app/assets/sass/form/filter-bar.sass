@@ -1,0 +1,59 @@
+// // @import "shared.sass" 
+// @import "../grid/columns" 
+// @import "../utilities/initial-variables" 
+// @import "../utilities/mixins" 
+
+%filter
+  display: block
+  flex: none
+  padding: $column-gap
+  +mobile
+    display: flex
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: auto
+    width: 100%
+
+.filter-bar
+  @extend %filter
+  flex-wrap: wrap
+  width: 100%
+  &.are-equal
+    .filter-item
+      flex-grow: 1
+      flex-shrink: 1
+      flex-basis: auto
+      &.is-not-equal
+        flex-grow: 0
+        flex-shrink: 0
+        width: auto
+      .control
+        flex-grow: 1
+    .filter-content
+      flex-wrap: nowrap
+
+  // .filter-content
+  //   @extend %columns
+  //   display: flex
+  //   flex-wrap: wrap
+
+  .filter-item
+    @extend %filter
+    .field,
+    .field-body
+      display: flex
+      flex-grow: 1
+      flex-shrink: 1
+      flex-basis: auto
+      width: 100%
+      &.has-addons
+        .control
+          & + .control
+            flex-grow: 0
+
+      .control
+        +mobile
+          flex-grow: 1
+    &.is-full
+      flex: none
+      width: 100%

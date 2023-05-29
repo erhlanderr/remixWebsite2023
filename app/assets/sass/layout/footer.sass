@@ -1,0 +1,42 @@
+// @import "../utilities/derived-variables"
+// @import "section"
+
+$footer-background-color: $scheme-main-bis !default
+$footer-color: false !default
+$footer-padding-top: 3rem
+$footer-padding-bottom: 6rem
+$footer-margin: $padding-medium
+
+.footer
+  margin-top: $footer-margin
+  background-color: $footer-background-color
+  padding: $footer-padding-top $site-gutters $footer-padding-bottom
+  +touch
+    padding: $footer-padding-top calc($site-gutters /$dividerGutters) $footer-padding-bottom 
+
+  @if $footer-color
+    color: $footer-color
+
+.group.pass-footer-margin
+  .section:first-of-type
+    margin-top: $footer-margin
+  & + .footer
+    margin-top: 0px
+
+.section.pass-footer-margin
+  margin-top: $footer-margin
+  & + .footer
+    margin-top: 0px
+
+.group.no-footer-margin
+  .section:first-of-type
+    margin-top: 0px
+  & + .footer
+    margin-top: 0px
+    
+.section.no-footer-margin
+  margin-top: 0px
+  & + .footer
+    margin-top: 0px
+
+  

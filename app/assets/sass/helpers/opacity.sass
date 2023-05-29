@@ -1,0 +1,8 @@
+$opacity-values: ("0": 0.0, "3": 0.3, "6": 0.6, "none": 1) !default
+
+@each $opacity-name, $opacity in $opacity-values
+    .is-opacity-#{$opacity-name}
+        opacity: $opacity
+        &.is-active
+            .is-opacity-#{$opacity-name}-active
+                opacity: $opacity

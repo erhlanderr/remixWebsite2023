@@ -1,5 +1,5 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
+
 import Carousel from "../components/Carousel";
 import CarouselTile from "../components/CarouselTile";
 

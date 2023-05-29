@@ -1,0 +1,26 @@
+// @import "../utilities/derived-variables.sass"
+// // @import "../utilities/functions.sass"
+// @import "../utilities/mixins.sass" 
+
+$opacity-values: ("0": 0.0, "3": 0.3, "6": 0.6, "none": 1) !default
+$transition: 0.5s
+
+=gradientMixer($gradient: linear-gradient, $colorFirst: $primary-light, $positionFirst: 0%, $colorMiddle: $primary-dark, $positionMiddle: 50%, $colorLast: $primary-dark, $positionLast: 100%, $angle: 135)
+    background: #{$gradient}#{unquote('(')}#{$angle}deg, $colorFirst $positionFirst, $colorMiddle $positionMiddle, $colorLast $positionLast unquote(')')
+
+@each $opacity-name, $opacity in $opacity-values
+    .has-text-opacity-#{$opacity-name} 
+        opacity: $opacity
+
+@each $name, $pair in $colors
+    $color: nth($pair, 1) 
+
+    .has-background-linear-gradient-#{$name}
+        +gradientMixer($gradient: linear-gradient, $angle: -45, $colorFirst: $color, $positionMiddle: 75%)
+        // > *
+        //     color: findColorInvert($color)
+
+    // .has-linear-gradient-#{$name}-vertical
+    //     +gradientMixer($gradient: linear-gradient, $angle: 0, $colorFirst: $color, $positionMiddle: 50%, $colorMiddle: rgba($color, 0.8), $colorLast: rgba($color, 0.5))
+    //     > *
+    //         color: findColorInvert($color)

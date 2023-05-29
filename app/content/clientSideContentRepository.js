@@ -1,4 +1,4 @@
-import ContentPage from "./ContentPage";
+import ContentPage from "./ContentPages";
 
 class ContentRepository {
   pages = {};

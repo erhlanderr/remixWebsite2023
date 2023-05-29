@@ -1,8 +1,8 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
+
 import ArticleGridHeaderImageCard from "../components/ArticleGridHeaderImageCard";
 import MarkdownContent from "../components/markdownContent";
-import Grid from "../components/gridModule";
+import Grid from "../components/layout/GridLayout";
 import SectionCTA from "../components/SectionCTA";
 
 const SectionWrappedArticleGrid = ({

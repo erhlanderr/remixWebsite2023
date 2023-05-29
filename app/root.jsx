@@ -7,23 +7,42 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { ServerStyleContext, ClientStyleContext } from './context';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { withEmotionCache } from "@emotion/react";
 import SectionStyles from "./assets/styles/sectionStyles";
 import slickCarousel from "./assets/styles/css/slick.css";
+import bulmaStyles from "./assets/styles/css/bulma.min.css";
 import SharedHeader from "./components/SharedHeader";
+import Footer from "./components/Footer";
+// import ClientSideContentRepository from "./content/ClientSideContentRepository";
+import { ContentContext } from "./content/ContentContext";
+import { Fonts } from "./assets/styles/Fonts"
 
 
 export let links = () => {
   return [
     { rel: "stylesheet", href: slickCarousel },
+    { rel: "stylesheet", href: bulmaStyles },
   ]
 }
 
+const sizes = {
+  fontSizes: {
+    'xs': '0.75rem',
+    'sm': '0.875rem',
+    'md': '1rem',
+    'lg': '1.25rem',
+    'xl': '1.5rem',
+    '2xl': '2rem',
+    '3xl': '2.5rem',
+    '4xl': '3rem',
+  },
+}
 
 
 const theme = extendTheme({
+
   layerStyles: {
     mediumSection: {
       paddingTop: 0,
@@ -49,15 +68,16 @@ const theme = extendTheme({
     }
   },
   fonts: {
-    heading: `'Poppins Bold', sans-serif`,
-    body: `Poppins, sans-serif`,
-    strong: `Poppins, sans-serif`,
+    heading: "Quicksand",
+    body: "Open Sans",
   },
+
   variants: {
     'with-shadow': {
       boxShadow: '0 0 44px 0 rgb(0 0 0 / 8%)',
     },
   },
+
   styles: {
     global: {
       body: {
@@ -105,6 +125,7 @@ const Document = withEmotionCache(
           ))}
         </head>
         <body>
+
           {children}
           <ScrollRestoration />
           <Scripts />
@@ -120,8 +141,26 @@ export default function App() {
   return (
     <Document>
       <ChakraProvider theme={theme}>
-        <SharedHeader/>
+        <SharedHeader />
+        {/* <ContentContext.Provider
+          value={{
+            contentRepository: ClientSideContentRepository,
+            useContent: (callback, deps, defaultValue) => {
+              const [value, setValue] = useState(defaultValue);
+              useEffect(() => {
+                setValue(defaultValue);
+                callback().then((content) => {
+                  setValue(content);
+                }).catch((err) => {
+                });
+              }, deps);
+              return value;
+            },
+          }}
+        > */}
         <Outlet />
+        {/* </ContentContext.Provider> */}
+        <Footer />
       </ChakraProvider>
     </Document>
   );

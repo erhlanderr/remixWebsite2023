@@ -2,7 +2,7 @@ import React from 'react';
 import {
     SimpleGrid
 } from "@chakra-ui/react";
-function Grid({
+function GridLayout({
     children,
     columnDesktop,
     columnTablet,
@@ -18,14 +18,22 @@ function Grid({
                 return 2;
             case "one-quarter":
                 return 4;
+            case "2":
+                return 2;
             case "half":
                 return 2;
+            case "4":
+                return 4;
             case "is-3":
                 return 4;
+            case "3":
+                return 3;
             case "is-4":
                 return 3;
             case "is-6":
                 return 2;
+            case "1":
+                return 1;
             case "is-12":
                 return 1;
             default:
@@ -35,12 +43,12 @@ function Grid({
     return (
         <>{
             // console.log("columnMobile ==> ", columnMobile, "columnTablet ==> ", columnTablet, "columnDesktop ==> ", columnDesktop)
-            }
-            <SimpleGrid columns={{ base: 1, sm: columnWidth(columnMobile), md: columnWidth(columnTablet), lg: columnWidth(columnDesktop) }}>
+        }
+            <SimpleGrid gap={6} columns={{ base: 1, sm: columnWidth(columnMobile), md: columnWidth(columnTablet), lg: columnWidth(columnDesktop) }}>
                 {children}
             </SimpleGrid>
         </>
     );
 }
 
-export default Grid;
+export default GridLayout;

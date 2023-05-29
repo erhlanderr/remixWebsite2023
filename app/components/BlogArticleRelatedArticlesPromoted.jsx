@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BlogArticleInfo from "./BlogArticleInfo";
 import Markdown from "markdown-to-jsx";
+import { Heading } from "@chakra-ui/react";
 
 function BlogArticleRelatedArticlesPromoted({
   blogListPostTitle,
@@ -85,9 +86,12 @@ function BlogArticleRelatedArticlesPromoted({
             <div className="content has-text-left is-small">
               {!blogListPostTitle ? null : (
                 <div className="normal-block">
-                  <h4 className="title is-5 border-white-ter-bottom">
+                  <Heading
+                    as="h5"
+                    className="border-white-ter-bottom"
+                  >
                     {blogListPostTitle}
-                  </h4>
+                  </Heading>
                 </div>
               )}
 

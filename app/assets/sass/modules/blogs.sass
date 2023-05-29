@@ -1,0 +1,259 @@
+// @import "../utilities/_all.sass"
+// // @import "../grid/columns.sass"
+// @import "../layout/section.sass"
+// // @import "../decoration/ordered-lists.sass"
+// @import "../components/media.sass"
+
+// Blog header image
+$site-gutters: 1.5rem
+$authorLarge: 4rem
+$authorMedium: 3rem
+$authorSmall: 2rem
+
+=authorIconBlock($authorIconSize)
+    position: absolute
+    bottom: -$authorIconSize
+    left: 50%
+    right: 50%
+    display: flex
+    flex-direction: column-reverse
+    white-space: nowrap
+    width: $authorIconSize
+    transform: translate(-50%, 50%)
+
+$authorIconSizes: ("large": $authorLarge, "medium": $authorMedium, "small": $authorSmall) !default    
+
+@each $authorIcon, $authorIconSize in $authorIconSizes
+    .blog-header-background-#{$authorIcon}
+        .blog-header-content
+            padding: $site-gutters
+            +touch
+                padding: calc($site-gutters /1.5)
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+            z-index: 1
+            display: flex
+            justify-content: space-between    
+            flex-direction: column
+            margin-top: $authorIconSize
+            margin-bottom: $authorIconSize
+            .container
+                width: 100%
+            .blog-title
+                height: 100%
+                display: flex
+                justify-content: center
+                flex-direction: column
+            .author
+                &-icon
+                    +authorIconBlock($authorIconSize)
+                &-details
+                    width: 100%
+        .breadcrumb
+            padding-top: $authorIconSize              
+            margin-bottom: -1.5rem
+            padding:
+                left: $site-gutters
+                right: $site-gutters
+            +touch
+                padding:
+                    left: calc($site-gutters /1.5)
+                    right: calc($site-gutters /1.5)
+
+// Blog header navigation
+
+$blogPaddingLarge: 6rem $site-gutters
+$blogPaddingMedium: 4.5rem $site-gutters
+$blogPaddingSmall: 3.5rem $site-gutters
+
+=blogHeaderPadding($blogPaddingValue)
+    @if $blogPaddingValue == large
+        padding: $blogPaddingLarge
+    @else if $blogPaddingValue == medium
+        padding: $blogPaddingMedium
+    @else
+        padding: $blogPaddingSmall
+
+$blogHeaderPadding: ("large", "medium", "small") !default    
+
+@each $blogPadding in $blogHeaderPadding
+    @each $blogPadding, $authorIconSize in $authorIconSizes    
+        .blog-header-navigation-#{$blogPadding}
+            padding: 0
+            .blog-header-content
+                +blogHeaderPadding($blogPadding)
+                .blog-title
+                    margin-bottom: 1rem
+                .author
+                    display: flex
+                    flex-direction: row
+                    &-icon
+                        +authorIconBlock($authorIconSize)
+                        position: static
+                        transform: none
+                    &-details
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+                        width: 100%
+                        margin-left: calc($authorIconSize /2.666666666666667)
+
+            .has-full-width-image
+                padding:
+                    top: $site-gutters
+                    left: $site-gutters
+                    right: $site-gutters
+                +touch
+                    padding:
+                        top: calc($site-gutters /1.5)
+                        left: calc($site-gutters /1.5)
+                        right: calc($site-gutters /1.5)
+
+// Blog content with sidebar
+
+.blog-sidebar
+    .column
+        &.blog-content
+            flex: none
+            width: 75%
+            +touch
+                width: 100%
+        &.blog-articles
+            flex: none
+            width: 75%
+            +touch
+                width: 100%
+        &.blog-articles-filtering
+            flex: none
+            width: 25%
+            +touch
+                width: 100%
+
+// Blog Filtering Sidebar
+.blog-articles-filtering
+    .ordered-list
+        +desktop
+            flex-direction: column
+
+//     .container
+.blog-sidebar
+    .columns
+        &.double-gap
+            flex-wrap: wrap
+            +touch
+                flex-direction: column
+                display: flex !important
+            &.reverse-filter                    
+                +touch
+                    flex-direction: column-reverse
+                    display: flex !important
+
+.blog-footer-buttons
+    .blog-footer-container
+        justify-content: space-between
+        > *
+            &:first-of-type                
+                text-align: left
+            &:last-of-type                
+                text-align: right
+
+.blog-info-level
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    font-size: $size-7
+    &.is-left
+        justify-content: flex-start
+        .blog-info
+            margin-bottom: calc($size-7 /2)
+            margin-right: $size-6
+    &.is-right
+        justify-content: flex-end
+        .blog-info
+            margin-bottom: calc($size-7 /2)
+            margin-right: $size-6
+    .blog-info
+        align-items: center
+        display: flex
+        flex-basis: auto
+        flex-grow: 0
+        flex-shrink: 0
+        justify-content: flex-start
+        &:not(:last-of-type)
+            margin-bottom: calc($size-7 /2)
+            margin-right: $size-6
+        .is-info
+            font-weight: 600
+            margin-right: 0.25rem
+            margin-bottom: 0
+        .blog-author
+            border-radius: 50%
+            overflow: hidden
+            margin-right: $size-6
+            img 
+                position: absolute
+                top: -50%
+                left: 0
+                bottom: -50%
+                right: 0
+            
+
+.blog-articles-boxes
+    .blog-article
+        .article-image
+            position: relative
+            margin-bottom: 1.5rem
+            .author
+                display: flex
+                flex-direction: row
+                &-icon
+                    +authorIconBlock($authorIconSize: 2rem)
+                    bottom: 0
+                &-details
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    width: 100%
+                    position: absolute
+                    text-align: center
+                    bottom: 2rem
+                    padding: 0 1.5rem
+        .article-content
+            flex-basis: auto
+            flex-grow: 1
+            flex-shrink: 1
+            text-align: inherit
+
+
+
+
+.blog-articles-aligned
+    .blog-article
+        align-items: normal
+        @extend .media
+        .article-image
+            flex-direction: column
+            @extend .media-left
+            width: 20%
+            display: flex
+            +until($desktop)
+                max-width: 8rem
+                min-width: 4rem
+            figure
+                height: 100%
+                +until($widescreen)
+                    height: auto
+                    padding-top: 100%
+        .article-content
+            @extend .media-content
+        .author
+            @extend .media
+            border-top: 0
+            padding-top: 0
+            .author-icon
+                @extend .media-left
+            .author-details
+                @extend .media-content

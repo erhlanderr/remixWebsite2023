@@ -1,5 +1,5 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
+
 import SectionTitle from "../components/SectionTitle";
 import Markdown from "markdown-to-jsx";
 import {
@@ -13,12 +13,6 @@ const SectionWrappedSectionTitle = ({
   subtitleBold,
   paragraphs,
   markdown,
-  sectionCustomClasses,
-  sectionSize,
-  textAlignment,
-  customColumnClasses,
-  sectionIsEqual,
-  type,
 }) => {
   return (
     <React.Fragment>

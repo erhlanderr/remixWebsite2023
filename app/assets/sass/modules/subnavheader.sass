@@ -1,0 +1,87 @@
+// @import "../utilities/mixins"
+// @import "navheader"
+
+.subnav-menu-btn
+  ul.sublevel
+    display: flex
+    white-space: nowrap
+    position: absolute
+    flex-direction: row
+    left: 0
+    right: 0
+    top: 3rem
+    overflow: auto
+    +touch
+      position: initial
+      display: block
+    .sublevel-btn
+      +touch
+        display: flex
+        float: left
+        flex-direction: row
+        +touch
+          clear: both
+    
+
+nav
+  &.subnavigation
+    position: sticky
+    top: calc(calc(#{$website-header-logo-height} + (calc(#{$navHeaderTopBottom} *2)) - 0.125rem))
+    left: 0
+    right: 0
+    z-index: 6
+    &.has-sublevel-navigation
+      .sublevel
+        +desktop
+          border-top: 1px solid $grey-dark
+          padding-top: 0.5rem
+          overflow: auto
+          &::-webkit-scrollbar
+            display: none
+            -ms-overflow-style: none
+            scrollbar-width: none
+
+  .subnav-bar
+    +touch
+      position: absolute
+      top: calc(100% + 0.75rem)
+      left: -100%
+      transition: left 0.3s
+      padding: 0.75rem
+      background-color: rgba($scheme-main-ter, 0.95)
+      height: 100vh
+      &.is-active
+        left: -0.75rem
+        transition: left 0.3s
+
+    .navbar-item
+      span
+        font-weight: 400
+
+    .sublevel-btn
+      font-size: $size-7
+
+    +from($desktop)
+
+      .subnav-menu
+        position: relative
+        .subnav-menu-btn
+          &.is-overflow
+            position: static
+          float: left
+          height: 100%
+          display: flex
+          flex-direction: column
+          justify-content: center
+          &.is-active,
+          &.is-hover            
+            .sublevel
+              display: flex
+              flex-direction: column
+          &.is-temp
+            .sublevel
+              display: none
+      
+    +touch
+      .sublevel
+        +ltr-property("margin", 1rem, false)

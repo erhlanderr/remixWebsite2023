@@ -2,8 +2,10 @@ import React from "react";
 // import ClientSideLazyLoadComponent from "../ClientSideLazyLoadComponent";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
+import { Box, Card, CardBody, CardFooter, CardHeader, Heading } from "@chakra-ui/react";
+import { Header2, Subtitle4 } from "./helpers/Header";
 
-function OverLayTile({ 
+function OverLayTile({
   tileTitle,
   tileSubtitle,
   tilePreview,
@@ -18,61 +20,65 @@ function OverLayTile({
 }) {
   return (
     // <ClientSideLazyLoadComponent>
-      <article
-        className={`column ${
-          !columnMobile ? "is-full-mobile" : `${columnMobile}-mobile`
-        }  ${columnTablet && `is-${columnTablet}-tablet`} ${
-          columnDesktop && `is-${columnDesktop}-desktop`
-        }`}
+    // <article
+    //   className={`column ${!columnMobile ? "is-full-mobile" : `${columnMobile}-mobile`
+    //     }  ${columnTablet && `is-${columnTablet}-tablet`} ${columnDesktop && `is-${columnDesktop}-desktop`
+    //     }`}
+    // >
+      <Card
+        textColor={'#ffffff'}
+        backgroundColor={'#2b2b2b'}
+        position={'relative'}
+        display={'flex'}
+        direction={'column'}
+        minH={'24rem'}
+        className={`background-image`}
+        style={{ backgroundImage: `url(${tileBackgroundImage})` }}
       >
-        <div 
-          className={`box has-text-white is-relative is-flex is-flex-direction-column is-min-24 background-image`}
-          style={{ backgroundImage: `url(${tileBackgroundImage})` }}
-        >
-          <div
-            className={`overlay has-background-${
-              !tileColor ? "primary" : tileColor
-            } is-opacity-6 has-background-${
-              !tileColorActive ? "primary" : tileColorActive
+        <div
+          className={`overlay has-background-${!tileColor ? "primary" : tileColor
+            } is-opacity-6 has-background-${!tileColorActive ? "primary" : tileColorActive
             }-active zi-1`}
-          ></div>
-          <div
-            className={`tile content is-flex-direction-column py-7-desktop py-6-tablet py-6-mobile px-4 is-flex h100 zi-2 is-justify-content-space-between`}
-          >
-            <div className={`tile-header is-block block`}>
-              {tileTitle || tileSubtitle ? (
-                <div className="block">
-                  {!tileTitle ? null : (
-                    <h4 className="title is-2">{tileTitle}</h4>
-                  )}
-                  {!tileSubtitle ? null : (
-                    <h4 className="subtitle is-4 has-text-weight-normal">
-                      {tileSubtitle}
-                    </h4>
-                  )}
-                </div>
-              ) : null}
-            </div>
-            {!tilePreview ? null : (
-              <div className="tile-body is-block block">
-                {!tilePreview ? null : <p>{tilePreview}</p>}
+        ></div>
+        {/* <Box
+          className={`tile content is-flex-direction-column py-7-desktop py-6-tablet py-6-mobile px-4 is-flex h100 zi-2 is-justify-content-space-between`}
+        > */}
+          <CardHeader>
+            {tileTitle || tileSubtitle ? (
+              <div className="block">
+                {!tileTitle ? null : (
+                  <Header2>
+                    {tileTitle}
+                  </Header2>
+                )}
+                {!tileSubtitle ? null : (
+                  <Subtitle4>
+                    {tileSubtitle}
+                  </Subtitle4>
+                )}
               </div>
-            )}
-            {!linkCta || !linkCopy ? null : (
-              <div className={`tile-footer is-block block `}>
-                <CTAModule ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
-                {/* <Link
+            ) : null}
+          </CardHeader>
+          {!tilePreview ? null : (
+            <CardBody className="tile-body is-block block">
+              {!tilePreview ? null : <p>{tilePreview}</p>}
+            </CardBody>
+          )}
+          {!linkCta || !linkCopy ? null : (
+            <CardFooter className={`tile-footer is-block block `}>
+              <CTAModule ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
+              {/* <Link
                   className="button"
                   to={linkCta}
                   title={`${tileTitle || linkCopy}`}
                 >
                   {linkCopy}
                 </Link> */}
-              </div>
-            )}
-          </div>
-        </div>
-      </article>
+            </CardFooter>
+          )}
+        {/* </Box> */}
+      </Card>
+    // </article>
     // </ClientSideLazyLoadComponent>
   );
 }

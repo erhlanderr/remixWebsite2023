@@ -1,0 +1,27 @@
+// tab styling
+// // @import "../helpers/color"
+// // @import "../utilities/derived-variables"
+// // @import "../utilities/mixins"
+
+.modal-banner
+    border-radius: 0
+    left: 0
+    right: 0
+    top: -100%
+    z-index: 101
+    position: fixed
+    transition: 0.25s top ease-out 
+    &.is-active
+        transition: 0.25s top ease-in
+        top: 0
+    &.is-scroll
+        // position: fixed
+    .banner-card
+        display: flex
+        flex-direction: column
+        overflow: hidden
+        -ms-overflow-y: visible
+        width: 100%
+
+.wrapper, .navigation
+    transition: 0.25s ease-in 

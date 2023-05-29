@@ -1,33 +1,30 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
 import VideoWithContent from "../components/VideoWithContent";
 import Markdown from "markdown-to-jsx";
+import MarkdownContent from "../components/markdownContent";
+import {
+  Container,
+  Box,
+  Button,
+  Heading,
+  Text,
+  theme
+} from "@chakra-ui/react";
 
 function SectionWrappedVideoBackground({
-  sectionSize,
-  sectionIsEqual,
-  sectionCustomClasses,
   title,
   subtitle,
   ctaCopy,
   ctaLink,
-  verticallyCentered,   
-  content, 
-  markdown,  
+  verticallyCentered,
+  content,
+  markdown,
   backgroundVideo,
-  backgroundVideoStatic,  
+  backgroundVideoStatic,
   sectionTextColourLight,
-  textAlignment,
-}) { 
-  return ( 
-    <SectionWrappers
-      sectionSize={sectionSize}
-      sectionIsEqual={sectionIsEqual}
-      sectionCustomClasses={sectionCustomClasses + " has-background-image is-padless-sides tile is-clipped"}
-      sectionTextColourLight={sectionTextColourLight}
-      noContainer={true}
-      textAlignment={textAlignment}
-    >
+}) {
+  return (
+    <React.Fragment>
       <VideoWithContent
         title={title}
         subtitle={subtitle}
@@ -70,7 +67,7 @@ function SectionWrappedVideoBackground({
         </>
       </VideoWithContent>
 
-      <div className="overlay has-background-black is-opacity-6 zi-1"></div>
+      {/* <div className="overlay has-background-black is-opacity-6 zi-1"></div>
       <video
         className="background-image w100 h100"
         preload="auto"
@@ -84,8 +81,8 @@ function SectionWrappedVideoBackground({
       >
         {backgroundVideo && <source src={backgroundVideo} type="video/mp4" />}
         {backgroundVideo && <source src={backgroundVideo} type="video/ogg" />}
-      </video>
-    </SectionWrappers>
+      </video> */}
+    </React.Fragment>
   );
 }
 

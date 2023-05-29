@@ -1,7 +1,7 @@
 import glob from "glob";
 import fs from "fs";
 import path from "path";
-import ContentPage from "./ContentPage";
+import ContentPage from "./ContentPages";
 
 const getRouteFromPath = (path) => {
   let elements = path.split("/");

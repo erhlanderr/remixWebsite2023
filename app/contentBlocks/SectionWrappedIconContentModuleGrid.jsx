@@ -1,28 +1,23 @@
 import React from "react";
-import SectionWrappers from "../components/sectionWrappers";
+
 import IconContentModule from "../components/IconContentModule";
-import Grid from "../components/gridModule";
+import GridLayout from "../components/layout/GridLayout";
 
 import Markdown from "markdown-to-jsx";
 
 const SectionWrappedIconContentModuleGrid = ({
     tiles,
-    sectionCustomClasses,
-    textAlignment,
-    sectionSize,
-    sectionIsEqual,
     columnDesktop,
     columnTablet,
     columnMobile,
     iconLarger,
-    type,
 }) => {
     return (
         <React.Fragment>
-            <Grid gridCustomClasses={`is-multiline`} 
-            columnDesktop={columnDesktop}
-            columnTablet={columnTablet}
-            columnMobile={columnMobile}
+            <GridLayout
+                columnDesktop={columnDesktop}
+                columnTablet={columnTablet}
+                columnMobile={columnMobile}
             >
                 {tiles &&
                     tiles.map((module, index) => (
@@ -65,7 +60,7 @@ const SectionWrappedIconContentModuleGrid = ({
                             ) : null}
                         </IconContentModule>
                     ))}
-            </Grid>
+            </GridLayout>
             {/* </SimpleGrid> */}
         </React.Fragment>
     );
