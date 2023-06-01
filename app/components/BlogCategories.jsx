@@ -13,7 +13,7 @@ function BlogCategories({
         <>
 
             <div className={`column list-order-1-touch ${filterWidth ? filterWidth : 'is-6-desktop'}`}>
-                <div className="content">
+                <div>
                     <div className="level is-align-items-flex-start">
                         <div className="level-item is-narrow mr-4">
                             <h6 className="title is-5">Categories</h6>

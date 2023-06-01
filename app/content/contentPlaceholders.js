@@ -129,6 +129,7 @@ const ContentPlaceholder = ({ components }) => {
                 type={type}
                 {...component}
               >
+                <h3>{type}</h3>
                 <Component key={key} type={type} componentKey={key} {...component} />
               </SectionLayout>
             </React.Fragment>

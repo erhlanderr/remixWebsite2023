@@ -33,7 +33,7 @@ function OverLayTile({
         direction={'column'}
         minH={'24rem'}
         className={`background-image`}
-        style={{ backgroundImage: `url(${tileBackgroundImage})` }}
+        style={{ backgroundImage: `url(${"https://wa-methodworx-website-cms.azurewebsites.net" + tileBackgroundImage})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
       >
         <div
           className={`overlay has-background-${!tileColor ? "primary" : tileColor

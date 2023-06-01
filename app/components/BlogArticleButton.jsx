@@ -8,7 +8,7 @@ function BlogArticleButton({
 }) {
   return (    
     <div className="column is-6">
-      <div className="content">
+      <div>
         {articleLink && articleTitle &&
         <Link to={articleLink} className="block">
           <h6 className="title is-6 mb-2">{buttonTitle}</h6>                              

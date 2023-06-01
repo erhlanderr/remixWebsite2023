@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LinkBlock from "./LinkBlock";
 import Markdown from "markdown-to-jsx";
+import ContainerLayout from "./layout/ContainerLayout";
 import {
     Container,
     Box,
@@ -60,7 +61,7 @@ const FooterPosts = ({ pathName, title, numberOfPosts }) => {
 
     return (
         <div className="column is-one-quarter-desktop is-full-tablet is-full-mobile">
-            <div className="content has-text-left">
+            <div className=" has-text-left">
                 {title && (
                     <div className="block">
                         <Header4>
@@ -121,7 +122,7 @@ const FooterSiteMap = ({ title }) => {
 
     return (
         <div className="column is-one-quarter-desktop is-full-tablet is-full-mobile">
-            <div className="content has-text-left">
+            <div className=" has-text-left">
                 {title && (
                     <div className="block">
                         <Header4>
@@ -197,7 +198,7 @@ const FooterBlogPosts = ({ pathName, numberOfPosts, title }) => {
 
     return (
         <div className="column is-one-quarter-desktop is-full-tablet is-full-mobile">
-            <div className="content has-text-left">
+            <div className=" has-text-left">
                 {title && (
                     <div className="block">
                         <Header4>
@@ -231,13 +232,13 @@ function Footer({ logo }) {
                 ref={footer}
                 className="footer has-background-primary-dark has-text-white are-half-block has-link-tertiary has-link-bold are-large-icons is-size-7"
             >
-                <Container maxWidth={"5xl"}>
+                <ContainerLayout>
                     <Grid
                         templateColumns='repeat(2, 1fr)'
                     >
 
                         <GridItem>
-                            <div className="content">
+                            <div>
                                 <div className="block">
                                     <div className="navbar-brand">
                                         <Link to="/">
@@ -304,7 +305,7 @@ function Footer({ logo }) {
                     <Grid templateColumns='repeat(4, 1fr)'>
 
 
-                        <div className="content">
+                        <div>
                             <div className="block">
                                 <Header4>
                                     Our Address
@@ -347,7 +348,7 @@ function Footer({ logo }) {
                         />
                         <FooterSiteMap title="Site Map" />
                     </Grid>
-                </Container>
+                </ContainerLayout>
             </footer>
         </>
     );

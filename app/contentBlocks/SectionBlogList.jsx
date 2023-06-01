@@ -5,6 +5,7 @@ import BlogListHeader from "../components/BlogListHeader.jsx";
 import { useContentContext } from "../content/ContentContext";
 import { useLocation } from "react-router-dom";
 import { json } from "@remix-run/node";
+import ContainerLayout from "../components/layout/ContainerLayout";
 import {
     useLoaderData,
     useNavigate,
@@ -174,13 +175,13 @@ function BlogList({ sectionSize, sectionIsEqual, sectionHasBackground, children 
               ))}
         </div>
       </SectionWrappers> */}
-      <Container maxW={"5xl"}>
+      <ContainerLayout>
             <Flex direction={"column"}>
                 {data.children.map((blog, index) => {
                     return (<Box><Link key={index} to={blog.url}>{blog.url}</Link></Box>)
                 })}
             </Flex>
-      </Container>
+      </ContainerLayout>
         </>
     );
 }

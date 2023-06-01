@@ -56,7 +56,7 @@ const SectionWrappedArticleGrid = ({
             ) : null}
             {markdown && (
               <div
-                className={`content ${textAlignment ? "has-text-" + textAlignment : "has-text-left"
+                className={`${textAlignment ? "has-text-" + textAlignment : "has-text-left"
                   }`}
               >
                 <MarkdownContent markdown={markdown} />

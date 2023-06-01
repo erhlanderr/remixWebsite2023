@@ -20,9 +20,9 @@ function VideoWithContent({
 
         <div className={`columns`}>
           <div className="column are-double-block">
-            <div className="content">
+            <div>
               {(title || subtitle) && <div className="block">
-                <Header2>
+                <Header2 variant={'decorated'}>
                   {title}
                 </Header2>
                 <Subtitle4>{subtitle}</Subtitle4>

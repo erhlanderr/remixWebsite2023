@@ -16,7 +16,7 @@ function BlogArticleAuthor({ relatedAuthorArticles }) {
           </figure>
         </div>
         <div className="column">
-          <div className="content">
+          <div>
             <div className="block">
               <Header5>
                 MethodWorx

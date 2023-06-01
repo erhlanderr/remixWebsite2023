@@ -61,7 +61,6 @@ const SectionWrappedIconContentModuleGrid = ({
                         </IconContentModule>
                     ))}
             </GridLayout>
-            {/* </SimpleGrid> */}
         </React.Fragment>
     );
 };

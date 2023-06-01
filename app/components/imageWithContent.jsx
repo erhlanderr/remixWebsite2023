@@ -3,7 +3,7 @@ import {
     Flex, Grid, Box, Heading, Text, Button
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import ImageLoader from "./imageLoader";
+import ImageLoader from "./helpers/ImageLoader";
 import CTAModule from "./CTAModule";
 import {
     useNavigate

@@ -9,12 +9,16 @@ import {
 import { ServerStyleContext, ClientStyleContext } from './context';
 import { useContext, useEffect, useState } from "react";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+// import { ThemeProvider } from "@chakra-ui/core"
 import { withEmotionCache } from "@emotion/react";
 import SectionStyles from "./assets/styles/sectionStyles";
 import slickCarousel from "./assets/styles/css/slick.css";
 import bulmaStyles from "./assets/styles/css/bulma.min.css";
 import SharedHeader from "./components/SharedHeader";
 import Footer from "./components/Footer";
+import Button from "./assets/styles/Button";
+import Heading from "./assets/styles/Heading";
+
 // import ClientSideContentRepository from "./content/ClientSideContentRepository";
 import { ContentContext } from "./content/ContentContext";
 import { Fonts } from "./assets/styles/Fonts"
@@ -42,7 +46,10 @@ const sizes = {
 
 
 const theme = extendTheme({
-
+  components: {
+    Button,
+    Heading,
+  },
   layerStyles: {
     mediumSection: {
       paddingTop: 0,
@@ -52,26 +59,28 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      polarDarkBlue: "#004c7a",
-      polarMediumBlue: "#004990",
-      polarBrightBlue: "#007bff",
-      polarTeal: "#05b2c4",
-      polarLightGrey: "#ECF1F8",
-      polarGrey: "#898989",
-      polarText: "#363d40",
-      polarShadow: "0 0 44px 0 rgb(0 0 0 / 8%)",
-      polarBody: "#f7faff",
-      polarBodyText: "#4b4f58",
-      polarGreen: "#76c124",
-      polarOrange: "#ffa500",
-      polarRed: "#ff0000",
+      mwRed: "#ff8d85",
+      mwGrey: "#4a4a4a",
+      mwWhite: "#ffffff",
     }
   },
   fonts: {
     heading: "Quicksand",
     body: "Open Sans",
   },
-
+  
+  fontSizes: {
+    xs: "12px",
+    sm: "14px",
+    md: "16px",
+    lg: "18px",
+    xl: "20px",
+    "2xl": "21px",
+    "3xl": "24px",
+    "4xl": "40px",
+    "5xl": "48px",
+    "6xl": "64px",
+  },
   variants: {
     'with-shadow': {
       boxShadow: '0 0 44px 0 rgb(0 0 0 / 8%)',
@@ -81,8 +90,7 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'brand.polarBody',
-        color: 'brand.polarText',
+        color: 'brand.mwGrey',
       },
       p: {
         color: 'brand.polarText',
@@ -140,28 +148,30 @@ const Document = withEmotionCache(
 export default function App() {
   return (
     <Document>
-      <ChakraProvider theme={theme}>
-        <SharedHeader />
-        {/* <ContentContext.Provider
-          value={{
-            contentRepository: ClientSideContentRepository,
-            useContent: (callback, deps, defaultValue) => {
-              const [value, setValue] = useState(defaultValue);
-              useEffect(() => {
-                setValue(defaultValue);
-                callback().then((content) => {
-                  setValue(content);
-                }).catch((err) => {
-                });
-              }, deps);
-              return value;
-            },
-          }}
-        > */}
-        <Outlet />
-        {/* </ContentContext.Provider> */}
-        <Footer />
-      </ChakraProvider>
+      {/* <ThemeProvider> */}
+        <ChakraProvider theme={theme}>
+          <SharedHeader />
+          {/* <ContentContext.Provider
+            value={{
+              contentRepository: ClientSideContentRepository,
+              useContent: (callback, deps, defaultValue) => {
+                const [value, setValue] = useState(defaultValue);
+                useEffect(() => {
+                  setValue(defaultValue);
+                  callback().then((content) => {
+                    setValue(content);
+                  }).catch((err) => {
+                  });
+                }, deps);
+                return value;
+              },
+            }}
+          > */}
+          <Outlet />
+          {/* </ContentContext.Provider> */}
+          <Footer />
+        </ChakraProvider>
+      {/* </ThemeProvider> */}
     </Document>
   );
 }

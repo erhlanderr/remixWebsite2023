@@ -23,18 +23,17 @@ function SectionTitle({
     <>
       {title ? (
         <Box textAlign={textAlign}>
-          <Header2>{title}</Header2>
+          <Header2 decorated='decoratedTitle'>{title}</Header2>
         </Box>
       ) : null}
       {(subtitle || ctaLink) && (
         <div
-          className={`content ${textAlign ? "has-text-" + textAlign : "has-text-centered"
+          className={`${textAlign ? "has-text-" + textAlign : "has-text-centered"
             }`}
         >
           {subtitle ? (
             <div className="block">
               <Subtitle4
-                className={`has-text-centered ${subtitleBold ? "" : "has-text-weight-normal"}`}
               >
                 {subtitle}
               </Subtitle4>

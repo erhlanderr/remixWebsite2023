@@ -49,7 +49,7 @@ function CarouselBanner({
               <div className="card-content">
                 <div className="columns">
                   <div className="column">
-                    <div className="content has-text-centered has-text-white">
+                    <div className=" has-text-centered has-text-white">
                       <blockquote>
                         {carouselQuoteLeft === false ? null : (
                           <span className="icon quote has-text-white is-opacity-3">

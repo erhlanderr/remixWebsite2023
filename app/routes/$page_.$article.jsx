@@ -32,7 +32,9 @@ export const loader = async ({ request, params, context }) => {
 export default function Page() {
   const { route, data } = useLoaderData();
   const pageContent = data.placeholders.contentArea1;
-  return (<React.Fragment>
-    <ContentPlaceholder components={pageContent} />
-  </React.Fragment>)
+  return (
+    <React.Fragment>
+      <ContentPlaceholder components={pageContent} />
+    </React.Fragment>
+  )
 }

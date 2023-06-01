@@ -47,7 +47,7 @@ function ImageWithContentToEdge({
       <div className="column">
 
         {!spotlightColumn ? <div className="box">
-          <div className="content are-double-block pl-6-desktop">
+          <div className=" are-double-block pl-6-desktop">
             <div className="block">
               <Header2>
                 {title}
@@ -67,7 +67,7 @@ function ImageWithContentToEdge({
         </div> :
           <div className="columns py-6-desktop pl-6-desktop py-5-tablet pl-5-tablet double-gap is-flex-direction-column-reverse-mobile">
             <div className="column is-two-third are-double-block">
-              <div className="content">
+              <div>
                 <div className="block">
                   <Header2>
                     {title}

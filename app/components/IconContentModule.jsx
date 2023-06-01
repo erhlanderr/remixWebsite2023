@@ -2,6 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Header5 } from "./helpers/Header";
+import ImageLoader from "./helpers/ImageLoader";
 
 function IconContentModule({
   title,
@@ -28,34 +29,45 @@ function IconContentModule({
           <>
             {iconLink ? (
               <Link to={iconLink}>
-                <div
+                {/* <div
                   className={`icon is-rounded ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
                     } ${iconColor && `has-background-${iconColor}`} ${customIconClasses && `${customIconClasses}`
                     }`}
                 >
-                  {icon && <i className={`fas fa-${icon} fa-2x`}></i>}
+                  {icon && <i className={`fas fa-${icon} fa-2x`}></i>} */}
                   {image && (
-                    <img
-                      src={image}
-                      alt={iconAlt ? iconAlt : "MethodWorx"}
+                    <>
+                      {console.log(image)}
+                      <ImageLoader
+                        imageRatioDesktop="1by1"
+                        imageRatioMobile="1by1"
+                        imageUrl={image}
+                        imageAlt={iconAlt ? iconAlt : "MethodWorx"}
                     />
+                    </>
                   )}
-                </div>
+                {/* </div> */}
               </Link>
             ) : (
-              <div
-                className={`icon is-rounded ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
-                  } ${iconColor && `has-background-${iconColor}`} ${customIconClasses && `${customIconClasses}`
-                  }`}
-              >
-                {icon && <i className={`fas fa-${icon} fa-2x`}></i>}
-                {image && (
-                  <img
-                    src={image}
-                    alt={iconAlt ? iconAlt : "MethodWorx"}
-                  />
-                )}
-              </div>
+              // <div
+              //   className={`icon is-rounded ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
+              //     } ${iconColor && `has-background-${iconColor}`} ${customIconClasses && `${customIconClasses}`
+              //     }`}
+              // >
+                // {icon && <i className={`fas fa-${icon} fa-2x`}></i>}
+                image && (
+                  <>
+                  {console.log(image)}
+                  {/* <img src={image}/> */}
+                  <ImageLoader
+                    imageRatioDesktop="1by1"
+                    imageRatioMobile="1by1"
+                    imageUrl={image}
+                    imageAlt={iconAlt ? iconAlt : "MethodWorx"}
+                />
+                </>
+                )
+              // </div>
             )}
           </>
         </Box>
@@ -63,7 +75,7 @@ function IconContentModule({
 
       {title || children ? (
         <div className="block">
-          <div className="content">
+          <div>
             {title && (
               <div className="block">
                 <Header5>

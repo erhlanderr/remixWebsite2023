@@ -131,7 +131,7 @@ function TileContentModule({
         <div className={`tile-body is-align-top  ${link ? "pb-5" : ""} `}>
           {title || children ? (
             <div
-              className={`content ${
+              className={`${
                 tileTextColourDark === true ? "has-text-dark" : ""
               }`}
             >
@@ -149,7 +149,7 @@ function TileContentModule({
         {link ? (
           <div className="tile-footer pt-5">
             <div
-              className={`content ${
+              className={`${
                 tileTextColourDark === true ? "has-text-dark" : ""
               }`}
             >

@@ -27,7 +27,7 @@ function PageIntro({
             )}
             {introductionSubTitle && (
               <div className="block">
-                <div className="content">
+                <div>
                   <Subtitle4>{introductionSubTitle}</Subtitle4>
                 </div>
               </div>

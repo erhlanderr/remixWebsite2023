@@ -31,12 +31,12 @@ function ImageContent({
         </div>}
 
         {(title || children) ? <div className="block">
-          {title && <div className="content">
+          {title && <div>
             <Header5>
               {title}
             </Header5>
           </div>}
-          {children && <div className="content">
+          {children && <div>
             {children}
           </div>}
         </div> : null}

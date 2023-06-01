@@ -83,7 +83,7 @@ function BlogArticleRelatedArticlesPromoted({
             </div>
           </div>
           <div className="column is-two-thirds-touch is-two-thirds-mobile is-full-desktop">
-            <div className="content has-text-left is-small">
+            <div className=" has-text-left is-small">
               {!blogListPostTitle ? null : (
                 <div className="normal-block">
                   <Heading

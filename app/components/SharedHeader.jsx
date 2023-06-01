@@ -18,6 +18,7 @@ import {
     Heading,
     Text
   } from "@chakra-ui/react";
+  import ContainerLayout from "./layout/ContainerLayout";
   import {
     Outlet,
     useLoaderData,
@@ -31,7 +32,7 @@ const SharedHeader = () => {
 
     return (
         <React.Fragment>
-            <Container maxW='5xl'>
+            <ContainerLayout>
                 <Flex justifyContent={"space-between"} py={5}>
                     <Box>
                         <Link to="/">
@@ -46,7 +47,7 @@ const SharedHeader = () => {
                         <Button onClick={() => navigate('../contact-us')}>Contact Us</Button>
                     </Wrap>
                 </Flex>
-            </Container>
+            </ContainerLayout>
         </React.Fragment>
     )
 }

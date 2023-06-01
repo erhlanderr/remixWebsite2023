@@ -62,7 +62,7 @@ function BlogListArticle({
               </div>
             </div>
             <div className="card-body">
-              <div className="content are-half-block">
+              <div className=" are-half-block">
                 {!blogListPostTitle ? null : (
                   <div className="normal-block">
                     <Heading as="h5"

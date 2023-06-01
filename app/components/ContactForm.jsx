@@ -113,7 +113,7 @@ function ContactForm({
           id="contact-form"
           method="post"
         >
-          <div className="content">
+          <div>
             <div className="columns is-block">
               <div className="column">
                 <div className="columns">

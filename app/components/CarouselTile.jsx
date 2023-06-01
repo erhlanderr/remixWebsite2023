@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ExpandingTextBox from "./ExpandingTextBox";
-import { Heading } from "@chakra-ui/react";
 import { Header5 } from "./helpers/Header";
+import ImageLoader from "./helpers/ImageLoader";
 
 function CarouselTile({
   carouselTitle,
@@ -29,7 +29,7 @@ function CarouselTile({
     return (
       <div className="card-image">
         <article className="tile">
-          <figure
+          {/* <figure
             className={`image ${carouselImageSize ? "is-" + carouselImageSize : "is-3by2"
               }`}
           >
@@ -41,13 +41,17 @@ function CarouselTile({
                   </span>
                 </div>
               </div>
-            </div>
-            <img
+            </div> */}
+            <ImageLoader 
+            imageUrl={carouselImage}
+            imageAlt={carouselImageAlt}
+            />
+            {/* <img
               className="image lazy"
               src={carouselImage}
               alt={carouselImageAlt}
-            />
-          </figure>
+            /> */}
+          {/* </figure> */}
         </article>
       </div>
     );
@@ -149,7 +153,7 @@ function CarouselTile({
             }`}
         >
           {(carouselTitle || carouselCopy) && (
-            <div className="content">
+            <div>
               <div className="block">
                 {!carouselTitle ? null : (
                   <Header5>
@@ -163,7 +167,7 @@ function CarouselTile({
             </div>
           )}
           {!carouselCtaLink ? null : (
-            <div className="content">
+            <div>
               <div className="block">
                 <Link
                   to={carouselCtaLink}

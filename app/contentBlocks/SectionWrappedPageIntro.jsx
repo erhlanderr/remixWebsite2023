@@ -33,7 +33,7 @@ function SectionWrappedPageIntro({
                                 )}
                                 {introductionSubTitle && (
                                     <div className="block">
-                                        <div className="content">
+                                        <div>
                                             <Subtitle4
                                             >
                                                 {introductionSubTitle}

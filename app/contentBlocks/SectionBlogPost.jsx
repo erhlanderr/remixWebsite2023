@@ -57,7 +57,7 @@ function BlogPost({content}) {
   //             }`}
   //             key={index}
   //           >
-  //             <div className="content has-text-left">
+  //             <div className=" has-text-left">
   //               <LinkBlock
   //                 linkTitle={record.articleTitle}
   //                 linkUrl={record.articleLink}
@@ -153,7 +153,7 @@ function BlogPost({content}) {
           <div className="column is-8 is-full-touch">
             <div className="columns single-gap is-multiline">
               <div className="column is-full">
-                <div className="content">
+                <div>
                   <h4 className="title is-5 is-marginless">
                     More from MethodWorx
                   </h4>

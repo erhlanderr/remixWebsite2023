@@ -2,14 +2,14 @@ import React from "react";
 // import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import ExpandingTextBox from "./ExpandingTextBox";
-import ImageLoader from "./imageLoader";
+import ImageLoader from "./helpers/ImageLoader";
 import {
   useNavigate
 } from "@remix-run/react";
 import {
   Button,
   Heading,
-  Card, CardHeader, CardBody, CardFooter
+  Card, CardHeader, CardBody, CardFooter, Flex
 } from "@chakra-ui/react";
 import { Header4 } from "./helpers/Header";
 
@@ -33,44 +33,46 @@ const ArticleGridHeaderImageCard = ({
 
     >
       <Card
-        className={`is-flex is-flex-direction-column h100 ${boxBackgroundColour && "has-background-" + boxBackgroundColour
-          }`}
+        height={"100%"}        
+        className={`${boxBackgroundColour && "has-background-" + boxBackgroundColour}`}
       >
-        {article.image && (
-          <ImageLoader
-            imageUrl={article.image}
-            imageAlt={article?.imageAlt}
-          // imageRatioDesktop={}
-          // imageRatioMobile={}
-          />
-        )}
-
-        {(article.title ||
-          article.content ||
-          (article.ctaLink && article.ctaTitle)) && (
-            <div className="tile has-text-left card-content content">
-              {article?.title && (
-                <div className={`tile-header mb-0 is-block block`}>
-                  <Header4>
-                    {article.title}
-                  </Header4>
-                  <hr />
-                </div>
-              )}
-              {article?.content && (
-                <div className="tile-body is-block double-block">
-                  <ExpandingTextBox textBoxCopy={article?.content} />
-                </div>
-              )}
-              {article.ctaLink && article.ctaTitle && (
-                <div className={`tile-footer is-block block`}>
-                  <Button onClick={() => navigate(article.ctaLink)}>
-                    {article.ctaTitle}
-                  </Button>
-                </div>
-              )}
-            </div>
+        <CardHeader p="0">
+          {article.image && (
+            <ImageLoader
+              imageUrl={article.image}
+              imageAlt={article?.imageAlt}
+            // imageRatioDesktop={}
+            // imageRatioMobile={}
+            />
           )}
+        </CardHeader>
+        <CardBody>
+
+          <Flex direction={'column'}>
+
+            {(article.title ||
+              article.content ||
+              (article.ctaLink && article.ctaTitle)) && (
+                <>
+                  {article?.title && (
+                    <Header4>
+                      {article.title}
+                    </Header4>
+                  )}
+                  {article?.content && (
+                    <ExpandingTextBox textBoxCopy={article?.content} />
+                  )}
+                </>
+              )}
+          </Flex>
+        </CardBody>
+        {article.ctaLink && article.ctaTitle && (
+          <CardFooter>
+            <Button onClick={() => navigate(article.ctaLink)}>
+              {article.ctaTitle}
+            </Button>
+          </CardFooter>
+        )}
       </Card>
     </div>
   );
