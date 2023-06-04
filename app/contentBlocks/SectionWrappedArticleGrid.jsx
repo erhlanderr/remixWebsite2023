@@ -13,7 +13,7 @@ import {
   Card, CardHeader, CardBody, CardFooter, Flex
 } from "@chakra-ui/react";
 import { Header4, Header5 } from "../components/helpers/Header";
-import ImageLoader from "../components/helpers/ImageLoader";
+import { ImageLoader } from "../components/helpers/ImageLoader";
 import ExpandingTextBox from "../components/ExpandingTextBox";
 import {
   useNavigate

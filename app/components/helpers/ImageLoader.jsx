@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { Image, AspectRatio } from "@chakra-ui/react";
+import React from "react";
+import { Image, AspectRatio, Box, Flex } from "@chakra-ui/react";
+
+const BackgroundImageLoader = ({
+    imageUrl,
+
+}) => {
+    // <Flex h={"100%"}>
+        {/* <Box /> */}
+        <Box position={'absolute'} top={0} bottom={0} left={0} right={0} backgroundImage={`url(${"https://wa-methodworx-website-cms.azurewebsites.net" + imageUrl})`} />
+    // </Flex>
+}
 
 const ImageLoader = ({
     imageUrl,
     imageAlt,
     imageRatioDesktop,
-    imageRatioMobile,
-    imageSize,
 }) => {
 
     const splitRatioStr = (ratioStr) => {
         switch (ratioStr) {
-            case "1by1": 
+            case "1by1":
                 return 1 / 1
             case "2by1":
                 return 2 / 1
@@ -19,7 +27,7 @@ const ImageLoader = ({
                 return 3 / 1
             case "3by2":
                 return 3 / 2;
-        
+
             default:
                 break;
         }
@@ -35,4 +43,4 @@ const ImageLoader = ({
     );
 }
 
-export default ImageLoader;
+export { ImageLoader, BackgroundImageLoader };

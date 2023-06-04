@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ExpandingTextBox from "./ExpandingTextBox";
 import { Header5 } from "./helpers/Header";
-import ImageLoader from "./helpers/ImageLoader";
+import {ImageLoader} from "./helpers/ImageLoader";
 
 function CarouselTile({
   carouselTitle,

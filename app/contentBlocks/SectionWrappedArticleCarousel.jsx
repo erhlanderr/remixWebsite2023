@@ -3,7 +3,7 @@ import React from "react";
 import Carousel from "../components/Carousel";
 import CarouselTile from "../components/CarouselTile";
 import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
-import ImageLoader from "./../components/helpers/ImageLoader";
+import { ImageLoader } from "./../components/helpers/ImageLoader";
 import { Header5 } from "./../components/helpers/Header";
 import ExpandingTextBox from "./../components/ExpandingTextBox";
 

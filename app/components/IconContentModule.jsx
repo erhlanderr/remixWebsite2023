@@ -2,7 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Header5 } from "./helpers/Header";
-import ImageLoader from "./helpers/ImageLoader";
+import { ImageLoader } from "./helpers/ImageLoader";
 
 function IconContentModule({
   title,

@@ -2,8 +2,9 @@ import React from "react";
 // import ClientSideLazyLoadComponent from "../ClientSideLazyLoadComponent";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
-import { Box, Card, CardBody, CardFooter, CardHeader, Heading } from "@chakra-ui/react";
-import { Header2, Subtitle4 } from "./helpers/Header";
+import { Box, Card, CardBody, CardFooter, CardHeader, Flex, Heading } from "@chakra-ui/react";
+import { Header2, Header3, Subtitle4, Subtitle5 } from "./helpers/Header";
+import { BackgroundImageLoader } from "./helpers/ImageLoader"
 
 function OverLayTile({
   tileTitle,
@@ -19,61 +20,41 @@ function OverLayTile({
   linkCopy,
 }) {
   return (
-      <Card
-        textColor={'#ffffff'}
-        backgroundColor={'#2b2b2b'}
-        position={'relative'}
-        display={'flex'}
-        direction={'column'}
-        minH={'24rem'}
-        className={`background-image`}
-        style={{ backgroundImage: `url(${"https://wa-methodworx-website-cms.azurewebsites.net" + tileBackgroundImage})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
-      >
-        <div
-          className={`overlay has-background-${!tileColor ? "primary" : tileColor
-            } is-opacity-6 has-background-${!tileColorActive ? "primary" : tileColorActive
-            }-active zi-1`}
-        ></div>
-        {/* <Box
-          className={`tile content is-flex-direction-column py-7-desktop py-6-tablet py-6-mobile px-4 is-flex h100 zi-2 is-justify-content-space-between`}
-        > */}
-          <CardHeader>
-            {tileTitle || tileSubtitle ? (
-              <div className="block">
-                {!tileTitle ? null : (
-                  <Header2 color={'#ffffff'}>
-                    {tileTitle}
-                  </Header2>
-                )}
-                {!tileSubtitle ? null : (
-                  <Subtitle4>
-                    {tileSubtitle}
-                  </Subtitle4>
-                )}
-              </div>
-            ) : null}
-          </CardHeader>
-          {!tilePreview ? null : (
-            <CardBody className="tile-body is-block block">
-              {!tilePreview ? null : <p>{tilePreview}</p>}
-            </CardBody>
-          )}
-          {!linkCta || !linkCopy ? null : (
-            <CardFooter className={`tile-footer is-block block `}>
-              <CTAModule ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
-              {/* <Link
-                  className="button"
-                  to={linkCta}
-                  title={`${tileTitle || linkCopy}`}
-                >
-                  {linkCopy}
-                </Link> */}
-            </CardFooter>
-          )}
-        {/* </Box> */}
-      </Card>
-    // </article>
-    // </ClientSideLazyLoadComponent>
+    <Card
+      variant="backgroundOverlay"
+      style={{ backgroundImage: `url(${"https://wa-methodworx-website-cms.azurewebsites.net" + tileBackgroundImage})`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}
+    >
+
+      <CardHeader>
+        {tileTitle || tileSubtitle ? (
+          <React.Fragment>
+            {!tileTitle ? null : (
+              <Header3 color={'#ffffff'}>
+                {tileTitle}
+              </Header3>
+            )}
+            {!tileSubtitle ? null : (
+              <Subtitle5>
+                {tileSubtitle}
+              </Subtitle5>
+            )}
+          </React.Fragment>
+        ) : null}
+      </CardHeader>
+      {!tilePreview ? null : (
+        <CardBody>
+          {!tilePreview ? null : <p>{tilePreview}</p>}
+        </CardBody>
+      )}
+      {!linkCta || !linkCopy ? null : (
+        <CardFooter>
+          <Flex justifyContent={"center"} w="100%">
+            <CTAModule ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
+          </Flex>
+        </CardFooter>
+      )}
+
+    </Card>
   );
 }
 

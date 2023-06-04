@@ -36,6 +36,11 @@ const Heading = defineStyleConfig({
         },
         standardTitle: {
             color: 'brand.mwGrey',
+            fontWeight: "400",
+        },
+        standardSubtitle: {
+            color: 'brand.mwGrey',
+            fontWeight: "200",
         },
     },
     // The default size and variant values

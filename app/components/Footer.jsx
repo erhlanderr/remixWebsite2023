@@ -11,7 +11,8 @@ import {
     Text,
     theme,
     Grid,
-    GridItem
+    GridItem,
+    SimpleGrid
 } from "@chakra-ui/react";
 import { Header4, Header5 } from "./helpers/Header";
 
@@ -254,7 +255,12 @@ function Footer({ logo, childRoutes }) {
                         </GridItem>
                     </Grid>
 
-                    <Grid templateColumns='repeat(4, 1fr)'>
+                    <SimpleGrid 
+                    // templateColumns='repeat(4, 1fr)'
+                    gap={6}
+                    columns={{base: 1, md: 2, lg: 4}}
+                    
+                    >
                         <Box>
                             <Box paddingBottom={6}>
                                 <Header5>
@@ -299,7 +305,7 @@ function Footer({ logo, childRoutes }) {
                             numberOfPosts={4}
                         />
                         <FooterSiteMap title="Site Map" />
-                    </Grid>
+                    </SimpleGrid>
                 </ContainerLayout>
             </footer>
         </>

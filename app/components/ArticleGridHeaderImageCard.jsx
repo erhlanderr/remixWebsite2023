@@ -2,7 +2,7 @@ import React from "react";
 // import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import ExpandingTextBox from "./ExpandingTextBox";
-import ImageLoader from "./helpers/ImageLoader";
+import {ImageLoader} from "./helpers/ImageLoader";
 import {
   useNavigate
 } from "@remix-run/react";

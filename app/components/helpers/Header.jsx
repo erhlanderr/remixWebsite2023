@@ -9,7 +9,7 @@ const Header1 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={600}
+      variant="standardHeader"
       as="h1"
       size="4xl"
     >{children}</Heading>
@@ -25,7 +25,6 @@ const Header2 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={600}
       as="h2"
       size="3xl"
     >{children}</Heading>
@@ -40,7 +39,7 @@ const Header3 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={600}
+      variant="standardHeader"
       as="h3"
       size="2xl"
     >{children}</Heading>
@@ -55,7 +54,7 @@ const Header4 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={600}
+      variant="standardHeader"
       as="h4"
       size="xl"
     >{children}</Heading>
@@ -70,7 +69,7 @@ const Header5 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={600}
+      variant="standardHeader"
       as="h5"
       size="lg"
     >{children}</Heading>
@@ -85,7 +84,7 @@ const Header6 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={600}
+      variant="standardHeader"
       as="h6"
       size="md"
     >{children}</Heading>
@@ -100,7 +99,6 @@ const DecoratedHeader1 = ({
     <Heading
       variant="decoratedTitle"
       color={{ ...props.color }}
-      fontWeight={600}
       as="h1"
       size="4xl"
     >{children}</Heading>
@@ -117,7 +115,6 @@ const DecoratedHeader2 = ({
     < Heading
       variant="decoratedTitle"
       color={{ ...props.color }}
-      fontWeight={600}
       as="h2"
       size="3xl"
     > {children}</Heading >
@@ -133,7 +130,6 @@ const DecoratedHeader3 = ({
     <Heading
       variant="decoratedTitle"
       color={{ ...props.color }}
-      fontWeight={600}
       as="h3"
       size="2xl"
     >{children}</Heading>
@@ -149,7 +145,6 @@ const DecoratedHeader4 = ({
     <Heading
       variant="decoratedTitle"
       color={{ ...props.color }}
-      fontWeight={600}
       as="h4"
       size="xl"
     >{children}</Heading>
@@ -165,7 +160,6 @@ const DecoratedHeader5 = ({
     <Heading
       variant="decoratedTitle"
       color={{ ...props.color }}
-      fontWeight={600}
       as="h5"
       size="lg"
     >{children}</Heading>
@@ -181,7 +175,6 @@ const DecoratedHeader6 = ({
     <Heading
       variant="decoratedTitle"
       color={{ ...props.color }}
-      fontWeight={600}
       as="h6"
       size="md"
     >{children}</Heading>
@@ -196,7 +189,7 @@ const Subtitle1 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={400}
+      variant="standardSubtitle"
       as="h1"
       size="4xl"
     >{children}</Heading>
@@ -211,7 +204,7 @@ const Subtitle2 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={400}
+      variant="standardSubtitle"
       as="h2"
       size="3xl"
     >{children}</Heading>
@@ -226,7 +219,7 @@ const Subtitle3 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={400}
+      variant="standardSubtitle"
       as="h3"
       size="2xl"
     >{children}</Heading>
@@ -241,7 +234,7 @@ const Subtitle4 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={400}
+      variant="standardSubtitle"
       as="h4"
       size="xl"
     >{children}</Heading>
@@ -256,7 +249,7 @@ const Subtitle5 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={400}
+      variant="standardSubtitle"
       as="h5"
       size="lg"
     >{children}</Heading>
@@ -271,7 +264,7 @@ const Subtitle6 = ({
   return (
     <Heading
       color={{ ...props.color }}
-      fontWeight={400}
+      variant="standardSubtitle"
       as="h6"
       size="md"
     >{children}</Heading>
