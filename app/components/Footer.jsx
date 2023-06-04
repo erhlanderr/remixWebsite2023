@@ -13,94 +13,46 @@ import {
     Grid,
     GridItem
 } from "@chakra-ui/react";
-import { Header4 } from "./helpers/Header";
+import { Header4, Header5 } from "./helpers/Header";
 
 // import { useContentContext } from "../content/ContentContext";
 
-const FooterPosts = ({ pathName, title, numberOfPosts }) => {
+const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes }) => {
     const [isPosts, setPosts] = useState(null);
-    //   const { contentRepository, useContent } = useContentContext();
-    //   const contentPages = useContent(
-    //     () => contentRepository.getChildPageContent(pathName),
-    //     [pathName],
-    //     []
-    //   );
-    //   useEffect(() => {
-    //     var filteredPages = contentPages.filter(
-    //       (x) =>
-    //         x.data &&
-    //         x.route !== pathName &&
-    //         typeof x.data.content.navigation.navigationListOrder == "number"
-    //     );
-    //     setPosts(filteredPages);
-    //   }, [contentPages, pathName]);
+    useEffect(() => {
+        var children = childRoutes.reduce(function (filtered, child) {
+            if (child.url === pathName) {
+                return child.children
+            }
+            return filtered;
+        }, []);
 
-    //   if (!!isPosts) {
-    //     isPosts.sort(function (a, b) {
-    //       if (
-    //         !a.data ||
-    //         !a.data.content.navigation.navigationListOrder ||
-    //         !b.data ||
-    //         !b.data.content.navigation.navigationListOrder
-    //       )
-    //         return 0;
+        setPosts(children);
 
-    //       var navigationListOrderA = a.data.content.navigation.navigationListOrder;
-    //       var navigationListOrderB = b.data.content.navigation.navigationListOrder;
+    }, []);
 
-    //       if (navigationListOrderA < navigationListOrderB) {
-    //         return -1;
-    //       }
-    //       if (navigationListOrderA > navigationListOrderB) {
-    //         return 1;
-    //       }
 
-    //       return 0;
-    //     });
-    //   }
 
     return (
-        <div className="column is-one-quarter-desktop is-full-tablet is-full-mobile">
-            <div className=" has-text-left">
-                {title && (
-                    <div className="block">
-                        <Header4>
-                            {title}
-                        </Header4>
-                    </div>
-                )}
-                {!!isPosts &&
-                    isPosts.slice(0, numberOfPosts).map((item, index) => (
-                        <div key={index} className="block">
-                            <p className="mb-0">
-                                <Link className="link" to={item.route}>
-                                    {item.data.content.header.title}
-                                </Link>
-                            </p>
-                            {item.data.content.header.teaser && (
-                                <Markdown
-                                    options={{
-                                        overrides: {
-                                            ul: {
-                                                props: {
-                                                    className: "custom-list is-medium",
-                                                },
-                                            },
-                                            blockquote: {
-                                                props: {
-                                                    className: "blog-testimonial is-medium",
-                                                },
-                                            },
-                                        },
-                                    }}
-                                >
-                                    {item.data.content.header.teaser.slice(0, 96) + "..."}
-                                </Markdown>
-                            )}
-                        </div>
-                    ))}
-            </div>
-        </div>
+        <Box>
+
+            {title && (
+                <Box paddingBottom={6}>
+                    <Header5>
+                        {title}
+                    </Header5>
+                </Box>
+            )}
+            {isPosts?.map((item, index) => (
+                <Box paddingTop={index > 0 ? 4 : 0} fontSize={'xs'} key={item.name + "-" + index}>
+                    <Link className="link" to={item.url}>
+                        {item.name}
+                    </Link>
+                </Box>
+
+            ))}
+
+        </Box>
     );
 };
 
@@ -125,12 +77,12 @@ const FooterSiteMap = ({ title }) => {
             <div className=" has-text-left">
                 {title && (
                     <div className="block">
-                        <Header4>
+                        <Header5>
                             {title}
-                        </Header4>
+                        </Header5>
                     </div>
                 )}
-                {!!isPosts &&
+                {/* {!!isPosts &&
                     isPosts.map((item, index) => {
                         return (
                             <LinkBlock
@@ -139,7 +91,7 @@ const FooterSiteMap = ({ title }) => {
                                 linkKey={index}
                             />
                         );
-                    })}
+                    })} */}
             </div>
         </div>
     );
@@ -201,9 +153,9 @@ const FooterBlogPosts = ({ pathName, numberOfPosts, title }) => {
             <div className=" has-text-left">
                 {title && (
                     <div className="block">
-                        <Header4>
+                        <Header5>
                             {title}
-                        </Header4>
+                        </Header5>
                     </div>
                 )}
                 {!!isPosts &&
@@ -224,7 +176,7 @@ const FooterBlogPosts = ({ pathName, numberOfPosts, title }) => {
     );
 };
 
-function Footer({ logo }) {
+function Footer({ logo, childRoutes }) {
     const footer = useRef();
     return (
         <>
@@ -303,16 +255,14 @@ function Footer({ logo }) {
                     </Grid>
 
                     <Grid templateColumns='repeat(4, 1fr)'>
-
-
-                        <div>
-                            <div className="block">
-                                <Header4>
+                        <Box>
+                            <Box paddingBottom={6}>
+                                <Header5>
                                     Our Address
-                                </Header4>
-                            </div>
-                            <div className="block">
-                                <p>
+                                </Header5>
+                            </Box>
+                            <Box>
+                                <Text fontSize={'xs'}>
                                     MethodWorx Ltd
                                     <br />
                                     Creative Studios
@@ -332,18 +282,20 @@ function Footer({ logo }) {
                                     <a href="mailto:sales@methodworx.com">
                                         sales@methodworx.com
                                     </a>
-                                </p>
-                            </div>
-                        </div>
+                                </Text>
+                            </Box>
+                        </Box>
 
                         <FooterBlogPosts
                             title="Recent Blogs"
-                            pathName="/blog"
+                            pathName="/blog/"
+                            childRoutes={childRoutes}
                             numberOfPosts={4}
                         />
                         <FooterPosts
                             title="Case Studies"
-                            pathName="/work"
+                            pathName="/work/"
+                            childRoutes={childRoutes}
                             numberOfPosts={4}
                         />
                         <FooterSiteMap title="Site Map" />

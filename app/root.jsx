@@ -5,7 +5,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { json } from "@remix-run/node";
 import { ServerStyleContext, ClientStyleContext } from './context';
 import { useContext, useEffect, useState } from "react";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
@@ -14,15 +16,41 @@ import { withEmotionCache } from "@emotion/react";
 import SectionStyles from "./assets/styles/sectionStyles";
 import slickCarousel from "./assets/styles/css/slick.css";
 import bulmaStyles from "./assets/styles/css/bulma.min.css";
-import SharedHeader from "./components/SharedHeader";
+import Navigation from "./components/Navigation";
+import PageHeader from "./components/PageHeader";
 import Footer from "./components/Footer";
 import Button from "./assets/styles/Button";
 import Heading from "./assets/styles/Heading";
 
 // import ClientSideContentRepository from "./content/ClientSideContentRepository";
 import { ContentContext } from "./content/ContentContext";
-import { Fonts } from "./assets/styles/Fonts"
+// import { Fonts } from "./assets/styles/Fonts"
+export const loader = async ({ request, params }) => {
+  let route;
+  if (params.page) {
+    route = params.page
+  } else {
+    route = "/"
+  }
 
+  const globalSettings = await fetch(process.env.CMS_SERVER_ADDRESS + "/global-settings");
+  const globalSettingsData = await globalSettings.json();
+
+  const routeChildren = await fetch(process.env.CMS_SERVER_ADDRESS);
+  const routeChildrenData = await routeChildren.json();
+  // console.log("routeChildren ==>", routeChildrenData);
+
+  const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route);
+  const data = await res.json();
+
+  return json({
+    // page: data,,
+    globalSettings: globalSettingsData,
+    routeChildren: routeChildrenData,
+    route,
+    data: data
+  });
+}
 
 export let links = () => {
   return [
@@ -59,6 +87,7 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
+      mwBlue: "#2fb8ca",
       mwRed: "#ff8d85",
       mwGrey: "#4a4a4a",
       mwWhite: "#ffffff",
@@ -68,7 +97,7 @@ const theme = extendTheme({
     heading: "Quicksand",
     body: "Open Sans",
   },
-  
+
   fontSizes: {
     xs: "12px",
     sm: "14px",
@@ -146,32 +175,14 @@ const Document = withEmotionCache(
 
 
 export default function App() {
+  const { globalSettings, routeChildren, route, data } = useLoaderData();
   return (
     <Document>
-      {/* <ThemeProvider> */}
-        <ChakraProvider theme={theme}>
-          <SharedHeader />
-          {/* <ContentContext.Provider
-            value={{
-              contentRepository: ClientSideContentRepository,
-              useContent: (callback, deps, defaultValue) => {
-                const [value, setValue] = useState(defaultValue);
-                useEffect(() => {
-                  setValue(defaultValue);
-                  callback().then((content) => {
-                    setValue(content);
-                  }).catch((err) => {
-                  });
-                }, deps);
-                return value;
-              },
-            }}
-          > */}
+      <ChakraProvider theme={theme}>
+        <Navigation globalSettings={globalSettings}/>
           <Outlet />
-          {/* </ContentContext.Provider> */}
-          <Footer />
-        </ChakraProvider>
-      {/* </ThemeProvider> */}
+        <Footer childRoutes={routeChildren.children} />
+      </ChakraProvider>
     </Document>
   );
 }

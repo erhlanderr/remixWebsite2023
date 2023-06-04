@@ -7,18 +7,19 @@ function SectionWrappedCarousel({
   componentKey,
   carousels,
 }) {
-  const renderCarouselBanner = (item) => {
+  const renderCarouselBanner = (item, index) => {
     return (
-      <CarouselBanner
-        key={item.key}
-        carouselTestimonial={item.carouselTestimonial}
-        carouselTestimonialAuthor={item.carouselTestimonialAuthor}
-        carouselTestimonialAuthorAttribute={
-          item.carouselTestimonialAuthorAttribute
-        }
-        carouselStarRating={item.carouselStarRating}
-        carouselBackgroundImage={item.carouselBackgroundImage}
-      ></CarouselBanner>
+      <React.Fragment key={item.key + "-" + index}>
+        <CarouselBanner
+          carouselTestimonial={item.carouselTestimonial}
+          carouselTestimonialAuthor={item.carouselTestimonialAuthor}
+          carouselTestimonialAuthorAttribute={
+            item.carouselTestimonialAuthorAttribute
+          }
+          carouselStarRating={item.carouselStarRating}
+          carouselBackgroundImage={item.carouselBackgroundImage}
+        ></CarouselBanner>
+      </React.Fragment>
     );
   };
   return (

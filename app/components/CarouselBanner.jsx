@@ -14,17 +14,17 @@ function CarouselBanner({
   carouselQuoteLeft,
   carouselQuoteRight,
 }) {
-  var stars = [];
+  // var stars = [];
 
-  for (var i = 0; i < carouselStarRating; i++) {
-    stars.push(
-      <div className="level-item is-shrinkable is-narrow">
-        <span className="icon is-large">
-          <i className="w-100 h-100 fas fa-star"></i>
-        </span>
-      </div>
-    );
-  }
+  // for (var i = 0; i < carouselStarRating; i++) {
+  //   stars.push(
+  //     <div className="level-item is-shrinkable is-narrow">
+  //       <span className="icon is-large">
+  //         <i className="w-100 h-100 fas fa-star"></i>
+  //       </span>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="section-child is-relative h100 is-flex is-align-items-center">
@@ -57,12 +57,12 @@ function CarouselBanner({
                           </span>
                         )}
                         <div className="is-flex is-flex-direction-column">
-                          {carouselStarRating > 0 && (
+                          {/* {carouselStarRating > 0 && (
                             <div className="level is-mobile is-justify-content-center is-shrinkable">
                               {stars}
                             </div>
-                          )}
-                          <p className="is-size-4 is-size-6-mobile">
+                          )} */}
+                          {/* <p className="is-size-4 is-size-6-mobile"> */}
                             <Markdown
                               options={{
                                 overrides: {
@@ -81,7 +81,7 @@ function CarouselBanner({
                             >
                               {carouselTestimonial}
                             </Markdown>
-                          </p>
+                          {/* </p> */}
                         </div>
                         {carouselQuoteRight === false ? null : (
                           <span className="icon quote has-text-white is-opacity-1">

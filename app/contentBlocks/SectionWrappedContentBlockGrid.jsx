@@ -2,8 +2,8 @@ import React from "react";
 
 import Grid from "../components/layout/GridLayout"
 import MarkdownContent from "../components/markdownContent";
-import { Heading } from "@chakra-ui/react";
-import { Header2, Subtitle4 } from "../components/helpers/Header";
+import { Box } from "@chakra-ui/react";
+import { DecoratedHeader2, DecoratedHeader3, Header2, Subtitle4, Subtitle5 } from "../components/helpers/Header";
 
 function SectionWrappedContentBlockGrid({
   textAlignment,
@@ -35,33 +35,36 @@ function SectionWrappedContentBlockGrid({
             }`}
         >
           {title ? (
-            <div
-              className={`block has-text-centered ${!!subtitle ? "" : "mb-6"}`}
-            >
-              <div className="section-title has-title-dividers">
-                <div className="title-decoration">
-                  <Header2>
-                    {title}
-                  </Header2>
-                </div>
-              </div>
-            </div>
+            <Box
+              textAlign={'center'}
+              paddingBottom={!!subtitle ? 2 : 6}
+            >              
+              <DecoratedHeader3>
+                {title}
+              </DecoratedHeader3>
+            </Box>
           ) : null}
           {subtitle ? (
-            <div className={`block ${markdown ? "mb-6" : null}`}>
-              <Subtitle4
-              >
+            <Box
+              textAlign={'center'}
+              paddingBottom={markdown ? 6 : 0}
+            >
+              <Subtitle5>
                 {subtitle}
-              </Subtitle4>
-            </div>
+              </Subtitle5>
+            </Box>
           ) : null}
           {markdown && (
-            <div
-              className={`${textAlignment ? "has-text-" + textAlignment : "has-text-left"
-                }`}
+            <Box
+              textAlign={textAlignment ? textAlignment : 'center'}
             >
               <MarkdownContent markdown={markdown} />
-            </div>
+            </Box>
+            // <div
+            //   className={`${textAlignment ? "has-text-" + textAlignment : "has-text-left"
+            //     }`}
+            // >
+            // </div>
           )}
         </div>
       </Grid>

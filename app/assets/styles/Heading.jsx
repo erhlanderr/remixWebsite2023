@@ -10,6 +10,8 @@ const Heading = defineStyleConfig({
     variants: {
         decoratedTitle: {
             position: "relative",
+            display: "inline-block",
+            margin: "auto",
             px: "3.75rem",
             _before: {
                 content: '""',
@@ -19,7 +21,7 @@ const Heading = defineStyleConfig({
                 left: 0,
                 top: "calc(50% - 0.125rem)",
                 height: "0.125rem",
-                bg: 'brand.mwRed',
+                bg: 'brand.mwBlue',
             },
             _after: {
                 content: '""',
@@ -29,7 +31,7 @@ const Heading = defineStyleConfig({
                 right: 0,
                 top: "calc(50% - 0.125rem)",
                 height: "0.125rem",
-                bg: 'brand.mwRed',
+                bg: 'brand.mwBlue',
             }
         },
         standardTitle: {

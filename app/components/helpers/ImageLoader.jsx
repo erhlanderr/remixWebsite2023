@@ -24,13 +24,13 @@ const ImageLoader = ({
                 break;
         }
     }
-    console.log("imageRatioDesktop ==> ", imageRatioDesktop);
-    console.log("imageRatioMobile ==> ", imageRatioMobile);
-    console.log("imageUrl ==> ", imageUrl);
+    // console.log("imageRatioDesktop ==> ", imageRatioDesktop);
+    // console.log("imageRatioMobile ==> ", imageRatioMobile);
+    // console.log("imageUrl ==> ", imageUrl);
 
     return (
         <AspectRatio ratio={imageRatioDesktop != undefined ? splitRatioStr(imageRatioDesktop) : 3 / 2} width="100%">
-            <Image style={{ objectFit: "contain" }} src={`https://wa-methodworx-website-cms.azurewebsites.net` + imageUrl} fit='contain' alt={imageAlt} />
+            <Image src={`https://wa-methodworx-website-cms.azurewebsites.net` + imageUrl} fit='contain' alt={imageAlt} />
         </AspectRatio>
     );
 }

@@ -4,6 +4,7 @@ import {
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import ContentPlaceholder from "../content/contentPlaceholders";
+import PageHeader from "../components/PageHeader";
 
 export const loader = async ({ request, params, context }) => {
   let route;
@@ -26,8 +27,11 @@ export const loader = async ({ request, params, context }) => {
 
 export default function Page() {
   const { route, data } = useLoaderData();
-  const pageContent = data.placeholders.contentArea1
-  return (<React.Fragment>    
+  const headerContent = data.content.header
+  const pageContent = data.placeholders.contentArea1;
+  return (
+  <React.Fragment>    
+    <PageHeader header={headerContent}/>
     <ContentPlaceholder components={pageContent} />
   </React.Fragment>)
 }

@@ -19,12 +19,6 @@ function OverLayTile({
   linkCopy,
 }) {
   return (
-    // <ClientSideLazyLoadComponent>
-    // <article
-    //   className={`column ${!columnMobile ? "is-full-mobile" : `${columnMobile}-mobile`
-    //     }  ${columnTablet && `is-${columnTablet}-tablet`} ${columnDesktop && `is-${columnDesktop}-desktop`
-    //     }`}
-    // >
       <Card
         textColor={'#ffffff'}
         backgroundColor={'#2b2b2b'}
@@ -47,7 +41,7 @@ function OverLayTile({
             {tileTitle || tileSubtitle ? (
               <div className="block">
                 {!tileTitle ? null : (
-                  <Header2>
+                  <Header2 color={'#ffffff'}>
                     {tileTitle}
                   </Header2>
                 )}

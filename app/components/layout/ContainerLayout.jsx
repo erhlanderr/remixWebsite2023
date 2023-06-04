@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from "@chakra-ui/react";
 
 function ContainerLayout({
-    children
+    children,
 }) {
     return (
         <Container maxWidth={"1344"}>{children}</Container>

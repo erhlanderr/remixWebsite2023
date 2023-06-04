@@ -5,6 +5,20 @@ import MarkdownContent from "../components/markdownContent";
 import Grid from "../components/layout/GridLayout";
 import SectionCTA from "../components/SectionCTA";
 
+import {
+  Button,
+  Heading,
+  Box,
+  Divider,
+  Card, CardHeader, CardBody, CardFooter, Flex
+} from "@chakra-ui/react";
+import { Header4, Header5 } from "../components/helpers/Header";
+import ImageLoader from "../components/helpers/ImageLoader";
+import ExpandingTextBox from "../components/ExpandingTextBox";
+import {
+  useNavigate
+} from "@remix-run/react";
+
 const SectionWrappedArticleGrid = ({
   type,
   sectionSize,
@@ -31,40 +45,11 @@ const SectionWrappedArticleGrid = ({
   ctaTitle,
   ctaLink,
 }) => {
+
+  const navigate = useNavigate();
+
   return (
-    <React.Fragment
-      
-    >
-      {/* {(title || subtitle || markdown) && (
-        <Grid contentWrapper={true}>
-          <div className={`column is-8 mb-7 is-offset-2`}>
-            {title ? (
-              <div className={`block has-text-centered`}>
-                <div className="section-title has-title-dividers">
-                  <div className="title-decoration">
-                    <h2 className="title is-2 has-text-centered">{title}</h2>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {subtitle ? (
-              <div className={`block ${markdown ? "mb-6" : null}`}>
-                <h4 className="subtitle is-4 is-line-height-medium has-text-centered has-text-weight-normal">
-                  {subtitle}
-                </h4>
-              </div>
-            ) : null}
-            {markdown && (
-              <div
-                className={`${textAlignment ? "has-text-" + textAlignment : "has-text-left"
-                  }`}
-              >
-                <MarkdownContent markdown={markdown} />
-              </div>
-            )}
-          </div>
-        </Grid>
-      )} */}
+    <React.Fragment>
 
       <Grid gridCustomClasses={`is-multiline`}
         columnDesktop={columnsDesktop}
@@ -74,24 +59,55 @@ const SectionWrappedArticleGrid = ({
         {articles &&
           articles.map((article, i) => (
             <React.Fragment key={i}>
-              <ArticleGridHeaderImageCard
-                columnsDesktop={columnsDesktop}
-                columnsTablet={columnsTablet}
-                columnsMobile={columnsMobile}
-                imageRatio={imageRatio}
-                footerGrow={footerGrow}
-                footerShrink={footerShrink}
-                headerGrow={headerGrow}
-                headerShrink={headerShrink}
-                boxBackgroundColour={boxBackgroundColour}
-                article={article}
-                key={i}
-              />
+              <Card
+                overflow={'hidden'}
+                boxShadow={'none'}
+                borderRadius={0}
+                height={"100%"}
+                className={`${boxBackgroundColour && "has-background-" + boxBackgroundColour}`}
+              >
+                <CardHeader p="0">
+                  {article.image && (
+                    <ImageLoader
+                      imageUrl={article.image}
+                      imageAlt={article?.imageAlt}
+                      imageRatioDesktop={'2by1'}
+                      imageRatioMobile={'3by1'}
+                    />
+                  )}
+                </CardHeader>
+                <CardBody>
+                  <Flex direction={'column'}>
+                    {(article.title ||
+                      article.content ||
+                      (article.ctaLink && article.ctaTitle)) && (
+                        <>
+                          {article?.title && (
+                            <Box>
+                              <Header5>
+                                {article.title}
+                              </Header5>
+                              <Divider orientation='horizontal' />
+                            </Box>
+                          )}
+                          {article?.content && (
+                            <ExpandingTextBox textBoxCopy={article?.content} />
+                          )}
+                        </>
+                      )}
+                  </Flex>
+                </CardBody>
+                {article.ctaLink && article.ctaTitle && (
+                  <CardFooter>
+                    <Button onClick={() => navigate(article.ctaLink)}>
+                      {article.ctaTitle}
+                    </Button>
+                  </CardFooter>
+                )}
+              </Card>
             </React.Fragment>
           ))}
       </Grid>
-      
-
       {ctaTitle && ctaLink && (
         <div className="pt-6">
           <SectionCTA
