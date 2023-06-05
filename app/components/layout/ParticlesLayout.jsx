@@ -82,6 +82,11 @@ const ParticlesLayout = () => {
                 },
             },
         },
+        fullScreen: { 
+            enable: false, 
+            zIndex: 99,
+            height: "100%",
+        },
         interactivity: {
             detect_on: "window",
             events: {
@@ -117,7 +122,6 @@ const ParticlesLayout = () => {
         },
         retina_detect: false,
         fpsLimit: framesPerSecond,
-        styles: { position: "absolute" },
     };
 
     const particlesInit = useCallback(async engine => {
@@ -137,7 +141,7 @@ const ParticlesLayout = () => {
         id="tsparticles"
         init={particlesInit}
         loaded={particlesLoaded}
-        options={particles}
+        options={particles}        
     />
 }
 export default ParticlesLayout;

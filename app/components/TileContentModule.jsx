@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
-import { Heading } from "@chakra-ui/react";
+import { Heading, Card, CardHeader, CardBody, CardFooter, Text } from "@chakra-ui/react";
 import { Header5 } from "./helpers/Header";
 
 function TileContentModule({
@@ -34,11 +34,9 @@ function TileContentModule({
   }) => {
     return (
       <div
-        className={`icon is-rounded ${
-          iconLarger === true ? "is-larger-x2" : "is-large-x2"
-        } ${iconColor && `has-background-${iconColor}`} ${
-          customIconClasses && `${customIconClasses}`
-        }`}
+        className={`icon is-rounded ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
+          } ${iconColor && `has-background-${iconColor}`} ${customIconClasses && `${customIconClasses}`
+          }`}
       >
         {numericalIcons ? (
           <span className="is-size-2 has-text-weight-bold">{icon}</span>
@@ -54,9 +52,8 @@ function TileContentModule({
   const hasImage = ({ altImageText, image, scaleDown }) => {
     return (
       <figure
-        className={`icon ${
-          iconLarger === true ? "is-larger-x2" : "is-large-x2"
-        }`}
+        className={`icon ${iconLarger === true ? "is-larger-x2" : "is-large-x2"
+          }`}
       >
         <img
           alt={!!altImageText ? altImageText : "MethodWorx"}
@@ -84,82 +81,58 @@ function TileContentModule({
     }
   };
 
-  return (
-    <div className={`column ${columnWidths ? columnWidths : null}`}>
-      <div
-        className={`box ${isHoverable ? "is-hoverable" : null} ${
-          !!iconColor
-            ? tileBackground(iconColor)
-            : tileColour
-            ? "has-background-" + tileColour
-            : null
-        } ${tilePadding ? "p-" + tilePadding : null} ${
-          tileRadius ? "is-rounded-" + tileRadius : null
-        }`}
-      >
-        <div className="tile-header is-justify-content-center pb-5">
-          <div className="is-block">
-            {icon ? (
-              link ? (
-                <Link to={link}>
-                  {hasIcon({
-                    iconLarger,
-                    iconColor,
-                    customIconClasses,
-                    numericalIcons,
-                    icon,
-                  })}
-                </Link>
-              ) : (
-                hasIcon({
-                  iconLarger,
-                  iconColor,
-                  customIconClasses,
-                  numericalIcons,
-                  icon,
-                })
-              )
-            ) : link ? (
-              <Link to={link}>
-                {hasImage({ altImageText, image, scaleDown })}
-              </Link>
-            ) : (
-              hasImage({ altImageText, image, scaleDown })
-            )}
-          </div>
-        </div>
-        <div className={`tile-body is-align-top  ${link ? "pb-5" : ""} `}>
-          {title || children ? (
-            <div
-              className={`${
-                tileTextColourDark === true ? "has-text-dark" : ""
-              }`}
-            >
-              {title && (
-                <div className="block">
-                  <Header5>
-                    {title}
-                  </Header5>
-                </div>
-              )}
-              {children && <div className="block">{children}</div>}
-            </div>
-          ) : null}
-        </div>
-        {link ? (
-          <div className="tile-footer pt-5">
-            <div
-              className={`${
-                tileTextColourDark === true ? "has-text-dark" : ""
-              }`}
-            >
-              <CTAModule ctaLink={link} ctaCopy={ctaLinkName ? ctaLinkName : "Find out more"} />
+  console.log("tileColour ==> ", tileColour)
+  console.log("iconColor ==> ", iconColor)
 
-            </div>
-          </div>
-        ) : null}
-      </div>
-    </div>
+  return (
+    <Card backgroundColor={!!iconColor
+      ? tileBackground(iconColor)
+      : tileColour}>
+      <CardHeader>
+
+        {icon ? (
+          link ? (
+            <Link to={link}>
+              {hasIcon({
+                iconLarger,
+                iconColor,
+                customIconClasses,
+                numericalIcons,
+                icon,
+              })}
+            </Link>
+          ) : (
+            hasIcon({
+              iconLarger,
+              iconColor,
+              customIconClasses,
+              numericalIcons,
+              icon,
+            })
+          )
+        ) : link ? (
+          <Link to={link}>
+            {hasImage({ altImageText, image, scaleDown })}
+          </Link>
+        ) : (
+          hasImage({ altImageText, image, scaleDown })
+        )}
+      </CardHeader>
+      <CardBody>
+        {title && (
+          <Header5>
+            {title}
+          </Header5>
+        )}
+        {children && <Text>{children}</Text>}
+      </CardBody>
+      {link ? (
+        <CardFooter>
+
+          <CTAModule ctaLink={link} ctaCopy={ctaLinkName ? ctaLinkName : "Find out more"} />
+        </CardFooter>
+      ) : null}
+    </Card >
   );
 }
 

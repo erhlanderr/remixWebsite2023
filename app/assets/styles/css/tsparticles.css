@@ -1,0 +1,7 @@
+#tsparticles {
+    height: 100% !important;
+}
+
+#tsparticles > canvas {
+    position: static !important;
+}

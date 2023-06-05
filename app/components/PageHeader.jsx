@@ -13,8 +13,8 @@ function PageHeader({ header }) {
     console.log("header ==> ", header);
     return (
         <>
-            <Box textAlign={'center'} minHeight={'33vh'} backgroundColor={'brand.mwBlue'}>
-                <ContainerLayout>
+            <Box textAlign={'center'} minHeight={'33vh'} backgroundColor={'brand.mwBlue'} overflow={'hidden'} position={'relative'}>
+                <ContainerLayout display={'flex'} flexDirection={'column'} justifyContent='center' height='100%' >
                     <Box py={32} color="white">
                         <Header1 >
                             {header.title}
@@ -24,7 +24,9 @@ function PageHeader({ header }) {
                         </Subtitle5>
                     </Box>
                 </ContainerLayout>
-                <ParticlesLayout/>
+                <Box position={'absolute'} top={0} bottom={0} left={0} right={0} overflow={'hidden'}>
+                    <ParticlesLayout/>
+                </Box>
             </Box>
 
         </>

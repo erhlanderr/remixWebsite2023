@@ -3,9 +3,10 @@ import { Container } from "@chakra-ui/react";
 
 function ContainerLayout({
     children,
+    ...props
 }) {
     return (
-        <Container maxWidth={"1344"}>{children}</Container>
+        <Container {...props} maxWidth={"1344"}>{children}</Container>
     );
 }
 

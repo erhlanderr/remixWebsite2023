@@ -17,6 +17,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 
 import slickCarousel from "./assets/styles/css/slick.css";
+import particles from "./assets/styles/css/tsparticles.css";
 import bulmaStyles from "./assets/styles/css/bulma.min.css";
 import Theme from "./assets/styles/Theme";
 
@@ -49,6 +50,7 @@ export const loader = async ({ request, params }) => {
 export let links = () => {
   return [
     { rel: "stylesheet", href: slickCarousel },
+    { rel: "stylesheet", href: particles },
     { rel: "stylesheet", href: bulmaStyles },
   ]
 }
