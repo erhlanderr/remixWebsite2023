@@ -42,6 +42,16 @@ const Heading = defineStyleConfig({
             color: 'brand.mwGrey',
             fontWeight: "200",
         },
+        pageHeaderTitle: {
+            color: 'brand.mwGrey',
+            fontWeight: "400",
+            textShadow: 'textShadow'
+        },
+        pageHeaderSubtitle: {
+            color: 'brand.mwGrey',
+            fontWeight: "200",
+            textShadow: 'textShadow'
+        },
     },
     // The default size and variant values
     defaultProps: {

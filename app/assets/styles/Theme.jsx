@@ -45,11 +45,10 @@ const Theme = extendTheme({
     fonts: {
         heading: "Quicksand",
         body: "Open Sans",
-        //   fontSizes: {
-        //     h1:  ["4xl", null, "5xl"]
-        //   }
     },
-
+    shadows: {
+        textShadow: '0 .0625rem .25rem rgba(10,10,10,.3)!important'
+      },
     fontSizes: {
         xs: "12px",
         sm: "14px",
@@ -64,7 +63,7 @@ const Theme = extendTheme({
         "7xl": "48px"
     },
     variants: {
-        'with-shadow': {
+        'textShadow': {
             boxShadow: '0 0 44px 0 rgb(0 0 0 / 8%)',
         },
     },

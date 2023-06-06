@@ -1,6 +1,30 @@
 import React from "react";
 import { Heading, Box, theme, withDefaultVariant } from "@chakra-ui/react";
 
+const HeaderType = (value) => {
+  switch (value) {
+    case 'h1':
+      return '4xl'
+    default: 'md'
+  }
+}
+
+const Header = ({
+  children,
+  headerType,
+  headerVariant,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant={headerVariant}
+      as={headerType}
+      size={HeaderType(headerType)}
+    >{children}</Heading>
+
+  );
+}
 
 const Header1 = ({
   children,
@@ -91,6 +115,7 @@ const Header6 = ({
 
   );
 }
+
 const DecoratedHeader1 = ({
   children,
   ...props
@@ -272,7 +297,188 @@ const Subtitle6 = ({
   );
 }
 
+const ShadowHeader1 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderTitle"
+      as="h1"
+      size="4xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowHeader2 = ({
+  children,
+  ...props
+}) => {
+
+  return (
+    <Heading
+      color={{ ...props.color }}
+      as="h2"
+      size="3xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowHeader3 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderTitle"
+      as="h3"
+      size="2xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowHeader4 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderTitle"
+      as="h4"
+      size="xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowHeader5 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderTitle"
+      as="h5"
+      size="lg"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowHeader6 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderTitle"
+      as="h6"
+      size="md"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowSubtitle1 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderSubtitle"
+      as="h1"
+      size="4xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowSubtitle2 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderSubtitle"
+      as="h2"
+      size="3xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowSubtitle3 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderSubtitle"
+      as="h3"
+      size="2xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowSubtitle4 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderSubtitle"
+      as="h4"
+      size="xl"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowSubtitle5 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderSubtitle"
+      as="h5"
+      size="lg"
+    >{children}</Heading>
+
+  );
+}
+
+const ShadowSubtitle6 = ({
+  children,
+  ...props
+}) => {
+  return (
+    <Heading
+      color={{ ...props.color }}
+      variant="pageHeaderSubtitle"
+      as="h6"
+      size="md"
+    >{children}</Heading>
+
+  );
+}
+
 export {
+  Header,
   Header1,
   Header2,
   Header3,
@@ -290,5 +496,17 @@ export {
   Subtitle3,
   Subtitle4,
   Subtitle5,
-  Subtitle6
+  Subtitle6,
+  ShadowHeader1,
+  ShadowHeader2,
+  ShadowHeader3,
+  ShadowHeader4,
+  ShadowHeader5,
+  ShadowHeader6,
+  ShadowSubtitle1,
+  ShadowSubtitle2,
+  ShadowSubtitle3,
+  ShadowSubtitle4,
+  ShadowSubtitle5,
+  ShadowSubtitle6,
 };
