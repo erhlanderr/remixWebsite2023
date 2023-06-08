@@ -2,6 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 
 import Button from "./Button";
 import Heading from "./Heading";
+import Links from "./Links";
 import SectionStyles from "./sectionStyles";
 import { CardStyles } from "./CardStyles"
 
@@ -24,7 +25,8 @@ const Theme = extendTheme({
     components: {
         Button,
         Heading,
-        Card: CardStyles
+        Card: CardStyles,
+        Link: Links
     },
     layerStyles: {
         mediumSection: {
@@ -35,9 +37,12 @@ const Theme = extendTheme({
     },
     colors: {
         brand: {
-            mwBlue: "#2fb8ca",
+            mwPrimary: "#2fb8ca",
+            mwPrimaryDark: "#21808c", 
+            mwPrimaryText: "#4a4a4a",
+            mwDark: "#363636",
             mwRed: "#ff8d85",
-            mwGrey: "#4a4a4a",
+            mwSecondaryLight: "#ffeceb",
             mwWhite: "#ffffff",
             mwOverlay: "rgba(10,10,10,0.5)",
         }
@@ -71,11 +76,11 @@ const Theme = extendTheme({
     styles: {
         global: {
             body: {
-                color: 'brand.mwGrey',
+                color: 'brand.mwPrimaryText',
             },
-            p: {
-                color: 'brand.polarText',
-            }
+            // p: {
+            //     color: 'brand.polarText',
+            // }
         },
     },
 })

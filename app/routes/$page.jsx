@@ -5,6 +5,7 @@ import {
 import { json } from "@remix-run/node";
 import ContentPlaceholder from "../content/contentPlaceholders";
 import PageHeader from "../components/PageHeader";
+import ContactUsPageButton from "../components/ContactUsPageButton";
 
 export const loader = async ({ request, params, context }) => {
   let route;
@@ -33,5 +34,6 @@ export default function Page() {
   <React.Fragment>    
     <PageHeader header={headerContent}/>
     <ContentPlaceholder components={pageContent} />
+    {route !== 'contact-us' && <ContactUsPageButton/>}
   </React.Fragment>)
 }

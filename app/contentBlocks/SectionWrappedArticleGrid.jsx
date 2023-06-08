@@ -1,7 +1,4 @@
 import React from "react";
-
-import ArticleGridHeaderImageCard from "../components/ArticleGridHeaderImageCard";
-import MarkdownContent from "../components/markdownContent";
 import Grid from "../components/layout/GridLayout";
 import SectionCTA from "../components/SectionCTA";
 
@@ -16,32 +13,15 @@ import { Header } from "../components/helpers/Header";
 import { ImageLoader } from "../components/helpers/ImageLoader";
 import ExpandingTextBox from "../components/ExpandingTextBox";
 import {
-  useNavigate
+  useNavigate,
 } from "@remix-run/react";
 
 const SectionWrappedArticleGrid = ({
-  type,
-  sectionSize,
-  sectionCustomClasses,
   articles,
-  sectionIsEqual,
   columnsDesktop,
   columnsTablet,
   columnsMobile,
-  imageRatio,
-  footerGrow,
-  footerShrink,
-  headerGrow,
-  headerShrink,
   boxBackgroundColour,
-  customColumnsClasses,
-  sectionIsPaddingReversed,
-  sectionBackgroundColour,
-  markdown,
-  title,
-  subtitle,
-  textAlignment,
-  passPaddingTop,
   ctaTitle,
   ctaLink,
 }) => {

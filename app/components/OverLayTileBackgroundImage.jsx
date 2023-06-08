@@ -2,7 +2,7 @@ import React from "react";
 // import ClientSideLazyLoadComponent from "../ClientSideLazyLoadComponent";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
-import { Box, Card, CardBody, CardFooter, CardHeader, Flex, Heading } from "@chakra-ui/react";
+import { Box, Card, CardBody, CardFooter, CardHeader, Flex, Heading, Button } from "@chakra-ui/react";
 import { Header, Subtitle } from "./helpers/Header";
 import { BackgroundImageLoader } from "./helpers/ImageLoader"
 
@@ -49,7 +49,7 @@ function OverLayTile({
       {!linkCta || !linkCopy ? null : (
         <CardFooter>
           <Flex justifyContent={"center"} w="100%">
-            <CTAModule ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
+            <CTAModule variant='white' ctaLink={linkCta} ctaCopy={tileTitle || linkCopy} />
           </Flex>
         </CardFooter>
       )}

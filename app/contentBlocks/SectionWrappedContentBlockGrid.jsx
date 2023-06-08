@@ -1,7 +1,7 @@
 import React from "react";
 
 import Grid from "../components/layout/GridLayout"
-import MarkdownContent from "../components/markdownContent";
+import MarkdownContent from "../components/helpers/Markdown";
 import { Box } from "@chakra-ui/react";
 import { DecoratedHeader, Subtitle } from "../components/helpers/Header";
 
@@ -40,7 +40,7 @@ function SectionWrappedContentBlockGrid({
               paddingBottom={!!subtitle ? 2 : 6}
             >
               <DecoratedHeader
-                headerType="h3"
+                headerType="h2"
               >
                 {title}
               </DecoratedHeader>
@@ -62,13 +62,8 @@ function SectionWrappedContentBlockGrid({
             <Box
               textAlign={textAlignment ? textAlignment : 'center'}
             >
-              <MarkdownContent markdown={markdown} />
+              <MarkdownContent>{markdown}</MarkdownContent>
             </Box>
-            // <div
-            //   className={`${textAlignment ? "has-text-" + textAlignment : "has-text-left"
-            //     }`}
-            // >
-            // </div>
           )}
         </div>
       </Grid>

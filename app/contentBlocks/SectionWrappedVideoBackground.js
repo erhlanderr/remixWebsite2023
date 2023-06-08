@@ -1,7 +1,6 @@
 import React from "react";
 import VideoWithContent from "../components/VideoWithContent";
-import Markdown from "markdown-to-jsx";
-import MarkdownContent from "../components/markdownContent";
+import MarkdownContent from "../components/helpers/Markdown";
 import {
   Container,
   Box,
@@ -34,35 +33,14 @@ function SectionWrappedVideoBackground({
       >
         <>
           {content && (
-            <Markdown
-              options={{
-                disableParsingRawHTML: false,
-                overrides: {
-                  ul: {
-                    props: {
-                      className: "custom-list is-medium",
-                    },
-                  },
-                },
-              }}
-            >
+            <MarkdownContent>
               {content}
-            </Markdown>
+            </MarkdownContent>
           )}
           {markdown && (
-            <Markdown
-              options={{
-                overrides: {
-                  ul: {
-                    props: {
-                      className: "custom-list is-medium",
-                    },
-                  },
-                },
-              }}
-            >
+            <MarkdownContent>
               {markdown}
-            </Markdown>
+            </MarkdownContent>
           )}
         </>
       </VideoWithContent>

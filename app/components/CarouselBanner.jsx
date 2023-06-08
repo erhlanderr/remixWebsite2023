@@ -1,5 +1,5 @@
 import React from "react";
-import Markdown from "markdown-to-jsx";
+import MarkdownContent from "./helpers/Markdown";
 import { Heading, Box, Flex, Card, CardBody } from "@chakra-ui/react";
 import { Header, Subtitle } from "./helpers/Header";
 import ContainerLayout from "./layout/ContainerLayout";
@@ -36,24 +36,10 @@ function CarouselBanner({
         <ContainerLayout>
           <blockquote>
             <Flex>
-              <Markdown
-                options={{
-                  overrides: {
-                    ul: {
-                      props: {
-                        className: "custom-list is-medium",
-                      },
-                    },
-                    blockquote: {
-                      props: {
-                        className: "blog-testimonial is-medium",
-                      },
-                    },
-                  },
-                }}
+              <MarkdownContent
               >
                 {carouselTestimonial}
-              </Markdown>
+              </MarkdownContent>
             </Flex>
 
             {carouselQuoteRight === false ? null : (

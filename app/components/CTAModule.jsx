@@ -5,10 +5,10 @@ import {
 import {
     useNavigate
 } from "@remix-run/react";
-const CTAModule = ({ ctaLink, ctaCopy }) => {
+const CTAModule = ({ ctaLink, ctaCopy, variant, size }) => {
     const navigate = useNavigate();
     return (
-        <Button onClick={() => navigate(ctaLink)}>
+        <Button size={size} variant={variant} onClick={() => navigate(ctaLink)}>
             {ctaCopy}
         </Button>
     )

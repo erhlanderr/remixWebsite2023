@@ -1,13 +1,11 @@
 import React from "react";
-// import Markdown from "markdown-to-jsx";
-import Markdown from "markdown-to-jsx";
+import MarkdownContent from "../components/helpers/Markdown";
 import GridLayout from "../components/layout/GridLayout";
-import { Header, Subtitle } from "../components/helpers/Header";
+import { DecoratedHeader, Header, Subtitle } from "../components/helpers/Header";
 import { Box, Grid, GridItem, Heading } from "@chakra-ui/react";
 
 
 function SectionWrappedPageIntro({
-    type,
     introductionTitle,
     introductionSubTitle,
     introIcons,
@@ -15,31 +13,24 @@ function SectionWrappedPageIntro({
 }) {
     return (
         <React.Fragment>
-            <Grid templateColumns='repeat(12, 1fr)'>
-                <GridItem colStart={4} colEnd={10}>
-                    <div className="column is-6 is-offset-3">
+            <Box>
+                <Grid templateColumns='repeat(12, 1fr)'>
+                    <GridItem colStart={4} colEnd={10} textAlign={'center'}>
                         {introductionTitle || introductionSubTitle ? (
                             <div className="double-block">
                                 {introductionTitle && (
-                                    <div className="block">
-                                        <div className="section-title has-title-dividers">
-                                            <div className="title-decoration">
-                                                <Header headerType="h2">
-                                                    {introductionTitle}
-                                                </Header>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Box>
+                                        <DecoratedHeader headerType="h2">
+                                            {introductionTitle}
+                                        </DecoratedHeader>
+                                    </Box>
                                 )}
                                 {introductionSubTitle && (
-                                    <div className="block">
-                                        <div>
-                                            <Subtitle headerType="h4"
-                                            >
-                                                {introductionSubTitle}
-                                            </Subtitle>
-                                        </div>
-                                    </div>
+                                    <Box mb={4}>
+                                        <Subtitle headerType="h4">
+                                            {introductionSubTitle}
+                                        </Subtitle>
+                                    </Box>
                                 )}
                             </div>
                         ) : null}
@@ -69,29 +60,13 @@ function SectionWrappedPageIntro({
                         )}
 
                         {markdown && (
-                            <Markdown
-                                className="content"
-                                options={{
-                                    overrides: {
-                                        p: {
-                                            props: {
-                                                className: "block",
-                                            },
-                                        },
-                                        a: {
-                                            props: {
-                                                target: "_blank",
-                                            },
-                                        },
-                                    },
-                                }}
-                            >
+                            <MarkdownContent>
                                 {markdown}
-                            </Markdown>
+                            </MarkdownContent>
                         )}
-                    </div>
-                </GridItem>
-            </Grid>
+                    </GridItem>
+                </Grid>
+            </Box>
 
         </React.Fragment>
     );

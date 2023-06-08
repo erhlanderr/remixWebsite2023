@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { format } from 'date-fns'
 import LinkBlock from "./LinkBlock";
 import ContainerLayout from "./layout/ContainerLayout";
 import { Header } from "./helpers/Header";
+import Link from "./helpers/Link";
 import {
     Box,
     Text,
@@ -29,6 +29,9 @@ const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes, hasDate }) =
         }, []);
 
         if (children.length > 0) {
+
+            console.log("children ==> ", children)
+
             var filterByDate = children.sort(sortByDate).slice(0, numberOfPosts ? numberOfPosts : children.length);
             setPosts(filterByDate);
         }
@@ -47,10 +50,10 @@ const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes, hasDate }) =
             )}
             {isPosts?.map((item, index) => (
                 <Box paddingTop={index > 0 ? 4 : 0} fontSize={'xs'} key={item.name + "-" + index}>
-                    <Link className="link" to={item.url}>
+                    <Link variant="footerLinks" to={item.url}>
                         <Text fontSize='sm'>{item.name}</Text>
                         {hasDate && <Text fontSize='xs'>{format(new Date(item.createDate), "dd MMMM yyyy")}</Text>}
-                    </Link>                    
+                    </Link>
                 </Box>
 
             ))}
@@ -183,127 +186,131 @@ function Footer({ logo, childRoutes }) {
     const footer = useRef();
     return (
         <>
-            <footer
-                ref={footer}
+            {/* <footer
                 className="footer has-background-primary-dark has-text-white are-half-block has-link-tertiary has-link-bold are-large-icons is-size-7"
-            >
-                <ContainerLayout>
-                    <Grid
-                        templateColumns='repeat(2, 1fr)'
-                    >
+                > */}
+                <Box
+                    ref={footer}
+                    color="white"
+                    bg="brand.mwPrimaryDark">
+                    <ContainerLayout>
+                        <Grid
+                            templateColumns='repeat(2, 1fr)'
+                        >
 
-                        <GridItem>
-                            <div>
-                                <div className="block">
-                                    <div className="navbar-brand">
-                                        <Link to="/">
-                                            <figure className="image brand">
-                                                <img src={logo} alt="MethodWorx" data-src={logo} />
-                                            </figure>
-                                        </Link>
+                            <GridItem>
+                                <div>
+                                    <div className="block">
+                                        <div className="navbar-brand">
+                                            <Link to="/">
+                                                <figure className="image brand">
+                                                    <img src={logo} alt="MethodWorx" data-src={logo} />
+                                                </figure>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </GridItem>
+                            </GridItem>
 
-                        <GridItem>
-                            <div className="icon-content">
-                                <a
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href="https://www.youtube.com/channel/UC8aT1prM8u1MxwXcRDY1Iig/featured"
-                                >
-                                    <span className="icon is-medium">
-                                        <i className="fab fa-youtube-square"></i>
-                                    </span>
-                                </a>
-                                <a
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href="https://www.instagram.com/methodworx/"
-                                >
-                                    <span className="icon is-medium">
-                                        <i className="fab fa-instagram"></i>
-                                    </span>
-                                </a>
-                                <a
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href="https://www.facebook.com/methodworx/"
-                                >
-                                    <span className="icon is-medium">
-                                        <i className="fab fa-facebook-square"></i>
-                                    </span>
-                                </a>
-                                <a
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href="https://twitter.com/methodworx"
-                                >
-                                    <span className="icon is-medium">
-                                        <i className="fab fa-twitter-square"></i>
-                                    </span>
-                                </a>
-                                <a
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href="https://www.linkedin.com/company/methodworx-ltd"
-                                >
-                                    <span className="icon is-medium">
-                                        <i className="fab fa-linkedin"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </GridItem>
-                    </Grid>
-
-                    <SimpleGrid gap={6} columns={{ base: 1, md: 2, lg: 4 }}>
-                        <Box>
-                            <Box paddingBottom={6}>
-                                <Header headerType="h5">
-                                    Our Address
-                                </Header>
-                            </Box>
-                            <Box>
-                                <Text fontSize={'sm'}>
-                                    MethodWorx Ltd
-                                    <br />
-                                    Creative Studios
-                                    <br />
-                                    Runfold House
-                                    <br />
-                                    Runfold St George
-                                    <br />
-                                    Farnham
-                                    <br />
-                                    GU10 1PL
-                                    <br />
-                                    <br />
-                                    phone: <a href="tel:0845 1630796">0845 1630796</a>
-                                    <br />
-                                    email:{" "}
-                                    <a href="mailto:sales@methodworx.com">
-                                        sales@methodworx.com
+                            <GridItem>
+                                <div className="icon-content">
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.youtube.com/channel/UC8aT1prM8u1MxwXcRDY1Iig/featured"
+                                    >
+                                        <span className="icon is-medium">
+                                            <i className="fab fa-youtube-square"></i>
+                                        </span>
                                     </a>
-                                </Text>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.instagram.com/methodworx/"
+                                    >
+                                        <span className="icon is-medium">
+                                            <i className="fab fa-instagram"></i>
+                                        </span>
+                                    </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.facebook.com/methodworx/"
+                                    >
+                                        <span className="icon is-medium">
+                                            <i className="fab fa-facebook-square"></i>
+                                        </span>
+                                    </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://twitter.com/methodworx"
+                                    >
+                                        <span className="icon is-medium">
+                                            <i className="fab fa-twitter-square"></i>
+                                        </span>
+                                    </a>
+                                    <a
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        href="https://www.linkedin.com/company/methodworx-ltd"
+                                    >
+                                        <span className="icon is-medium">
+                                            <i className="fab fa-linkedin"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </GridItem>
+                        </Grid>
+
+                        <SimpleGrid gap={6} columns={{ base: 1, md: 2, lg: 4 }}>
+                            <Box>
+                                <Box paddingBottom={6}>
+                                    <Header headerType="h5">
+                                        Our Address
+                                    </Header>
+                                </Box>
+                                <Box>
+                                    <Text fontSize={'sm'}>
+                                        MethodWorx Ltd
+                                        <br />
+                                        Creative Studios
+                                        <br />
+                                        Runfold House
+                                        <br />
+                                        Runfold St George
+                                        <br />
+                                        Farnham
+                                        <br />
+                                        GU10 1PL
+                                        <br />
+                                        <br />
+                                        phone: <a href="tel:0845 1630796">0845 1630796</a>
+                                        <br />
+                                        email:{" "}
+                                        <a href="mailto:sales@methodworx.com">
+                                            sales@methodworx.com
+                                        </a>
+                                    </Text>
+                                </Box>
                             </Box>
-                        </Box>                        
-                        <FooterPosts
-                            title="Recent Blogs"
-                            pathName="/blog/"
-                            childRoutes={childRoutes}
-                            numberOfPosts={4}
-                            hasDate={true}
-                        />
-                        <FooterPosts
-                            title="Case Studies"
-                            pathName="/work/"
-                            childRoutes={childRoutes}
-                        />
-                        {/* <FooterSiteMap title="Site Map" /> */}
-                    </SimpleGrid>
-                </ContainerLayout>
-            </footer>
+                            <FooterPosts
+                                title="Recent Blogs"
+                                pathName="/blog/"
+                                childRoutes={childRoutes}
+                                numberOfPosts={4}
+                                hasDate={true}
+                            />
+                            <FooterPosts
+                                title="Case Studies"
+                                pathName="/work/"
+                                childRoutes={childRoutes}
+                            />
+                            {/* <FooterSiteMap title="Site Map" /> */}
+                        </SimpleGrid>
+                    </ContainerLayout>
+                </Box>
+            {/* </footer> */}
         </>
     );
 }

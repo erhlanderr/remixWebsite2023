@@ -17,8 +17,12 @@ import {
     useDisclosure,
     Heading,
     Text,
-    SimpleGrid
+    SimpleGrid,
+    Show,
+    Hide,
+    IconButton
 } from "@chakra-ui/react";
+// import { HamburgerIcon } from '@chakra-ui/icons'
 import ContainerLayout from "./layout/ContainerLayout";
 import {
     Outlet,
@@ -43,31 +47,40 @@ const Navigation = ({ globalSettings }) => {
                                 <Image maxW="280px" src={logoMWBlue} />
                             </Link>
                         </Box>
-                        <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                            Open
-                        </Button>
-                        <Drawer
-                            isOpen={isOpen}
-                            placement='right'
-                            onClose={onClose}
-                            finalFocusRef={btnRef}
-                        >
-                            <DrawerOverlay />
-                            <DrawerContent>
-                                <DrawerCloseButton />
-                                <DrawerHeader>Navigation</DrawerHeader>
+                        <Show above='lg'>
+                            <Flex alignItems={'center'}>
+                            {globalSettings.navigation.navLinks.map((navItem, index) => (
+                                <React.Fragment key={index}> 
+                                    <Button variant="navlink" pl={index > 0 && 4} onClick={() => navigate(navItem.ctaLink)}>{navItem.title}</Button>
+                                </React.Fragment>
+                            ))}
+                            </Flex>
+                        </Show>
+                        <Hide above="lg">
+                            <IconButton ref={btnRef} colorScheme='teal' onClick={onOpen}  />
+                            <Drawer
+                                isOpen={isOpen}
+                                placement='right'
+                                onClose={onClose}
+                                finalFocusRef={btnRef}
+                            >
+                                <DrawerOverlay />
+                                <DrawerContent>
+                                    <DrawerCloseButton />
+                                    <DrawerHeader></DrawerHeader>
 
-                                <DrawerBody>
-                                    <SimpleGrid columns={1} spacing={10}>
-                                        {globalSettings.navigation.navLinks.map((navItem, index) => (
-                                            <React.Fragment key={index}> 
-                                                <Button onClick={() => navigate(navItem.ctaLink)}>{navItem.title}</Button>
-                                            </React.Fragment>
-                                        ))}
-                                    </SimpleGrid>
-                                </DrawerBody>
-                            </DrawerContent>
-                        </Drawer>
+                                    <DrawerBody>
+                                        <SimpleGrid columns={1} spacing={4}>
+                                            {globalSettings.navigation.navLinks.map((navItem, index) => (
+                                                <React.Fragment key={index}> 
+                                                    <Button variant="navlink" justifyContent={'start'} onClick={() => navigate(navItem.ctaLink)}>{navItem.title}</Button>
+                                                </React.Fragment>
+                                            ))}
+                                        </SimpleGrid>
+                                    </DrawerBody>
+                                </DrawerContent>
+                            </Drawer>
+                        </Hide>
 
                     </Flex>
                 </ContainerLayout>

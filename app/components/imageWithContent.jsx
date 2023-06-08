@@ -35,33 +35,7 @@ function ImageWithContent({
 
     return (
         <>
-            <Box>
-                {ctaLink ? (
-                    <Link to={ctaLink}>
-                        {columnImage ? (
-                            <ImageLoader
-                                imageRatioDesktop={imageRatioDesktop}
-                                imageRatioMobile={imageRatioMobile}
-                                imageAlt={columnImageAlt}
-                                imageUrl={columnImage}
-                            />
-                        ) : null}
-                    </Link>
-                ) : (
-                    <React.Fragment>
-                        {
-                            columnImage ? (
-                                <ImageLoader
-                                    imageRatioDesktop={imageRatioDesktop}
-                                    imageRatioMobile={imageRatioMobile}
-                                    imageAlt={columnImageAlt}
-                                    imageUrl={columnImage}
-                                />
-                            ) : null
-                        }
-                    </React.Fragment>
-                )}
-            </Box>
+            
             <Box>
                 {!spotlightColumn ? (
                     <React.Fragment>

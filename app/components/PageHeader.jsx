@@ -10,7 +10,7 @@ import ParticlesLayout from "./layout/ParticlesLayout";
 function PageHeader({ header }) {
     return (
         <>
-            <Box textAlign={'center'} minHeight={'33vh'} backgroundColor={'brand.mwBlue'} overflow={'hidden'} position={'relative'} display={'flex'} flexDirection={'column'} justifyContent='center'>
+            <Box textAlign={'center'} minHeight={'33vh'} backgroundColor={'brand.mwPrimary'} overflow={'hidden'} position={'relative'} display={'flex'} flexDirection={'column'} justifyContent='center'>
                 <ContainerLayout height='100%' >
                     <Box position='relative' zIndex={3} py={32} color="white">
                         <Box pb={4}>

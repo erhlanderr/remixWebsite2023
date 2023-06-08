@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Markdown from "markdown-to-jsx";
+import MarkdownContent from "./helpers/Markdown";
+import { Box, Text } from "@chakra-ui/react";
 function ExpandingTextBox({ textBoxCopy }) {
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
@@ -9,71 +10,27 @@ function ExpandingTextBox({ textBoxCopy }) {
   return (
     <>
       {textBoxCopy.length > 150 ? (
-        <>
+        <Box>
           {isReadMore ? (
-            <Markdown
-              options={{
-                overrides: {
-                  ul: {
-                    props: {
-                      className: "custom-list is-medium",
-                    },
-                  },
-                  blockquote: {
-                    props: {
-                      className: "blog-testimonial is-medium",
-                    },
-                  },
-                },
-              }}
-            >
+            <MarkdownContent>
               {textBoxCopy.slice(0, 150) + "..."}
-            </Markdown>
+              
+            </MarkdownContent>
           ) : (
-            <Markdown
-              options={{
-                overrides: {
-                  ul: {
-                    props: {
-                      className: "custom-list is-medium",
-                    },
-                  },
-                  blockquote: {
-                    props: {
-                      className: "blog-testimonial is-medium",
-                    },
-                  },
-                },
-              }}
-            >
+            <MarkdownContent>
               {textBoxCopy}
-            </Markdown>
+            </MarkdownContent>
           )}
           {textBoxCopy.length > 150 && (
-            <span className="is-link mt-3 is-block" onClick={toggleReadMore}>
+            <Text pt={4} textDecoration={'underline'} color="brand.mwPrimary" onClick={toggleReadMore}>
               {isReadMore ? " read more" : " show less"}
-            </span>
+            </Text>
           )}
-        </>
+        </Box>
       ) : (
-        <Markdown
-          options={{
-            overrides: {
-              ul: {
-                props: {
-                  className: "custom-list is-medium",
-                },
-              },
-              blockquote: {
-                props: {
-                  className: "blog-testimonial is-medium",
-                },
-              },
-            },
-          }}
-        >
+        <MarkdownContent>
           {textBoxCopy}
-        </Markdown>
+        </MarkdownContent>
       )}
     </>
   );

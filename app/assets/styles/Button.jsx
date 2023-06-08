@@ -3,8 +3,8 @@ import { defineStyleConfig } from '@chakra-ui/react'
 const Button = defineStyleConfig({
   // The styles all button have in common
   baseStyle: {
+    border: '3px solid',
     fontWeight: 'bold',
-    textTransform: 'uppercase',
     position: "relative",
     height: 'initial',
     minHeight: "3rem",
@@ -23,27 +23,63 @@ const Button = defineStyleConfig({
       px: 5, // <-- these values are tokens from the design system
       py: 4, // <-- these values are tokens from the design system
     },
+    lg: {
+      border: '4px solid',
+      fontSize: 'lg',
+      minHeight: "3.5rem",
+      px: 5, // <-- these values are tokens from the design system
+      py: 4, // <-- these values are tokens from the design system
+    },
   },
   // Two variants: outline and solid
   variants: {
-    outline: {
-      border: '2px solid',
+    outlinePrimary: {
+      borderColor: 'brand.mwPrimary',
+      color: 'brand.mwWhite',
+      textTransform: 'uppercase',
+      _hover: {
+        bg: 'brand.mwPrimary',
+        color: 'brand.mwWhite'
+      }
+    },
+    outlineSecondary: {
       borderColor: 'brand.mwRed',
       color: 'brand.mwRed',
+      textTransform: 'uppercase',
       _hover: {
         bg: 'brand.mwRed',
         color: 'brand.mwWhite'
       }
     },
+    white: {      
+      borderColor: 'brand.mwWhite',
+      color: 'brand.mwWhite',
+      textTransform: 'uppercase',
+      _hover: {
+        bg: 'brand.mwWhite',
+        color: 'brand.mwPrimaryDark'
+      }
+    },    
     solid: {
       bg: 'brand.mwRed',
+      textTransform: 'uppercase',
       color: 'white',
+    },
+    navlink: {
+      border: "0px none", 
+      color: 'brand.mwPrimaryText',
+      padding: 0,
+      textAlign: "left",
+      minHeight: 0,
+      _hover: {
+        color: 'brand.mwPrimaryText'
+      }
     },
   },
   // The default size and variant values
   defaultProps: {
     size: 'md',
-    variant: 'outline',
+    variant: 'outlineSecondary',
   },
 })
 

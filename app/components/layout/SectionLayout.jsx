@@ -62,6 +62,7 @@ function SectionLayout({
             {/* <ClientSideLazyLoadComponent> */}
             <Box
                 type={type}
+                bgColor={type === "PageIntro" && 'brand.mwSecondaryLight'}
                 pt={sectionPadding(sectionSize)}
                 pb={sectionIsEqual ? sectionPadding(sectionSize) : "1.5rem"}
                 px={sectionContainerLess({noContainer, type})  || type === "SectionWrappedArticleCarousel" ? 0 : "1.5rem"}

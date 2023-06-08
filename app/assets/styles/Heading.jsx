@@ -11,7 +11,8 @@ const Heading = defineStyleConfig({
         decoratedTitle: {
             fontWeight: "500",
             position: "relative",
-            display: "inline-block",
+            display: "inline-block",                
+            textAlign: "center",
             margin: "auto",
             px: "3.75rem",
             _before: {
@@ -22,7 +23,7 @@ const Heading = defineStyleConfig({
                 left: 0,
                 top: "calc(50% - 0.125rem)",
                 height: "0.125rem",
-                bg: 'brand.mwBlue',
+                bg: 'brand.mwPrimary',
             },
             _after: {
                 content: '""',
@@ -32,24 +33,24 @@ const Heading = defineStyleConfig({
                 right: 0,
                 top: "calc(50% - 0.125rem)",
                 height: "0.125rem",
-                bg: 'brand.mwBlue',
+                bg: 'brand.mwPrimary',
             }
         },
         standardTitle: {
-            color: 'brand.mwGrey',
+            color: 'brand.mwPrimaryText',
             fontWeight: "400",
         },
         standardSubtitle: {
-            color: 'brand.mwGrey',
+            color: 'brand.mwPrimaryText',
             fontWeight: "200",
         },
         pageHeaderTitle: {
-            color: 'brand.mwGrey',
+            color: 'brand.mwPrimaryText',
             fontWeight: "400",
             textShadow: 'textShadow'
         },
         pageHeaderSubtitle: {
-            color: 'brand.mwGrey',
+            color: 'brand.mwPrimaryText',
             fontWeight: "200",
             textShadow: 'textShadow'
         },

@@ -2,6 +2,7 @@ import React from "react";
 
 
 import SectionCTA from "../components/SectionCTA";
+import { Box } from "@chakra-ui/react";
 
 const SectionWrappedSectionCTA = ({
   ctaTitle,
@@ -9,9 +10,9 @@ const SectionWrappedSectionCTA = ({
   ctaSize,
 }) => {
   return (
-    <React.Fragment>
+    <Box display={'flex'} justifyContent={'center'}>
       <SectionCTA ctaTitle={ctaTitle} ctaLink={ctaLink} ctaStyle={ctaSize} />
-    </React.Fragment>
+    </Box>
   );
 };
 
