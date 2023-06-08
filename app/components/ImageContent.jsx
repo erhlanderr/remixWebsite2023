@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Link
 } from "react-router-dom";
-import { Header5 } from './helpers/Header';
+import { Header } from './helpers/Header';
 
 function ImageContent({
   title,
@@ -32,9 +32,9 @@ function ImageContent({
 
         {(title || children) ? <div className="block">
           {title && <div>
-            <Header5>
+            <Header headerType="h5">
               {title}
-            </Header5>
+            </Header>
           </div>}
           {children && <div>
             {children}

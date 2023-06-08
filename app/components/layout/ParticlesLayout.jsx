@@ -5,17 +5,9 @@ import { loadFull } from "tsparticles";
 
 const ParticlesLayout = () => {
 
-    // if (windowWidth > 768) {
     var particleNumber = 77;
     var framesPerSecond = 60;
     var particleOpacity = 0.7;
-    // particleOpacityMin = 0.1
-    //   } else {
-    //     particleNumber = 32;
-    //     framesPerSecond = 60;
-    //     particleOpacity = 1;
-    //     // particleOpacityMin = 1
-    //   }
 
     const particles = {
         particles: {
@@ -125,7 +117,7 @@ const ParticlesLayout = () => {
     };
 
     const particlesInit = useCallback(async engine => {
-        console.log(engine);
+        // console.log(engine);
         // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
         // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
         // starting from v2 you can add only the features you need reducing the bundle size
@@ -135,12 +127,11 @@ const ParticlesLayout = () => {
     const particlesLoaded = useCallback(async container => {
         await console.log(container);
     }, []);
-    // const title = header.content.header.title
 
     return <Particles
         id="tsparticles"
         init={particlesInit}
-        loaded={particlesLoaded}
+        // loaded={particlesLoaded}
         options={particles}        
     />
 }

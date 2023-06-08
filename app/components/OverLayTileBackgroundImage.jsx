@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
 import { Box, Card, CardBody, CardFooter, CardHeader, Flex, Heading } from "@chakra-ui/react";
-import { Header2, Header3, Subtitle4, Subtitle5 } from "./helpers/Header";
+import { Header, Subtitle } from "./helpers/Header";
 import { BackgroundImageLoader } from "./helpers/ImageLoader"
 
 function OverLayTile({
@@ -29,14 +29,14 @@ function OverLayTile({
         {tileTitle || tileSubtitle ? (
           <React.Fragment>
             {!tileTitle ? null : (
-              <Header3 color={'#ffffff'}>
+              <Header headerType="h3" color={'#ffffff'}>
                 {tileTitle}
-              </Header3>
+              </Header>
             )}
             {!tileSubtitle ? null : (
-              <Subtitle5>
+              <Subtitle headerType="h5">
                 {tileSubtitle}
-              </Subtitle5>
+              </Subtitle>
             )}
           </React.Fragment>
         ) : null}

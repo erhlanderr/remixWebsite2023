@@ -12,7 +12,7 @@ import {
   Divider,
   Card, CardHeader, CardBody, CardFooter, Flex
 } from "@chakra-ui/react";
-import { Header4, Header5 } from "../components/helpers/Header";
+import { Header } from "../components/helpers/Header";
 import { ImageLoader } from "../components/helpers/ImageLoader";
 import ExpandingTextBox from "../components/ExpandingTextBox";
 import {
@@ -84,9 +84,9 @@ const SectionWrappedArticleGrid = ({
                         <>
                           {article?.title && (
                             <Box>
-                              <Header5>
+                              <Header headerType="h5">
                                 {article.title}
-                              </Header5>
+                              </Header>
                               <Divider orientation='horizontal' />
                             </Box>
                           )}

@@ -1,7 +1,7 @@
 import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Header5 } from "./helpers/Header";
+import { Header } from "./helpers/Header";
 import { ImageLoader } from "./helpers/ImageLoader";
 
 function IconContentModule({
@@ -78,9 +78,9 @@ function IconContentModule({
           <div>
             {title && (
               <div className="block">
-                <Header5>
+                <Header headerType="h5">
                   {title}
-                </Header5>
+                </Header>
               </div>
             )}
             {children && <div className="block">{children}</div>}

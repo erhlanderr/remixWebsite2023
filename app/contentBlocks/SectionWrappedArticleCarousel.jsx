@@ -4,7 +4,7 @@ import Carousel from "../components/Carousel";
 import CarouselTile from "../components/CarouselTile";
 import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
 import { ImageLoader } from "./../components/helpers/ImageLoader";
-import { Header5 } from "./../components/helpers/Header";
+import { Header } from "./../components/helpers/Header";
 import ExpandingTextBox from "./../components/ExpandingTextBox";
 
 function SectionWrappedArticleCarousel({
@@ -65,9 +65,9 @@ function SectionWrappedArticleCarousel({
             />
           </CardHeader>
           <CardBody>
-            <Header5>
+          <Header headerType="h5">
               {carousel.carouselTitle}
-            </Header5>
+            </Header>
             <Box>
               {carousel.carouselCopy && (
                 <ExpandingTextBox textBoxCopy={carousel.carouselCopy} />

@@ -11,7 +11,7 @@ import {
   Heading,
   Card, CardHeader, CardBody, CardFooter, Flex
 } from "@chakra-ui/react";
-import { Header4 } from "./helpers/Header";
+import { Header } from "./helpers/Header";
 
 
 
@@ -55,9 +55,9 @@ const ArticleGridHeaderImageCard = ({
               (article.ctaLink && article.ctaTitle)) && (
                 <>
                   {article?.title && (
-                    <Header4>
+                    <Header headerType="h4">
                       {article.title}
-                    </Header4>
+                    </Header>
                   )}
                   {article?.content && (
                     <ExpandingTextBox textBoxCopy={article?.content} />

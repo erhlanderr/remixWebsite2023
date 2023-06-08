@@ -7,7 +7,7 @@ import {
   Box
 } from "@chakra-ui/react";
 import CTAModule from "./CTAModule";
-import { Header2, Subtitle4 } from "./helpers/Header";
+import { DecoratedHeader, Subtitle } from "./helpers/Header";
 
 function SectionTitle({
   title,
@@ -23,7 +23,7 @@ function SectionTitle({
     <>
       {title ? (
         <Box textAlign={textAlign}>
-          <Header2 decorated='decoratedTitle'>{title}</Header2>
+          <DecoratedHeader headerType="h2" decorated='decoratedTitle'>{title}</DecoratedHeader>
         </Box>
       ) : null}
       {(subtitle || ctaLink) && (
@@ -33,10 +33,10 @@ function SectionTitle({
         >
           {subtitle ? (
             <div className="block">
-              <Subtitle4
+              <Subtitle headerType="h4"
               >
                 {subtitle}
-              </Subtitle4>
+              </Subtitle>
             </div>
           ) : null}
           {ctaTitle && ctaLink ? (

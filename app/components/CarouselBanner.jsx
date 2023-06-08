@@ -1,7 +1,7 @@
 import React from "react";
 import Markdown from "markdown-to-jsx";
 import { Heading, Box, Flex, Card, CardBody } from "@chakra-ui/react";
-import { Header6, Subtitle6 } from "./helpers/Header";
+import { Header, Subtitle } from "./helpers/Header";
 import ContainerLayout from "./layout/ContainerLayout";
 
 function CarouselBanner({
@@ -66,15 +66,17 @@ function CarouselBanner({
             !carouselTestimonialAuthorAttribute ? null : (
             <div className="attribute">
               {carouselTestimonialAuthor && (
-                <Header6>
+                <Header
+                  headerType='h6'>
                   {carouselTestimonialAuthor}
-                </Header6>
+                </Header>
 
               )}
               {carouselTestimonialAuthorAttribute && (
-                <Subtitle6>
+                <Subtitle
+                  headerType='h6'>
                   {carouselTestimonialAuthorAttribute}
-                </Subtitle6>
+                </Subtitle>
               )}
             </div>
           )}

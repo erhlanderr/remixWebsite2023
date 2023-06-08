@@ -4,7 +4,7 @@ import useWindowSize from "../hooks/useWindowSize";
 import useColumnsDimensions from "../hooks/useColumnsDimensions";
 import CTAModule from './CTAModule';
 import { Heading } from "@chakra-ui/react";
-import { Header2, Subtitle4 } from './helpers/Header';
+import { Header, Subtitle } from './helpers/Header';
 
 function ImageWithContentToEdge({
   children,
@@ -49,12 +49,12 @@ function ImageWithContentToEdge({
         {!spotlightColumn ? <div className="box">
           <div className=" are-double-block pl-6-desktop">
             <div className="block">
-              <Header2>
+              <Header headerType="h2">
                 {title}
-              </Header2>
-              <Subtitle4>
+              </Header>
+              <Subtitle headerType="h4">
                 {subtitle}
-              </Subtitle4>
+              </Subtitle>
             </div>
             <div className="block">
               {children}
@@ -69,12 +69,12 @@ function ImageWithContentToEdge({
             <div className="column is-two-third are-double-block">
               <div>
                 <div className="block">
-                  <Header2>
+                  <Header headerType="h2">
                     {title}
-                  </Header2>
-                  <Subtitle4>
+                  </Header>
+                  <Subtitle headerType="h4">
                     {subtitle}
-                  </Subtitle4>
+                  </Subtitle>
                 </div>
                 <div className="block">
                   {children}

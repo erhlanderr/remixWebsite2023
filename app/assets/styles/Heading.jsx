@@ -9,6 +9,7 @@ const Heading = defineStyleConfig({
     // Two variants: outline and solid
     variants: {
         decoratedTitle: {
+            fontWeight: "500",
             position: "relative",
             display: "inline-block",
             margin: "auto",

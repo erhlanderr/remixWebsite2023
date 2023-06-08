@@ -8,7 +8,7 @@ import CTAModule from "./CTAModule";
 import {
     useNavigate
 } from "@remix-run/react";
-import { Header1, Subtitle4 } from "./helpers/Header";
+import { Header, Subtitle } from "./helpers/Header";
 function ImageWithContent({
     children,
     columnImage,
@@ -67,10 +67,12 @@ function ImageWithContent({
                     <React.Fragment>
                         {(title || subtitle) && (
                             <React.Fragment>
-                                <Header1>
+                                <Header
+                                headerType="h1"
+                                >
                                     {title}
-                                </Header1>
-                                <Subtitle4>{subtitle}</Subtitle4>
+                                </Header>
+                                <Subtitle headerType="h4">{subtitle}</Subtitle>
                             </React.Fragment>
                         )}
                         {children && (
@@ -90,10 +92,10 @@ function ImageWithContent({
                     <React.Fragment>
                         {(title || subtitle) && (
                             <React.Fragment>
-                                <Header1>
+                                <Header headerType="h1">
                                     {title}
-                                </Header1>
-                                <Subtitle4>{subtitle}</Subtitle4>
+                                </Header>
+                                <Subtitle headerType="h4">{subtitle}</Subtitle>
                             </React.Fragment>
                         )}
                         {children && (

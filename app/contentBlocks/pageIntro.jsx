@@ -3,7 +3,7 @@ import React from "react";
 import Markdown from "markdown-to-jsx";
 import MarkdownContent from "../components/markdownContent";
 import { Box, Heading } from "@chakra-ui/react";
-import { Header2, Subtitle4 } from "../components/helpers/Header";
+import { Header, Subtitle } from "../components/helpers/Header";
 function PageIntro({
   type,
   introductionTitle,
@@ -20,7 +20,7 @@ function PageIntro({
               <div className="block">
                 <div className="section-title has-title-dividers">
                   <div className="title-decoration">
-                    <Header2>{introductionTitle}</Header2>
+                    <Header headerType="h2">{introductionTitle}</Header>
                   </div>
                 </div>
               </div>
@@ -28,7 +28,7 @@ function PageIntro({
             {introductionSubTitle && (
               <div className="block">
                 <div>
-                  <Subtitle4>{introductionSubTitle}</Subtitle4>
+                  <Subtitle headerType="h4">{introductionSubTitle}</Subtitle>
                 </div>
               </div>
             )}

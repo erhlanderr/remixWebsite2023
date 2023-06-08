@@ -2,7 +2,7 @@ import React from "react";
 // import Markdown from "markdown-to-jsx";
 import Markdown from "markdown-to-jsx";
 import GridLayout from "../components/layout/GridLayout";
-import { Header2, Subtitle4 } from "../components/helpers/Header";
+import { Header, Subtitle } from "../components/helpers/Header";
 import { Box, Grid, GridItem, Heading } from "@chakra-ui/react";
 
 
@@ -24,9 +24,9 @@ function SectionWrappedPageIntro({
                                     <div className="block">
                                         <div className="section-title has-title-dividers">
                                             <div className="title-decoration">
-                                                <Header2>
+                                                <Header headerType="h2">
                                                     {introductionTitle}
-                                                </Header2>
+                                                </Header>
                                             </div>
                                         </div>
                                     </div>
@@ -34,10 +34,10 @@ function SectionWrappedPageIntro({
                                 {introductionSubTitle && (
                                     <div className="block">
                                         <div>
-                                            <Subtitle4
+                                            <Subtitle headerType="h4"
                                             >
                                                 {introductionSubTitle}
-                                            </Subtitle4>
+                                            </Subtitle>
                                         </div>
                                     </div>
                                 )}

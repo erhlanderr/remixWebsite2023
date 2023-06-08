@@ -6,7 +6,7 @@ import SectionWrappers from "~/components/sectionWrappers";
 // import Grid from "../components/partials/Grid";
 import ImageWithContent from "~/components/imageWithContent";
 import Markdown from "markdown-to-jsx";
-import { Header4, Subtitle4 } from "../components/helpers/Header";
+import { Header, Subtitle } from "../components/helpers/Header";
 
 function SectionWrappedImageWithContent({
   isContained,
@@ -56,9 +56,9 @@ function SectionWrappedImageWithContent({
         textAlign={textAlign}
       >
         <>
-          {contentTitle && <Header4>{contentTitle}</Header4>}
+          {contentTitle && <Header headerType="h4">{contentTitle}</Header>}
           {contentSubTitle && (
-            <Subtitle4>{contentSubTitle}</Subtitle4>
+            <Subtitle headerType="h4">{contentSubTitle}</Subtitle>
           )}
           {contentDescription && (
             <Markdown

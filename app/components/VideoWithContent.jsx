@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { Heading } from "@chakra-ui/react";
-import { Header2, Subtitle4 } from './helpers/Header';
+import { DecoratedHeader, Subtitle } from './helpers/Header';
 
 function VideoWithContent({
   children,
@@ -22,10 +22,10 @@ function VideoWithContent({
           <div className="column are-double-block">
             <div>
               {(title || subtitle) && <div className="block">
-                <Header2 variant={'decorated'}>
+                <DecoratedHeader headerType="h2">
                   {title}
-                </Header2>
-                <Subtitle4>{subtitle}</Subtitle4>
+                </DecoratedHeader>
+                <Subtitle headerType="h4">{subtitle}</Subtitle>
               </div>}
               {children && <div className="block">
                 {children}

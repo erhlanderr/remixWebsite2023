@@ -1,24 +1,24 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { format } from 'date-fns'
 import LinkBlock from "./LinkBlock";
-import Markdown from "markdown-to-jsx";
 import ContainerLayout from "./layout/ContainerLayout";
+import { Header } from "./helpers/Header";
 import {
-    Container,
     Box,
-    Button,
-    Heading,
     Text,
-    theme,
     Grid,
     GridItem,
     SimpleGrid
 } from "@chakra-ui/react";
-import { Header4, Header5 } from "./helpers/Header";
 
-// import { useContentContext } from "../content/ContentContext";
+const sortByDate = (a, b) => {
+    var dateA = new Date(a.createDate);
+    var dateB = new Date(b.createDate);
+    return dateB - dateA;
+};
 
-const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes }) => {
+const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes, hasDate }) => {
     const [isPosts, setPosts] = useState(null);
     useEffect(() => {
         var children = childRoutes.reduce(function (filtered, child) {
@@ -28,27 +28,29 @@ const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes }) => {
             return filtered;
         }, []);
 
-        setPosts(children);
+        if (children.length > 0) {
+            var filterByDate = children.sort(sortByDate).slice(0, numberOfPosts ? numberOfPosts : children.length);
+            setPosts(filterByDate);
+        }
 
     }, []);
-
-
 
     return (
         <Box>
 
             {title && (
                 <Box paddingBottom={6}>
-                    <Header5>
+                    <Header headerType="h5">
                         {title}
-                    </Header5>
+                    </Header>
                 </Box>
             )}
             {isPosts?.map((item, index) => (
                 <Box paddingTop={index > 0 ? 4 : 0} fontSize={'xs'} key={item.name + "-" + index}>
                     <Link className="link" to={item.url}>
-                        {item.name}
-                    </Link>
+                        <Text fontSize='sm'>{item.name}</Text>
+                        {hasDate && <Text fontSize='xs'>{format(new Date(item.createDate), "dd MMMM yyyy")}</Text>}
+                    </Link>                    
                 </Box>
 
             ))}
@@ -78,9 +80,9 @@ const FooterSiteMap = ({ title }) => {
             <div className=" has-text-left">
                 {title && (
                     <div className="block">
-                        <Header5>
+                        <Header headerType="h5">
                             {title}
-                        </Header5>
+                        </Header>
                     </div>
                 )}
                 {/* {!!isPosts &&
@@ -154,9 +156,9 @@ const FooterBlogPosts = ({ pathName, numberOfPosts, title }) => {
             <div className=" has-text-left">
                 {title && (
                     <div className="block">
-                        <Header5>
+                        <Header headerType="h5">
                             {title}
-                        </Header5>
+                        </Header>
                     </div>
                 )}
                 {!!isPosts &&
@@ -255,20 +257,15 @@ function Footer({ logo, childRoutes }) {
                         </GridItem>
                     </Grid>
 
-                    <SimpleGrid 
-                    // templateColumns='repeat(4, 1fr)'
-                    gap={6}
-                    columns={{base: 1, md: 2, lg: 4}}
-                    
-                    >
+                    <SimpleGrid gap={6} columns={{ base: 1, md: 2, lg: 4 }}>
                         <Box>
                             <Box paddingBottom={6}>
-                                <Header5>
+                                <Header headerType="h5">
                                     Our Address
-                                </Header5>
+                                </Header>
                             </Box>
                             <Box>
-                                <Text fontSize={'xs'}>
+                                <Text fontSize={'sm'}>
                                     MethodWorx Ltd
                                     <br />
                                     Creative Studios
@@ -290,21 +287,20 @@ function Footer({ logo, childRoutes }) {
                                     </a>
                                 </Text>
                             </Box>
-                        </Box>
-
-                        <FooterBlogPosts
+                        </Box>                        
+                        <FooterPosts
                             title="Recent Blogs"
                             pathName="/blog/"
                             childRoutes={childRoutes}
                             numberOfPosts={4}
+                            hasDate={true}
                         />
                         <FooterPosts
                             title="Case Studies"
                             pathName="/work/"
                             childRoutes={childRoutes}
-                            numberOfPosts={4}
                         />
-                        <FooterSiteMap title="Site Map" />
+                        {/* <FooterSiteMap title="Site Map" /> */}
                     </SimpleGrid>
                 </ContainerLayout>
             </footer>

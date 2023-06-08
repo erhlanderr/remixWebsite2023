@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
 import { Heading, Card, CardHeader, CardBody, CardFooter, Text } from "@chakra-ui/react";
-import { Header5 } from "./helpers/Header";
+import { Header } from "./helpers/Header";
 
 function TileContentModule({
   title,
@@ -120,9 +120,9 @@ function TileContentModule({
       </CardHeader>
       <CardBody>
         {title && (
-          <Header5>
+          <Header headerType="h5">
             {title}
-          </Header5>
+          </Header>
         )}
         {children && <Text>{children}</Text>}
       </CardBody>

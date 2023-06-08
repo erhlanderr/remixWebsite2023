@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/react";
 import React from "react";
-import { Header5 } from "./helpers/Header";
+import { Header } from "./helpers/Header";
 // import mwauthor from "./../../images/authors/mwauthor.jpg";
 
 function BlogArticleAuthor({ relatedAuthorArticles }) {
@@ -18,9 +18,9 @@ function BlogArticleAuthor({ relatedAuthorArticles }) {
         <div className="column">
           <div>
             <div className="block">
-              <Header5>
+              <Header headerType="h5">
                 MethodWorx
-              </Header5>
+              </Header>
               <p className="is-size-7">
                 MethodWorx is a software development and digital transformation
                 agency that uses technology to give businesses a competitive
