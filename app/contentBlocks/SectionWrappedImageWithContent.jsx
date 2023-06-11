@@ -10,6 +10,7 @@ import MarkdownContent from "../components/helpers/Markdown";
 import { Header, Subtitle } from "../components/helpers/Header";
 import { Link } from "@remix-run/react";
 import { ImageLoader } from "../components/helpers/ImageLoader";
+import GridLayout from "../components/layout/GridLayout";
 
 function SectionWrappedImageWithContent({
   isContained,
@@ -36,7 +37,7 @@ function SectionWrappedImageWithContent({
 }) {
   return (
 
-    <SimpleGrid columns={{ base: 1, md: 2 }} gap={16}>
+    <GridLayout columnDesktop="2" columnTablet="2" columnMobile="1">
       <Box>
         {ctaLink ? (
           <Link to={ctaLink}>
@@ -46,6 +47,7 @@ function SectionWrappedImageWithContent({
                 imageRatioMobile={imageRatioMobile}
                 imageAlt={columnImageAlt}
                 imageUrl={columnImage}
+                containImage={true}
               />
             ) : null}
           </Link>
@@ -58,6 +60,7 @@ function SectionWrappedImageWithContent({
                   imageRatioMobile={imageRatioMobile}
                   imageAlt={columnImageAlt}
                   imageUrl={columnImage}
+                  containImage={true}
                 />
               ) : null
             }
@@ -75,7 +78,7 @@ function SectionWrappedImageWithContent({
           </MarkdownContent>
         )}
       </Box>
-    </SimpleGrid>
+    </GridLayout>
   );
 }
 

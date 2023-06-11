@@ -2,6 +2,7 @@ import React from "react";
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import { Box } from "@chakra-ui/react";
 
 const ParticlesLayout = () => {
 
@@ -74,8 +75,8 @@ const ParticlesLayout = () => {
                 },
             },
         },
-        fullScreen: { 
-            enable: false, 
+        fullScreen: {
+            enable: false,
             zIndex: 99,
             height: "100%",
         },
@@ -128,11 +129,19 @@ const ParticlesLayout = () => {
         await console.log(container);
     }, []);
 
-    return <Particles
-        id="tsparticles"
-        init={particlesInit}
-        // loaded={particlesLoaded}
-        options={particles}        
-    />
+    return (
+
+        <React.Fragment>
+            <Box className="pan-left" mixBlendMode={'color-burn'} zIndex={2} bgGradient='linear(to-tl, #cc6aa5, #3e91cc, #2dcca7)' w={'100%'} h={'100%'} top={0} right={0} backgroundSize={'600% 600%'} opacity={0.4} position={'absolute'} />
+            <Box zIndex={1} position={'absolute'} top={0} bottom={0} left={0} right={0} overflow={'hidden'}>
+                <Particles
+                    id="tsparticles"
+                    init={particlesInit}
+                    options={particles}
+                />
+            </Box>
+        </React.Fragment>
+
+    )
 }
 export default ParticlesLayout;

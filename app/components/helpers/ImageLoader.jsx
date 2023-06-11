@@ -5,16 +5,27 @@ const BackgroundImageLoader = ({
     imageUrl,
 
 }) => {
-    // <Flex h={"100%"}>
-        {/* <Box /> */}
-        <Box position={'absolute'} top={0} bottom={0} left={0} right={0} backgroundImage={`url(${"https://wa-methodworx-website-cms.azurewebsites.net" + imageUrl})`} />
-    // </Flex>
+    return (
+        <React.Fragment>
+            <Box backgroundColor="brand.mwDark" mixBlendMode={'multiply'} zIndex={2} w={'100%'} h={'100%'} top={0} right={0} opacity={0.4} position={'absolute'} />
+            <Box
+                position={'absolute'}
+                top={0}
+                bottom={0}
+                left={0}
+                right={0}
+                backgroundPosition={'center center'}
+                backgroundSize={'cover'}
+                backgroundRepeat={'no-repeat'}
+                backgroundImage={`url(${"https://wa-methodworx-website-cms.azurewebsites.net" + imageUrl})`} />
+        </React.Fragment>)
 }
 
 const ImageLoader = ({
     imageUrl,
     imageAlt,
     imageRatioDesktop,
+    containImage
 }) => {
 
     const splitRatioStr = (ratioStr) => {
@@ -27,18 +38,14 @@ const ImageLoader = ({
                 return 3 / 1
             case "3by2":
                 return 3 / 2;
-
             default:
                 break;
         }
     }
-    // console.log("imageRatioDesktop ==> ", imageRatioDesktop);
-    // console.log("imageRatioMobile ==> ", imageRatioMobile);
-    // console.log("imageUrl ==> ", imageUrl);
 
     return (
         <AspectRatio ratio={imageRatioDesktop != undefined ? splitRatioStr(imageRatioDesktop) : 3 / 2} width="100%">
-            <Image src={`https://wa-methodworx-website-cms.azurewebsites.net` + imageUrl} fit='contain' alt={imageAlt} />
+            <Image style={{ objectFit: containImage ? 'contain' : 'cover' }} src={`https://wa-methodworx-website-cms.azurewebsites.net` + imageUrl} alt={imageAlt} />
         </AspectRatio>
     );
 }

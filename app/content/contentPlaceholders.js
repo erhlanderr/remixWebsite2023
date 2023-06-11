@@ -84,6 +84,9 @@ let renderWrappedItem = (key, item) => {
 };
 
 const ContentPlaceholder = ({ components }) => {
+
+  // console.log('components ===> ', components)
+
   if (components) {
     return Object.keys(components).map((key) => {
       const component = components[key];
@@ -103,18 +106,11 @@ const ContentPlaceholder = ({ components }) => {
               componentKey={key}
               sectionSize={component["sectionSize"]}
             >
-
-              {/* <Grid 
-                  justification={component["justification"]}
-                  contentWrapper={component["contentWrapper"]}
-                  isOffset={component["offset"]}
-                > */}
               {Object.keys(wrappedComponents).map((key) =>
                 <>
                   {renderWrappedItem(key, wrappedComponents[key])}
                 </>
               )}
-              {/* </Grid> */}
             </Component>
           );
         }

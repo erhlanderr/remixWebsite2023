@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Flex, Text, Wrap, WrapItem } from "@chakra-ui/react";
 function BlogArticleInfo({
   blogArticleAuthor,
   blogArticleCategory,
@@ -7,36 +7,38 @@ function BlogArticleInfo({
 }) {
 
   return (
-    <>
-      {
-        <div className="blog-info-level is-left">
-          {blogArticleDate && (
-            <div className="blog-info">
-              <p className="is-info">Date</p>
-              <span>
-                {new Date(blogArticleDate).toLocaleDateString("en-GB", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
-          )}
-          {blogArticleCategory && (
-            <div className="blog-info">
-              <p className="is-info">Category</p>
-              <span>{blogArticleCategory}</span>
-            </div>
-          )}
-          {blogArticleAuthor && (
-            <div className="blog-info">
-              <p className="is-info">Author</p>
-              <span>{blogArticleAuthor}</span>
-            </div>
-          )}
-        </div>
-      }
-    </>
+    <Wrap gap={6} fontSize={'xs'} pb={6}>
+      {blogArticleDate && (
+        <WrapItem>
+          <Flex flexDirection={'row'} gap={2}>
+            <Text fontWeight={'bold'}>Date:</Text>
+            <Text>
+              {new Date(blogArticleDate).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </Text>
+          </Flex>
+        </WrapItem>
+      )}
+      {blogArticleCategory && (
+        <WrapItem>
+          <Flex flexDirection={'row'} gap={2}>
+            <Text fontWeight={'bold'}>Category:</Text>
+            <Text>{blogArticleCategory}</Text>
+          </Flex>
+        </WrapItem>
+      )}
+      {blogArticleAuthor && (
+        <WrapItem>
+          <Flex flexDirection={'row'} gap={2}>
+            <Text fontWeight={'bold'}>Author:</Text>
+            <Text>{blogArticleAuthor}</Text>
+          </Flex>
+        </WrapItem>
+      )}
+    </Wrap>
   );
 }
 

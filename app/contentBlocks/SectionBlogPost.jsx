@@ -9,74 +9,56 @@ import BlogArticleInfo from "../components/BlogArticleInfo";
 import LinkBlock from "../components/LinkBlock";
 import BlogArticleRelatedArticlesPromoted from "../components/BlogArticleRelatedArticlesPromoted";
 import BlogArticleRelatedArticles from "../components/BlogArticleRelatedArticles";
+import MarkdownContent from "../components/helpers/Markdown";
+import { Box, Grid, GridItem, Flex, Text } from "@chakra-ui/react";
 
-function BlogPost({content}) {
-  // const [isBlogContent, setBlogContent] = useState(null);
+function BlogPost(content) {
 
-  // const { contentRepository, useContent } = useContentContext();
-  // const location = useLocation();
-
-  // var parentPathName = "";
-  // if (location && location.pathname) parentPathName = location.pathname;
-
-  // const page = useContent(
-  //   () => contentRepository.getPage(parentPathName),
-  //   [parentPathName]
-  // );
-
-  // useEffect(() => {
-  //   if (page) {
-  //     if (page.data) {
-  //       setBlogContent(page?.data.content);
-  //     }
-  //   }
-  // }, [page]);
-
-  // let data;
-  // if (page?.data) {
-  //   data = page.data;
-  // }
-
-  // const formatedDate = (date) => {
-  //   return new Date(date).toLocaleDateString("en-GB", { 
-  //     day: "numeric",
-  //     month: "long",
-  //     year: "numeric",
-  //   })}
-
-  // const relatedArticlesList = (articlePosts) => {
-  //   if (articlePosts !== undefined) {
-  //     const categoryList = articlePosts.slice(0, 6).map((record, index) => {
-  //       return (
-  //         <>
-  //           <div
-  //             className={`column is-4-tablet-only is-6-mobile ${
-  //               articlePosts === data?.relatedAuthorPosts
-  //                 ? "is-4-desktop"
-  //                 : "is-12-desktop"
-  //             }`}
-  //             key={index}
-  //           >
-  //             <div className=" has-text-left">
-  //               <LinkBlock
-  //                 linkTitle={record.articleTitle}
-  //                 linkUrl={record.articleLink}
-  //                 linkSubtitle={formatedDate(record.articleDate)}                  
-  //               />
-  //             </div>
-  //           </div>
-  //         </>
-  //       );
-  //     });
-  //     return categoryList;
-  //   }
-  // };
-
+  // console.log(content);
   return (
-    <>
-      
-        {console.log("blog ==> ",content)}
-        {/* <div className="columns double-gap is-flex-direction-column-touch">
+    <React.Fragment>
+      <Grid templateColumns='repeat(4, 1fr)' gap={6}>
+        <GridItem colSpan={3}>
+          <BlogArticleInfo
+            blogArticleAuthor={content?.blogListPostAuthor}
+            blogArticleCategory={content?.blogListPostCategory}
+            blogArticleDate={content?.blogListPostDate}
+          />
+          <Box>
+            <MarkdownContent>
+              {content.postContent}
+            </MarkdownContent>
+          </Box>
+        </GridItem>
+        <GridItem>
+          {/* <BlogArticleRelatedArticlesPromoted
+            blogListPostPromoted={content?.blogListPostPromoted}
+          /> */}
+        </GridItem>
+      </Grid>
+
+      <div className="columns is-desktop blog-footer-container double-gap-touch">
+          {/* <BlogArticleAuthor {...data?.authorInfo} /> */}
+          <div className="column is-8 is-full-touch">
+            <div className="columns single-gap is-multiline">
+              <div className="column is-full">
+                <div>
+                  <h4 className="title is-5 is-marginless">
+                    More from MethodWorx
+                  </h4>
+                </div>
+              </div>
+              <div className="column is-full is-size-7">
+                <div className="columns is-mobile is-flex-wrap-wrap">
+                  {/* {relatedArticlesList(data?.relatedAuthorPosts)} */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {/* {console.log("blog content ==> ",content)} */}
+      {/* <div className="columns double-gap is-flex-direction-column-touch">
           <div className="column blog-content ">
             <div className="columns is-multiline single-gap is-flex-direction-column">
               <div className="column is-full">
@@ -167,7 +149,7 @@ function BlogPost({content}) {
             </div>
           </div>
         </div> */}
-    </>
+    </React.Fragment>
   );
 }
 

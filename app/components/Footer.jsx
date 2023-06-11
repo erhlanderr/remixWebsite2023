@@ -29,9 +29,6 @@ const FooterPosts = ({ pathName, title, numberOfPosts, childRoutes, hasDate }) =
         }, []);
 
         if (children.length > 0) {
-
-            console.log("children ==> ", children)
-
             var filterByDate = children.sort(sortByDate).slice(0, numberOfPosts ? numberOfPosts : children.length);
             setPosts(filterByDate);
         }

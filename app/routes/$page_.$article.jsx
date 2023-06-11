@@ -5,6 +5,7 @@ import {
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import ContentPlaceholder from "../content/contentPlaceholders";
+import PageHeader from "../components/PageHeader";
 
 export const loader = async ({ request, params, context }) => {
   let route;
@@ -15,7 +16,7 @@ export const loader = async ({ request, params, context }) => {
     route = "/"
   }
   article = params.article
-  console.log("params res ==>", article);
+  // console.log("params res ==>", article);
 
   const res = await fetch(process.env.CMS_SERVER_ADDRESS + "/" + route + "/" + article);
   // console.log("params res ==>", res);
@@ -31,9 +32,15 @@ export const loader = async ({ request, params, context }) => {
 
 export default function Page() {
   const { route, data } = useLoaderData();
+  const headerContent = data.content.header
   const pageContent = data.placeholders.contentArea1;
+  // console.log("page content ==>", data);
+  // console.log("is Blog post ==>", pageContent);
+  // console.log("is Blog pageContent ==>", pageContent);
   return (
     <React.Fragment>
+      <PageHeader header={headerContent}/>
+      {/* {pageContent.blogPost !== undefined ? : */}
       <ContentPlaceholder components={pageContent} />
     </React.Fragment>
   )

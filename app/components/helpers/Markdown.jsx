@@ -1,13 +1,14 @@
 import React from "react";
 import Markdown from "markdown-to-jsx";
-import { Box } from "@chakra-ui/react";
-import { Header } from "./Header";
+import { Box, Text } from "@chakra-ui/react";
+import { Header, DecoratedHeader } from "./Header";
+import ImageLoader from "../imageLoader";
 
 function MarkdownContent({ children }) {
     const Title = ({ children, ...props }) => (
-        <div className="section-title has-title-dividers block mb-6 pt-4 has-text-centered">
-            <span className={`title ${props.className}`}>{children}</span>
-        </div>
+        <Box mb={5}>
+            <DecoratedHeader headerType="h2">{children}</DecoratedHeader>
+        </Box>
     );
 
     const SmallTitle = ({ children, ...props }) => (
@@ -20,7 +21,7 @@ function MarkdownContent({ children }) {
 
     const Copy = ({ children }) => (
         <Box pb={4}>
-            <p>{children}</p>
+            <Text>{children}</Text>
         </Box>
     );
 
@@ -34,6 +35,12 @@ function MarkdownContent({ children }) {
             </blockquote>
         </div>
     );
+
+    const Image = ({ title, alt, src },) => (
+        // <img src={children} />
+        // console.log("chldren image", children.src)
+        <ImageLoader imageUrl={src} />
+    )
 
     return (
         <Markdown
@@ -80,9 +87,10 @@ function MarkdownContent({ children }) {
                         component: Copy,
                     },
                     img: {
-                        props: {
-                            className: "is-block mx-a",
-                        },
+                        // props: {
+                        //     src
+                        // },
+                        component: Image,
                     },
                     blockquote: {
                         component: BlockQuote,
