@@ -41,6 +41,23 @@ const variants = {
             padding: 4
         }
     }),
+    iconCard: definePartsStyle({
+        container: {
+            padding: 6,
+            borderRadius: 12,
+            textAlign: "center",
+        },
+        header: {
+            padding: 0,
+        },
+        body: {
+            padding: 0
+        },
+        footer: {
+            padding: 0,
+            justifyContent: "center"
+        }
+    }),
     backgroundOverlay: definePartsStyle({
         container: {
             color: "white",

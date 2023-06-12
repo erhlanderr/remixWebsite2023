@@ -11,6 +11,7 @@ import SectionWrappers from '../components/partials/SectionWrappers';
 import Breadcrumb from '../components/Breadcrumb';
 import Grid from '../components/partials/Grid';
 import GoogleMap from '../components/partials/GoogleMap';
+import { Box } from '@chakra-ui/react';
 
 import ContentPlaceholder from '../content/ContentPlaceholder';
 import SectionCTA from '../components/partials/SectionCTA';
@@ -49,9 +50,9 @@ function HomePage({ page, location }) {
             <SectionCTA ctaTitle={"Contact Us"} ctaLink={'/contact-us'} ctaStyle={'large'} />
           </SectionWrappers>}
           
-          {location.pathname.includes('/contact-us') && <div className="section p-0 pass-footer-margin">
+          {location.pathname.includes('/contact-us') && <Box>
             <GoogleMap />
-          </div>}
+          </Box>}
 
       </Page>}
     </>

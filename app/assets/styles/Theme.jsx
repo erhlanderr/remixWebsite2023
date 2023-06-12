@@ -45,6 +45,9 @@ const Theme = extendTheme({
             mwSecondaryLight: "#ffeceb",
             mwWhite: "#ffffff",
             mwOverlay: "rgba(10,10,10,0.5)",
+            mwPrimaryTile: "rgba(47, 184, 202, 0.3)",
+            mwSecondaryTile: "rgba(255, 141, 133, 0.3)",
+            mwTertiaryTile: "rgba(255, 194, 61, 0.3)",
         }
     },
     fonts: {

@@ -89,13 +89,13 @@ const SectionWrappedArticleGrid = ({
           ))}
       </Grid>
       {ctaTitle && ctaLink && (
-        <div className="pt-6">
+        <Box pt={6}>
           <SectionCTA
             ctaTitle={ctaTitle}
             ctaLink={ctaLink}
             ctaStyle={"medium"}
           />
-        </div>
+        </Box>
       )}
     </React.Fragment>
   );

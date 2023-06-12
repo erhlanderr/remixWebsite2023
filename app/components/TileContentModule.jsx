@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CTAModule from "./CTAModule";
-import { Heading, Card, CardHeader, CardBody, CardFooter, Text } from "@chakra-ui/react";
+import { Card, CardHeader, CardBody, CardFooter, Text, Box } from "@chakra-ui/react";
 import { Header } from "./helpers/Header";
+import { IconHelper } from "./helpers/Icons";
 
 function TileContentModule({
   title,
@@ -69,46 +70,38 @@ function TileContentModule({
   };
 
   const tileBackground = (colour) => {
+    console.log("tileColour ==> ", colour)
     switch (colour) {
-      case "dark":
-        return "has-background-" + colour;
-      case "light":
-        return "has-background-" + colour;
-      case "white":
-        return "has-background-" + colour;
-      default:
-        return "has-background-" + colour + "-opacity-3";
+      case "primary":
+        return "brand.mwPrimaryTile"
+      case "secondary":
+        return "brand.mwSecondaryTile"
+      case "tertiary":
+        return "brand.mwTertiaryTile"
     }
   };
 
-  console.log("tileColour ==> ", tileColour)
-  console.log("iconColor ==> ", iconColor)
+  // console.log("tileColour ==> ", tileColour)
+  // console.log("iconColor ==> ", iconColor)
+  // console.log("iconColor ==> ", iconLarger,
+  //   iconColor,
+  //   customIconClasses,
+  //   numericalIcons,
+  //   icon,)
 
+  
   return (
-    <Card backgroundColor={!!iconColor
+    <Card variant={"iconCard"} textAlign={'center'} backgroundColor={!!iconColor
       ? tileBackground(iconColor)
       : tileColour}>
       <CardHeader>
-
-        {icon ? (
+        {/* {icon ? (
           link ? (
             <Link to={link}>
-              {hasIcon({
-                iconLarger,
-                iconColor,
-                customIconClasses,
-                numericalIcons,
-                icon,
-              })}
+              <IconHelper icon={icon} />              
             </Link>
           ) : (
-            hasIcon({
-              iconLarger,
-              iconColor,
-              customIconClasses,
-              numericalIcons,
-              icon,
-            })
+            <IconHelper icon={icon} />
           )
         ) : link ? (
           <Link to={link}>
@@ -116,19 +109,22 @@ function TileContentModule({
           </Link>
         ) : (
           hasImage({ altImageText, image, scaleDown })
-        )}
+        )} */}
+        {icon && <IconHelper icon={icon} />}
       </CardHeader>
+
       <CardBody>
         {title && (
-          <Header headerType="h5">
-            {title}
-          </Header>
+          <Box pb={children && 6}>
+            <Header headerType="h5">
+              {title}
+            </Header>
+          </Box>
         )}
         {children && <Text>{children}</Text>}
       </CardBody>
       {link ? (
         <CardFooter>
-
           <CTAModule ctaLink={link} ctaCopy={ctaLinkName ? ctaLinkName : "Find out more"} />
         </CardFooter>
       ) : null}

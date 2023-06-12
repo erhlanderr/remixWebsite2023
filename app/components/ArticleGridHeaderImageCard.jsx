@@ -28,10 +28,7 @@ const ArticleGridHeaderImageCard = ({
   const navigate = useNavigate();
 
   return (
-    <div
-      key={key}
-
-    >
+    
       <Card
         height={"100%"}        
         className={`${boxBackgroundColour && "has-background-" + boxBackgroundColour}`}
@@ -74,7 +71,7 @@ const ArticleGridHeaderImageCard = ({
           </CardFooter>
         )}
       </Card>
-    </div>
+    
   );
 };
 export default ArticleGridHeaderImageCard;
