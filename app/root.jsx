@@ -1,13 +1,13 @@
 import {
   Links,
   LiveReload,
-  Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  Meta
 } from "@remix-run/react";
-import { json } from "@remix-run/node";
+import { json, MetaFunction } from "@remix-run/node";
 import { ServerStyleContext, ClientStyleContext } from './context';
 import { useContext, useEffect, useState } from "react";
 import { ChakraProvider } from '@chakra-ui/react';
@@ -21,6 +21,11 @@ import particles from "./assets/styles/css/tsparticles.css";
 import animations from "./assets/styles/css/animations.css";
 import bulmaStyles from "./assets/styles/css/bulma.min.css";
 import Theme from "./assets/styles/Theme";
+
+export const meta = ({ data }) => {
+  return [{ title: `${data.title} | Bespoke Software London | MethodWorx` }];
+};
+
 
 export const loader = async ({ request, params }) => {
   let route;
@@ -40,11 +45,11 @@ export const loader = async ({ request, params }) => {
   const data = await res.json();
 
   return json({
-    // page: data,,
     globalSettings: globalSettingsData,
     routeChildren: routeChildrenData,
     route,
-    data: data
+    data: data,
+    title: data.content.header.title,
   });
 }
 
@@ -54,6 +59,7 @@ export let links = () => {
     { rel: "stylesheet", href: particles },
     { rel: "stylesheet", href: animations },
     { rel: "stylesheet", href: bulmaStyles },
+    { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
   ]
 }
 
@@ -105,12 +111,13 @@ const Document = withEmotionCache(
 
 
 export default function App() {
-  const { globalSettings, routeChildren, route, data } = useLoaderData();
+  const { globalSettings, routeChildren, route, data, title } = useLoaderData();
+  // console.log("title ==>", data.content.header.title);
   return (
     <Document>
       <ChakraProvider theme={Theme}>
-        <Navigation globalSettings={globalSettings}/>
-          <Outlet />
+        <Navigation globalSettings={globalSettings} />
+        <Outlet context={title} />
         <Footer childRoutes={routeChildren.children} />
       </ChakraProvider>
     </Document>

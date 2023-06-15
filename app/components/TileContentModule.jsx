@@ -12,19 +12,8 @@ function TileContentModule({
   link,
   iconLarger,
   iconColor,
-  customIconClasses,
-  numericalIcons,
-  columnWidths,
   ctaLinkName,
   tileColour,
-  tilePadding,
-  tileRadius,
-  isHoverable,
-  image,
-  scaleDown,
-  altImageText,
-  thisTileColour,
-  tileTextColourDark,
 }) {
   const hasIcon = ({
     iconLarger,
@@ -80,36 +69,12 @@ function TileContentModule({
         return "brand.mwTertiaryTile"
     }
   };
-
-  // console.log("tileColour ==> ", tileColour)
-  // console.log("iconColor ==> ", iconColor)
-  // console.log("iconColor ==> ", iconLarger,
-  //   iconColor,
-  //   customIconClasses,
-  //   numericalIcons,
-  //   icon,)
-
   
   return (
     <Card variant={"iconCard"} textAlign={'center'} backgroundColor={!!iconColor
       ? tileBackground(iconColor)
       : tileColour}>
       <CardHeader>
-        {/* {icon ? (
-          link ? (
-            <Link to={link}>
-              <IconHelper icon={icon} />              
-            </Link>
-          ) : (
-            <IconHelper icon={icon} />
-          )
-        ) : link ? (
-          <Link to={link}>
-            {hasImage({ altImageText, image, scaleDown })}
-          </Link>
-        ) : (
-          hasImage({ altImageText, image, scaleDown })
-        )} */}
         {icon && <IconHelper icon={icon} />}
       </CardHeader>
 
@@ -121,7 +86,7 @@ function TileContentModule({
             </Header>
           </Box>
         )}
-        {children && <Text>{children}</Text>}
+        {children && <Box>{children}</Box>}
       </CardBody>
       {link ? (
         <CardFooter>

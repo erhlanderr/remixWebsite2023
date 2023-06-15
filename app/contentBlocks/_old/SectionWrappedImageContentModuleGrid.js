@@ -2,7 +2,7 @@ import React from "react";
 
 import GridLayout from "../components/layout/GridLayout";
 import ImageContent from "../components/ImageContent";
-import Markdown from "markdown-to-jsx";
+import MarkdownContent from "../components/helpers/Markdown";
 
 const SectionWrappedImageContentModuleGrid = ({
   modules,
@@ -12,10 +12,11 @@ const SectionWrappedImageContentModuleGrid = ({
   scaleDown,
 }) => {
   return (
-    
-      <GridLayout gridCustomClasses={gridCustomClasses ? gridCustomClasses : ""}>
-        {modules &&
-          modules.map((module) => (
+
+    <GridLayout gridCustomClasses={gridCustomClasses ? gridCustomClasses : ""}>
+      {modules &&
+        modules.map((module, idx) => (
+          <React.Fragment key={module.title}>
             <ImageContent
               title={module.title}
               image={module.image}
@@ -25,24 +26,14 @@ const SectionWrappedImageContentModuleGrid = ({
               scaleDown={scaleDown}
             >
               {module.paragraphs && (
-                <Markdown
-                  options={{
-                    disableParsingRawHTML: false,
-                    overrides: {
-                      ul: {
-                        props: {
-                          className: "custom-list is-medium",
-                        },
-                      },
-                    },
-                  }}
-                >
+                <MarkdownContent>
                   {module.paragraphs}
-                </Markdown>
+                </MarkdownContent>
               )}
             </ImageContent>
-          ))}
-      </GridLayout>
+          </React.Fragment>
+        ))}
+    </GridLayout>
   );
 };
 

@@ -18,8 +18,8 @@ import SectionBlogPost from "../contentBlocks/SectionBlogPost";
 // import SectionWrappedArticleMasonaryGrid from "../contentBlocks/SectionWrappedArticleMasonaryGrid";
 // import SectionWrappedDropDownListModuleGrid from "../contentBlocks/SectionWrappedDropDownListModuleGrid";
 // import SectionWrappedGrid from "../contentBlocks/SectionWrappedGrid";
-import SectionWrappedImageContentModuleGrid from "../contentBlocks/SectionWrappedImageContentModuleGrid";
 import SectionWrappedSectionTitleGrid from "../contentBlocks/SectionWrappedSectionTitleGrid";
+import SectionLeftRightContent from "../contentBlocks/SectionLeftRightContent";
 // import TileContentModule from "../contentBlocks/TileContentModule";
 // import StatsPanel from "../contentBlocks/StatsPanel";
 // import ContentBlock from "../contentBlocks/ContentBlock";
@@ -36,6 +36,8 @@ import SectionWrappedSectionTitleGrid from "../contentBlocks/SectionWrappedSecti
 // import MenuBlogList from "../navigation/MenuBlogList";
 // import SubMenuCopy from "../navigation/SubMenuCopy";
 // import SubMenuLinkList from "../navigation/SubMenuLinkList";
+
+// import SectionWrappedImageContentModuleGrid from "../contentBlocks/SectionWrappedImageContentModuleGrid";
 
 const componentRegistry = {
   sectionwrappedimagewithcontent: SectionWrappedImageWithContent,
@@ -56,7 +58,6 @@ const componentRegistry = {
   //   sectionwrappedarticlemasonarygrid: SectionWrappedArticleMasonaryGrid,
   //   sectionwrappeddropdownlistmodulegrid: SectionWrappedDropDownListModuleGrid,
   //   sectionwrappedgrid: SectionWrappedGrid,
-    sectionwrappedimagecontentmodulegrid: SectionWrappedImageContentModuleGrid,
   //   tilecontentmodule: TileContentModule,
   //   statspanel: StatsPanel,
   //   contentblock: ContentBlock,
@@ -64,6 +65,7 @@ const componentRegistry = {
   //   testimonials: Testimonials,
   //   sectiontitle: SectionTitle,
     sectionwrappedsectiontitlegrid: SectionWrappedSectionTitleGrid,
+    sectionleftrightcontent: SectionLeftRightContent,
   //   blogarticleauthor: BlogArticleAuthor,
   //   contactform: ContactForm,
   //   googlemap: GoogleMap,
@@ -74,6 +76,8 @@ const componentRegistry = {
   //   menubloglist: MenuBlogList,
   //   submenucopy: SubMenuCopy,
   //   submenulinklist: SubMenuLinkList,
+  
+  // sectionwrappedimagecontentmodulegrid: SectionWrappedImageContentModuleGrid,
 };
 
 let renderWrappedItem = (key, item) => {

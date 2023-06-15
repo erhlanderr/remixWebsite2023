@@ -1,11 +1,15 @@
 import React from "react";
 import {
   useLoaderData,
-  useNavigate,
+  useNavigate
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import ContentPlaceholder from "../content/contentPlaceholders";
 import PageHeader from "../components/PageHeader";
+
+export const meta = ({ data }) => {
+  return [{ title: `${data.title} | Bespoke Software London | MethodWorx` }];
+};
 
 export const loader = async ({ request, params, context }) => {
   let route;
@@ -26,7 +30,8 @@ export const loader = async ({ request, params, context }) => {
   return json({
     // page: data,
     route,
-    data: data
+    data: data,
+    title: data.content.header.title,
   });
 }
 

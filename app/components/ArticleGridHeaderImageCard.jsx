@@ -34,20 +34,20 @@ const ArticleGridHeaderImageCard = ({
         className={`${boxBackgroundColour && "has-background-" + boxBackgroundColour}`}
       >
         <CardHeader p="0">
-          {article.image && (
+          {/* {article.image && (
             <ImageLoader
               imageUrl={article.image}
               imageAlt={article?.imageAlt}
             // imageRatioDesktop={}
             // imageRatioMobile={}
             />
-          )}
+          )} */}
         </CardHeader>
         <CardBody>
 
           <Flex direction={'column'}>
 
-            {(article.title ||
+            {/* {(article.title ||
               article.content ||
               (article.ctaLink && article.ctaTitle)) && (
                 <>
@@ -60,16 +60,16 @@ const ArticleGridHeaderImageCard = ({
                     <ExpandingTextBox textBoxCopy={article?.content} />
                   )}
                 </>
-              )}
+              )} */}
           </Flex>
         </CardBody>
-        {article.ctaLink && article.ctaTitle && (
+        {/* {article.ctaLink && article.ctaTitle && (
           <CardFooter>
             <Button onClick={() => navigate(article.ctaLink)}>
               {article.ctaTitle}
             </Button>
           </CardFooter>
-        )}
+        )} */}
       </Card>
     
   );

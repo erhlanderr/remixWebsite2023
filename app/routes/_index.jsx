@@ -1,6 +1,6 @@
 import {
   useLoaderData,
-  useNavigate,
+  useNavigate
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import React from "react";
@@ -11,6 +11,9 @@ import { Box } from "@chakra-ui/react";
 import { Header } from "../components/helpers/Header";
 import CTAModule from "../components/CTAModule";
 import ContactUsPageButton from "../components/ContactUsPageButton";
+
+
+
 
 export const loader = async ({ request, params }) => {
   let route;
